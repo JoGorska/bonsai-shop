@@ -361,5 +361,7 @@ pip3 install -r requirements.txt
 * The project walkthrough 
 
 * [Herons Bonsai](https://www.herons.co.uk/)
+* [starter template](https://getbootstrap.com/docs/5.0/getting-started/introduction/) from bootstrap 5
+* base template from [bootstrap examples](https://getbootstrap.com/docs/5.0/examples/carousel/)
 
 ### People
