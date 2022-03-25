@@ -41,10 +41,14 @@
     <title>Three Happy Trees {% block extra_title %} {% endblock %}</title>
   </head>
   <body>
-    <h1>Three Happy Trees</h1>
+    <!-- svg icons from bootstrap -->
+    {% include 'includes/svg.html' %}
 
     <!-- Optional JavaScript; choose one of the two! -->
-    <header class="container-fluid fixed-top"></header>
+    <header>
+      {% include 'includes/navbar/widescreen-nav.html' %}
+      {% include 'includes/navbar/mobile-nav.html' %}
+    </header>
 
     {% if messages %}
     <div class="message-container"></div>
