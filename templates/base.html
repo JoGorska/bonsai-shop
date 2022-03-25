@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -37,16 +38,29 @@
 
     {% block extra_js %}
     {% endblock %}
-
-    <title>Bonsai Shop</title>
+    <!-- change title when you come up with the name ??? -->
+    <title>Bonsai Shop {% blok extra_title %} {% endblock %</title>
   </head>
   <body>
     <h1>Hello, world!</h1>
 
     <!-- Optional JavaScript; choose one of the two! -->
+    <header class="container-fluid fixed-top"></header>
+
+    {% if messages %}
+    <div class="message-container"></div>
+    {% endif %}
+
+    {% block page_header %}
+    {% endblock %}
+
+    <!-- content goes here -->
+    {% block content %}
+    {% endblock %}
+
+    {% block postload_js %}
+    {% endblock %}
 
 
-
-   
-  </body>
+</body>
 </html>
