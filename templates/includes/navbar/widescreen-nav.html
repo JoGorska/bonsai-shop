@@ -1,0 +1,106 @@
+
+
+    <div class="px-3 py-2 bg-dark text-white d-none d-md-block">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+          </a>
+
+          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+            <li>
+              <a href="#" class="nav-link text-secondary">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"/></svg>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#shop"/></svg>
+                Shop
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#faq"/></svg>
+                FAQ
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white dropdown-toggle" id="dropdownFind" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#find"/></svg>
+                Find
+              </a>
+                <div class="dropdown-menu text-small bg-dark text-white" aria-labelledby="dropdownFind">
+                    <form class="form" method="GET" action="#">
+                      <div class="input-group p-3">
+                      <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                      <button type="submit" class="btn btn-sm btn-secondary text-white">Find</button>
+                      </div>
+                    </form>
+                </div>
+
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/></svg>
+                Orders
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
+                Products
+              </a>
+            </li>
+            <li>
+              <!-- user-->
+              <a href="#" class="nav-link text-white dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                  <use xlink:href="#people-circle"/>
+                </svg>
+                <!-- if user is authenticated, his name is shown, otherwise the words "Log in" -->
+                {% if user.is_authenticated %}
+                {{user.first_name}}
+                </a>
+                <!-- drop down for user that is logged in -->
+                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser">
+                  <li>
+                    <a class="dropdown-item" href="#">User profile
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Sign out
+                    </a>
+                  </li>
+                </ul>
+                </li>
+                {% else %}
+                Log in
+                </a>
+                  <!-- drop down for user that is NOT logged in -->
+                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser">
+                  <li>
+                    <a class="dropdown-item" href="#">Register
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Log in
+                    </a>
+                  </li>
+                </ul>
+                </li>
+                {% endif %}
+                <li>
+                  <a href="#" class="nav-link text-secondary">
+                    <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#trolley"/></svg>
+                    Trolley
+                  </a>
+                </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    
+
