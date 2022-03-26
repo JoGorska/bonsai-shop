@@ -1,0 +1,38 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+
+body {
+    font-family: 'Kodchasan', sans-serif !important;
+
+}
+
+.my-heading-font {
+    font-family: 'Baumans', cursive;
+    }
+    
+.my-plain-text-font {
+font-family: 'Kodchasan', sans-serif !important;
+}
+
+
+
+
+/* NAVBAR FOR LARGE SCREENS
+  -------------------------------------------------- */
+
+.icon-white {
+    fill: white;
+}
+
+.icon-success {
+    fill: #198754;
+}
+
+svg:hover {
+    fill: #198754;
+}
+
+.nav-link:hover {
+    color: #198754 !important;
+}
+

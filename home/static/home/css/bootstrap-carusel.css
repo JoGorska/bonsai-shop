@@ -1,3 +1,6 @@
+/* carusel from bootstrap 5 examles: https://getbootstrap.com/docs/5.0/examples/carousel/
+with some customisations */
+
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
@@ -15,28 +18,32 @@ body {
   /* Carousel base class */
   .carousel {
     margin-bottom: 4rem;
+
   }
   /* Since positioning the image, we need to help out the caption */
   .carousel-caption {
     bottom: 3rem;
     z-index: 10;
+    box-shadow: inset 30rem 30rem 30rem rgb(0 0 0 / 75%);
+    padding: 1rem;
+    border-radius: 30px;
   }
   
   /* Declare heights because of positioning of img element */
   .carousel-item {
     height: 32rem;
 
+
   }
 
-  /* #caruselImage1 {
-    background: url('media/pexels-hugo-heimendinger-2977433.jpg') no-repeat center fixed;
-  } */
   .carousel-item > img {
     position: absolute;
     top: 0;
     left: 0;
     min-width: 100%;
+
     height: 32rem;
+
   }
   
   

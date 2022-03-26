@@ -356,6 +356,9 @@ pip3 install -r requirements.txt
 * [Markdown best practices](https://www.markdownguide.org/basic-syntax/)
 * [Markdown Table of content generator](http://ecotrust-canada.github.io/markdown-toc/)
 
+* [icon](<a href="https://www.flaticon.com/free-icons/trees" title="trees icons">Trees icons created by Freepik - Flaticon</a>)
+* png to svg [converter](https://convertio.co/download/d39aa7f30e79f4379b9bce697c5afe384b5853/)
+
 ### Tutorials and inspiration
 
 * The project walkthrough 
@@ -363,5 +366,7 @@ pip3 install -r requirements.txt
 * [Herons Bonsai](https://www.herons.co.uk/)
 * [starter template](https://getbootstrap.com/docs/5.0/getting-started/introduction/) from bootstrap 5
 * base template from [bootstrap examples](https://getbootstrap.com/docs/5.0/examples/carousel/)
+
+* 
 
 ### People
