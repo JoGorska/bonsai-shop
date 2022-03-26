@@ -1,26 +1,175 @@
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark d-md-none">
     <div class="container-fluid">
-    <a class="navbar-brand" href="#">Carousel</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-        </ul>
-        <form class="d-flex form" method="GET" action="">
-        <input class="form-control me-2" type="text"  name="q" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
-        </form>
-    </div>
+        <div class="d-flex container-fluid p-1">
+            <!-- nav brand logo and text -->
+            <div class="d-flex flex-row container-fluid p-1" href="{% url 'home' %}">
+                <div class="">
+                    <a class="text-decoration-none" href="{% url 'home' %}">
+                        <img src="{{ MEDIA_URL }}trees-sm.svg" alt="">
+                    </a>
+                </div>
+                <div class="mt-2 ps-2">
+                    <a class="text-white text-decoration-none" href="{% url 'home' %}">
+                        <p class="h5 my-heading-font">Three Happy Trees</p>
+                    </a>
+                </div>
+            </div>
+            <!-- hamburger buton -->
+            <div class="flex-shrink">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbarCollapse" aria-controls="mobileNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse text-uppercase" id="mobileNavbarCollapse">
+            <!-- nav bar unordered list start -->
+            <ul class="navbar-nav me-auto">
+              <!-- home -->
+              <li class="nav-item">
+                <a href="{% url 'home' %}" 
+                   class="nav-link {% if request.resolver_match.url_name == 'home' %}
+                          text-success {% else %} text-white {% endif %}">
+                  <div class="row">
+                    <div class="col-3">
+                    </div>
+                    <div class="col-3">
+                      <svg class="bi icon-success" width="24" height="24" fill="currentColor">
+                        <use xlink:href="#home"/>
+                      </svg>
+                    </div>
+                    <div class="col-6">
+                      <p class="pt-1">Home
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <!-- drive -->
+              <li class="nav-item">
+                <a href=""
+                   class="nav-link 
+                          text-white">
+                  <div class="row">
+                    <div class="col-3">
+                    </div>
+                    <div class="col-3">
+                      <svg class="bi" width="24" height="24" fill="currentColor">
+                        <use xlink:href="#shop"/>
+                      </svg>
+                    </div>
+                    <div class="col-6">
+                      <p class="pt-1">Shop
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <!-- faq -->
+              <li class="nav-item">
+                <a href="" 
+                   class="nav-link 
+                          text-white">
+                  <div class="row">
+                    <div class="col-3">
+                    </div>
+                    <div class="col-3">
+                      <svg class="bi" width="24" height="24" fill="currentColor">
+                        <use xlink:href="#faq"/>
+                      </svg>
+                    </div>
+                    <div class="col-6">
+                      <p class="pt-1">Faq
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              
+              <!-- user login -->
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link pb-1
+                                   text-white"
+                                   id="dropdownUser-mobile" data-bs-toggle="dropdown" aria-expanded="false">
+      
+                  <div class="row">
+                    <div class="col-3">
+                    </div>
+                    <div class="col-3">
+                      <svg class="bi" width="24" height="24" fill="currentColor">
+                        <use xlink:href="#people-circle"/>
+                      </svg>
+                    </div>
+                    {% if request.user.is_authenticated %}
+                    <div class="col-6">
+                      <p class="pt-1">{{ request.user.first_name }}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                  <li>
+                    <a class="dropdown-item" href="">User profile
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="">Sign out
+                    </a>
+                  </li>
+                </ul>
+              </li>
+                {% else %}
+                <!-- user that is NOT logged in -->
+                    <div class="col-4">
+                      <p class="pt-1">Log in
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <ul class="dropdown-menu text-small bg-dark text-white" aria-labelledby="dropdownUser1">
+                  <li>
+                    <a class="dropdown-item bg-dark text-white" href="">Register
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item bg-dark text-white" href="">Log in
+                    </a>
+                  </li>
+                </ul>
+              </li>
+          {% endif %}
+                    <!-- trolley -->
+                    <li class="nav-item">
+                        <a href="" 
+                           class="nav-link 
+                                  text-white">
+                          <div class="row">
+                            <div class="col-3">
+                            </div>
+                            <div class="col-3">
+                              <svg class="bi" width="24" height="24" fill="currentColor">
+                                <use xlink:href="#trolley"/>
+                              </svg>
+                            </div>
+                            <div class="col-6">
+                              <p class="pt-1">
+                                {% if grand_total %}
+                                £ {{ grand_total|floatformat:2 }}
+                                {% else %}
+                                £ 0.00
+                                {% endif %}
+                              </p>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+            </ul>
+            <form class="d-flex form" method="GET" action="">
+                <input class="form-control me-2" type="text"  name="q" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+
     </div>
 </nav>
