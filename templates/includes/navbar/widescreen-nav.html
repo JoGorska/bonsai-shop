@@ -32,9 +32,9 @@
                 Find
               </a>
                 <div class="dropdown-menu text-small bg-dark text-white" aria-labelledby="dropdownFind">
-                    <form class="form" method="GET" action="#">
+                    <form class="form" method="GET" action="">
                       <div class="input-group p-3">
-                      <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                      <input type="text" class="form-control" name="q" placeholder="Search..." aria-label="Search">
                       <button type="submit" class="btn btn-sm btn-secondary text-white">Find</button>
                       </div>
                     </form>
@@ -60,17 +60,17 @@
                   <use xlink:href="#people-circle"/>
                 </svg>
                 <!-- if user is authenticated, his name is shown, otherwise the words "Log in" -->
-                {% if user.is_authenticated %}
-                {{user.first_name}}
+                {% if request.user.is_authenticated %}
+                {{ request.user.first_name }}
                 </a>
                 <!-- drop down for user that is logged in -->
-                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser">
+                <ul class="dropdown-menu text-small bg-dark text-white" aria-labelledby="dropdownUser">
                   <li>
-                    <a class="dropdown-item" href="#">User profile
+                    <a class="dropdown-item text-white" href="#">User profile
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">Sign out
+                    <a class="dropdown-item text-white" href="{% url 'account_logout' %}">Sign out
                     </a>
                   </li>
                 </ul>
@@ -81,20 +81,25 @@
                   <!-- drop down for user that is NOT logged in -->
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser">
                   <li>
-                    <a class="dropdown-item" href="#">Register
+                    <a class="dropdown-item" href="{% url 'account_signup' %}">Register
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">Log in
+                    <a class="dropdown-item" href="{% url 'account_login' %}">Log in
                     </a>
                   </li>
                 </ul>
                 </li>
                 {% endif %}
                 <li>
-                  <a href="#" class="nav-link text-secondary">
+                  <!-- trolley -->
+                  <a href="#" class="nav-link text-white">
                     <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#trolley"/></svg>
-                    Trolley
+                    {% if grand_total %}
+                    £ {{ grand_total|floatformat:2 }}
+                    {% else %}
+                    £ 0.00
+                    {% endif %}
                   </a>
                 </li>
           </ul>
