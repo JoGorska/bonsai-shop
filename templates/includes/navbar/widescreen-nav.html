@@ -9,29 +9,29 @@
 
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
-              <a href="#" class="nav-link text-secondary">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"/></svg>
+              <a href="#" class="nav-link text-white text-uppercase">
+                <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24"><use xlink:href="#home"/></svg>
                 Home
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#shop"/></svg>
+              <a href="#" class="nav-link text-white text-uppercase">
+                <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24"><use xlink:href="#shop"/></svg>
                 Shop
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#faq"/></svg>
+              <a href="#" class="nav-link text-white text-uppercase">
+                <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24"><use xlink:href="#faq"/></svg>
                 FAQ
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white dropdown-toggle" id="dropdownFind" data-bs-toggle="dropdown" aria-expanded="false">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#find"/></svg>
+              <a href="#" class="nav-link text-white dropdown-toggle text-uppercase" id="dropdownFind" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24"><use xlink:href="#find"/></svg>
                 Find
               </a>
-                <div class="dropdown-menu text-small bg-dark text-white" aria-labelledby="dropdownFind">
+                <div class="dropdown-menu text-small bg-dark text-white text-uppercase" aria-labelledby="dropdownFind">
                     <form class="form" method="GET" action="">
                       <div class="input-group p-3">
                       <input type="text" class="form-control" name="q" placeholder="Search..." aria-label="Search">
@@ -42,21 +42,21 @@
 
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/></svg>
+              <a href="#" class="nav-link text-white text-uppercase">
+                <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24"><use xlink:href="#table"/></svg>
                 Orders
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
+              <a href="#" class="nav-link text-white text-uppercase">
+                <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24"><use xlink:href="#grid"/></svg>
                 Products
               </a>
             </li>
             <li>
               <!-- user-->
-              <a href="#" class="nav-link text-white dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+              <a href="#" class="nav-link text-white text-uppercase dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24">
                   <use xlink:href="#people-circle"/>
                 </svg>
                 <!-- if user is authenticated, his name is shown, otherwise the words "Log in" -->
@@ -66,11 +66,11 @@
                 <!-- drop down for user that is logged in -->
                 <ul class="dropdown-menu text-small bg-dark text-white" aria-labelledby="dropdownUser">
                   <li>
-                    <a class="dropdown-item text-white" href="#">User profile
+                    <a class="dropdown-item text-white text-uppercase" href="#">User profile
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item text-white" href="{% url 'account_logout' %}">Sign out
+                    <a class="dropdown-item text-white text-uppercase" href="{% url 'account_logout' %}">Sign out
                     </a>
                   </li>
                 </ul>
@@ -81,11 +81,11 @@
                   <!-- drop down for user that is NOT logged in -->
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser">
                   <li>
-                    <a class="dropdown-item" href="{% url 'account_signup' %}">Register
+                    <a class="dropdown-item text-uppercase" href="{% url 'account_signup' %}">Register
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="{% url 'account_login' %}">Log in
+                    <a class="dropdown-item text-uppercase" href="{% url 'account_login' %}">Log in
                     </a>
                   </li>
                 </ul>
@@ -94,7 +94,7 @@
                 <li>
                   <!-- trolley -->
                   <a href="#" class="nav-link text-white">
-                    <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#trolley"/></svg>
+                    <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24"><use xlink:href="#trolley"/></svg>
                     {% if grand_total %}
                     £ {{ grand_total|floatformat:2 }}
                     {% else %}

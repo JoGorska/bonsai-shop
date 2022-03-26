@@ -47,7 +47,7 @@
     {% include 'includes/svg.html' %}
 
     <!-- Optional JavaScript; choose one of the two! -->
-    <header>
+    <header id="header">
       {% include 'includes/navbar/widescreen-nav.html' %}
       {% include 'includes/navbar/mobile-nav.html' %}
     </header>
@@ -65,7 +65,7 @@
     <!-- FOOTER -->
     <footer class="container">
       <p class="float-end"><a href="#">Back to top</a></p>
-      <p>&copy; 2017-2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      <p>&copy; 2017-2021 Company, Inc. &middot; <a href="#header">Privacy</a> &middot; <a href="#">Terms</a></p>
     </footer>
     {% block postload_js %}
     {% endblock %}
