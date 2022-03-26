@@ -1,3 +1,22 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+
+body {
+    font-family: 'Kodchasan', sans-serif !important;
+
+}
+
+.my-heading-font {
+    font-family: 'Baumans', cursive;
+    }
+    
+.my-plain-text-font {
+font-family: 'Kodchasan', sans-serif !important;
+}
+
+
+
+
 /* NAVBAR FOR LARGE SCREENS
   -------------------------------------------------- */
 
