@@ -3,34 +3,34 @@
     <div class="px-3 py-2 bg-dark text-white d-none d-md-block">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start my-heading-font">
-          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+          <a href="{% url 'home' %}}" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
             <img src="{{ MEDIA_URL }}trees.svg" alt="">
-              <h1 class="my-heading-font">Three Happy Trees</h1>
+              <h1 class="my-heading-font ps-2">Three Happy Trees</h1>
 
           </a>
 
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
               <a href="#" class="nav-link text-white text-uppercase">
-                <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24"><use xlink:href="#home"/></svg>
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#home"/></svg>
                 Home
               </a>
             </li>
             <li>
               <a href="#" class="nav-link text-white text-uppercase">
-                <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24"><use xlink:href="#shop"/></svg>
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#shop"/></svg>
                 Shop
               </a>
             </li>
             <li>
               <a href="#" class="nav-link text-white text-uppercase">
-                <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24"><use xlink:href="#faq"/></svg>
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#faq"/></svg>
                 FAQ
               </a>
             </li>
             <li>
               <a href="#" class="nav-link text-white dropdown-toggle text-uppercase" id="dropdownFind" data-bs-toggle="dropdown" aria-expanded="false">
-                <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24"><use xlink:href="#find"/></svg>
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#find"/></svg>
                 Find
               </a>
                 <div class="dropdown-menu text-small bg-dark text-white text-uppercase" aria-labelledby="dropdownFind">
@@ -46,7 +46,7 @@
             <li>
               <!-- user-->
               <a href="#" class="nav-link text-white text-uppercase dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-                <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor">
                   <use xlink:href="#people-circle"/>
                 </svg>
                 <!-- if user is authenticated, his name is shown, otherwise the words "Log in" -->
@@ -84,7 +84,7 @@
                 <li>
                   <!-- trolley -->
                   <a href="#" class="nav-link text-white">
-                    <svg class="bi d-block mx-auto mb-1 icon-white" width="24" height="24"><use xlink:href="#trolley"/></svg>
+                    <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#trolley"/></svg>
                     {% if grand_total %}
                     £ {{ grand_total|floatformat:2 }}
                     {% else %}
