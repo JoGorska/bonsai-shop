@@ -1,3 +1,7 @@
+"""
+models for trees app
+"""
+
 from django.db import models
 
 
@@ -72,7 +76,7 @@ class Size(models.Model):
     name = models.CharField(max_length=254)
     # friendly_name is optional
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
-    # the smaller value - the smaler the tree, 
+    # the smaller value - the smaler the tree,
     # this will allow to sort the trees by their size
     number = models.IntegerField(max_length=1, null=False, blank=False)
 
@@ -97,7 +101,12 @@ class Tree(models.Model):
     description = models.TextField()
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
-    extra_feature = models.ForeignKey('ExtraFeature', null=True, blank=True, on_delete=models.SET_NULL)
-    enviroment = models.ForeignKey('Enviroment', null=True, blank=True, on_delete=models.SET_NULL)
-    size = models.ForeignKey('Size', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(
+                'Category', null=True, blank=True, on_delete=models.SET_NULL)
+    extra_feature = models.ForeignKey(
+                'ExtraFeature', null=True, blank=True,
+                on_delete=models.SET_NULL)
+    enviroment = models.ForeignKey(
+                'Enviroment', null=True, blank=True, on_delete=models.SET_NULL)
+    size = models.ForeignKey(
+                'Size', null=True, blank=True, on_delete=models.SET_NULL)
