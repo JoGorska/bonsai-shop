@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'home/css/bootstrap-carusel.css' %}">
+{% endblock %}
+
 {% block content %}
 
 
@@ -13,10 +17,9 @@
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-      <div class="carousel-inner">
+      <div class="carousel-inner" >
         <div class="carousel-item active">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-  
+          <img src="{{ MEDIA_URL }}pexels-phuongduy-le-7998593.jpg" alt="">
           <div class="container">
             <div class="carousel-caption text-start">
               <h1>Example headline.</h1>
@@ -26,8 +29,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-  
+          <img src="{{ MEDIA_URL }}pexels-quang-nguyen-vinh-2149105.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
               <h1>Another example headline.</h1>
@@ -37,8 +39,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-  
+          <img src="{{ MEDIA_URL }}pexels-tieu-bao-trương-8913408.jpg" alt="">
           <div class="container">
             <div class="carousel-caption text-end">
               <h1>One more for good measure.</h1>
