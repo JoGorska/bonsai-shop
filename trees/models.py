@@ -78,7 +78,7 @@ class Size(models.Model):
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
     # the smaller value - the smaler the tree,
     # this will allow to sort the trees by their size
-    number = models.IntegerField(max_length=1, null=False, blank=False)
+    number = models.IntegerField(null=False, blank=False)
 
     def __str__(self):
         return f'{self.name}'
@@ -95,18 +95,23 @@ class Tree(models.Model):
     class that creates trees table to hold products that 
     will be sold by the store
     """
+    # these columns are required
     name = models.CharField(max_length=254, null=True, blank=True)
     slug = models.SlugField(max_length=200, unique=True)
     price = models.DecimalField(max_digits=9, decimal_places=2)
     description = models.TextField()
+    # these columns are optional
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     category = models.ForeignKey(
                 'Category', null=True, blank=True, on_delete=models.SET_NULL)
     extra_feature = models.ForeignKey(
-                'ExtraFeature', null=True, blank=True,
+                'ExtaFeature', null=True, blank=True,
                 on_delete=models.SET_NULL)
     enviroment = models.ForeignKey(
                 'Enviroment', null=True, blank=True, on_delete=models.SET_NULL)
     size = models.ForeignKey(
                 'Size', null=True, blank=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return f'{self.name}'
