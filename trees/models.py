@@ -66,11 +66,12 @@ class Tree(models.Model):
     class that creates trees table to hold products that
     will be sold by the store
     """
+    # trunk circumference
     # these columns are required
     name = models.CharField(max_length=254, null=True, blank=True)
     slug = models.SlugField(max_length=200, unique=True, editable=False)
     height_in = models.DecimalField(max_digits=9, decimal_places=2)
-    trunk_width_in = models.DecimalField(max_digits=9, decimal_places=2)
+    trunk_circumference = models.DecimalField(max_digits=9, decimal_places=2)
     price = models.DecimalField(max_digits=9, decimal_places=2)
     current_stock = models.IntegerField(null=True, blank=True)
     # these columns are optional
