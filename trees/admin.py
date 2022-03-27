@@ -14,6 +14,8 @@ class TreeAdmin(admin.ModelAdmin):
     prepopulated_fields = {'image_alt': ('name',)}
     search_fields = ['name', 'description']
 
+    ordering = ('id',)
+
 
 @admin.register(Feature)
 class FeatureAdmin(admin.ModelAdmin):
@@ -29,4 +31,3 @@ class EnviromentAdmin(admin.ModelAdmin):
     class to enable admin manage Enviroment model
     """
     list_display = ('name', 'icon_fontawsome')
-
