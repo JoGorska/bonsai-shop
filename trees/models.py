@@ -5,46 +5,21 @@ models for trees app
 from django.db import models
 
 
-class Category(models.Model):
+class Feature(models.Model):
     """
-    categories of trees
+    Features of trees
     """
-    class Meta:
-        """
-        helper class to improve the way categories display in admin
-        in plural form
-        """
-        verbose_name_plural = 'Categories'
-
     name = models.CharField(max_length=254)
-    # friendly_name is optional
+    # friendly_name and icon is optional
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
+    icon_fontawsome = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
         return f'{self.name}'
 
     def get_friendly_name(self):
         """
-        returns the name of the category
-        """
-        return self.friendly_name
-
-
-class ExtaFeature(models.Model):
-    """
-    extra features that make tree stand out
-    """
-
-    name = models.CharField(max_length=254)
-    # friendly_name is optional
-    friendly_name = models.CharField(max_length=254, null=True, blank=True)
-
-    def __str__(self):
-        return f'{self.name}'
-
-    def get_friendly_name(self):
-        """
-        returns the name of the category
+        returns the name of the feature
         """
         return self.friendly_name
 
@@ -55,8 +30,9 @@ class Enviroment(models.Model):
     """
 
     name = models.CharField(max_length=254)
-    # friendly_name is optional
+    # friendly_name and icon is optional
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
+    icon_fontawsome = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
         return f'{self.name}'
@@ -103,11 +79,8 @@ class Tree(models.Model):
     # these columns are optional
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
-    category = models.ForeignKey(
-                'Category', null=True, blank=True, on_delete=models.SET_NULL)
-    extra_feature = models.ForeignKey(
-                'ExtaFeature', null=True, blank=True,
-                on_delete=models.SET_NULL)
+    feature = models.ManyToManyField(
+                'Feature', blank=True)
     enviroment = models.ForeignKey(
                 'Enviroment', null=True, blank=True, on_delete=models.SET_NULL)
     size = models.ForeignKey(
