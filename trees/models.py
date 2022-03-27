@@ -7,6 +7,11 @@ import random
 from django.db import models
 from django.template.defaultfilters import slugify
 
+LEAVES_OR_NEEDLES_CHOICES = [
+    ('coniferous', 'Coniferous'),
+    ('deciduous', 'Deciduous'),
+]
+
 IMG_DISCLAIMER_CHOICES = [
         ('standarised', 'This is an image of a typical tree \
                         of this size and shape. We grow and \
@@ -69,6 +74,9 @@ class Tree(models.Model):
     price = models.DecimalField(max_digits=9, decimal_places=2)
     current_stock = models.IntegerField(null=True, blank=True)
     # these columns are optional
+    leaves_or_needles = models.CharField(
+            max_length=254, choices=LEAVES_OR_NEEDLES_CHOICES,
+            default='coniferous', null=True, blank=True)
     description = models.TextField()
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
