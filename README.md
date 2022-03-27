@@ -358,6 +358,7 @@ pip3 install -r requirements.txt
 
 * [icon](<a href="https://www.flaticon.com/free-icons/trees" title="trees icons">Trees icons created by Freepik - Flaticon</a>)
 * png to svg [converter](https://convertio.co/download/d39aa7f30e79f4379b9bce697c5afe384b5853/)
+* resizing photos by [photoresizer](https://www.photoresizer.com/)
 
 ### Tutorials and inspiration
 
