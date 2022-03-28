@@ -4,7 +4,7 @@
 {% block content %}
 
 <section class="py-5 text-center container">
-    <!-- hero image might replace with carusel ??? -->
+    <!-- add static image reffereing to shop ??? -->
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light my-heading-font">Our Trees</h1>
@@ -44,7 +44,7 @@
                      <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                     {% endif %}
                 <div class="card-header">
-                    <h2>{{ tree.name }}</h2>
+                    <p class="h5 fw-bold">{{ tree.name }}</p>
                 </div>
                 <div class="card-body">
                     {% if tree.description %}
@@ -52,12 +52,18 @@
                         {{ tree.description }}
                     </p>
                     {% endif %}
-                    <p class="card-text">Height: {{ tree.height_in }} in</p>
-                    <p class="card-text">Trunk circumference: {{ tree.trunk_circumference }} in</p>
+                    <div class="row">
+                        <div class="col-6 col-lg-6 col-md-12 col-sm-12">
+                            <p class="card-text">Height: {{ tree.height_in }} in</p>
+                        </div>
+                        <div class="col-6 col-lg-6 col-md-12 col-sm-12">
+                            <p class="card-text">Trunk: {{ tree.trunk_circumference }} in</p>
+                        </div>
+                    </div>
 
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center mt-3">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-success">Buy</button>
+                        <button type="button" class="btn btn-sm btn-outline-success">Buy now</button>
                         <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                     </div>
                     <small class="text-muted fw-bold">£ {{tree.price}}</small>

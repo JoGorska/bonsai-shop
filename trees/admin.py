@@ -11,7 +11,6 @@ class TreeAdmin(admin.ModelAdmin):
     class to enable admin manage the Tree model
     """
     list_display = ('id', 'name', 'price', 'current_stock', 'slug')
-    prepopulated_fields = {'image_alt': ('name',)}
     search_fields = ['name', 'description']
 
     ordering = ('id',)
