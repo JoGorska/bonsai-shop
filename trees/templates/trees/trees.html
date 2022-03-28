@@ -3,9 +3,8 @@
 
 {% block content %}
 
-<section class="py-5 text-center container">
-    <!-- add static image reffereing to shop ??? -->
-    <div class="row py-lg-5">
+<section class=" py-5 text-center flex-container bg-img-trees my-box-shadow-75">
+    <!-- <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light my-heading-font">Our Trees</h1>
         <p class="lead text-muted">
@@ -18,8 +17,12 @@
           <a href="#" class="btn btn-secondary my-2">Learn more about bonsai</a>
         </p>
       </div>
-    </div>
+    </div> -->
+    {% include 'trees/includes/sorting_tiles.html' %}
+
 </section>
+
+
 
 <div class="album py-5 bg-light">
     <div class="container">

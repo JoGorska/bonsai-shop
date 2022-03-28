@@ -224,8 +224,16 @@ llll
 
 ## Project Bugs and Solutions:
 ------
-### bug...
-dddd
+### Grid with filtering and sorting icons
+- allow user to choose filter or sort - this makes the smaller amount of icons displayed at once
+- the grid breaks in a bit uncontrolled way, but it allows displaying the filters in a dynamic way.
+- user can add more features to database with svg icon
+
+filter - for li with class filters - display
+
+sort - for li with class sort - display
+
+for loop in features to display tiles and build links dynamically
 
 
 
