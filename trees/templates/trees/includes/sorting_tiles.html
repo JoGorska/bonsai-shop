@@ -61,6 +61,27 @@
 
 {% endif %}
 
+{% if enviroments %}
+
+{% for enviroment in enviroments %}
+
+<!-- ??? make javascript to add and remove visibility for class feature-tile -->
+
+    <!-- feature tile -->
+    <li class="col mb-4 feature-tile" >
+        <a class="d-block bg-dark rounded text-white text-decoration-none" href="">
+          <div class="p-3 py-4  bg-dark text-center rounded">
+            <i class="{{ enviroment.icon_fontawsome}}"></i>
+          </div>
+          <div class="name text-white text-center pb-2">{{ enviroment.friendly_name }}
+          </div>
+        </a>
+      </li>
+
+{% endfor %}
+
+{% endif %}
+
 <!-- leaves or needles -->
 
     <!-- tile - double tile one on top for xxs phones (smaller than 325px) -->
