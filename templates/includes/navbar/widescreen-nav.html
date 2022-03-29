@@ -3,7 +3,7 @@
     <div class="px-3 py-2 bg-dark text-white d-none d-md-block">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start my-heading-font">
-          <a href="{% url 'home' %}}" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+          <a href="{% url 'home' %}" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
             <img src="{{ MEDIA_URL }}trees.svg" alt="">
               <h1 class="my-heading-font ps-2">Three Happy Trees</h1>
 
@@ -11,13 +11,13 @@
 
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
-              <a href="#" class="nav-link text-white text-uppercase">
+              <a href="{% url 'home' %}" class="nav-link text-white text-uppercase">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#home"/></svg>
                 Home
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white text-uppercase">
+              <a href="{% url 'all_trees' %}" class="nav-link text-white text-uppercase">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#shop"/></svg>
                 Shop
               </a>

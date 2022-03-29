@@ -1,0 +1,177 @@
+<ul class="mx-2 mt-5 row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list justify-content-md-center">
+    <!-- all trees -->
+    <li class="col mb-4" >
+      <a class="d-block bg-dark rounded text-white text-decoration-none" 
+      href=""
+      aria-label="Show all trees">
+        <div class="p-3 py-4  bg-dark text-center rounded">
+          <svg class="bi" width="1em" height="1em" fill="currentColor">
+            <use xlink:href="#grid">
+            </use>
+          </svg>
+        </div>
+        <div class="name text-white text-center pb-2">All Trees
+        </div>
+      </a>
+    </li>
+
+          <!-- filter -->
+    <li class="col mb-4" >
+        <a class="d-block bg-dark rounded text-white text-decoration-none" href="" aria-label="Show menu for filtering trees">
+          <div class="p-3 py-4  bg-dark text-center rounded">
+            <svg class="bi" width="1em" height="1em" fill="currentColor">
+              <use xlink:href="#filter">
+              </use>
+            </svg>
+          </div>
+          <div class="name text-white text-center pb-2">Filter
+          </div>
+        </a>
+      </li>
+          <!-- sort -->
+    <li class="col mb-4" >
+        <a class="d-block bg-dark rounded text-white text-decoration-none" href="" aria-label="Show menu for sorting trees">
+          <div class="p-3 py-4  bg-dark text-center rounded">
+            <svg class="bi" width="1em" height="1em" fill="currentColor">
+              <use xlink:href="#sort">
+              </use>
+            </svg>
+          </div>
+          <div class="name text-white text-center pb-2">Sort
+          </div>
+        </a>
+      </li>
+
+{% if features %}
+
+{% for feature in features %}
+
+<!-- ??? make javascript to add and remove visibility for class feature-tile 
+add text-success class to filter -->
+
+    <!-- features tile -->
+    <li class="col mb-4 feature-tile" >
+        <a class="d-block bg-dark rounded text-white text-decoration-none" 
+        href=""
+        aria-label="{{ feature.aria_for_anchor }}">
+          <div class="p-3 py-4  bg-dark text-center rounded">
+            <i class="{{ feature.icon_class}}"></i>
+          </div>
+          <div class="name text-white text-center pb-2">{{ feature.friendly_name }}
+          </div>
+        </a>
+      </li>
+
+{% endfor %}
+
+{% endif %}
+
+{% if enviroments %}
+
+{% for enviroment in enviroments %}
+
+<!-- ??? make javascript to add and remove visibility for class feature-tile -->
+
+    <!-- enviroments tile -->
+    <li class="col mb-4 feature-tile" >
+        <a class="d-block bg-dark rounded text-white text-decoration-none"
+         href=""
+         aria-label="{{ enviroment.aria_for_anchor }}">
+          <div class="p-3 py-4  bg-dark text-center rounded">
+            <i class="{{ enviroment.icon_class}}"></i>
+          </div>
+          <div class="name text-white text-center pb-2">{{ enviroment.friendly_name }}
+          </div>
+        </a>
+      </li>
+
+{% endfor %}
+
+{% endif %}
+
+<!-- leaves or needles -->
+
+    <!-- tile - double tile one on top for xxs phones (smaller than 325px) -->
+    <li class="col mb-4 d-none-above-xxs">
+      <a class="d-block text-white text-decoration-none" href="">
+        <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+          <svg class="bi" width="1em" height="1em" fill="currentColor">
+            <use xlink:href="#leaf2">
+            </use>
+          </svg>
+        </div>
+        <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+          <svg class="bi" width="1em" height="1em" fill="currentColor">
+            <use xlink:href="#leaf">
+            </use>
+          </svg>
+        </div>
+        <div class="name text-white bg-dark rounded text-center pt-1 pb-1">activity
+        </div>
+      </a>
+    </li>
+    <!-- tile - double side by side for all devices except xxs phones (smaller than 325px)-->
+    <li class="col mb-4 d-none-xxs">
+      <div class="d-block bg-dark rounded" >
+        <div class="p-3  py-4 mb-2 text-center ">
+          <a class="text-white bg-dark text-decoration-none pe-2" href="">
+            <svg class="bi" width="1em" height="1em" fill="currentColor">
+              <use xlink:href="#pine">
+              </use>
+            </svg>
+          </a>
+          <a class="text-white bg-dark text-decoration-none ps-2" href="">
+            <svg class="bi" width="1em" height="1em" fill="currentColor">
+              <use xlink:href="#leaf">
+              </use>
+            </svg>
+          </a>
+        </div>
+        <div class="name text-white text-center pb-2 ">Type
+        </div>
+      </div>
+    </li>
+<!-- indoor outdoor -->
+
+    <!-- tile - double tile one on top for xxs phones (smaller than 325px) -->
+    <li class="col mb-4 d-none-above-xxs">
+        <a class="d-block text-white text-decoration-none" href="">
+          <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+            <svg class="bi" width="1em" height="1em" fill="currentColor">
+              <use xlink:href="#leaf2">
+              </use>
+            </svg>
+          </div>
+          <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+            <svg class="bi" width="1em" height="1em" fill="currentColor">
+              <use xlink:href="#leaf">
+              </use>
+            </svg>
+          </div>
+          <div class="name text-white bg-dark rounded text-center pt-1 pb-1">activity
+          </div>
+        </a>
+      </li>
+      <!-- tile - double side by side for all devices except xxs phones (smaller than 325px)-->
+      <li class="col mb-4 d-none-xxs">
+        <div class="d-block bg-dark rounded" >
+          <div class="p-3  py-4 mb-2 text-center ">
+            <a class="text-white bg-dark text-decoration-none pe-2" href="">
+              <svg class="bi" width="1em" height="1em" fill="currentColor">
+                <use xlink:href="#pine">
+                </use>
+              </svg>
+            </a>
+            <a class="text-white bg-dark text-decoration-none ps-2" href="">
+              <svg class="bi" width="1em" height="1em" fill="currentColor">
+                <use xlink:href="#leaf">
+                </use>
+              </svg>
+            </a>
+          </div>
+          <div class="name text-white text-center pb-2 ">Type
+          </div>
+        </div>
+      </li>
+  </ul>
+  

@@ -89,7 +89,16 @@ xx
 
 dd
 
-### Feature ddd
+### Shop
+
+Currently shop features only trees. Future development might see adding bonsai tools added. Shop owner might also consider adding soil and fertilisers for bonsai trees. Next step might be to connect the fertilisers and soil with corresponding tree species to offer user all products he needs for his tree.
+
+Shop features a hero image on the top overlayed with box shadow. This is so page doesn't seem empty. 
+
+The set of tiles has been added on top of the hero image. The tiles act as a sorting and filtering menu. The grid has been taken from the [bootstrap icons page](https://icons.getbootstrap.com/). The tiles are purposed to resamble a dashboard that is so popular on mobile phones.
+
+if javascript is written ???
+The user has option to display only the tiles - buttons that are responsible for filtering or only the ones that sort products by given feature. This is to reduce the amount of icons displayed at the time. This can be overwelming especially for mobile phone users. 
 
 
 
@@ -224,8 +233,16 @@ llll
 
 ## Project Bugs and Solutions:
 ------
-### bug...
-dddd
+### Grid with filtering and sorting icons
+- allow user to choose filter or sort - this makes the smaller amount of icons displayed at once
+- the grid breaks in a bit uncontrolled way, but it allows displaying the filters in a dynamic way.
+- user can add more features to database with svg icon
+
+filter - for li with class filters - display
+
+sort - for li with class sort - display
+
+for loop in features to display tiles and build links dynamically
 
 
 
@@ -358,6 +375,7 @@ pip3 install -r requirements.txt
 
 * [icon](<a href="https://www.flaticon.com/free-icons/trees" title="trees icons">Trees icons created by Freepik - Flaticon</a>)
 * png to svg [converter](https://convertio.co/download/d39aa7f30e79f4379b9bce697c5afe384b5853/)
+* resizing photos by [photoresizer](https://www.photoresizer.com/)
 
 ### Tutorials and inspiration
 
