@@ -89,9 +89,14 @@ def tree_detail(request, tree_id):
     view to show details of one tree
     """
     tree = get_object_or_404(Tree, id=tree_id)
+    features = []
+    for feature in tree.feature.all():
+        features.append(feature)
+    
 
     context = {
         'tree': tree,
+        'features': features,
 
     }
     return render(request, 'trees/tree_detail.html', context)

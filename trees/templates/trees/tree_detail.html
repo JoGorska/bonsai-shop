@@ -27,7 +27,17 @@
       <div class="col-md-8 d-flex flex-column">
         <div class="card-body allign-self-start">
           <!-- tree header -->
-          <h5 class="card-title text-uppercase my-heading-font">{{ tree.name }}</h5>
+          <h2 class="card-title text-uppercase my-heading-font">{{ tree.name }}</h2>
+          <!-- displaying features -->
+          {% if features %}
+          {% for feature in features %}
+          <a class="btn btn-sm btn-outline-secondary"
+             href="{% url 'all_trees' %}?feature={{feature.name}}" 
+             aria-label="See more tees having this feature: {{ feature.friendly_name}}. Opens in same window.">
+            <i class="{{ feature.icon_class}}"></i> {{ feature.friendly_name }}</a>
+          {% endfor %}
+          {% endif %}
+
           <!-- tree description -->
           <p class="card-text">{{ tree.description }}</p>
           <!-- tree dimentions -->
