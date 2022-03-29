@@ -1,7 +1,9 @@
 <ul class="mx-2 mt-5 row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list justify-content-md-center">
     <!-- all trees -->
     <li class="col mb-4" >
-      <a class="d-block bg-dark rounded text-white text-decoration-none" href="">
+      <a class="d-block bg-dark rounded text-white text-decoration-none" 
+      href=""
+      aria-label="Show all trees">
         <div class="p-3 py-4  bg-dark text-center rounded">
           <svg class="bi" width="1em" height="1em" fill="currentColor">
             <use xlink:href="#grid">
@@ -15,7 +17,7 @@
 
           <!-- filter -->
     <li class="col mb-4" >
-        <a class="d-block bg-dark rounded text-white text-decoration-none" href="">
+        <a class="d-block bg-dark rounded text-white text-decoration-none" href="" aria-label="Show menu for filtering trees">
           <div class="p-3 py-4  bg-dark text-center rounded">
             <svg class="bi" width="1em" height="1em" fill="currentColor">
               <use xlink:href="#filter">
@@ -28,7 +30,7 @@
       </li>
           <!-- sort -->
     <li class="col mb-4" >
-        <a class="d-block bg-dark rounded text-white text-decoration-none" href="">
+        <a class="d-block bg-dark rounded text-white text-decoration-none" href="" aria-label="Show menu for sorting trees">
           <div class="p-3 py-4  bg-dark text-center rounded">
             <svg class="bi" width="1em" height="1em" fill="currentColor">
               <use xlink:href="#sort">
@@ -44,11 +46,14 @@
 
 {% for feature in features %}
 
-<!-- ??? make javascript to add and remove visibility for class feature-tile -->
+<!-- ??? make javascript to add and remove visibility for class feature-tile 
+add text-success class to filter -->
 
     <!-- features tile -->
     <li class="col mb-4 feature-tile" >
-        <a class="d-block bg-dark rounded text-white text-decoration-none" href="">
+        <a class="d-block bg-dark rounded text-white text-decoration-none" 
+        href=""
+        aria-label="{{ feature.aria_for_anchor }}">
           <div class="p-3 py-4  bg-dark text-center rounded">
             <i class="{{ feature.icon_class}}"></i>
           </div>
@@ -69,7 +74,9 @@
 
     <!-- enviroments tile -->
     <li class="col mb-4 feature-tile" >
-        <a class="d-block bg-dark rounded text-white text-decoration-none" href="">
+        <a class="d-block bg-dark rounded text-white text-decoration-none"
+         href=""
+         aria-label="{{ enviroment.aria_for_anchor }}">
           <div class="p-3 py-4  bg-dark text-center rounded">
             <i class="{{ enviroment.icon_class}}"></i>
           </div>

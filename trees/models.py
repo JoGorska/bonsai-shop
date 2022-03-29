@@ -34,7 +34,8 @@ class Feature(models.Model):
     # icon class needs to be inserted inside i element 
     # for example <i class="{{ icon_class }}"></i>
     icon_class = models.CharField(max_length=254, null=True, blank=True)
-    aria_for_anchor = models.CharField(default='Filter elements by', max_length=254, null=True, blank=True)
+    aria_for_anchor = models.CharField(default='Filter elements by',
+                                       max_length=254, null=True, blank=True)
 
     def __str__(self):
         return f'{self.name}'
@@ -59,7 +60,8 @@ class Enviroment(models.Model):
     # icon class needs to be inserted inside i element 
     # for example <i class="{{ icon_class }}"></i>
     icon_class = models.CharField(max_length=254, null=True, blank=True)
-    aria_for_anchor = models.CharField(default='Filter elements by', max_length=254, null=True, blank=True)
+    aria_for_anchor = models.CharField(default='Filter elements by',
+                                       max_length=254, null=True, blank=True)
 
     def __str__(self):
         return f'{self.name}'
