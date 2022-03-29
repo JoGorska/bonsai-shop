@@ -32,4 +32,4 @@ def tree_detail(request, tree_id):
         'tree': tree,
 
     }
-    return render(request, 'trees/tree_details.html', context)
+    return render(request, 'trees/tree_detail.html', context)
