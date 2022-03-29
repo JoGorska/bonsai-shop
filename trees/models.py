@@ -29,7 +29,12 @@ class Feature(models.Model):
     name = models.CharField(max_length=254)
     # friendly_name and icon is optional
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
-    icon_fontawsome = models.CharField(max_length=254, null=True, blank=True)
+    # class of icon, it accepts icons from bootstrap (v1.8.1) 
+    # and from fontawsome (v5.x)
+    # icon class needs to be inserted inside i element 
+    # for example <i class="{{ icon_class }}"></i>
+    icon_class = models.CharField(max_length=254, null=True, blank=True)
+    aria_for_anchor = models.CharField(default='Filter elements by', max_length=254, null=True, blank=True)
 
     def __str__(self):
         return f'{self.name}'
@@ -49,7 +54,12 @@ class Enviroment(models.Model):
     name = models.CharField(max_length=254)
     # friendly_name and icon is optional
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
-    icon_fontawsome = models.CharField(max_length=254, null=True, blank=True)
+    # class of icon, it accepts icons from bootstrap (v1.8.1) 
+    # and from fontawsome (v5.x)
+    # icon class needs to be inserted inside i element 
+    # for example <i class="{{ icon_class }}"></i>
+    icon_class = models.CharField(max_length=254, null=True, blank=True)
+    aria_for_anchor = models.CharField(default='Filter elements by', max_length=254, null=True, blank=True)
 
     def __str__(self):
         return f'{self.name}'

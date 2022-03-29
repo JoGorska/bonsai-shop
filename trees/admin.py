@@ -21,7 +21,7 @@ class FeatureAdmin(admin.ModelAdmin):
     """
     class to enale admin manage Feature model
     """
-    list_display = ('name', 'icon_fontawsome')
+    list_display = ('name', 'icon_class')
 
 
 @admin.register(Enviroment)
@@ -29,4 +29,4 @@ class EnviromentAdmin(admin.ModelAdmin):
     """
     class to enable admin manage Enviroment model
     """
-    list_display = ('name', 'icon_fontawsome')
+    list_display = ('name', 'icon_class')
