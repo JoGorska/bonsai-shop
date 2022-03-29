@@ -133,8 +133,8 @@ sorting alphabedicaly by name
     <!-- tile - double tile one on top for small phones  -->
     <li class="col mb-4 d-none-above-xxs">
         <a class="h4 d-block text-white text-decoration-none" 
-           href=""
-           aria-label="Sort trees by name alphabetically a to z">
+           href="{% url 'all_trees' %}?sort=name&direction=asc"
+           aria-label="Sort trees by name alphabetically a to z. Opens in the same window">
           <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
             <svg class="bi" width="1em" height="1em" fill="currentColor">
               <use xlink:href="#sortAZ">
@@ -143,8 +143,8 @@ sorting alphabedicaly by name
           </div>
           </a>
           <a class="h4 d-block text-white text-decoration-none" 
-          href=""
-          aria-label="Sort trees by name alphabetically z to a">
+          href="{% url 'all_trees' %}?sort=name&direction=dsc"
+          aria-label="Sort trees by name alphabetically z to a. Opens in the same window">
           <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
             <svg class="bi" width="1em" height="1em" fill="currentColor">
               <use xlink:href="#sortZA">
@@ -161,16 +161,16 @@ sorting alphabedicaly by name
         <div class="d-block bg-dark rounded" >
           <div class="p-3  py-4 mb-2 text-center ">
             <a class="h4 text-white bg-dark text-decoration-none pe-2"
-               href=""
-               aria-label="Sort trees by name alphabetically z to a">
+               href="{% url 'all_trees' %}?sort=name&direction=asc"
+               aria-label="Sort trees by name alphabetically z to a. Opens in the same window">
               <svg class="bi" width="1em" height="1em" fill="currentColor">
                 <use xlink:href="#sortAZ">
                 </use>
               </svg>
             </a>
             <a class="h4 text-white bg-dark text-decoration-none ps-2" 
-               href=""
-               aria-label="Sort trees by name alphabetically z to a">
+               href="{% url 'all_trees' %}?sort=name&direction=dsc"
+               aria-label="Sort trees by name alphabetically z to a. Opens in the same window">
               <svg class="bi" width="1em" height="1em" fill="currentColor">
                 <use xlink:href="#sortZA">
                 </use>
@@ -187,8 +187,8 @@ sorting alphabedicaly by name
           <!-- tile - double tile one on top for small phones  -->
     <li class="col mb-4 d-none-above-xxs">
       <a class="h4 d-block text-white text-decoration-none" 
-         href=""
-         aria-label="Sort trees by name alphabetically a to z">
+         href="{% url 'all_trees' %}?sort=price&direction=asc"
+         aria-label="Sort trees by price from lowest to highest. Opens in the same window">
         <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
           <svg class="bi" width="1em" height="1em" fill="currentColor">
             <use xlink:href="#sort19">
@@ -197,8 +197,8 @@ sorting alphabedicaly by name
         </div>
         </a>
         <a class="h4 d-block text-white text-decoration-none" 
-        href=""
-        aria-label="Sort trees by name alphabetically z to a">
+        href="{% url 'all_trees' %}?sort=price&direction=dsc"
+        aria-label="Sort trees by price from highest to lowest. Opens in the same window">
         <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
           <svg class="bi" width="1em" height="1em" fill="currentColor">
             <use xlink:href="#sort91">
@@ -215,16 +215,16 @@ sorting alphabedicaly by name
       <div class="d-block bg-dark rounded" >
         <div class="p-3  py-4 mb-2 text-center ">
           <a class="h4 text-white bg-dark text-decoration-none pe-2"
-             href=""
-             aria-label="Sort trees by name alphabetically z to a">
+             href="{% url 'all_trees' %}?sort=price&direction=asc"
+             aria-label="Sort trees by price from lowest to highest. Opens in the same window" >
             <svg class="bi" width="1em" height="1em" fill="currentColor">
               <use xlink:href="#sort19">
               </use>
             </svg>
           </a>
           <a class="h4 text-white bg-dark text-decoration-none ps-2" 
-             href=""
-             aria-label="Sort trees by name alphabetically z to a">
+             href="{% url 'all_trees' %}?sort=price&direction=dsc"
+             aria-label="Sort trees by price from highest to lowest. Opens in the same window">
             <svg class="bi" width="1em" height="1em" fill="currentColor">
               <use xlink:href="#sort91">
               </use>
@@ -242,21 +242,21 @@ sorting alphabedicaly by name
           <!-- tile - double tile one on top for small phones  -->
           <li class="col mb-4 d-none-above-xxs">
             <a class="h4 d-block text-white text-decoration-none" 
-               href=""
-               aria-label="Sort trees by name alphabetically a to z">
+               href="{% url 'all_trees' %}?sort=height&direction=asc"
+               aria-label="Sort trees by hight from smallest to largest. Opens in same window">
               <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
                 <svg class="bi" width="1em" height="1em" fill="currentColor">
-                  <use xlink:href="#sortLS">
+                  <use xlink:href="#sortSL">
                   </use>
                 </svg>
               </div>
               </a>
               <a class="h4 d-block text-white text-decoration-none" 
-              href=""
-              aria-label="Sort trees by name alphabetically z to a">
+              href="{% url 'all_trees' %}?sort=height&direction=dsc"
+              aria-label="Sort trees by hight from largest to smallest. Opens in same window">
               <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
                 <svg class="bi" width="1em" height="1em" fill="currentColor">
-                  <use xlink:href="#sortSL">
+                  <use xlink:href="#sortLS">
                   </use>
                 </svg>
               </div>
@@ -270,16 +270,16 @@ sorting alphabedicaly by name
             <div class="d-block bg-dark rounded" >
               <div class="p-3  py-4 mb-2 text-center ">
                 <a class="h4 text-white bg-dark text-decoration-none pe-2"
-                   href=""
-                   aria-label="Sort trees by name alphabetically z to a">
+                   href="{% url 'all_trees' %}?sort=height&direction=asc"
+                   aria-label="Sort trees by hight from smallest to largest. Opens in same window">
                   <svg class="bi" width="1em" height="1em" fill="currentColor">
                     <use xlink:href="#sortLS">
                     </use>
                   </svg>
                 </a>
                 <a class="h4 text-white bg-dark text-decoration-none ps-2" 
-                   href=""
-                   aria-label="Sort trees by name alphabetically z to a">
+                   href="{% url 'all_trees' %}?sort=height&direction=dsc"
+                   aria-label="Sort trees by hight from largest to smallest. Opens in same window">
                   <svg class="bi" width="1em" height="1em" fill="currentColor">
                     <use xlink:href="#sortSL">
                     </use>
@@ -297,21 +297,21 @@ sorting alphabedicaly by name
           <!-- tile - double tile one on top for small phones  -->
           <li class="col mb-4 d-none-above-xxs">
             <a class="h4 d-block text-white text-decoration-none" 
-               href=""
-               aria-label="Sort trees by name alphabetically a to z">
+               href="{% url 'all_trees' %}?sort=trunk&direction=asc"
+               aria-label="Sort trees by trunk from smallest to thickest. Opens in same window">
               <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
                 <svg class="bi" width="1em" height="1em" fill="currentColor">
-                  <use xlink:href="#sortLS">
+                  <use xlink:href="#sortSL">
                   </use>
                 </svg>
               </div>
               </a>
               <a class="h4 d-block text-white text-decoration-none" 
-              href=""
-              aria-label="Sort trees by name alphabetically z to a">
+              href="{% url 'all_trees' %}?sort=trunk&direction=dsc"
+              aria-label="Sort trees by trunk from thickest to smallest. Opens in same window">
               <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
                 <svg class="bi" width="1em" height="1em" fill="currentColor">
-                  <use xlink:href="#sortSL">
+                  <use xlink:href="#sortLS">
                   </use>
                 </svg>
               </div>
@@ -325,18 +325,18 @@ sorting alphabedicaly by name
             <div class="d-block bg-dark rounded" >
               <div class="p-3  py-4 mb-2 text-center ">
                 <a class="h4 text-white bg-dark text-decoration-none pe-2"
-                   href=""
-                   aria-label="Sort trees by name alphabetically z to a">
+                   href="{% url 'all_trees' %}?sort=trunk&direction=asc"
+                   aria-label="Sort trees by trunk from smallest to thickest. Opens in same window">
                   <svg class="bi" width="1em" height="1em" fill="currentColor">
-                    <use xlink:href="#sortLS">
+                    <use xlink:href="#sortSL">
                     </use>
                   </svg>
                 </a>
                 <a class="h4 text-white bg-dark text-decoration-none ps-2" 
-                   href=""
-                   aria-label="Sort trees by name alphabetically z to a">
+                   href="{% url 'all_trees' %}?sort=trunk&direction=dsc"
+                   aria-label="Sort trees by trunk from thickest to smallest. Opens in same window">
                   <svg class="bi" width="1em" height="1em" fill="currentColor">
-                    <use xlink:href="#sortSL">
+                    <use xlink:href="#sortLS">
                     </use>
                   </svg>
                 </a>
