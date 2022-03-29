@@ -2,7 +2,7 @@
     <!-- all trees -->
     <li class="col mb-4" >
       <a class="d-block bg-dark rounded text-white text-decoration-none" 
-      href=""
+      href="{% url 'all_trees' %}"
       aria-label="Show all trees">
         <div class="p-3 py-4  bg-dark text-center rounded">
           <svg class="bi" width="1em" height="1em" fill="currentColor">
@@ -52,7 +52,7 @@ add text-success class to filter -->
     <!-- features tile -->
     <li class="col mb-4 feature-tile" >
         <a class="d-block bg-dark rounded text-white text-decoration-none" 
-        href=""
+        href="{% url 'all_trees' %}?feature={{feature.name}}"
         aria-label="{{ feature.aria_for_anchor }}">
           <div class="p-3 py-4  bg-dark text-center rounded">
             <i class="{{ feature.icon_class}}"></i>

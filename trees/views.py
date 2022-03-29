@@ -17,11 +17,16 @@ def all_trees(request):
     features = Feature.objects.all()
     enviroments = Enviroment.objects.all()
 
-# query to search both product name and description and return results
-# if the q was found in either product name or description
     query = None
+    feature = None
 
     if request.GET:
+        if 'feature' in request.GET:
+            features = request.GET['feature']
+            trees = trees.filter(feature__name__in=features)
+
+        # query to search both product name and description and return results
+        # if the q was found in either product name or description
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
