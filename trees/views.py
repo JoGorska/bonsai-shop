@@ -4,6 +4,7 @@ views for trees appp
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models.functions import Lower
 
 from .models import Tree, Feature, Enviroment
 
@@ -21,11 +22,27 @@ def all_trees(request):
     current_features = None
     current_enviroments = None
     current_types = None
+    sort = None
+    direction = None
 
     if request.GET:
         # filters results by given feature
         # add error handling if feature not found???
-        if 'feature' in request.GET:
+
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                trees = trees.annotate(lower_name=Lower('name'))
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+
+            trees = trees.order_by(sortkey)
+
+        elif 'feature' in request.GET:
             features = request.GET['feature'].split(',')
             trees = trees.filter(feature__name__in=features)
             current_features = Feature.objects.filter(name__in=features)
@@ -52,6 +69,8 @@ def all_trees(request):
                 )
             trees = trees.filter(queries)
 
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'trees': trees,
         'features': all_features,
@@ -60,6 +79,7 @@ def all_trees(request):
         'current_features': current_features,
         'current_enviroments': current_enviroments,
         'current_types': current_types,
+        'current_sorting': current_sorting,
     }
     return render(request, 'trees/trees.html', context)
 
