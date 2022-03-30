@@ -28,6 +28,7 @@
         <div class="card-body allign-self-start">
           <!-- tree header -->
           <h2 class="card-title text-uppercase my-heading-font">{{ tree.name }}</h2>
+          <p class="small">Product ref.: {{ tree.slug }}</p>
           <!-- displaying features -->
           {% if features %}
           {% for feature in features %}
