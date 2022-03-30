@@ -31,20 +31,20 @@
           <!-- displaying features -->
           {% if features %}
           {% for feature in features %}
-          <a class="btn btn-sm btn-outline-secondary"
+          <a class="btn btn-sm btn-outline-secondary rounded-pill"
              href="{% url 'all_trees' %}?feature={{feature.name}}" 
              aria-label="See more tees having this feature: {{ feature.friendly_name}}. Opens in same window.">
             <i class="{{ feature.icon_class}}"></i> {{ feature.friendly_name }}</a>
           {% endfor %}
           {% endif %}
           <!-- displaying enviroment -->
-          {% if enviroments %}
-          {% for enviroment in enviroments %}
-          <a class="btn btn-sm btn-outline-secondary"
-             href="{% url 'all_trees' %}?enviroment={{enviroment.name}}" 
-             aria-label="See more tees suitable for this enviroment: {{ enviroment.friendly_name}}. Opens in same window.">
-            <i class="{{ enviroment.icon_class}}"></i> {{ enviroment.friendly_name }}</a>
-          {% endfor %}
+          {% if tree.enviroment %}
+
+          <a class="btn btn-sm btn-outline-secondary rounded-pill"
+             href="{% url 'all_trees' %}?enviroment={{ tree.enviroment}}" 
+             aria-label="See more tees suitable for this enviroment: {{ tree.enviroment.friendly_name}}. Opens in same window.">
+            <i class="{{ tree.enviroment.icon_class}}"></i> {{ tree.enviroment.friendly_name }}</a>
+
           {% endif %}
 
           <!-- tree description -->
