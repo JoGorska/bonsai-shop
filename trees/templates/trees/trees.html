@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'trees/css/trees.css' %}">
+{% endblock %}
+
 {% block content %}
 
 <section class=" py-5 text-center flex-container bg-img-trees my-box-shadow-75">
@@ -10,8 +14,35 @@
 </section>
 
 
-
 <div class="album py-5 bg-light">
+    <div class="container row">
+        <div class="col-12 col-md-6 order-md-first">
+            <p class="text-muted mt-3 text-center text-md-left">
+
+                {% if search_term %}
+                
+                {{ trees|length }} Trees found for <strong>"{{ search_term }}"</strong>
+
+                {% elif current_features %}
+                {% for feature in current_features %}
+
+                {{ trees|length }} Trees found for <strong>"{{ feature.friendly_name }}"</strong>
+                {% endfor %}
+
+                {% elif current_enviroments %}
+                {% for enviroment in current_enviroments %}
+
+                {{ trees|length }} Trees found for <strong>"{{ enviroment.friendly_name }}"</strong>
+                {% endfor %}
+
+                {% endif %}
+
+                {% if search_term or current_features or current_enviroments or current_types or current_sorting != 'None_None' %}
+                <span class="small"> | <a href="{% url 'all_trees' %}">Back to all Trees</a></span>
+            {% endif %}
+            </p>
+        </div>
+    </div>
     <div class="container">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
