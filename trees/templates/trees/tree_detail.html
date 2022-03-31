@@ -59,16 +59,26 @@
                 <p class="card-text">Trunk: {{ tree.trunk_circumference }} in</p>
             </div>
         </div>
+        <h3 class="fw-bold">£ {{tree.price}}</h3>
         </div>
-        <div class="card-footer allign-self-end">
-          <div class="d-flex justify-content-between align-items-center mt-3">
-            <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-success">Add to trolley</button>
-                <!-- <button type="button" class="btn btn-sm btn-info">Edit</button>
-                <button type="button" class="btn btn-sm btn-danger">Delete</button> -->
+        <div class="card-footer allign-self-end row">
+          <div class="col-sm-8 row">
+            <!-- form to add to trolley -->
+
+            {% include 'trees/includes/form_add_to_trolley.html' %}
+          </div>
+            <div class="col-sm-4  row btn-group">
+                <div class="col-sm-6">
+                  <button type="button" class="btn btn-sm btn-info">Edit</button>
+                </div>
+                <div class="col-sm-6">
+                  <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                </div>
+
+
             </div>
-            <small class="fw-bold">£ {{tree.price}}</small>
-        </div>
+
+
         </div>
       </div>
     </div>
