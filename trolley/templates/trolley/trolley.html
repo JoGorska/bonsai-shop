@@ -6,6 +6,8 @@
 
 <main class="container mt-5 pt-5">
 
+{% if trolley_items %}
+
 <div class="card mb-3" >
     <div class="row g-0">
       <div class="col-4">
@@ -79,6 +81,16 @@
       
     </div>
   </div>
+
+  {% else %}
+  <p class="lead mb-5">
+    Your Bag is empty
+  </p>
+  <a href="{% url 'all_trees' %}" class="btn btn-success rounded-pill">
+    Back to the shop
+  </a>
+  {% endif %}
 </main>
+
 
   {% endblock %}
