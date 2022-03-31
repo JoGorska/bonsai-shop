@@ -84,27 +84,22 @@ def all_trees(request):
     return render(request, 'trees/trees.html', context)
 
 
-def tree_detail(request, tree_id):
+def tree_detail(request, tree_slug):
     """
     view to show details of one tree
     """
-    tree = get_object_or_404(Tree, id=tree_id)
-    # need for loop to get the features and enviroments
+    tree = get_object_or_404(Tree, slug=tree_slug)
+    # need for loop to get the features as it is many to many field
     # off a particular tree as tree may have more than one feature
     features = []
-    enviroments = []
+
     if tree.feature:
         for feature in tree.feature.all():
             features.append(feature)
 
-    if tree.enviroment:
-        for enviroment in tree.enviroment.all():
-            enviroments.append(enviroment)
-
     context = {
         'tree': tree,
         'features': features,
-        'enviroments': enviroments,
 
     }
     return render(request, 'trees/tree_detail.html', context)
