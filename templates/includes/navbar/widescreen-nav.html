@@ -83,7 +83,7 @@
                 {% endif %}
                 <li>
                   <!-- trolley -->
-                  <a href="#" class="nav-link text-white">
+                  <a href="{% url 'view_trolley' %}" class="nav-link text-white">
                     <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#trolley"/></svg>
                     {% if grand_total %}
                     £ {{ grand_total|floatformat:2 }}
