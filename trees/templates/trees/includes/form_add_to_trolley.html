@@ -1,0 +1,23 @@
+<form class="form" action="" method="POST">
+    {% csrf_token %}
+<div class="col-sm-4">
+    <input class="form-control" type="number"
+    name="quantity" value="1" min="1" max="99"
+    data-item_id="{{ tree.id }}"
+    id="id_qty_{{ tree.id }}">
+</div>
+<div class="col-sm-4">
+    <button type="button" class="btn btn btn-success">Add to trolley</button>
+        
+</div>
+<div class="col-sm-4">
+    <a href="" class="btn btn-secondary">Back to shop</a>
+</div>
+           
+
+        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+
+
+</form>
+
+{% include 'trees/includes/form_add_to_trolley.html' %}
