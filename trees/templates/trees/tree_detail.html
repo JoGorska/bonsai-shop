@@ -71,7 +71,9 @@
       </div>
         <!-- card footer -->
         <div class="card-footer bg-light">
-          <form class="form" action="" method="POST">
+          <!-- form to add to trolley -->
+          <form class="form" action="{% url 'add_to_trolley' tree.id %}" method="POST">
+
             {% csrf_token %}
             <div class="row text-center">
 
@@ -90,25 +92,20 @@
                       name="quantity" value="1" min="1" max="99"
                       data-item_id="{{ tree.id }}"
                       id="id_qty_{{ tree.id }}">
-                      <button type="button" class="shadow-lg btn btn-success rounded-pill">
+                      <button type="submit" class="shadow-lg btn btn-success rounded-pill">
                         <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#trolley"/></svg>
                     
                         Add to trolley</button>
                     </div>
                   </div>
                   <div class="col-12 d-md-none text-center mt-3">
-                    <!-- this column is for mobile phones only -->
+                    <!-- Back to shop in a seperate column for mobile phones only -->
                     <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
                       <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#shop"/></svg>
                       Back to shop</a>
                   </div>
 
-                  <!-- form to add to trolley -->
-
-              
                       <input type="hidden" name="redirect_url" value="{{ request.path }}">
-              
-              
               
             </div>
 
