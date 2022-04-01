@@ -29,5 +29,5 @@ def add_to_trolley(request, tree_id):
         trolley[tree_id] = quantity
 
     request.session['trolley'] = trolley
-    print(request.session['trolley'])
+
     return redirect(redirect_url)
