@@ -7,21 +7,46 @@
 <main class="container mt-5 pt-5">
 
 {% if trolley_items %}
+<div class="card p-4">
+<h4 class=""><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
+<h6><strong>Bag Total: ${{ total|floatformat:2 }}</strong></h6>
+<h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
+{% if free_delivery_delta > 0 %}
+<p class="mb-1 text-danger fw-bold">
+    You could get free delivery by spending just <strong>${{ free_delivery_delta }}</strong> more!
+</p>
+{% endif %}
+<div class="row mt-3">
+  <div class="col-12 col-md-6 mb-2">
+    <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
+      <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#shop"/></svg>
+      Back to shop</a>
+  </div>
+  <div class="col-12 col-md-6 mb-2">
+    <a href="" class="shadow-lg btn btn-success text-white rounded-pill">
+      <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#key"/></svg>
+      Secure Checkout</a>
+  </div>
+</div>
 
+</div>
 
+{% for item in trolley_items %}
 
-<div class="card mb-3" >
+<!-- cards containing each items -->
+
+<div class="card mb-3 mt-3" >
     <div class="row g-0">
       <div class="col-4">
 
-        {% if tree.image %}
-        <img src="{{ tree.image.url }}"
+        {% if item.tree.image %}
+        <img src="{{ item.tree.image.url }}"
         class="img-fluid rounded-start "
 
         {% if tree.image_alt %}
-        alt="{{ tree.image_alt }}"
+        alt="{{ item.tree.image_alt }}"
         {% else %}
-        alt="{{ tree.name }}"
+        alt="{{ item.tree.name }}"
         {% endif %}
         >
         {% else %}
@@ -31,36 +56,20 @@
       <div class="col-8 d-flex flex-column">
         <div class="card-body allign-self-start">
           <!-- tree header -->
-          <h2 class="card-title text-uppercase my-heading-font">{{ tree.name }}</h2>
-          <p class="small">Product ref.: {{ tree.slug }}</p>
-          <!-- displaying features -->
-          {% if features %}
-          {% for feature in features %}
-          <a class="btn btn-sm btn-outline-secondary rounded-pill"
-             href="{% url 'all_trees' %}?feature={{feature.name}}" 
-             aria-label="See more tees having this feature: {{ feature.friendly_name}}. Opens in same window.">
-            <i class="{{ feature.icon_class}}"></i> {{ feature.friendly_name }}</a>
-          {% endfor %}
-          {% endif %}
-          <!-- displaying enviroment -->
-          {% if tree.enviroment %}
-
-          <a class="btn btn-sm btn-outline-secondary rounded-pill"
-             href="{% url 'all_trees' %}?enviroment={{ tree.enviroment}}" 
-             aria-label="See more tees suitable for this enviroment: {{ tree.enviroment.friendly_name}}. Opens in same window.">
-            <i class="{{ tree.enviroment.icon_class}}"></i> {{ tree.enviroment.friendly_name }}</a>
-
-          {% endif %}
+          <h2 class="card-title text-uppercase my-heading-font">{{ item.tree.name }}</h2>
+          <p class="small">Product ref.: {{ item.tree.slug }}</p>
 
           <!-- tree description -->
-          <p class="card-text">{{ tree.description }}</p>
+          <p class="card-text">{{ item.tree.description }}</p>
+                    <!-- tree price -->
+          <h2 class="fw-bold">£ {{ item.tree.price }}</h2>
           <!-- tree dimentions -->
           <div class="row">
             <div class="col-6">
-                <p class="card-text">Height: {{ tree.height_in }} in</p>
+                <p class="card-text">Height: {{ item.tree.height_in }} in</p>
             </div>
             <div class="col-6">
-                <p class="card-text">Trunk: {{ tree.trunk_circumference }} in</p>
+                <p class="card-text">Trunk: {{ item.tree.trunk_circumference }} in</p>
             </div>
         </div>
         </div>
@@ -83,7 +92,7 @@
       
     </div>
   </div>
-
+  {% endfor %}
   {% else %}
   <p class="lead mb-5">
     Your Bag is empty   {{ trolley_items }}

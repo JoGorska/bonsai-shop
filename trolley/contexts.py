@@ -18,7 +18,7 @@ def trolley_contents(request):
     trolley = request.session.get('trolley', {})
 
     for tree_id, quantity in trolley.items():
-        tree = get_object_or_404(Tree, id=tree_id)
+        tree = get_object_or_404(Tree, pk=tree_id)
         total += quantity * tree.price
         tree_count += quantity
         trolley_items.append({
