@@ -80,19 +80,17 @@
 
                     {% if tree.id in trees_in_bag %}
 
-
                     <!-- if item already inside the bag -->
 
                     <div class="d-flex justify-content-center align-items-center mt-3">
 
-
                         <div class="btn-group">
-                            <a class="btn btn-sm btn-success rounded-pill me-2"
+                            <a class="btn btn-sm btn-success rounded-pill me-2 small"
                             href="{% url 'view_trolley' %}"
                             aria-label="">
     
                                 <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#inTrolley"/></svg>
-                                In Trolley</a>
+                                in trolley</a>
                             <a 
                             class="btn btn-sm btn-secondary rounded-pill"
                             href="{% url 'tree_detail' tree_slug=tree.slug %}"

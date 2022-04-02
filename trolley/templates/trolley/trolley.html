@@ -8,12 +8,12 @@
 
 {% if trolley_items %}
 <div class="card p-4">
-<h4 class=""><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
-<h6><strong>Bag Total: ${{ total|floatformat:2 }}</strong></h6>
-<h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
+<h4 class=""><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+<h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
+<h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
 {% if free_delivery_delta > 0 %}
 <p class="mb-1 text-danger fw-bold">
-    You could get free delivery by spending just <strong>${{ free_delivery_delta }}</strong> more!
+    You could get free delivery by spending just <strong>£{{ free_delivery_delta }}</strong> more!
 </p>
 {% endif %}
 <div class="row mt-3">
@@ -69,7 +69,7 @@
                 <p class="card-text">Quantity: {{ item.quantity }}</p>
             </div>
             <div class="col-6">
-              <!-- incorrect total of line item here -->
+              <!-- incorrect total of line item here ??? -->
                 <p class="card-text">Total: £ {{ item.tree.price }} </p>
             </div>
         </div>
@@ -89,7 +89,7 @@
 
                     <div class="input-group  text-center">
                       <!-- div controlling the size of input group and position to the right -->
-                      <div class="col-12 col-sm-4 col-md-5  text-center d-none d-md-block"> </div>
+                      <div class="col-12 col-sm-4 col-md-3  text-center d-none d-md-block"> </div>
                       <div class="d-none d-md-block text-center">
                         <!-- Back to shop button for tablets and bigger -->
                         <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
@@ -97,13 +97,16 @@
                           Back to shop</a>
                       </div>
                       <input class=" shadow-lg form-control bg-success  text-white fw-bold text-center rounded-pill" type="number"
-                      name="quantity" value="1" min="1" max="99"
-                      data-item_id="{{ tree.id }}"
-                      id="id_qty_{{ tree.id }}">
+                      name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                      data-item_id="{{ item.item_id }}"
+                      id="id_qty_{{ item.item_id }}">
                       <button type="submit" class="shadow-lg btn btn-success rounded-pill">
                         <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#trolley"/></svg>
                     
                         Update trolley</button>
+                        <a href="" class="shadow-lg btn btn-danger text-white rounded-pill">
+                          <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#bin"/></svg>
+                          Remove</a>
                     </div>
                   </div>
                   <div class="col-12 d-md-none text-center mt-3">

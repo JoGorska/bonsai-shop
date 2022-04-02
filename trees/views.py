@@ -53,8 +53,8 @@ def all_trees(request):
             current_enviroments = Enviroment.objects.filter(
                                             name__in=enviroments)
         elif 'type' in request.GET:
-            type = request.GET['type']
-            trees = Tree.objects.filter(leaves_or_needles=type)
+            leaves_or_needles = request.GET['type']
+            trees = Tree.objects.filter(leaves_or_needles=leaves_or_needles)
 
         # query to search both product name and description and return results
         # if the q was found in either product name or description
