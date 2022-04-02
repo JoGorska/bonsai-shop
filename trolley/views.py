@@ -1,7 +1,7 @@
 """
 views for trolley app
 """
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 
 
 def view_trolley(request):
@@ -31,3 +31,27 @@ def add_to_trolley(request, tree_id):
     request.session['trolley'] = trolley
 
     return redirect(redirect_url)
+
+
+def update_trolley(request, tree_id):
+    """
+    Update quantity of items in the trolley
+    """
+    quantity = int(request.POST.get('quantity'))
+    # this variable redirect_url is to redirect the user back to the same page
+    # after the product is added to trolley
+
+    # checks if trolley already exists in session
+    # if it doesn't it creates one
+    # sets the quantity to the new value
+    trolley = request.session.get('trolley', {})
+    # html validation should prevent submitting form below 1, this is
+    # just in case if form is submitted programatically
+    if quantity > 0:
+        trolley[tree_id] = quantity
+    else:
+        trolley.pop(tree_id)
+
+    request.session['trolley'] = trolley
+
+    return redirect(reverse('view_trolley'))

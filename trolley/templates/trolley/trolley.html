@@ -80,7 +80,7 @@
         <!-- card footer -->
         <div class="card-footer bg-light">
           <!-- form to update the trolley -->
-          <form class="form" action="" method="POST">
+          <form class="form" action="{% url 'update_trolley' item.tree.id %}" method="POST">
 
             {% csrf_token %}
             <div class="row text-center">
@@ -115,8 +115,6 @@
                       <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#shop"/></svg>
                       Back to shop</a>
                   </div>
-
-                      <input type="hidden" name="redirect_url" value="{{ request.path }}">
               
             </div>
 
