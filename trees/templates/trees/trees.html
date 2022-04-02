@@ -76,22 +76,38 @@
                     <p class="card-text">
                         <div class="text-muted fw-bold">£ {{tree.price}}</div>
                     </p>
+                    <!-- form to add to trolley -->
+                    <form class="form" action="{% url 'add_to_trolley' tree.id %}" method="POST">
+
+                        {% csrf_token %}
                     <div class="d-flex justify-content-center align-items-center mt-3">
+
+
                     <div class="btn-group">
-                        <a class="btn btn-sm btn-success rounded-pill me-2"
-                        href=""
-                        aria-label="">
+                        <button type="submit" class="btn btn-sm btn-success rounded-pill me-2">
+
                             <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#trolley"/></svg>
-                            Buy</a>
+                            Buy</button>
                         <a 
                         class="btn btn-sm btn-secondary rounded-pill"
                         href="{% url 'tree_detail' tree_slug=tree.slug %}"
                         aria-label="">
                         <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#find"/></svg>
                         View</a>
+
+
                     </div>
 
                     </div>
+                    <!-- hidden input for quantity = 1 and hidden input for redirect url -->
+                    <input  class="form-control" type="hidden"
+                            name="quantity" value="1" min="1" max="99"
+                            data-item_id="{{ tree.id }}"
+                            id="id_qty_{{ tree.id }}">
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </form>
+                    <!-- end of form here -->
+
                 </div>
                 </div>
             </div>
