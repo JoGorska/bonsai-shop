@@ -73,25 +73,24 @@
                         {{ tree.description }}
                     </p>
                     {% endif %}
-                    <div class="row">
-                        <div class="col-6 col-lg-6 col-md-12 col-sm-12">
-                            <p class="card-text">Height: {{ tree.height_in }} in</p>
-                        </div>
-                        <div class="col-6 col-lg-6 col-md-12 col-sm-12">
-                            <p class="card-text">Trunk: {{ tree.trunk_circumference }} in</p>
-                        </div>
-                    </div>
-
-                    <div class="d-flex justify-content-between align-items-center mt-3">
+                    <p class="card-text">
+                        <div class="text-muted fw-bold">£ {{tree.price}}</div>
+                    </p>
+                    <div class="d-flex justify-content-center align-items-center mt-3">
                     <div class="btn-group">
-                        <a class="btn btn-sm btn-outline-success">Buy now</a>
+                        <a class="btn btn-sm btn-success rounded-pill me-2"
+                        href=""
+                        aria-label="">
+                            <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#trolley"/></svg>
+                            Buy</a>
                         <a 
-                        class="btn btn-sm btn-outline-secondary"
+                        class="btn btn-sm btn-secondary rounded-pill"
                         href="{% url 'tree_detail' tree_slug=tree.slug %}"
                         aria-label="">
+                        <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#find"/></svg>
                         View</a>
                     </div>
-                    <small class="text-muted fw-bold">£ {{tree.price}}</small>
+
                     </div>
                 </div>
                 </div>
