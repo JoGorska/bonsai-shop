@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load trolley_tools %}
 
 {% block content %}
 
@@ -69,8 +70,8 @@
                 <p class="card-text">Quantity: {{ item.quantity }}</p>
             </div>
             <div class="col-6">
-              <!-- incorrect total of line item here ??? -->
-                <p class="card-text">Total: £ {{ item.tree.price }} </p>
+
+                <p class="card-text">Total: £ {{ item.tree.price | calc_subtotal:item.quantity }} </p>
             </div>
         </div>
         </div>
