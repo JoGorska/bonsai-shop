@@ -3,7 +3,6 @@ views for trolley app
 """
 from django.shortcuts import render, redirect, reverse
 
-
 def view_trolley(request):
     """
     view to return trolley content page
@@ -38,9 +37,6 @@ def update_trolley(request, tree_id):
     Update quantity of items in the trolley
     """
     quantity = int(request.POST.get('quantity'))
-    # this variable redirect_url is to redirect the user back to the same page
-    # after the product is added to trolley
-
     # checks if trolley already exists in session
     # if it doesn't it creates one
     # sets the quantity to the new value
@@ -50,8 +46,19 @@ def update_trolley(request, tree_id):
     if quantity > 0:
         trolley[tree_id] = quantity
     else:
-        trolley.pop(tree_id)
+        trolley.pop(str(tree_id))
 
+    request.session['trolley'] = trolley
+
+    return redirect(reverse('view_trolley'))
+
+
+def remove_from_trolley(request, tree_id):
+    """
+    Removes item from trolley
+    """
+    trolley = request.session.get('trolley', {})
+    trolley.pop(str(tree_id))
     request.session['trolley'] = trolley
 
     return redirect(reverse('view_trolley'))
