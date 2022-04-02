@@ -2,6 +2,9 @@
 views for trolley app
 """
 from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
+from trees.models import Tree
+
 
 def view_trolley(request):
     """
@@ -14,6 +17,7 @@ def add_to_trolley(request, tree_id):
     """
     Add a specified quantity of the tree to the trolley
     """
+    tree = Tree.objects.get(pk=tree_id)
     quantity = int(request.POST.get('quantity'))
     # this variable redirect_url is to redirect the user back to the same page
     # after the product is added to trolley
@@ -26,6 +30,7 @@ def add_to_trolley(request, tree_id):
         trolley[tree_id] += quantity
     else:
         trolley[tree_id] = quantity
+        messages.success(request, f'Added {tree.name} to your bag')
 
     request.session['trolley'] = trolley
 
