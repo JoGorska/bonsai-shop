@@ -100,6 +100,10 @@ The set of tiles has been added on top of the hero image. The tiles act as a sor
 if javascript is written ???
 The user has option to display only the tiles - buttons that are responsible for filtering or only the ones that sort products by given feature. This is to reduce the amount of icons displayed at the time. This can be overwelming especially for mobile phone users. 
 
+All trees view
+Cards shape, size and responsivness from bootstrap
+each card is given two buttons buy and view. The buy button adds one item to the trolley. If item is alread in the trolley the button is changed to In trolley with checked symbol. This feature is to allow quick buying process. This enables user to buy an item without going inside to view the details of the tree. Unfortunately the content of the button In trolley breaks to two lines for devices above 800px and below 1000 px. 
+
 ### Shoping trolley
 
 Free delivery thershold
@@ -253,6 +257,13 @@ sort - for li with class sort - display
 
 for loop in features to display tiles and build links dynamically
 
+### Button In trolley on all trees view
+
+Unfortunately the content of the button In trolley and View breaks to two lines for devices above 800px and below 1000 px. 
+
+This only breaks in cards for the treees that area already in the trolley. The longer text "in trolley" is more descriptive that just the word Trolley or "in bag" as I use trolley in this application. 
+
+I might need to address this issue with media query. I might also leave it as it is visibly different that the trees that are not in the bag yet and might look more inviting to click to go to the trolley and than to checkout. 
 
 
 

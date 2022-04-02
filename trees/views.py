@@ -53,8 +53,8 @@ def all_trees(request):
             current_enviroments = Enviroment.objects.filter(
                                             name__in=enviroments)
         elif 'type' in request.GET:
-            type = request.GET['type']
-            trees = Tree.objects.filter(leaves_or_needles=type)
+            leaves_or_needles = request.GET['type']
+            trees = Tree.objects.filter(leaves_or_needles=leaves_or_needles)
 
         # query to search both product name and description and return results
         # if the q was found in either product name or description
@@ -70,6 +70,11 @@ def all_trees(request):
             trees = trees.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
+    # gets trolley from the session or creates empty dictionary
+    # than makes a list of keys containing the ids of the trees in the trolley
+    trolley = request.session.get('trolley', {})
+    trees_in_bag_strings = list(trolley.keys())
+    trees_in_bag = list(map(int, trees_in_bag_strings))
 
     context = {
         'trees': trees,
@@ -80,6 +85,7 @@ def all_trees(request):
         'current_enviroments': current_enviroments,
         'current_types': current_types,
         'current_sorting': current_sorting,
+        'trees_in_bag': trees_in_bag,
     }
     return render(request, 'trees/trees.html', context)
 
