@@ -76,6 +76,35 @@
                     <p class="card-text">
                         <div class="text-muted fw-bold">£ {{tree.price}}</div>
                     </p>
+                    <!-- checks if tree is already in the bag -->
+
+                    {% if tree.id in trees_in_bag %}
+
+
+                    <!-- if item already inside the bag -->
+
+                    <div class="d-flex justify-content-center align-items-center mt-3">
+
+
+                        <div class="btn-group">
+                            <a class="btn btn-sm btn-success rounded-pill me-2"
+                            href="{% url 'view_trolley' %}"
+                            aria-label="">
+    
+                                <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#inTrolley"/></svg>
+                                In Trolley</a>
+                            <a 
+                            class="btn btn-sm btn-secondary rounded-pill"
+                            href="{% url 'tree_detail' tree_slug=tree.slug %}"
+                            aria-label="">
+                            <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#find"/></svg>
+                            View</a>
+    
+    
+                        </div>
+                    </div>
+
+                    {% else %}
                     <!-- form to add to trolley -->
                     <form class="form" action="{% url 'add_to_trolley' tree.id %}" method="POST">
 
@@ -106,7 +135,8 @@
                             id="id_qty_{{ tree.id }}">
                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </form><!-- end of form here -->
-                    
+                    {% endif %}
+
 
                 </div>
                 </div>
