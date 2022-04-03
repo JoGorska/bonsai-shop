@@ -69,6 +69,57 @@
             </div>
         </div>
       </div>
+
+      {% if tree.id in trees_in_bag %}
+      <!-- different footer depending on if the tree is already in the trolley
+      the form posts to add or update the trolley -->
+
+ <!-- card footer -->
+ <div class="card-footer bg-light">
+  <!-- form to add to trolley -->
+  <form class="form" action="{% url 'update_trolley' tree.id %}" method="POST">
+
+    {% csrf_token %}
+    <div class="row text-center">
+
+        <div class="col-12  text-center">
+
+            <div class="input-group  text-center">
+              <!-- div controlling the size of input group and position to the right -->
+              <div class="col-12 col-sm-4 col-md-5  text-center d-none d-md-block"> </div>
+              <div class="d-none d-md-block text-center">
+                <!-- Back to shop button for tablets and bigger -->
+                <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
+                  <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#shop"/></svg>
+                  Back to shop</a>
+              </div>
+
+              <input class=" shadow-lg form-control bg-success  text-white fw-bold text-center rounded-pill" type="number"
+              name="quantity" value="{{ quantity_in_bag }}" min="1" max="99"
+              data-item_id="{{ tree.id }}"
+              id="id_qty_{{ tree.id }}">
+              <button type="submit" class="shadow-lg btn btn-success rounded-pill">
+                <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#inTrolley"/></svg>
+            
+                Update trolley</button>
+            </div>
+          </div>
+          <div class="col-12 d-md-none text-center mt-3">
+            <!-- Back to shop in a seperate column for mobile phones only -->
+            <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
+              <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#shop"/></svg>
+              Back to shop</a>
+          </div>
+
+              <input type="hidden" name="redirect_url" value="{{ request.path }}">
+      
+    </div>
+
+  </form>
+
+</div><!-- end of card footer -->
+      {% else %}
+      <!-- card footer for trees that are not in the trolley -->
         <!-- card footer -->
         <div class="card-footer bg-light">
           <!-- form to add to trolley -->
@@ -112,7 +163,7 @@
           </form>
 
         </div><!-- end of card footer -->
-        
+      {% endif %}
 
     </div>
   </div>

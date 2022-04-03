@@ -25,12 +25,8 @@ def add_to_trolley(request, tree_id):
     # checks if trolley already exists in session
     # if it doesn't it creates one
     trolley = request.session.get('trolley', {})
-
-    if tree_id in list(trolley.keys()):
-        trolley[tree_id] += quantity
-    else:
-        trolley[tree_id] = quantity
-        messages.success(request, f'Added {tree.name} to your bag')
+    trolley[tree_id] = quantity
+    messages.success(request, f'Added {tree.name} to your trolley')
 
     request.session['trolley'] = trolley
 
@@ -41,6 +37,7 @@ def update_trolley(request, tree_id):
     """
     Update quantity of items in the trolley
     """
+    tree = Tree.objects.get(pk=tree_id)
     quantity = int(request.POST.get('quantity'))
     # checks if trolley already exists in session
     # if it doesn't it creates one
@@ -50,6 +47,8 @@ def update_trolley(request, tree_id):
     # just in case if form is submitted programatically
     if quantity > 0:
         trolley[tree_id] = quantity
+        messages.success(
+            request, f'Updated quantity of {tree.name} to {quantity}')
     else:
         trolley.pop(str(tree_id))
 
