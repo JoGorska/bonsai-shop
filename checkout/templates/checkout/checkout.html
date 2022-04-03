@@ -9,14 +9,14 @@
         <!-- header of the checkout page -->
       <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-        <h2>Checkout form</h2>
+        <h2 class="my-heading-font">Checkout form</h2>
         <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
       </div>
       <!-- order summary   -->
       <div class="row g-5">
         <div class="col-md-5 col-lg-4 order-md-last">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-primary">Checkout</span>
+            <span class="text-primary my-heading-font">Checkout</span>
             <span class="badge bg-primary rounded-pill">3</span>
           </h4>
           <ul class="list-group mb-3">
@@ -55,161 +55,116 @@
           </ul>
 
         </div>
+
+          <!-- forms starts here -->
         <div class="col-md-7 col-lg-8">
           
-          <!-- forms starts here -->
-
-          <h4 class="mb-3">Billing address</h4>
-          <form class="" novalidate>
+          <h4 class="mb-3 my-heading-font">Delivery address</h4>
+          <form class="{% url 'checkout' %}" method="POST" id="payment-form">
+              {% csrf_token %}
             <div class="row g-3">
               <div class="col-sm-6">
-                <label for="firstName" class="form-label">First name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
+                {{ order_form.full_name | as_crispy_field }}
+
               </div>
   
               <div class="col-sm-6">
-                <label for="lastName" class="form-label">Last name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid last name is required.
-                </div>
+                {{ order_form.email | as_crispy_field }}
               </div>
   
               <div class="col-12">
-                <label for="username" class="form-label">Username</label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text">@</span>
-                  <input type="text" class="form-control" id="username" placeholder="Username" required>
-                <div class="invalid-feedback">
-                    Your username is required.
-                  </div>
-                </div>
+                {{ order_form.phone_number | as_crispy_field }}
               </div>
   
               <div class="col-12">
-                <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                <div class="invalid-feedback">
-                  Please enter a valid email address for shipping updates.
-                </div>
+                {{ order_form.street_address1 | as_crispy_field }}
               </div>
   
               <div class="col-12">
-                <label for="address" class="form-label">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-                <div class="invalid-feedback">
-                  Please enter your shipping address.
-                </div>
+                {{ order_form.street_address2 | as_crispy_field }}
               </div>
   
               <div class="col-12">
-                <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-                <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                {{ order_form.town_or_city | as_crispy_field }}
               </div>
   
               <div class="col-md-5">
-                <label for="country" class="form-label">Country</label>
-                <select class="form-select" id="country" required>
-                  <option value="">Choose...</option>
-                  <option>United States</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please select a valid country.
-                </div>
+                {{ order_form.country | as_crispy_field }}
               </div>
   
               <div class="col-md-4">
-                <label for="state" class="form-label">State</label>
-                <select class="form-select" id="state" required>
-                  <option value="">Choose...</option>
-                  <option>California</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please provide a valid state.
-                </div>
+                {{ order_form.county | as_crispy_field }}
               </div>
   
               <div class="col-md-3">
-                <label for="zip" class="form-label">Zip</label>
-                <input type="text" class="form-control" id="zip" placeholder="" required>
-                <div class="invalid-feedback">
-                  Zip code required.
-                </div>
+                {{ order_form.postcode | as_crispy_field }}
               </div>
             </div>
   
             <hr class="my-4">
   
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="same-address">
-              <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
-            </div>
-  
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="save-info">
-              <label class="form-check-label" for="save-info">Save this information for next time</label>
+            <div class="form-check form-check-inline ">
+                {% if user.is_authenticated %}
+                    <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+                    <input class="form-check-input ms-2 me-2" type="checkbox" id="id-save-info" name="save-info" checked>
+                {% else %}
+                    <label class="form-check-label" for="id-save-info">
+                        <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+                        <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                    </label>
+                {% endif %}
             </div>
   
             <hr class="my-4">
   
-            <h4 class="mb-3">Payment</h4>
+            <h4 class="my-4 my-heading-font">Payment</h4>
   
-            <div class="my-3">
-              <div class="form-check">
-                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-                <label class="form-check-label" for="credit">Credit card</label>
-              </div>
-              <div class="form-check">
-                <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-                <label class="form-check-label" for="debit">Debit card</label>
-              </div>
-              <div class="form-check">
-                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                <label class="form-check-label" for="paypal">PayPal</label>
-              </div>
-            </div>
-  
+
+                
             <div class="row gy-3">
-              <div class="col-md-6">
-                <label for="cc-name" class="form-label">Name on card</label>
-                <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                <small class="text-muted">Full name as displayed on card</small>
-                <div class="invalid-feedback">
-                  Name on card is required
+                <div class="col-12">
+                <!-- A Stripe card element will go here -->
+                <div class="mb-3" id="card-element"></div>
+
+                <!-- Used to display form errors -->
+                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                
                 </div>
-              </div>
-  
-              <div class="col-md-6">
-                <label for="cc-number" class="form-label">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                <div class="invalid-feedback">
-                  Credit card number is required
+                <div class="col-md-6 text-center ">
+                   
+						<a href="{% url 'view_trolley' %}" class="btn btn-secondary rounded-pill">
+                            <svg class="bi" width="24" height="24" fill="currentColor">
+                                <use xlink:href="#trolley"/>
+                              </svg>
+							<span class="font-weight-bold">Adjust Trolley</span>
+						</a>
                 </div>
-              </div>
-  
-              <div class="col-md-3">
-                <label for="cc-expiration" class="form-label">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                <div class="invalid-feedback">
-                  Expiration date required
+                <div class="col-md-6 text-center ">
+						<button id="submit-button" class="btn btn-success rounded-pill">
+							<span class="font-weight-bold">Complete Order</span>
+							<span class="icon">
+								<i class="fas fa-lock"></i>
+							</span>
+						</button>
+
                 </div>
-              </div>
-  
-              <div class="col-md-3">
-                <label for="cc-cvv" class="form-label">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                <div class="invalid-feedback">
-                  Security code required
+                <div class="col-12">
+						<p class="small text-danger my-0">
+							<span class="icon">
+								<i class="fas fa-exclamation-circle"></i>
+							</span>
+							<span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+						</p>
+
                 </div>
-              </div>
+
+            
             </div>
+
   
             <hr class="my-4">
-  
-            <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+
           </form>
         </div>
       </div>
