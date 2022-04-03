@@ -116,7 +116,7 @@ class Tree(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        automaticaly generates slug field
+        overrides the save method and automaticaly generates slug field
         """
         if not self.slug:
             name_string = slugify(self.name)

@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load static %}
+{% load trolley_tools %}
+
+
+
+{% block content %}
+
+<div class="container">
+
+        <!-- header of the checkout page -->
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        <h2 class="my-heading-font">Checkout form</h2>
+        <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+      </div>
+      <!-- order summary   -->
+      <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-success my-heading-font">Order Summary</span>
+            <span class="badge bg-success rounded-pill">{{ tree_count }}</span>
+          </h4>
+          <ul class="list-group mb-3">
+              {% for item in trolley_items %}
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">{{item.tree.name}} ({{ item.quantity }}) </h6>
+                <small class="text-muted">Brief description ???</small>
+              </div>
+              <span class="text-muted">£ {{ item.tree.price | calc_subtotal:item.quantity }}</span>
+            </li>
+            {% endfor %}
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <div class="text-success">
+                <h6 class="my-0">Delivery</h6>
+                <small>Free delivery above £50</small>
+              </div>
+              <span class="text-success">£ {{ delivery | floatformat:2 }} </span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (GBP)</span>
+              <strong>£ {{ grand_total | floatformat:2 }}</strong>
+            </li>
+          </ul>
+
+        </div>
+
+          <!-- forms starts here -->
+        <div class="col-md-7 col-lg-8">
+          
+          <h4 class="mb-3 my-heading-font">Delivery address</h4>
+          <form class="{% url 'checkout' %}" method="POST" id="payment-form">
+              {% csrf_token %}
+            <div class="row g-3">
+              <div class="col-sm-6">
+                {{ order_form.full_name | as_crispy_field }}
+
+              </div>
+  
+              <div class="col-sm-6">
+                {{ order_form.email | as_crispy_field }}
+              </div>
+  
+              <div class="col-12">
+                {{ order_form.phone_number | as_crispy_field }}
+              </div>
+  
+              <div class="col-12">
+                {{ order_form.street_address1 | as_crispy_field }}
+              </div>
+  
+              <div class="col-12">
+                {{ order_form.street_address2 | as_crispy_field }}
+              </div>
+  
+              <div class="col-12">
+                {{ order_form.town_or_city | as_crispy_field }}
+              </div>
+  
+              <div class="col-md-5">
+                {{ order_form.country | as_crispy_field }}
+              </div>
+  
+              <div class="col-md-4">
+                {{ order_form.county | as_crispy_field }}
+              </div>
+  
+              <div class="col-md-3">
+                {{ order_form.postcode | as_crispy_field }}
+              </div>
+            </div>
+  
+            <hr class="my-4">
+  
+            <div class="form-check form-check-inline ">
+                {% if user.is_authenticated %}
+                    <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+                    <input class="form-check-input ms-2 me-2" type="checkbox" id="id-save-info" name="save-info" checked>
+                {% else %}
+                    <label class="form-check-label" for="id-save-info">
+                        <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+                        <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                    </label>
+                {% endif %}
+            </div>
+  
+            <hr class="my-4">
+  
+            <h4 class="my-4 my-heading-font">Payment</h4>
+  
+
+                
+            <div class="row gy-3">
+                <div class="col-12">
+                <!-- A Stripe card element will go here -->
+                <div class="mb-3" id="card-element"></div>
+
+                <!-- Used to display form errors -->
+                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                
+                </div>
+                <div class="col-md-6 text-center ">
+                   
+						<a href="{% url 'view_trolley' %}" class="btn btn-secondary rounded-pill">
+                            <svg class="bi" width="24" height="24" fill="currentColor">
+                                <use xlink:href="#trolley"/>
+                              </svg>
+							<span class="font-weight-bold">Adjust Trolley</span>
+						</a>
+                </div>
+                <div class="col-md-6 text-center ">
+						<button id="submit-button" class="btn btn-success rounded-pill">
+							<span class="font-weight-bold">Complete Order</span>
+							<span class="icon">
+								<i class="fas fa-lock"></i>
+							</span>
+						</button>
+
+                </div>
+                <div class="col-12">
+						<p class="small text-danger my-0">
+							<span class="icon">
+								<i class="fas fa-exclamation-circle"></i>
+							</span>
+							<span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+						</p>
+
+                </div>
+
+            
+            </div>
+
+  
+            <hr class="my-4">
+
+          </form>
+        </div>
+      </div>
+
+  
+  
+  </div>
+  {% endblock %}
