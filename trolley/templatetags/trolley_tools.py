@@ -1,3 +1,7 @@
+"""
+custom template tags enabling calculating subtotal in the bag
+"""
+
 from django import template
 
 

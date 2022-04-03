@@ -1,0 +1,18 @@
+<div class="position-fixed  border-info  bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="
+    toast-header bg-secondary text-white fw-bold
+     border border-5 border-info border-top-0 border-end-0 border-start-0">
+     <div class="text-white">
+      <img class="me-2" src="{{ MEDIA_URL }}trees-sm.svg" alt="">
+     </div>
+
+      <strong class="me-auto">Alert!</strong>
+      <small></small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body bg-dark fw-bold text-info">
+      {{ message }}
+    </div>
+  </div>
+</div>

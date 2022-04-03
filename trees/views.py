@@ -103,9 +103,23 @@ def tree_detail(request, tree_slug):
         for feature in tree.feature.all():
             features.append(feature)
 
+    # gets trolley from the session or creates empty dictionary
+    # than makes a list of keys containing the ids of the trees in the trolley
+    trolley = request.session.get('trolley', {})
+    trees_in_bag_strings = list(trolley.keys())
+    trees_in_bag = list(map(int, trees_in_bag_strings))
+    # I need quantity in bag if the tree is already in bag
+    # to display the quantity from the bag
+    quantity_in_bag = 0
+    for item in trolley:
+        if int(item) == tree.id:
+            quantity_in_bag = trolley[item]
+
     context = {
         'tree': tree,
         'features': features,
+        'trees_in_bag': trees_in_bag,
+        'quantity_in_bag': quantity_in_bag,
 
     }
     return render(request, 'trees/tree_detail.html', context)
