@@ -24,6 +24,9 @@ font-family: 'Kodchasan', sans-serif !important;
     fill: white;
 }
 
+.icon-dark {
+    fill: #343a40;
+}
 .icon-success {
     fill: #198754;
 }
@@ -35,6 +38,7 @@ svg:hover {
 .nav-link:hover {
     color: #198754 !important;
 }
+
 
 /* TILES FOR SORTING AND FILTERING TREES
 -------------------------------------------------- */

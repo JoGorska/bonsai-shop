@@ -1,12 +1,17 @@
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+
+<div class="position-fixed  border-success  bottom-0 end-0 p-3" style="z-index: 11">
     <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img src="..." class="rounded me-2" alt="...">
+      <div class="
+      toast-header bg-secondary text-white fw-bold
+       border border-5 border-success border-top-0 border-end-0 border-start-0">
+        <!-- icon -->
+        <img class="me-2" src="{{ MEDIA_URL }}trees-sm.svg" alt="">
+
         <strong class="me-auto">Success!</strong>
-        <small>11 mins ago</small>
+        <small></small>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
-      <div class="toast-body">
+      <div class="toast-body bg-dark fw-bold text-success">
         {{ message }}
       </div>
     </div>
