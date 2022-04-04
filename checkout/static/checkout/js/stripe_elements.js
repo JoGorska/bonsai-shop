@@ -45,6 +45,7 @@ card.addEventListener('change', function (event) {
 
 // Handle form submit
 // disables card element to prevent multiple submittions
+// displays card errors in an error div
 
 var form = document.getElementById('payment-form');
 
