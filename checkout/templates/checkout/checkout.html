@@ -2,7 +2,9 @@
 {% load static %}
 {% load trolley_tools %}
 
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
 
 {% block content %}
 
@@ -49,7 +51,7 @@
           <!-- forms starts here -->
         <div class="col-md-7 col-lg-8">
           
-          <h4 class="mb-3 my-heading-font">Delivery address</h4>
+          <h4 class="mb-3 my-heading-font">Your Details</h4>
           <form class="{% url 'checkout' %}" method="POST" id="payment-form">
               {% csrf_token %}
             <div class="row g-3">
@@ -65,6 +67,8 @@
               <div class="col-12">
                 {{ order_form.phone_number | as_crispy_field }}
               </div>
+
+              <h4 class="mb-3 my-heading-font">Delivery address</h4>
   
               <div class="col-12">
                 {{ order_form.street_address1 | as_crispy_field }}
@@ -159,7 +163,23 @@
         </div>
       </div>
 
-  
-  
   </div>
+
+      <!-- loading overlay for when the payment is being processed -->
+      <div id="loading-overlay">
+        <h1 class="text-light logo-font loading-spinner">
+            <span class="icon">
+
+                <i class="fas fa-credit-card fa-spin"></i>
+            </span>
+        </h1>
+      </div>
+  {% endblock %}
+
+  {% block postload_js %}
+  {{ block.super }}
+  {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+  {{ client_secret|json_script:"id_client_secret" }}
+  <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+
   {% endblock %}

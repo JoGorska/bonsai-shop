@@ -9,26 +9,26 @@
 
 {% if trolley_items %}
 <div class="card p-4">
-<h4 class="my-heading-font"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
-<h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
-<h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
-{% if free_delivery_delta > 0 %}
-<p class="mb-1 text-danger fw-bold">
-    You could get free delivery by spending just <strong>£{{ free_delivery_delta }}</strong> more!
-</p>
-{% endif %}
-<div class="row mt-3">
-  <div class="col-12 col-md-6 mb-2">
-    <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
-      <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#shop"/></svg>
-      Back to shop</a>
+  <h4 class="my-heading-font"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+  <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
+  <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+  {% if free_delivery_delta > 0 %}
+  <p class="mb-1 text-danger fw-bold">
+      You could get free delivery by spending just <strong>£{{ free_delivery_delta }}</strong> more!
+  </p>
+  {% endif %}
+  <div class="row mt-3">
+    <div class="col-12 col-md-6 mb-2">
+      <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
+        <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#shop"/></svg>
+        Back to shop</a>
+    </div>
+    <div class="col-12 col-md-6 mb-2">
+      <a href="{% url 'checkout' %}" class="shadow-lg btn btn-success text-white rounded-pill">
+        <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#key"/></svg>
+        Secure Checkout</a>
+    </div>
   </div>
-  <div class="col-12 col-md-6 mb-2">
-    <a href="{% url 'checkout' %}" class="shadow-lg btn btn-success text-white rounded-pill">
-      <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#key"/></svg>
-      Secure Checkout</a>
-  </div>
-</div>
 
 </div>
 
