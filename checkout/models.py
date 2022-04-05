@@ -29,8 +29,9 @@ class Order(models.Model):
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     # in case if customer makes the same purchase twice
-    original_bag = models.TextField(null=False, blank=False, default='')
+    original_trolley = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
+
 
     def _generate_order_number(self):
         """

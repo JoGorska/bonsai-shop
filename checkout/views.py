@@ -59,7 +59,7 @@ def checkout(request):
         }
         # saves the form data into the instance of order form
         order_form = OrderForm(form_data)
-        # checks if form with the form data passes the validation 
+        # checks if form with the form data passes the validation
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
