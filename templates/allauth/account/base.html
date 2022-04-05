@@ -1,1 +1,20 @@
 {% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+<!-- my css for base template -->
+<link rel="stylesheet" href="{% static 'css/allauth.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+    {% block inner_content %}
+
+      {% endblock %}
+
+
+{% endblock %}
+
+
