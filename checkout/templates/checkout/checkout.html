@@ -117,22 +117,22 @@
                 
             <div class="row gy-3">
                 <div class="col-12">
-                <!-- A Stripe card element will go here -->
-                <div class="mb-3" id="card-element"></div>
+                  <!-- A Stripe card element will go here -->
+                  <div class="mb-3" id="card-element"></div>
 
-                <!-- Used to display form errors -->
-                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                  <!-- Used to display form errors -->
+                  <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                  <input type="hidden" value="{{ client_secret }}" name="client_secret">
                 
                 </div>
                 <div class="col-md-6 text-center ">
                    
-						<a href="{% url 'view_trolley' %}" class="btn btn-secondary rounded-pill">
-                            <svg class="bi" width="24" height="24" fill="currentColor">
-                                <use xlink:href="#trolley"/>
-                              </svg>
-							<span class="font-weight-bold">Adjust Trolley</span>
-						</a>
+                  <a href="{% url 'view_trolley' %}" class="btn btn-secondary rounded-pill">
+                                  <svg class="bi" width="24" height="24" fill="currentColor">
+                                      <use xlink:href="#trolley"/>
+                                    </svg>
+                    <span class="font-weight-bold">Adjust Trolley</span>
+                  </a>
                 </div>
                 <div class="col-md-6 text-center ">
 						<button id="submit-button" class="btn btn-success rounded-pill">
