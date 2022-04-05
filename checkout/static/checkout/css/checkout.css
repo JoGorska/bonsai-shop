@@ -3,7 +3,7 @@
   box-sizing: border-box;
   height: 40px;
   padding: 10px 12px;
-  border: 1px solid transparent;
+  border: 1px solid #ced4da;
   border-radius: 4px;
   background-color: white;
   box-shadow: 0 1px 3px 0 #e6ebf1;
@@ -14,7 +14,8 @@
 .StripeElement--focus,
 .stripe-style-input:focus,
 .stripe-style-input:active {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+  border-color: #198754;
+  box-shadow: 0 1px 3px 0 #198754;
 }
 
 .StripeElement--webkit-autofill {
@@ -34,7 +35,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(23, 162, 184, .85);
+    background: rgba(20, 135, 84, .75);
     z-index: 9999;
 }
 
