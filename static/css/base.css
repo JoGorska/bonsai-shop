@@ -68,3 +68,14 @@ svg:hover {
         display: none;
     }
 }
+
+/* INPUT ELEMENTS
+-------------------------------------------------- */
+/* styling overriding bootstrap */
+
+
+
+input:focus {
+  border-color: #198754 !important;
+  box-shadow: 0 1px 3px 0 #198754 !important;
+}
