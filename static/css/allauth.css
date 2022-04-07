@@ -1,0 +1,15 @@
+
+/* disables displaying labels that come by default from allauth,
+except of label for tick box id_remember */
+
+form label:not([for='id_remember']) {
+    display: none;
+}
+
+/* ads marigin (bootstrap mt-4) to all input elements from allauth
+except of search-form input element in nav bar */
+
+form input:not(.search-form) {
+    margin-top: 1.5rem; /* mt-4 */
+}
+

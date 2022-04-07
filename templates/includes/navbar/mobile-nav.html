@@ -109,7 +109,7 @@
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                   <li>
-                    <a class="dropdown-item" href="">User profile
+                    <a class="dropdown-item" href="{% url 'profile' %}">User profile
                     </a>
                   </li>
                   <li>
@@ -165,8 +165,8 @@
                       </li>
             </ul>
             <form class="d-flex form" method="GET" action="{% url 'all_trees' %}">
-                <input class="form-control me-2" type="text"  name="q" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
+                <input class="search-form form-control me-2" type="text"  name="q" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-secondary text-white" type="submit">Search</button>
             </form>
           </div>
         </div>

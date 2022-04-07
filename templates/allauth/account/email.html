@@ -4,8 +4,8 @@
 
 {% block head_title %}{% trans "Account" %}{% endblock %}
 
-{% block content %}
-    <h1>{% trans "E-mail Addresses" %}</h1>
+{% block inner_content %}
+<h2 class="my-heading-font">{% trans "E-mail Addresses" %}</h2>
 {% if user.emailaddress_set.all %}
 <p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
 
@@ -30,10 +30,17 @@
 </div>
   {% endfor %}
 
-<div class="buttonHolder">
-      <button class="secondaryAction" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
-      <button class="secondaryAction" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
-      <button class="primaryAction" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
+<div class="row  d-block text-center buttonHolder">
+  <div class="col-12 my-3 d-block">
+    <button class="btn btn-success btn-sm rounded-pill secondaryAction" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
+  </div>
+  <div class="col-12 my-3 d-block">
+    <button class="btn btn-secondary btn-sm rounded-pill secondaryAction" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
+  </div>
+  <div class="col-12 my-3 ">
+    <button class="btn btn-danger btn-sm rounded-pill primaryAction" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
+  </div>
+
 </div>
 
 </fieldset>
@@ -45,13 +52,16 @@
 {% endif %}
 
 
-    <h2>{% trans "Add E-mail Address" %}</h2>
+    <h2 class="my-heading-font mt-3">{% trans "Add E-mail Address" %}</h2>
 
     <form method="post" action="{% url 'account_email' %}" class="add_email">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button name="action_add" type="submit">{% trans "Add E-mail" %}</button>
-    </form>
+        {{ form|crispy }}
+        <div class="text-center">
+          <button class="btn btn-success rounded-pill my-3" name="action_add" type="submit">{% trans "Add E-mail" %}</button>
+    
+        </div>
+       </form>
 
 {% endblock %}
 
