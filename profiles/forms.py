@@ -30,7 +30,7 @@ class UserProfileForm(forms.ModelForm):
 
         self.fields['default_phone_number'].widget.attrs['autofocus'] = True
         # makes country readonly
-        self.fields['country'].widget.attrs['readonly'] = True
+        self.fields['default_country'].widget.attrs['readonly'] = True
 
         for field in self.fields:
             if field != 'default_country':
