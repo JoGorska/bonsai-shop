@@ -144,10 +144,18 @@
     <!-- buttons at the end of the order confirmation -->
     <div class="row mt-3">
         <div class="col-12 col-md-6 mb-2">
+        <!-- if user comes from profile page he has a back to profile button -->
+        {% if from_profile %}
+        <a href="{% url 'profile' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
+            <i class="bi bi-person-plus-fill"></i>
+            Back to Profile</a>
+        </div>
+        {% else %}
         <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
             <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#shop"/></svg>
             Back to Shop</a>
         </div>
+        {% endif %}
         <!-- remove if faq app is not implemented ??? -->
         <div class="col-12 col-md-6 mb-2">
         <a href="{% url 'checkout' %}" class="shadow-lg btn btn-success text-white rounded-pill">
