@@ -1,4 +1,5 @@
-
+"""webhook handler for stripe"""
+# pylint: disable=no-member
 import json
 import time
 
@@ -148,7 +149,7 @@ class StripeWHHandler:
                     order_line_item.save()
             except Exception as e:
                 if order:
-                    # deletes order if any errors occured and 
+                    # deletes order if any errors occured and
                     # returns 500 error response to stripe
                     order.delete()
                 return HttpResponse(
@@ -157,7 +158,8 @@ class StripeWHHandler:
         # calls send confirmation email method
         self._send_confirmation_email(order)
         return HttpResponse(
-            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+            content=f'Webhook received: {event["type"]} |\
+                     SUCCESS: Created order in webhook',
             status=200)
 
     def handle_payment_intent_payment_failed(self, event):
