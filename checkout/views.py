@@ -1,6 +1,8 @@
 """
 views for checkout app
 """
+# pylint: disable=no-member
+# pylint: disable=C0103
 import json
 import stripe
 

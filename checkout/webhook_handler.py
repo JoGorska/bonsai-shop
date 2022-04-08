@@ -1,5 +1,6 @@
 """webhook handler for stripe"""
 # pylint: disable=no-member
+# pylint: disable=C0103
 import json
 import time
 
