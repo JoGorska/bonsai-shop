@@ -1,12 +1,15 @@
 """
 views for trees appp
 """
+# pylint: disable=no-member
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Tree, Feature, Enviroment
+from .forms import TreeForm
 
 
 def all_trees(request):
@@ -123,3 +126,42 @@ def tree_detail(request, tree_slug):
 
     }
     return render(request, 'trees/tree_detail.html', context)
+
+
+def add_tree(request):
+    """
+    Add tree to the store
+    """
+    if request.method == 'POST':
+        form = TreeForm(request.POST, request.FILES)
+        if form.is_valid():
+            tree = form.save()
+            messages.success(request, 'Successfully added tree!')
+            return redirect(reverse('tree_detail', args=[tree.slug]))
+        else:
+            messages.error(request, 'Failed to add tree.\
+                                     Please ensure the form is valid')
+    else:
+        form = TreeForm()
+
+    template = 'trees/add_tree.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
+def edit_tree(request, tree_slug):
+    """
+    edits the tree that is already in database
+    """
+    tree = get_object_or_404(Tree, slug=tree_slug)
+    form = TreeForm(instance=tree)
+    messages.info(request, f'You are editing {tree.name}')
+    template = 'trees/edit_tree.html'
+    context = {
+        'form': form,
+        'tree': tree,
+    }
+    return render(request, template, context)
