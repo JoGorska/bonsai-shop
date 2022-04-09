@@ -177,3 +177,13 @@ def edit_tree(request, tree_slug):
         'tree': tree,
     }
     return render(request, template, context)
+
+
+def delete_tree(request, tree_slug):
+    """
+    deletes the tree from database
+    """
+    tree = get_object_or_404(Tree, slug=tree_slug)
+    tree.delete()
+    messages.success(request, f'Successfully deleted the tree {tree.name}')
+    return redirect(reverse('all_trees'))
