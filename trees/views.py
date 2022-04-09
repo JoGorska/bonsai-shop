@@ -157,11 +157,33 @@ def edit_tree(request, tree_slug):
     edits the tree that is already in database
     """
     tree = get_object_or_404(Tree, slug=tree_slug)
-    form = TreeForm(instance=tree)
-    messages.info(request, f'You are editing {tree.name}')
+
+    if request.method == 'POST':
+        form = TreeForm(request.POST, request.FILES, instance=tree)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated the tree details!')
+            return redirect(reverse('tree_detail', args=[tree.slug]))
+        else:
+            messages.error(request, 'Failed to update the tree details.\
+                                     Please ensure the form is valid.')
+    else:
+        form = TreeForm(instance=tree)
+        messages.info(request, f'You are editing {tree.name}')
+
     template = 'trees/edit_tree.html'
     context = {
         'form': form,
         'tree': tree,
     }
     return render(request, template, context)
+
+
+def delete_tree(request, tree_slug):
+    """
+    deletes the tree from database
+    """
+    tree = get_object_or_404(Tree, slug=tree_slug)
+    tree.delete()
+    messages.success(request, f'Successfully deleted the tree {tree.name}')
+    return redirect(reverse('all_trees'))

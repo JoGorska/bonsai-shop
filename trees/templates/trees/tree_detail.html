@@ -65,10 +65,36 @@
 
             <div class="btn-group">
               <a href="{% url 'edit_tree' tree.slug %}" class="shadow btn btn btn-info rounded-pill me-3">Edit</a>
-              <button type="button" class="shadow btn btn btn-danger rounded-pill">Delete</button>
+              <button type="button" 
+                data-bs-target="#confirm-delete-modal" 
+                data-bs-toggle="modal" 
+                class="shadow btn btn btn-danger rounded-pill">
+                Delete
+            </button>
             </div>
         </div>
       </div>
+
+      <!-- modal for deleting tree -->
+
+        <div class="modal" id="confirm-delete-modal" aria-labelledby="confirm-delete-modal-label" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark">
+              <div class="modal-header bg-secondary border-bottom border-danger">
+                <h5 id="confirm-delete-modal-label" class="modal-title text-white">Confirm deleting the tree</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body bg-dark text-white border-top border-danger">
+                <p>You are about to delete this {{tree.name}}</p>
+              </div>
+              <div class="modal-footer border-top border-dark">
+                <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'delete_tree' tree.slug %}" type="button" class="btn btn-danger rounded-pill">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
       {% if tree.id in trees_in_bag %}
       <!-- different footer depending on if the tree is already in the trolley
