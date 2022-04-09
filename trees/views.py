@@ -128,10 +128,16 @@ def tree_detail(request, tree_slug):
     return render(request, 'trees/tree_detail.html', context)
 
 
+@login_required
 def add_tree(request):
     """
     Add tree to the store
     """
+    # checks if the user is superuser
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only the store owners can do that.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = TreeForm(request.POST, request.FILES)
         if form.is_valid():
@@ -152,12 +158,17 @@ def add_tree(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_tree(request, tree_slug):
     """
-    edits the tree that is already in database
+    edits the tree that is already in database, decorator - requires login
     """
-    tree = get_object_or_404(Tree, slug=tree_slug)
+    # checks if the user is superuser
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only the store owners can do that.')
+        return redirect(reverse('home'))
 
+    tree = get_object_or_404(Tree, slug=tree_slug)
     if request.method == 'POST':
         form = TreeForm(request.POST, request.FILES, instance=tree)
         if form.is_valid():
@@ -179,10 +190,15 @@ def edit_tree(request, tree_slug):
     return render(request, template, context)
 
 
+@login_required
 def delete_tree(request, tree_slug):
     """
     deletes the tree from database
     """
+    # checks if the user is superuser
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only the store owners can do that.')
+        return redirect(reverse('home'))
     tree = get_object_or_404(Tree, slug=tree_slug)
     tree.delete()
     messages.success(request, f'Successfully deleted the tree {tree.name}')
