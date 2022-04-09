@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% load trolley_tools %}
+
 
 {% block extra_css %}
 
@@ -24,7 +24,7 @@
         <div class="col-md-8 col-lg-8">
           
           <h4 class="mb-3 my-heading-font">Tree Details</h4>
-          <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+          <form action="{% url 'add_tree' %}" method="POST" id="payment-form">
               {% csrf_token %}
             <div class="row g-3">
               <div class="col-12">

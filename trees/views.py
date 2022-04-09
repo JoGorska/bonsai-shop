@@ -131,7 +131,18 @@ def add_tree(request):
     """
     Add tree to the store
     """
-    form = TreeForm()
+    if request.method == 'POST':
+        form = TreeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added tree!')
+            return redirect(reverse('add_tree'))
+        else:
+            messages.error(request, 'Failed to add tree.\
+                                     Please ensure the form is valid')
+    else:
+        form = TreeForm()
+
     template = 'trees/add_tree.html'
     context = {
         'form': form,
