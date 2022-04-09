@@ -4,7 +4,7 @@
         <img width="96" height="96" class="rounded shadow-sm" src="{{ widget.value.url }}">
     </a>
     {% if not widget.required %}
-        <div class="custom-control custom-checkbox mt-2">
+        <div class="custom-control custom-checkbox fw-bold mt-2">
             <input class="custom-control-input" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
             <label class="custom-control-label text-danger" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
         </div>

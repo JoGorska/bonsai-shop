@@ -99,3 +99,15 @@ input:focus {
     opacity: 0;
     cursor: pointer;
 }
+
+/* this is to change the checbox color. ??? */
+.custom-checkbox .custom-control-label::before {
+
+    border-color: #dc3545;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #dc3545;
+    border-color: #dc3545;
+
+}
