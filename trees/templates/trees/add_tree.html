@@ -24,7 +24,7 @@
         <div class="col-md-8 col-lg-8">
           
           <h4 class="mb-3 my-heading-font">Tree Details</h4>
-          <form action="{% url 'add_tree' %}" method="POST" id="payment-form">
+          <form action="{% url 'add_tree' %}" enctype="multipart/form-data" method="POST" id="payment-form">
               {% csrf_token %}
             <div class="row g-3">
               <div class="col-12">
@@ -67,7 +67,7 @@
                 {{ form.image_url | as_crispy_field }}
               </div>
               <div class="col-12">
-                {{ form.image }}
+                {{ form.image | as_crispy_field }}
               </div>
               <div class="col-12">
                 {{ form.image_alt | as_crispy_field }}
