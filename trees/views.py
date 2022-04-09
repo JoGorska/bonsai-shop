@@ -1,12 +1,14 @@
 """
 views for trees appp
 """
+# pylint: disable=no-member
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Tree, Feature, Enviroment
+from .forms import TreeForm
 
 
 def all_trees(request):
@@ -123,3 +125,16 @@ def tree_detail(request, tree_slug):
 
     }
     return render(request, 'trees/tree_detail.html', context)
+
+
+def add_tree(request):
+    """
+    Add tree to the store
+    """
+    form = TreeForm()
+    template = 'trees/add_tree.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)

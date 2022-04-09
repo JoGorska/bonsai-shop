@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+{% load trolley_tools %}
+
+{% block extra_css %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+        <!-- header of the checkout page -->
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        <h2 class="my-heading-font">Shop management</h2>
+        <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+      </div>
+      <!-- order summary   -->
+      <div class="row ">
+          <div class="col-md-2"></div>
+
+          <!-- forms starts here -->
+        <div class="col-md-8 col-lg-8">
+          
+          <h4 class="mb-3 my-heading-font">Tree Details</h4>
+          <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+              {% csrf_token %}
+            <div class="row g-3">
+              <div class="col-12">
+                {{ form.name| as_crispy_field }}
+              </div>
+
+              <div class="col-sm-6">
+                {{ form.height_in | as_crispy_field }}
+              </div>
+              <div class="col-sm-6">
+                {{ form.trunk_circumference | as_crispy_field }}
+              </div>
+
+              <div class="col-sm-6">
+                {{ form.price | as_crispy_field }}
+              </div>
+              <div class="col-sm-6">
+                {{ form.current_stock | as_crispy_field }}
+              </div>
+              <h4 class="my-heading-font mb-0">Features</h4>
+              <div class="col-sm-12 mt-1">
+                <p class="lead">To choose more than Feature use Crtl + Click</p>
+
+                {{ form.feature | as_crispy_field }}
+              </div>
+              <div class="col-sm-6">
+                {{ form.enviroment | as_crispy_field }}
+              </div>
+              <div class="col-sm-6">
+                {{ form.leaves_or_needles | as_crispy_field }}
+              </div>
+
+              <div class="col-12">
+                {{ form.description | as_crispy_field }}
+              </div>
+              <!-- image -->
+              <h4 class="mb-3 my-heading-font">Image Details</h4>
+            
+              <div class="col-12">
+                {{ form.image_url | as_crispy_field }}
+              </div>
+              <div class="col-12">
+                {{ form.image | as_crispy_field }}
+              </div>
+              <div class="col-12">
+                {{ form.image_alt | as_crispy_field }}
+              </div>
+              <div class="col-12">
+                {{ form.image_disclaimer | as_crispy_field }}
+              </div>
+  
+            </div>
+  
+            <hr class="my-4">
+  
+            <div class="form-check form-check-inline ">
+                {% if user.is_authenticated %}
+                    <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+                    <input class="form-check-input ms-2 me-2" type="checkbox" id="id-save-info" name="save-info" checked>
+                {% else %}
+                    <label class="form-check-label" for="id-save-info">
+                        <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+                        <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                    </label>
+                {% endif %}
+            </div>
+  
+            <hr class="my-4">
+  
+                
+            <div class="row gy-3">
+
+                <div class="col-md-6 text-center ">
+                   
+                  <button type="reset" class="btn btn-warning rounded-pill">
+                                  <svg class="bi" width="24" height="24" fill="currentColor">
+                                      <use xlink:href="#clear"/>
+                                    </svg>
+                    <span class="font-weight-bold">Clear</span>
+                    </button>
+                </div>
+                <div class="col-md-6 text-center ">
+						<button id="submit-button" class="btn btn-success rounded-pill">
+							<span class="font-weight-bold">Save</span>
+                            <svg class="bi" width="24" height="24" fill="currentColor">
+                                <use xlink:href="#save"/>
+                              </svg>
+						</button>
+
+                </div>
+
+            
+            </div>
+
+  
+
+
+          </form>
+        </div>
+      </div>
+
+  </div>
+
+
+  {% endblock %}
+
+  {% block postload_js %}
+  {{ block.super }}
+
+
+  {% endblock %}
