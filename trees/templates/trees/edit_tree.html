@@ -9,7 +9,7 @@
     <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
     <h2 class="my-heading-font">Shop management
     </h2>
-    <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.
+    <p class="lead">You are now editing tree {{tree.name}} ref {{ tree.slug}}
     </p>
   </div>
   <!-- order summary   -->
@@ -20,19 +20,19 @@
     <div class="col-md-8 col-lg-8">
       <h4 class="mb-3 my-heading-font">Tree Details
       </h4>
-      <form action="{% url 'add_tree' %}" enctype="multipart/form-data" method="POST" id="payment-form">
-        {% include 'trees/includes/tree_form.html' %}
+      <form action="{% url 'edit_tree' tree.slug %}" enctype="multipart/form-data" method="POST" id="payment-form">
+        {% include 'trees/includes/tree_form.html' %}         
         <hr class="my-4">
         <div class="row gy-3">
           <!-- buttons at the end of the form -->
           <div class="col-md-6 text-center ">
-            <button type="reset" class="btn btn-warning rounded-pill">
+            <a href="{% url 'tree_detail' tree.slug %}" class="btn btn-secondary rounded-pill">
               <svg class="bi" width="24" height="24" fill="currentColor">
                 <use xlink:href="#clear"/>
               </svg>
-              <span class="font-weight-bold">Clear
+              <span class="font-weight-bold">Back to Tree Details
               </span>
-            </button>
+            </a>
           </div>
           <div class="col-md-6 text-center ">
             <button id="submit-button" class="btn btn-success rounded-pill">

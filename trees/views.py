@@ -150,3 +150,18 @@ def add_tree(request):
     }
 
     return render(request, template, context)
+
+
+def edit_tree(request, tree_slug):
+    """
+    edits the tree that is already in database
+    """
+    tree = get_object_or_404(Tree, slug=tree_slug)
+    form = TreeForm(instance=tree)
+    messages.info(request, f'You are editing {tree.name}')
+    template = 'trees/edit_tree.html'
+    context = {
+        'form': form,
+        'tree': tree,
+    }
+    return render(request, template, context)

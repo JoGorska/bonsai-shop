@@ -81,6 +81,7 @@ The issues were than closed automaticaly when the pull request was linked to the
 ## Existing Features
 ------
 
+
 ### Navbar and Footer
 
 xx
@@ -126,9 +127,24 @@ I have decided to set the free delivery theshold at 50 just to use it as encoura
 
 d
 
-### Feature 2
-dd
+### Edit tree feature
+The super user has an additional button showing up on a tree detail page to enale him to edit the dree. The user gets transfered to edit view and gets a pre filled form containing the current tree details. Both templates use the same form. The form is inserted as include into each template.
 
+
+### Icons
+
+The page uses icons intensively to make the content more intuitive. The icons have been sourced from Bootstrap icons and Fontawsome. In most cases icons have been used in svg format. All icon's paths have been copied into one file and than refferenced by id. On some occasions i element has been used to insert the icon. 
+
+The icons are also used to ilustrate features of the tree and enviroments. The super user can add more features in the admin panel. The form will ask him to add the class for i element. 
+
+This might be further developed to enable superuser to add features and enviroments from the website without going to admin panel.
+
+### Buttons
+To have unique styling of the page, the rounded-pill class is applied to all buttons. The rulle that green - is applied to all buttons that approve / save or submit information. Those buttons are placed to the right of all the other buttons. 
+
+Buttons are usually equipped with an icon corresponding to the context. 
+
+Links are often styled as a button to allow a nice flow of the page. 
 
 
 
@@ -377,6 +393,10 @@ os.environ["DATABASE_URL"] = "..."
 os.environ["SECRET_KEY"] = "..."
 os.environ["CLOUDINARY_URL"] = "..."
 os.environ["DEVELOPMENT"] = "True"
+
+stripe ???
+
+aws???
 ```
 
 3. Run command 
