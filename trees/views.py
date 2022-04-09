@@ -4,6 +4,7 @@ views for trees appp
 # pylint: disable=no-member
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
@@ -134,9 +135,9 @@ def add_tree(request):
     if request.method == 'POST':
         form = TreeForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            tree = form.save()
             messages.success(request, 'Successfully added tree!')
-            return redirect(reverse('add_tree'))
+            return redirect(reverse('tree_detail', args=[tree.slug]))
         else:
             messages.error(request, 'Failed to add tree.\
                                      Please ensure the form is valid')

@@ -108,8 +108,14 @@
                   </div>
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                  {% if request.user.is_superuser %}
                   <li>
-                    <a class="dropdown-item" href="{% url 'profile' %}">User profile
+                    <a class="dropdown-item" href="{% url 'add_tree' %}">Shop Management
+                    </a>
+                  </li>
+                  {% endif %}
+                  <li>
+                    <a class="dropdown-item" href="{% url 'profile' %}">User Profile
                     </a>
                   </li>
                   <li>

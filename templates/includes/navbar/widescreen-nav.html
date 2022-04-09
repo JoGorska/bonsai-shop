@@ -55,6 +55,14 @@
                 </a>
                 <!-- drop down for user that is logged in -->
                 <ul class="dropdown-menu text-small bg-dark text-white" aria-labelledby="dropdownUser">
+                  
+                  {% if request.user.is_superuser %}
+                  <li>
+                    <a class="dropdown-item text-white text-uppercase" href="{% url 'add_tree' %}">Shop Management
+                    </a>
+                  </li>
+                  {% endif %}
+                  
                   <li>
                     <a class="dropdown-item text-white text-uppercase" href="{% url 'profile' %}">User profile
                     </a>
