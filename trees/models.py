@@ -81,7 +81,7 @@ class Tree(models.Model):
     """
     # these columns are required
     name = models.CharField(max_length=254)
-    slug = models.SlugField(max_length=200, unique=True, editable=True)
+    slug = models.SlugField(max_length=200, unique=True, editable=False)
     height_in = models.DecimalField(max_digits=9, decimal_places=2)
     trunk_circumference = models.DecimalField(max_digits=9, decimal_places=2)
     price = models.DecimalField(max_digits=9, decimal_places=2)
