@@ -10,7 +10,7 @@ class TreeAdmin(admin.ModelAdmin):
     """
     class to enable admin manage the Tree model
     """
-    list_display = ('id', 'name', 'price', 'current_stock', 'slug')
+    list_display = ('id', 'name', 'price', 'current_stock', 'image_alt',)
     search_fields = ['name', 'description']
 
     ordering = ('id',)

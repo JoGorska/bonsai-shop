@@ -18,6 +18,7 @@
     <div class="container row">
         <div class="col-12 col-md-6 order-md-first">
             <p class="text-muted mt-3 text-center text-md-left">
+                <!-- short description about result of the search of the filter -->
 
                 {% if search_term %}
                 
@@ -69,9 +70,18 @@
                 </div>
                 <div class="card-body">
                     {% if tree.description %}
-                    <p class="card-text">
-                        {{ tree.description }}
-                    </p>
+                    <a 
+                    class="text-decoration-none text-dark"
+                    href="{% url 'tree_detail' tree_slug=tree.slug %}"
+                    aria-label="">
+                        <p class="card-text">
+                            {% if tree.description|length > 80 %}
+                            {{ tree.description|truncatechars:80 }}
+                            {% else %}
+                            {{ tree.description}}
+                            {% endif %}
+                        </p>
+                    </a>
                     {% endif %}
                     <p class="card-text">
                         <div class="text-muted fw-bold">£ {{tree.price}}</div>

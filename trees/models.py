@@ -14,12 +14,16 @@ LEAVES_OR_NEEDLES_CHOICES = [
 ]
 
 IMG_DISCLAIMER_CHOICES = [
-        ('standarised', 'This is an image of a typical tree \
-                        of this size and shape. We grow and \
-                        sell many nearly identical specimen. \
-                        The product that you will purchase will be \
-                        very similar to the one on the photograph.'),
-        ('unique', 'This is an image of the specimen that is being for sale'),
+        ('This is an image of a typical tree of this size and shape. We grow and \
+          sell many nearly identical specimen. The product that \
+          you will purchase will be very similar to the one on the \
+          photograph.', 'standarised'),
+        ('This is an image of the specimen that is being for sale. \
+          The look of the tree may change over the time Due to their \
+          nature trees grow and whilst in our care may need pruning, \
+          this means the tree that you receive may differ in size to \
+          that given in the description. The appearance of the tree may \
+          vary depending on the season.', 'unique'),
 ]
 
 
@@ -98,7 +102,7 @@ class Tree(models.Model):
     image = models.ImageField(null=True, blank=True)
     image_alt = models.CharField(max_length=254, null=True, blank=True)
     image_disclaimer = models.CharField(
-            max_length=254, choices=IMG_DISCLAIMER_CHOICES,
+            max_length=400, choices=IMG_DISCLAIMER_CHOICES,
             default='standarised',  null=True, blank=True
             )
     feature = models.ManyToManyField(

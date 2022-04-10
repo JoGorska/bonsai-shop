@@ -50,6 +50,10 @@
 
           <!-- tree description -->
           <p class="card-text">{{ tree.description }}</p>
+          <!-- image disclaimer -->
+          {% if tree.image_disclaimer %}
+          <p class="card-text">{{tree.image_disclaimer }}</p>
+          {% endif %}
           <!-- tree dimentions -->
           <div class="row">
             <div class="col-6">
