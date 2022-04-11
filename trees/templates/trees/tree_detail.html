@@ -50,6 +50,10 @@
 
           <!-- tree description -->
           <p class="card-text">{{ tree.description }}</p>
+          <!-- image disclaimer -->
+          {% if tree.image_disclaimer %}
+          <p class="card-text">{{tree.image_disclaimer }}</p>
+          {% endif %}
           <!-- tree dimentions -->
           <div class="row">
             <div class="col-6">
@@ -61,6 +65,7 @@
         </div>
         <h3 class="fw-bold">£ {{tree.price}}</h3>
         </div>
+       {% if request.user.is_superuser %}
         <div class="mb-3 text-center">
 
             <div class="btn-group">
@@ -73,6 +78,7 @@
             </button>
             </div>
         </div>
+        {% endif %}
       </div>
 
       <!-- modal for deleting tree -->

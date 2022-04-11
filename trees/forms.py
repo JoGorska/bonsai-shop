@@ -1,6 +1,7 @@
 """form for super user to add products"""
 # pylint: disable=no-member
 from django import forms
+from .widgets import CustomClearableFileInput
 from .models import Tree, Feature, Enviroment
 
 
@@ -14,6 +15,9 @@ class TreeForm(forms.ModelForm):
         """
         model = Tree
         fields = '__all__'
+    # replaces default styling with customised styling of the image input
+    image = forms.ImageField(
+        label='Image', required=False, widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

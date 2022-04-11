@@ -50,5 +50,11 @@
 </div>
 {% endblock %}
 {% block postload_js %}
-{{ block.super }}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('#new-image').change(function() {
+            var file = $('#new-image')[0].files[0];
+            $('#filename').text(`New image: ${file.name}`);
+        });
+    </script>
 {% endblock %}

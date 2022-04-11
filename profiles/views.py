@@ -1,5 +1,7 @@
+# pylint: disable=no-member
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile
 from .forms import UserProfileForm
@@ -7,6 +9,7 @@ from .forms import UserProfileForm
 from checkout.models import Order
 
 
+@login_required
 def profile(request):
     """
     Display the user's profile
@@ -21,11 +24,10 @@ def profile(request):
         else:
             messages.error(request, 'Update failed. Please ensure the form is valid')
     else:
-        form = UserProfileForm(instance=profile)
+        form = UserProfileForm(instance=user_profile)
 
     form = UserProfileForm(instance=user_profile)
     orders = user_profile.orders.all()
-    print(f'ORDERS {orders}')
     template = 'profiles/profile.html'
     context = {
         'form': form,
@@ -35,6 +37,7 @@ def profile(request):
     return render(request, template, context)
 
 
+@login_required
 def order_history(request, order_number):
     """
     display order history in the checkout success template

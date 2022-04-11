@@ -51,7 +51,7 @@
                 </svg>
                 <!-- if user is authenticated, his name is shown, otherwise the words "Log in" -->
                 {% if request.user.is_authenticated %}
-                {{ request.user.first_name }}
+                {{ request.user.username }}
                 </a>
                 <!-- drop down for user that is logged in -->
                 <ul class="dropdown-menu text-small bg-dark text-white" aria-labelledby="dropdownUser">
