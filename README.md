@@ -397,13 +397,172 @@ os.environ["DEVELOPMENT"] = "True"
 stripe ???
 
 aws???
+
 ```
+
 
 3. Run command 
 ```
 pip3 install -r requirements.txt
 ```
 
+
+### Setting up Stripe
+
+
+
+### Setting AWS bucket
+
+
+1. Go to [Amzon Web Services](https://aws.amazon.com/) page and login or register
+
+2. You should be redirected to AWS Managment Console, if not click onto AWS logo in top left corner or click Services icon and choose Console Home
+
+3. Below the header AWS Services click into All Services and find **S3** under Storage
+
+4. Create New Bucket using **Create Bucket** button in top right hand corner
+
+- **Configuration:** type in your chosen name for the bucket (preferably matching your heroku app name) and AWS Region closest to you
+
+
+- **Object ownership:** ACLs enabled, Bucket owner preffered
+
+- **Block Public Access settings:** Uncheck to allow public access, Acknowledge that the current settings will result that the objects within the bucket will become public
+
+- Click **Create Bucket**
+
+5. You are redirected to Amazon S3 with list of your buckets. Click into the name of the bucket you just created
+
+6. Find the tab **Properties** on the top of the page:
+**Static website hosting** at the bottom of the properties page: clik to edit, click enable, fill in index document: index.html and error.html for error
+
+7. On the **Permissions** tab:
+- Cross-origin resource sharing (**CORS**) Paste in the below code as configuration and save
+
+```
+[
+  {
+      "AllowedHeaders": [
+          "Authorization"
+      ],
+      "AllowedMethods": [
+          "GET"
+      ],
+      "AllowedOrigins": [
+          "*"
+      ],
+      "ExposeHeaders": []
+  }
+]
+```
+- **Bucket Policy** within permissions tab: Edit bucket policy
+Click AWS Policy Generator (top right conrner)
+
+Select type of policy: S3 Bucket policy
+Principal: * (allows all)
+Actions: Get object
+Amazon Resource Name (ARN): paste from the Edit bucket policy page in permissions
+Click Add statement Than Click Generate Policy and Copy the policy into bucket policy editor. 
+In the policy code find "Resource" key and add "/*" after the name of the bucket to enable all
+Save changes
+
+- **Access control list (ACL)** within permissions tab: click Edit
+
+find Everyone (public access) and check List box and save
+
+8. Identity and Access Management (IAM)
+Go back to the AWS Management Console and find IAM in AWS Services
+
+- side menu - User Groups and click **Create Group**
+name group "manage-your-app-name" and click Create group
+
+- side menu - Policies and click **Create Policy**
+Click import managed policy - find AmazonS3FullAccess
+Copy ARN again and paste into "Resource" add list containint two elements "[ "arn::..", ""arn::../*]" First element is for bucket itself, second element is for all files and foldrs in the bucket
+
+Click bottom right Add Tags, than Click bottom right Next: Review
+Add name of the policy and description
+
+Click bottom right Create policy
+
+9. Attach policy to the group we created:
+- go to User Groups on side menu
+- select your group from the list
+- go to permissions tab and add permissions drop down and choose **Attach policies**
+- find the policy created above and click button in bottom right Add permissions
+
+10. Create User to go in the group
+- **Users** in the side menu and click add users
+
+User name: your-app-staticfiles-user
+Check option: Access key - Programmatic access
+Click button at the bottom right for Next
+- Add user group and add user to the group you created earlier
+Click Next Tags and Next: review and Create user
+- Download .csv file
+
+
+11. Connect django to AWS S3 bucket
+- install boto3
+- install django-storages
+- freeze to requirements.txt
+- add storages to installed apps in settings.py
+
+```
+if 'USE_AWS' in os.environ:
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_REGION_NAME = 'eu-west-2'
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+```
+
+12. Go to heroku to set up enviromental variables
+
+open CSV file downloaded earlier and copy each variable into heroku Settings
+
+AWS_STORAGE_BUCKET_NAME
+AWS_ACCESS_KEY_ID from csv
+AWS_SECRET_ACCESS_KEY from csv
+USE_AWS = True
+remove DISABLE_COLLECTSTATIC variable from heroku
+
+13. Create file in root directory custom_storages.py
+
+```
+from django.conf import settings
+from storages.backends.s3boto3 import S3Boto3Storage
+
+
+class StaticStorage(S3Boto3Storage):
+    location = settings.STATICFILES_LOCATION
+
+
+class MediaStorage(S3Boto3Storage):
+    location = settings.MEDIAFILES_LOCATION
+```
+
+14. Go to settings.py, below AWS settings
+
+```
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+```
 ## Credits 
 ### Online resources
 * [Icons8](https://icons8.com/)
