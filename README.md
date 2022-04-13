@@ -400,6 +400,12 @@ aws???
 
 ```
 
+3. Run command 
+```
+pip3 install -r requirements.txt
+```
+
+
 ### Setting up Stripe
 
 
@@ -407,12 +413,96 @@ aws???
 ### Setting AWS bucket
 
 
+1. Go to [Amzon Web Services](https://aws.amazon.com/) page and login or register
+
+2. You should be redirected to AWS Managment Console, if not click onto AWS logo in top left corner or click Services icon and choose Console Home
+
+3. Below the header AWS Services click into All Services and find **S3** under Storage
+
+4. Create New Bucket using **Create Bucket** button in top right hand corner
+
+- **Configuration:** type in your chosen name for the bucket (preferably matching your heroku app name) and AWS Region closest to you
 
 
-3. Run command 
+- **Object ownership:** ACLs enabled, Bucket owner preffered
+
+- **Block Public Access settings:** Uncheck to allow public access, Acknowledge that the current settings will result that the objects within the bucket will become public
+
+- Click **Create Bucket**
+
+5. You are redirected to Amazon S3 with list of your buckets. Click into the name of the bucket you just created
+
+6. Find the tab **Properties** on the top of the page:
+**Static website hosting** at the bottom of the properties page: clik to edit, click enable, fill in index document: index.html and error.html for error
+
+7. On the **Permissions** tab:
+- Cross-origin resource sharing (**CORS**) Paste in the below code as configuration and save
+
 ```
-pip3 install -r requirements.txt
+[
+  {
+      "AllowedHeaders": [
+          "Authorization"
+      ],
+      "AllowedMethods": [
+          "GET"
+      ],
+      "AllowedOrigins": [
+          "*"
+      ],
+      "ExposeHeaders": []
+  }
+]
 ```
+- **Bucket Policy** within permissions tab: Edit bucket policy
+Click AWS Policy Generator (top right conrner)
+
+Select type of policy: S3 Bucket policy
+Principal: * (allows all)
+Actions: Get object
+Amazon Resource Name (ARN): paste from the Edit bucket policy page in permissions
+Click Add statement Than Click Generate Policy and Copy the policy into bucket policy editor. 
+In the policy code find "Resource" key and add "/*" after the name of the bucket to enable all
+Save changes
+
+- **Access control list (ACL)** within permissions tab: click Edit
+
+find Everyone (public access) and check List box and save
+
+8. Identity and Access Management (IAM)
+Go back to the AWS Management Console and find IAM in AWS Services
+
+- side menu - User Groups and click **Create Group**
+name group "manage-your-app-name" and click Create group
+
+- side menu - Policies and click **Create Policy**
+Click import managed policy - find AmazonS3FullAccess
+Copy ARN again and paste into "Resource" add list containint two elements "[ "arn::..", ""arn::../*]" First element is for bucket itself, second element is for all files and foldrs in the bucket
+
+Click bottom right Add Tags, than Click bottom right Next: Review
+Add name of the policy and description
+
+Click bottom right Create policy
+
+9. Attach policy to the group we created:
+- go to User Groups on side menu
+- select your group from the list
+- go to permissions tab and add permissions drop down and choose **Attach policies**
+- find the policy created above and click button in bottom right Add permissions
+
+10. Create User to go in the group
+- **Users** in the side menu and click add users
+
+User name: your-app-staticfiles-user
+Check option: Access key - Programmatic access
+Click button at the bottom right for Next
+- Add user group and add user to the group you created earlier
+Click Next Tags and Next: review and Create user
+- Download .csv file
+
+
+
+
 
 ## Credits 
 ### Online resources
