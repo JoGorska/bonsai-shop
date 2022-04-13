@@ -239,7 +239,7 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
 # sends email to console in development, otherwises sends real emails to users
 
-if development:
+if DEVELOPMENT:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'threeoaks@example.com'
 else:

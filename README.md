@@ -414,6 +414,21 @@ Add all events
 Than click add endpoint
 You should be redirected to this webhook's page. Reveal webhook sign in secret and copy to Settings and to heroku as STRIPE_WH_SECRET variable
 
+### Getting email variables from gmail
+
+
+- Log into gmail account
+- Go to Settings and than See all settings
+- Top menu go to Accounts and import
+- Find on the list Other google account settings
+- Left side menu - Security
+- Turn on two step verification: add phone number and follow instructions
+- Go back to security
+App passwords - Select Mail, Select Device - Other, Django, Copy app password.
+
+In Heroku 
+EMAIL_HOST_PASS is the password copied from above.
+EMAIL_HOST_USER is the gmail email address
 
 
 ### Setting AWS bucket
