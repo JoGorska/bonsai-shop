@@ -397,7 +397,17 @@ os.environ["DEVELOPMENT"] = "True"
 stripe ???
 
 aws???
+
 ```
+
+### Setting up Stripe
+
+
+
+### Setting AWS bucket
+
+
+
 
 3. Run command 
 ```
