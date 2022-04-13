@@ -389,17 +389,15 @@ $ git clone http..repo here???
 * Google API key can be obtained [here](https://cloud.google.com/gcp?authuser=1) you will have to register with google and create new app to get the API key. Follow the instructions on the website.
 
 ```
-os.environ["DATABASE_URL"] = "..."
-os.environ["SECRET_KEY"] = "..."
-os.environ["CLOUDINARY_URL"] = "..."
-os.environ["DEVELOPMENT"] = "True"
+DEVELOPMENT
+SECRET_KEY
 
-stripe ???
-
-aws???
+STRIPE_PUBLIC_KEY
+STRIPE_SECRET_KEY 
+STRIPE_WH_SECRET
 
 ```
-
+PostgreSQL and AWS keys are needed only on Heroku, not in local IDE
 
 3. Run command 
 ```
@@ -407,7 +405,14 @@ pip3 install -r requirements.txt
 ```
 
 
-### Setting up Stripe
+### Getting Stripe keys
+Go to developers tab. On side menu you will find API keys. Copy STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY.
+
+Go to Webhooks. Click Add Endpoint button in top right hand corner.
+Add endpoint URL (your local or deployed URL)
+Add all events 
+Than click add endpoint
+You should be redirected to this webhook's page. Reveal webhook sign in secret and copy to Settings and to heroku as STRIPE_WH_SECRET variable
 
 
 
@@ -549,7 +554,7 @@ class MediaStorage(S3Boto3Storage):
     location = settings.MEDIAFILES_LOCATION
 ```
 
-14. Go to settings.py, below AWS settings
+14. Go to settings.py, add the AWS settings
 
 ```
     # Static and media files
@@ -563,6 +568,13 @@ class MediaStorage(S3Boto3Storage):
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 ```
+
+15. To load the media files to S3 bucket
+
+- Go to your S3 bucket page on AWS. Create new folder "media"
+- go to the media folder and click Upload
+
+
 ## Credits 
 ### Online resources
 * [Icons8](https://icons8.com/)
