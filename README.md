@@ -226,6 +226,11 @@ Initialy it was returning errors in relation of ES6 syntax, which was resolved b
 ### Python beautify
 All pages were initialy put through [Python Formatter](https://codebeautify.org/python-formatter-beautifier) which automaticaly sorted most of the too long lines errors. Than the code was checked by pylint and problems were displayed in the console. Once the issues were cleared I have put all code though pep8 validator.
 
+### Pep 8 
+
+```
+Python3 -m flake8
+```
 ### Python validator
 
 
