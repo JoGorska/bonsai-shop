@@ -3,44 +3,74 @@
 {% block content %}
 
 <main class="container mt-5 pt-5">
-    <div class="accordion" id="accordionExample">
+      <div class="accordion accordion-flush" id="list-of-questions">
+        {% for question in question_list %}
         <div class="accordion-item">
-          <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Accordion Item #1
+          <!-- accordeaon header -->
+          <h2 class="accordion-header" id="heading-{{ question.id }}">
+            <button class="accordion-button collapsed border-bottom border-muted shadow-lg"
+                    type="button" data-bs-toggle="collapse" data-bs-target="#question-id-{{ question.id }}"
+                    aria-expanded="true" aria-controls="question-id-{{ question.id }}">
+              {{ question.header }}
             </button>
           </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <!-- accordeon body -->
+          <div id="question-id-{{question.id}}" class="accordion-collapse collapse" aria-labelledby="heading-{{question.id}}" data-bs-parent="#list-of-question">
             <div class="accordion-body">
-              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              <div class="container">
+                <div class="row">
+                    <p>question details will go here</p>
+                </div>
+                <div class="row mt-3">
+                  <div class="col text-end">
+                    <a href="#"
+                       class="btn btn-outline-warning btn-sm">Edit
+                    </a>
+                  </div>
+                  <div class="col text-start">
+                    <!-- Modal Trigger -->
+                    <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#id-modal-{{question.id}}" type="button">Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Accordion Item #2
+        {% empty %}
+        <h4>You have no questions</h4>
+        {% endfor %}
+      </div>
+    </div>
+    {% for question in question_list %}
+    <!-- Modal -->
+    <div class="modal fade" id="id-modal-{{question.id}}" tabindex="-1" aria-labelledby="modal-label-{{question.id}}" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-label-{{question.id}}">Confirm Deleting the question
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             </button>
-          </h2>
-          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
           </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Accordion Item #3
+          <div class="modal-body">
+            <h4>Are you sure you want to delete question about {{ question.header }}
+            </h4>
+            <p class="red-text">The user will not be notified
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancell
             </button>
-          </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
+            <a href="/visits/delete_question/{{question.id}}" class="btn btn-danger">
+              Delete
+            </a>
           </div>
         </div>
       </div>
+      </div>
+      {% endfor %}
+
 </main>
 
 
