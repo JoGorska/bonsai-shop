@@ -14,7 +14,8 @@ class Question(models.Model):
     Model to record user's questions for FAQ page
     """
     header = models.CharField(max_length=254)
-    content = models.TextField()
+    detail = models.TextField()
+    answer = models.TextField(blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name="questions")
     created_on = models.DateTimeField(auto_now=True)
