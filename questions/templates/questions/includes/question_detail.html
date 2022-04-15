@@ -2,6 +2,10 @@
     <div class="col-md-7">
       <h2 class="featurette-heading my-heading-font">{{ question.header }} </h2>
       <p class="lead">{{ question.detail }}</p>
+      {% if question.answer %}
+      <h3 class="my-heading-font">Answer:</h3>
+      <p class="lead">{{ question.answer }}</p>
+      {% endif %}
       <p><span class="text-muted"> {{ question.author }}</span></p>
     </div>
     <div class="col-md-5">
