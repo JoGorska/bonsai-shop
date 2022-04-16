@@ -5,7 +5,6 @@ views for home app
 from django.shortcuts import render, redirect, reverse
 from django.views import generic, View
 from django.views.generic.edit import CreateView
-from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Question
 from .forms import QuestionForm
@@ -18,7 +17,7 @@ class QuestionsList(generic.ListView):
     model = Question
     queryset = Question.objects.filter(status=1).order_by('-created_on')
     template_name = 'questions/questions.html'
-    paginate_by = 10
+    paginate_by = 3
 
 
 def add_question(request):
@@ -33,7 +32,8 @@ def add_question(request):
 
         if form.is_valid():
             question = form.save()
-            messages.success(request, 'Successfully added your question!')
+            messages.success(request, 'Successfully added your question!\
+                            Response will be published within 2 working days')
             return redirect(reverse('questions'))
         else:
             messages.error(request, 'Failed to add question.\
