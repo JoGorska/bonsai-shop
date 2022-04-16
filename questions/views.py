@@ -95,3 +95,15 @@ def edit_question(request, question_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_question(request, question_id):
+    """ Delete a question from the FAQ """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only the store owners can do that.')
+        return redirect(reverse('home'))
+    question = get_object_or_404(Question, pk=question_id)
+    question.delete()
+    messages.success(request, 'Question deleted!')
+    return redirect(reverse('questions'))
