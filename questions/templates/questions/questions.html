@@ -26,18 +26,8 @@
                 <div class="row">
                     {% include 'questions/includes/question_detail.html' %}
                 </div>
-                <div class="row mt-3">
-                  <div class="col text-end">
-                    <a href="#"
-                       class="btn btn-outline-warning btn-sm">Edit
-                    </a>
-                  </div>
-                  <div class="col text-start">
-                    <!-- Modal Trigger -->
-                    <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#id-modal-{{question.id}}" type="button">Delete
-                    </button>
-                  </div>
-                </div>
+
+
               </div>
             </div>
           </div>
@@ -47,34 +37,7 @@
         {% endfor %}
       </div>
     </div>
-    {% for question in question_list %}
-    <!-- Modal -->
-    <div class="modal fade" id="id-modal-{{question.id}}" tabindex="-1" aria-labelledby="modal-label-{{question.id}}" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modal-label-{{question.id}}">Confirm Deleting the question
-            </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            </button>
-          </div>
-          <div class="modal-body">
-            <h4>Are you sure you want to delete question about {{ question.header }}
-            </h4>
-            <p class="red-text">The user will not be notified
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancell
-            </button>
-            <a href="/visits/delete_question/{{question.id}}" class="btn btn-danger">
-              Delete
-            </a>
-          </div>
-        </div>
-      </div>
-      </div>
-      {% endfor %}
+    
     </div>
 
      <!-- pagination from django-->
@@ -83,7 +46,7 @@
     <ul class="pagination justify-content-center">
       {% if page_obj.has_previous %}
       <li>
-        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV 
+        <a class="btn btn-success rounded-pill mt-3 fw-bold" href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV 
         </a>
       </li>
       {% endif %}
