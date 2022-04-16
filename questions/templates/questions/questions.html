@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'questions/css/bootstrap-carusel.css' %}">
+{% endblock %}
 {% block content %}
 
-<main class="container mt-5 pt-5">
+<main class="">
+  {% include '../includes/carousel.html' %}
+  <div class="container marketing">
       <div class="accordion accordion-flush" id="list-of-questions">
         {% for question in question_list %}
         <div class="accordion-item">
@@ -70,6 +75,7 @@
       </div>
       </div>
       {% endfor %}
+    </div>
 
 </main>
 
