@@ -8,7 +8,7 @@
     {{ form.detail | as_crispy_field }}
   </div>
 <!-- add if statement for superuser -->
-{% if user.is_superuser%}
+{% if user.is_superuser %}
   <div class="col-12">
     {{ form.answer | as_crispy_field }}
   </div>
