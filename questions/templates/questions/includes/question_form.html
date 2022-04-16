@@ -16,9 +16,21 @@
     {{ form.status | as_crispy_field }}
   </div>
 {% endif %}
-  <div class="col-6">
-    {{ form.newsletter | as_crispy_field }}
-  </div>
+
+{% if question %}
+<!-- this is to prevent superuser edit the newsletter status if he wasn't the author -->
+
+    {% if question.author == user %}
+    <div class="col-6">
+      {{ form.newsletter | as_crispy_field }}
+    </div>
+    {% endif %}
+
+{% else %}
+    <div class="col-6">
+      {{ form.newsletter | as_crispy_field }}
+    </div>
+{% endif %}
   <!-- image -->
   <h4 class="mb-3 my-heading-font">Image Details
   </h4>

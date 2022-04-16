@@ -50,7 +50,7 @@ def add_question(request):
         form = QuestionForm(request.POST, request.FILES)
 
         if form.is_valid():
-            question = form.save()
+            form.save()
             messages.success(request, 'Successfully added your question!\
                             Response will be published within 2 working days')
             return redirect(reverse('questions'))
@@ -68,3 +68,30 @@ def add_question(request):
     return render(request, template, context)
 
 
+@login_required
+def edit_question(request, question_id):
+    """ Edit a question posted in FAQ """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only the store owners can do that.')
+        return redirect(reverse('questions'))
+    question = get_object_or_404(Question, pk=question_id)
+
+    if request.method == 'POST':
+        form = QuestionForm(request.POST, request.FILES, instance=question)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully saved the question!')
+            return redirect(reverse('questions_manager'))
+        else:
+            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+    else:
+        form = QuestionForm(instance=question)
+        messages.info(request, f'You are editing {question.header}')
+
+    template = 'questions/edit_question.html'
+    context = {
+        'form': form,
+        'question': question,
+    }
+
+    return render(request, template, context)

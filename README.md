@@ -117,6 +117,14 @@ Having that said, the value of the most expensive specimen is set in an arbitrar
 
 I have decided to set the free delivery theshold at 50 just to use it as encouragement tool for first time buyers and small buyers to get them over the threshold line with just one more purchase. 
 
+### FAQ
+
+Shop owner can edit the question and set status to published so the question is displayed for the public includng the answer.
+
+Unfortunately at this stage the superuser is able to edit Newsletter choice, which should not be the case. 
+
+Further questionable might be that the superuser can edit the header and the details of the question but this is understandable as the shop owner might rewrite the question to get rid of any spelling errors or to make the question more clear to the reader. 
+
 
 ## Future Features 
 ------
@@ -287,7 +295,9 @@ This only breaks in cards for the treees that area already in the trolley. The l
 I might need to address this issue with media query. I might also leave it as it is visibly different that the trees that are not in the bag yet and might look more inviting to click to go to the trolley and than to checkout. 
 
 
+### FAQ Newsletter
 
+Shop owner has the ability to set Newsletter to sign me up for any of the users. This could be resolved by checking if the user is author both in the template as well as in the view, before saving the instance of the form. This way the whole form except of newsletter field could be saved. I would have to state explicitly which fields should be saved. 
 
 ## Deployment and making a clone
 
