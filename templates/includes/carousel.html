@@ -9,9 +9,17 @@
         <img src="{{ MEDIA_URL }}wide-pexels-quang-nguyen-vinh-2149105.jpg" alt="">
         <div class="container">
           <div class="carousel-caption text-start">
-            <h1 class="my-heading-font">Example headline.</h1>
-            <p>Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-success rounded-pill" href="#">Sign up today</a></p>
+            <h1 class="my-heading-font">Sign up for our Newsletter</h1>
+            <p>Learn more about Bonsai from our experts and find out our latest promotions</p>
+            <!-- modal trigger for sign up -->
+            <p>
+              <button type="button" 
+              data-bs-target="#newsletter-modal" 
+              data-bs-toggle="modal" 
+              class="btn btn-lg btn-success rounded-pill">
+              Sign up today
+              </button>
+            </p>
           </div>
         </div>
       </div>
@@ -19,9 +27,9 @@
         <img src="{{ MEDIA_URL }}wide-pexels-quang-nguyen-vinh-8280940.jpg" alt="">
         <div class="container">
           <div class="carousel-caption">
-            <h1 class="my-heading-font">Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-success rounded-pill" href="#">Learn more</a></p>
+            <h1 class="my-heading-font">Search for your perfect bonsai</h1>
+            <p>We added new criteria to search for your favourite bonsai. We offer free delivery for purchases over £50.</p>
+            <p><a class="btn btn-lg btn-success rounded-pill" href="{% url 'all_trees' %}">Shop Now</a></p>
           </div>
         </div>
       </div>
@@ -29,9 +37,11 @@
         <img src="{{ MEDIA_URL }}wide-pexels-tieu-bao-truong-8913408.jpg" alt="">
         <div class="container">
           <div class="carousel-caption text-end">
-            <h1 class="my-heading-font">One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-success rounded-pill" href="#">Browse gallery</a></p>
+            <h1 class="my-heading-font">As us Questions</h1>
+            <p>If you want to learn more about growing and maintaingin bonsai trees go to our 
+              <a class="text-decoration-none text-success fw-bold" href="{% url 'questions' %">FAQ page </a>
+              or ask us question</p>
+            <p><a class="btn btn-lg btn-success rounded-pill" href="{% url 'add_question' %}">Ask Question</a></p>
           </div>
         </div>
       </div>
@@ -45,3 +55,24 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+
+
+        <!-- modal for adding email to newsletter -->
+
+        <div class="modal" id="newsletter-modal" aria-labelledby="newsletter-modal-label" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+              <div class="modal-header bg-secondary border-bottom border-success">
+                <h5 id="newsletter-modal-label" class="modal-title text-white">Confirm sign up for newsletter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body bg-dark text-white border-top border-success">
+                <p>You can add your email address to our newsletter mailing list</p>
+              </div>
+              <div class="modal-footer border-top border-dark">
+                <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+                <a href="" type="button" class="btn btn-success rounded-pill">Confirm</a>
+              </div>
+            </div>
+          </div>
+        </div>
