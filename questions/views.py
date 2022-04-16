@@ -2,10 +2,11 @@
 views for home app
 """
 # pylint: disable=no-member
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.views import generic, View
 from django.views.generic.edit import CreateView
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 from .models import Question
 from .forms import QuestionForm
 
@@ -20,35 +21,29 @@ class QuestionsList(generic.ListView):
     paginate_by = 10
 
 
-class AddNewQuestion(CreateView):
-    '''
-    class view in get - gets the traffic_msg_form and in post - posts the form
-    and creates new traffic alert
-    '''
-    template_name = 'questions/add_question.html'
-    form_class = QuestionForm
-    success_url = 'questions'
+def add_question(request):
+    """
+    Add questions to FAQ page
+    """
 
-    def get(self, request, *args, **kwargs):
+    if request.method == 'POST':
+        form = QuestionForm(request.POST, request.FILES)
 
-        return render(
-            request,
-            'questions/add_question.html',
-            {
-                'form': QuestionForm()
-            },
-        )
+        print(f'form alone {form}')
 
-    def post(self, request, *args, **kwargs):
-
-        form = QuestionForm(data=request.POST)
         if form.is_valid():
-            form.instance.author_id = request.user.id
-
-            question = form.save(commit=False)
-            question.save()
-
+            question = form.save()
+            messages.success(request, 'Successfully added your question!')
+            return redirect(reverse('questions'))
         else:
-            form = QuestionForm(instance=form)
+            messages.error(request, 'Failed to add question.\
+                                     Please ensure the form is valid')
+    else:
+        form = QuestionForm()
 
-        return HttpResponseRedirect('questions')
+    template = 'questions/add_question.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)

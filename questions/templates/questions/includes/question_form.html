@@ -11,8 +11,12 @@
   <div class="col-12">
     {{ form.answer | as_crispy_field }}
   </div>
-  <div class="col-12">
+  <div class="col-6">
     {{ form.status | as_crispy_field }}
+  </div>
+  <!-- endif here ??? -->
+  <div class="col-6">
+    {{ form.newsletter | as_crispy_field }}
   </div>
   <!-- image -->
   <h4 class="mb-3 my-heading-font">Image Details
@@ -25,6 +29,9 @@
   </div>
   <div class="col-12">
     {{ form.image_alt | as_crispy_field }}
+  </div>
+  <div class="col-12">
+    <input type="hidden" value="{{request.user.id}}" name="author">
   </div>
 
 </div>

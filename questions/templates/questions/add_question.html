@@ -21,6 +21,7 @@
       <h4 class="mb-3 my-heading-font">Your question
       </h4>
       <form action="{% url 'add_question' %}" enctype="multipart/form-data" method="POST" id="question-form">
+
         {% include 'questions/includes/question_form.html' %}
         <hr class="my-4">
         <div class="row gy-3">
