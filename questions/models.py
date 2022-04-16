@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 
 
 STATUS_CHOICES = ((0, "Draft"), (1, "Published"))
+NEWSLETTER_CHOICES = ((0, "Not Interested"), (1, "Sign me up"))
 
 
 class Question(models.Model):
@@ -23,9 +24,10 @@ class Question(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name="questions")
-    created_on = models.DateTimeField(auto_now=True)
-    updated_on = models.DateTimeField(auto_now=True)
+    created_on = models.DateTimeField(auto_now=True, editable=False)
+    updated_on = models.DateTimeField(auto_now=True, editable=False)
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)
+    newsletter = models.IntegerField(choices=NEWSLETTER_CHOICES, default=0)
 
     class Meta:
         """

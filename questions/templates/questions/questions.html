@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'questions/css/bootstrap-carusel.css' %}">
+{% endblock %}
 {% block content %}
 
-<main class="container mt-5 pt-5">
+<main class="">
+  {% include '../includes/carousel.html' %}
+  <div class="container marketing">
       <div class="accordion accordion-flush" id="list-of-questions">
         {% for question in question_list %}
         <div class="accordion-item">
@@ -70,6 +75,27 @@
       </div>
       </div>
       {% endfor %}
+    </div>
+
+     <!-- pagination from django-->
+  {% if is_paginated %}
+  <nav class="" aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+      <li>
+        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV 
+        </a>
+      </li>
+      {% endif %}
+      {% if page_obj.has_next %}
+      <li>
+        <a class="btn btn-success rounded-pill mt-3 fw-bold" href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
 
 </main>
 
