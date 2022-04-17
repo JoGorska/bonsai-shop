@@ -17,7 +17,7 @@ class Subscriber(models.Model):
     # I keep the record that they have actively accepted privacy policy
     accepted_privacy_policy = models.BooleanField(default=False,
                                                   blank=False, null=False)
-    # can I allow foreign key to be Null???
+    # allows foreign key to be Null if subscriber isn't a registered user
     registered_user = models.ForeignKey(
                 User, on_delete=models.SET_NULL, blank=True, null=True,
                 related_name='newsletter_subscriber')

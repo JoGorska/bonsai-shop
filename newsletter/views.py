@@ -3,15 +3,16 @@ views for newsletter
 """
 # pylint: disable=no-member
 from django.shortcuts import render
+from .models import Subscriber
 
 
-def signees(request):
+def subscribers(request):
     """
     view to return list of people that have signed up for newsletter page
     """
-    
+    subscriber_list = Subscriber.objects.order_by('-created_on')
 
     context = {
-        'signee_list': signee_list,
+        'subscriber_list': subscriber_list,
     }
-    return render(request, 'newsletter/signees.html')
+    return render(request, 'newsletter/subscribers.html', context)
