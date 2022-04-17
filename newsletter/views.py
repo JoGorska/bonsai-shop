@@ -32,14 +32,14 @@ def add_subscriber(request):
         next_page = request.POST.get('next', '/')
 
         email = request.POST.get("email")
-        subscribers = Subscriber.objects.all()
+        all_subscribers = Subscriber.objects.all()
 
-        for registered_subscriber in subscribers:
+        for registered_subscriber in all_subscribers:
             if email == registered_subscriber.email:
                 messages.error(
                     request,
                     'This email is already in our newsletter subscribers list')
-            return HttpResponseRedirect(next_page)
+                return HttpResponseRedirect(next_page)
 
         if "subscribed" in request.POST:
             subscribed = True
@@ -75,13 +75,14 @@ def add_subscriber(request):
             messages.error(
                 request,
                 'Please mark the option that you accept Privacy Policy')
-            return HttpResponseRedirect(next_page)    
-        else:
-            subscriber.save()
-            messages.success(
-                request,
-                f'Subscribed email {subscriber.email} to the newsletter')
             return HttpResponseRedirect(next_page)
+
+        messages.success(
+            request,
+            f'Subscribed email {subscriber.email} to the newsletter')
+        subscriber.save()
+
+        return HttpResponseRedirect(next_page)
 
 
 @login_required
@@ -90,4 +91,7 @@ def unsubscribe(request, user_id):
     view to change status of the email to unsubscribed
     for registered users
     """
+
+    subscribers_with_this_id = Subscriber.objects.filter(author=user_id)
+    print(f'do I find any {subscribers_with_this_id}')
     return HttpResponseRedirect('home')

@@ -9,9 +9,13 @@
         <img src="{{ MEDIA_URL }}wide-pexels-quang-nguyen-vinh-2149105.jpg" alt="">
         <div class="container">
           <div class="carousel-caption text-start">
+              {% if subscribed %}
+              <p>I have subscribed</p>
+              {% endif %}
             <h1 class="my-heading-font">Sign up for our Newsletter</h1>
             <p>Learn more about Bonsai from our experts and find out our latest promotions</p>
-            <!-- modal trigger for sign up -->
+          
+            <!-- button modal trigger for sign up -->
             <p>
               <button type="button" 
               data-bs-target="#newsletter-modal" 
@@ -20,6 +24,7 @@
               Sign up today
               </button>
             </p>
+            
           </div>
         </div>
       </div>
