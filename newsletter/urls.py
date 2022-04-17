@@ -9,4 +9,5 @@ from . import views
 urlpatterns = [
     path('subscribers', views.subscribers, name='subscribers'),
     path('add_subscriber', views.add_subscriber, name='add_subscriber'),
+    path('unsubscribe', views.unsubscribe, name='unsubscribe'),
 ]

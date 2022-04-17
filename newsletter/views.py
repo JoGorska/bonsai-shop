@@ -29,9 +29,18 @@ def add_subscriber(request):
     """
 
     if request.method == 'POST':
-        print(f'what do we have here @{request.POST}')
+        next_page = request.POST.get('next', '/')
 
         email = request.POST.get("email")
+        subscribers = Subscriber.objects.all()
+
+        for registered_subscriber in subscribers:
+            if email == registered_subscriber.email:
+                messages.error(
+                    request,
+                    'This email is already in our newsletter subscribers list')
+            return HttpResponseRedirect(next_page)
+
         if "subscribed" in request.POST:
             subscribed = True
         else:
@@ -47,7 +56,7 @@ def add_subscriber(request):
             registered_user = get_object_or_404(User, id=user_id)
         else:
             registered_user = None
-        next_page = request.POST.get('next', '/')
+
         # creates instance of subscriber class
         subscriber = Subscriber(
             email=email,
@@ -66,10 +75,19 @@ def add_subscriber(request):
             messages.error(
                 request,
                 'Please mark the option that you accept Privacy Policy')
-            return HttpResponseRedirect(next_page)
+            return HttpResponseRedirect(next_page)    
         else:
             subscriber.save()
             messages.success(
                 request,
                 f'Subscribed email {subscriber.email} to the newsletter')
             return HttpResponseRedirect(next_page)
+
+
+@login_required
+def unsubscribe(request, user_id):
+    """
+    view to change status of the email to unsubscribed
+    for registered users
+    """
+    return HttpResponseRedirect('home')
