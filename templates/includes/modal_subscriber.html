@@ -1,0 +1,47 @@
+        <!-- modal for adding email to newsletter -->
+
+        <div class="modal" id="newsletter-modal" aria-labelledby="newsletter-modal-label" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content bg-dark">
+                <!-- form for newsletter -->
+                <form action="">
+                <div class="modal-header bg-secondary border-bottom border-success">
+                  <h5 id="newsletter-modal-label" class="modal-title text-white">Confirm sign up for newsletter</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-dark text-white border-top border-success">
+  
+                  <div class="input-group mb-3 border-dark">
+                    <span class="input-group-text bg-success border-dark text-white" id="email">@</span>
+                    <input type="email" class="form-control bg-secondary border-dark text-white" placeholder="email" aria-label="email" aria-describedby="email" name="email" required>
+                  </div>
+  
+                  <div class="form-check ms-3">
+                    <input class="form-check-input" type="checkbox" value="" id="accepted_privacy_policy" name="accepted_privacy_policy">
+                    <label class="form-check-label" for="accepted_privacy_policy">
+                      I accept 
+                      <a class="text-success" href="">Privacy Policy</a>
+  
+                    </label>
+                  </div>
+                  <div class="form-check ms-3">
+                    <input class="form-check-input" type="checkbox" value="" id="subscribed" name="subscribed">
+                    <label class="form-check-label" for="subscribed">
+                      I wish to receive the newsletter.
+                    </label>
+                  </div>
+                  {% if user.is_authenticated %}
+                  <input type="hidden" name="registered_user" value="{{ user.id }}">
+                  {% endif %}
+                  <input type="hidden" name="next" value="{{ request.path }}"/>
+  
+  
+                </div>
+                <div class="modal-footer border-top border-dark">
+                  <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-success rounded-pill">Confirm</button>
+                </div>
+              </form><!-- form ends here -->
+              </div>
+            </div>
+          </div>
