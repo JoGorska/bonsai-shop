@@ -6,19 +6,19 @@
 <main class="">
 
   <div class="container">
-      <div class="accordion accordion-flush" id="list-of-signees">
-        {% for signee in signee_list %}
+      <div class="accordion accordion-flush" id="list-of-subscribers">
+        {% for subscriber in subscriber_list %}
         <div class="accordion-item">
           <!-- accordeaon header -->
-          <h2 class="accordion-header" id="heading-{{ signee.id }}">
+          <h2 class="accordion-header" id="heading-{{ subscriber.id }}">
             <button class="accordion-button collapsed border-bottom border-muted shadow-lg"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#signee-id-{{ signee.id }}"
-                    aria-expanded="true" aria-controls="signee-id-{{ signee.id }}">
-              {{ signee.email }}
+                    type="button" data-bs-toggle="collapse" data-bs-target="#subscriber-id-{{ subscriber.id }}"
+                    aria-expanded="true" aria-controls="subscriber-id-{{ subscriber.id }}">
+              {{ subscriber.email }}
             </button>
           </h2>
           <!-- accordeon body -->
-          <div id="signee-id-{{signee.id}}" class="accordion-collapse collapse" aria-labelledby="heading-{{signee.id}}" data-bs-parent="#list-of-signees">
+          <div id="subscriber-id-{{subscriber.id}}" class="accordion-collapse collapse" aria-labelledby="heading-{{subscriber.id}}" data-bs-parent="#list-of-subscribers">
             <div class="accordion-body">
               <div class="container">
                 <div class="row">
@@ -35,24 +35,24 @@
   </div>
   <div class="col text-start">
     <!-- Modal Trigger -->
-    <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#id-modal-{{signee.id}}" type="button">Delete
+    <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#id-modal-{{subscriber.id}}" type="button">Delete
     </button>
   </div>
 </div>
 
 
     <!-- Modal -->
-    <div class="modal fade" id="id-modal-{{signee.id}}" tabindex="-1" aria-labelledby="modal-label-{{signee.id}}" aria-hidden="true">
+    <div class="modal fade" id="id-modal-{{subscriber.id}}" tabindex="-1" aria-labelledby="modal-label-{{subscriber.id}}" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modal-label-{{signee.id}}">Confirm Deleting the signee
+            <h5 class="modal-title" id="modal-label-{{subscriber.id}}">Confirm Deleting the subscriber
             </h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             </button>
           </div>
           <div class="modal-body">
-            <h4>Are you sure you want to delete signee {{ signee.email }}
+            <h4>Are you sure you want to delete subscriber {{ subscriber.email }}
             </h4>
             <p class="red-text">The user will not be notified
             </p>
@@ -74,7 +74,7 @@
           </div>
         </div>
         {% empty %}
-        <h4>You have no signees</h4>
+        <h4>You have no subscribers</h4>
         {% endfor %}
       </div>
     </div>
