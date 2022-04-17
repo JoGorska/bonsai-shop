@@ -23,7 +23,6 @@ def subscribers(request):
     return render(request, 'newsletter/subscribers.html', context)
 
 
-
 def add_subscriber(request):
     """
     view to post the subscriber form to add the email to database
@@ -57,10 +56,20 @@ def add_subscriber(request):
             registered_user=registered_user
         )
 
-        if subscriber.subscribed == False:
+        if subscriber.subscribed is False:
+            messages.error(
+                request,
+                'Please mark the option that you wish to subscribe\
+                 to newsletter')
+            return HttpResponseRedirect(next_page)
+        elif subscriber.accepted_privacy_policy is False:
+            messages.error(
+                request,
+                'Please mark the option that you accept Privacy Policy')
+            return HttpResponseRedirect(next_page)
+        else:
             subscriber.save()
-
-
-        return HttpResponseRedirect(next_page)
-# add messages
-# do not save instance when subscribed false or not accepted policy
+            messages.success(
+                request,
+                f'Subscribed email {subscriber.email} to the newsletter')
+            return HttpResponseRedirect(next_page)
