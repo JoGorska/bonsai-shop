@@ -1,10 +1,10 @@
-        <!-- modal for adding email to newsletter -->
 
         <div class="modal" id="newsletter-modal" aria-labelledby="newsletter-modal-label" tabindex="-1">
             <div class="modal-dialog">
               <div class="modal-content bg-dark">
                 <!-- form for newsletter -->
-                <form action="">
+                <form action="{% url 'add_subscriber' %}" method="POST">
+                  {% csrf_token %}
                 <div class="modal-header bg-secondary border-bottom border-success">
                   <h5 id="newsletter-modal-label" class="modal-title text-white">Confirm sign up for newsletter</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -33,7 +33,7 @@
                   {% if user.is_authenticated %}
                   <input type="hidden" name="registered_user" value="{{ user.id }}">
                   {% endif %}
-                  <input type="hidden" name="next" value="{{ request.path }}"/>
+                  <input type="hidden" name="next" value="{{ request.get_full_path }}"/>
   
   
                 </div>
