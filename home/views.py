@@ -12,6 +12,6 @@ def index_view(request):
     """
     questions = Question.objects.filter(status=1).order_by('-created_on')
     context = {
-        'questions': questions
+        'questions': questions,
     }
     return render(request, 'home/index.html', context)
