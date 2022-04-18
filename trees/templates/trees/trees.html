@@ -44,14 +44,14 @@
             </p>
         </div>
     </div>
-    <div class="container">
+    <div class="container shadow-lg">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {% for tree in trees %}
             
             <!-- one card  -->
             <div class="col">
-                <div class="card shadow-sm">
+                <div class="card">
                     {% if tree.image %}
 
                     <img class="card-img-top img-thumbnail" src="{{ tree.image.url }}"

@@ -8,7 +8,7 @@
 <main class="container mt-5 pt-5">
 
 {% if trolley_items %}
-<div class="card p-4">
+<div class="card p-4 shadow-lg">
   <h4 class="my-heading-font"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
   <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
   <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
@@ -18,14 +18,14 @@
   </p>
   {% endif %}
   <div class="row mt-3">
-    <div class="col-12 col-md-6 mb-2">
+    <div class="col-12 col-md-4 mb-2">
       <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
         <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#shop"/></svg>
         Back to shop</a>
     </div>
     <div class="col-12 col-md-6 mb-2">
       <a href="{% url 'checkout' %}" class="shadow-lg btn btn-success text-white rounded-pill">
-        <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#key"/></svg>
+        <i class="bi bi-credit-card-2-back-fill"></i>
         Secure Checkout</a>
     </div>
   </div>
@@ -36,7 +36,7 @@
 
 <!-- cards containing each items -->
 
-<div class="card mb-3 mt-3" >
+<div class="card mb-3 mt-3 shadow-lg" >
     <div class="row g-0">
       <div class="col-4">
 
