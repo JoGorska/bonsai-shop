@@ -86,12 +86,41 @@ def add_subscriber(request):
 
 
 @login_required
-def unsubscribe(request, user_id):
+def unsubscribe(request):
     """
     view to change status of the email to unsubscribed
-    for registered users
     """
+    if request.method == 'POST':
+        next_page = request.POST.get('next', '/')
 
-    subscribers_with_this_id = Subscriber.objects.filter(author=user_id)
-    print(f'do I find any {subscribers_with_this_id}')
-    return HttpResponseRedirect('home')
+        email = request.POST.get("email")
+        current_subscriber = Subscriber.objects.get(email=email)
+        if current_subscriber.count() < 0:
+            messages.error(
+                request,
+                f'The email {email} was not on our list of subscribers')
+            return HttpResponseRedirect(next_page)
+
+        subscribed = False
+        accepted_privacy_policy = True
+        if "registered_user" in request.POST:
+            user_id = request.POST.get("registered_user")
+            registered_user = get_object_or_404(User, id=user_id)
+        else:
+            registered_user = None
+
+        # creates instance of subscriber class
+        subscriber = Subscriber(
+            email=email,
+            subscribed=subscribed,
+            accepted_privacy_policy=accepted_privacy_policy,
+            registered_user=registered_user
+        )
+
+        messages.success(
+            request,
+            f'Successfully unsubscribed email {subscriber.email}\
+                 froum our newsletter')
+        subscriber.save()
+
+        return HttpResponseRedirect(next_page)
