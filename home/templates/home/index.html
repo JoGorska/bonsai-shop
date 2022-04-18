@@ -21,28 +21,29 @@
   
     <div class="container marketing">
 
-      <!-- Three columns of text below the carousel -->
+      <!-- Three heads with text -->
       <div class="row">
         <div class="col-lg-4">
-          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+          <img src="{{ MEDIA_URL }}pexels-andrea-piacquadio-3831569.jpg" class="rounded-circle" width="140" height="140"  alt="Elterly man in red tie, smiling">
   
-          <h2 class="my-heading-font">Heading</h2>
-          <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-          <p><a class="btn btn-secondary rounded-pill" href="#">View details &raquo;</a></p>
+          <h2 class="my-heading-font">Richard Head Gardner</h2>
+          <p>My favourite trees are mapels. I love them any time of the year. They can be tricky to work with sometimes.</p>
+          <p><a class="btn btn-secondary rounded-pill" href="{% url 'all_trees' %}?q=acer">See my favorite &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-  
-          <h2 class="my-heading-font">Heading</h2>
-          <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-          <p><a class="btn btn-secondary rounded-pill" href="#">View details &raquo;</a></p>
+
+          <img src="{{ MEDIA_URL }}pexels-andrea-piacquadio-3959954.jpg" class="rounded-circle" width="140" height="140"  alt="black woman in yellow t-shirt smiling">
+           
+          <h2 class="my-heading-font"> Diana Designer</h2>
+          <p>My favorite bonsai are the fruiting ones. They give such an effect in spring and than throught the year when the fruts grow.</p>
+          <p><a class="btn btn-secondary rounded-pill" href="{% url 'all_trees' %}?feature=fruiting">See my favorite &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-  
-          <h2 class="my-heading-font">Heading</h2>
-          <p>And lastly this, the third column of representative placeholder content.</p>
-          <p><a class="btn btn-secondary rounded-pill" href="#">View details &raquo;</a></p>
+          <img src="{{ MEDIA_URL }}irene-strong-TMt3JGoVlng-unsplash.jpg" class="rounded-circle" width="140" height="140"  alt="Elterly man in red tie, smiling">
+           
+          <h2 class="my-heading-font">Mark Apprentice</h2>
+          <p>Since I started working for Three Oaks I was learning more and more about creating landscapes. They are like minature worlds.</p>
+          <p><a class="btn btn-secondary rounded-pill" href="{% url 'all_trees' %}?feature=landscape">See my favorite &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
   

@@ -7,6 +7,7 @@ from .models import UserProfile
 from .forms import UserProfileForm
 
 from checkout.models import Order
+from newsletter.models import Subscriber
 
 
 @login_required
@@ -14,7 +15,8 @@ def profile(request):
     """
     Display the user's profile
     """
-    user_profile = get_object_or_404(UserProfile, user=request.user)
+    current_user = request.user
+    user_profile = get_object_or_404(UserProfile, user=current_user)
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=user_profile)
@@ -28,11 +30,19 @@ def profile(request):
 
     form = UserProfileForm(instance=user_profile)
     orders = user_profile.orders.all()
+    # get the list of all subscribers filters if current user is on the list
+    subscribers = Subscriber.objects.filter(registered_user=current_user)
+    subscribed = False
+    if subscribers.count() > 0:
+        subscribed = True
+
+    print(f'CHECK ME IF I HAVE SUBSCRIBED {subscribed}')
     template = 'profiles/profile.html'
     context = {
         'form': form,
         'orders': orders,
-        'user_profile': user_profile
+        'user_profile': user_profile,
+        'subscribed': subscribed,
     }
     return render(request, template, context)
 
