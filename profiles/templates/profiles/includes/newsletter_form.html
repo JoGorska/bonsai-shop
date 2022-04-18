@@ -1,8 +1,8 @@
 <!-- form for newsletter if the user is not subscribed -->
 <!-- need to check if the user is subscribed ??? -->
-{% if subscribed %}
+{% if subscribed_user %}
 
-<form action="" method="POST">
+<form action="{% url 'unsubscribe' %}" method="POST">
   {% csrf_token %}
   <div class="">
     <div class="input-group mb-3 border-dark">

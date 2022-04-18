@@ -34,18 +34,18 @@ def profile(request):
     form = UserProfileForm(instance=user_profile)
     orders = user_profile.orders.all()
     # get the list of all subscribers filters if current user is on the list
-    subscribers = Subscriber.objects.filter(registered_user=current_user)
-    subscribed = False
+    subscribers = Subscriber.objects.filter(
+        registered_user=current_user).filter(subscribed=True)
+    subscribed_user = False
     if subscribers.count() > 0:
-        subscribed = True
+        subscribed_user = True
 
-    print(f'CHECK ME IF I HAVE SUBSCRIBED {subscribed}')
     template = 'profiles/profile.html'
     context = {
         'form': form,
         'orders': orders,
         'user_profile': user_profile,
-        'subscribed': subscribed,
+        'subscribed_user': subscribed_user,
     }
     return render(request, template, context)
 
