@@ -12,9 +12,11 @@
 
         <!-- header of the checkout page -->
       <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-        <h2 class="my-heading-font">Checkout form</h2>
-        <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        <div class="text-dark mt-5 mb-3">
+          <img src="{{ MEDIA_URL }}trees-dark.svg" alt="">
+        </div>
+        <h2 class="my-heading-font">Checkout</h2>
+        <p class="lead">We need your full address to be able to send you the purchased goods. Please add current telephone and email address so we can contact you easily.</p>
       </div>
       <!-- order summary   -->
       <div class="row g-5">
@@ -27,8 +29,8 @@
               {% for item in trolley_items %}
             <li class="list-group-item d-flex justify-content-between lh-sm">
               <div>
-                <h6 class="my-0">{{item.tree.name}} ({{ item.quantity }}) </h6>
-                <small class="text-muted">Brief description ???</small>
+                <h6 class="my-0">{{item.tree.name|truncatechars:15}} ({{ item.quantity }}) </h6>
+                <small class="text-muted">Trunk: {{ item.tree.trunk_circumference| floatformat:0 }} Height: {{item.tree.height_in | floatformat:0}}</small>
               </div>
               <span class="text-muted">£ {{ item.tree.price | calc_subtotal:item.quantity }}</span>
             </li>

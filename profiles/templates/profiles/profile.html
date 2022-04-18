@@ -11,16 +11,18 @@
 
         <!-- header of the profile page -->
       <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        <div class="text-dark mt-5 mb-3">
+          <img src="{{ MEDIA_URL }}trees-dark.svg" alt="">
+        </div>
         <h2 class="my-heading-font">My profile</h2>
-        <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        <p class="lead">Check and update your address information. Look back on your order history.</p>
       </div>
       <!-- order summary history   -->
       <div class="row g-5">
         <div class="col-md-5 col-lg-4 order-md-last">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-success my-heading-font">Order history</span>
-            <span class="badge bg-success rounded-pill">{{ order_count }}</span>
+            <span class="badge bg-success rounded-pill">{{ orders|length }}</span>
           </h4>
           <ul class="list-group mb-3 order-history">
               {% for order in orders %}
@@ -30,7 +32,7 @@
                 
                 
                 <h6 class="my-0">{{ order.date }}</h6>
-                <small class="text-muted">Order Number: {{ order.order_number|truncatechars:6 }}...</small>
+                <small class="text-muted">Order Number: {{ order.order_number|truncatechars:6 }}</small>
 
               </div>
               <span class="text-muted">£ {{ order.grand_total }}</span>
@@ -41,11 +43,18 @@
 
         </div>
 
-          <!-- forms starts here -->
+
+
+
         <div class="col-md-7 col-lg-8">
-          
+
+          <!-- newsletter form -->
+          <h4 class="mb-3 my-heading-font">Newsletter Subscribtion</h4>
+        {% include 'profiles/includes/newsletter_form.html' %}
+        <hr class="my-4">
+            <!-- Address forms starts here -->
           <h4 class="mb-3 my-heading-font">Default Address</h4>
-          <form action="" method="POST" id="payment-form">
+          <form action="{% url 'profile' %}" method="POST" id="payment-form">
               {% csrf_token %}
             <div class="row g-3">
   
@@ -80,19 +89,7 @@
   
             <hr class="my-4">
   
-            <div class="form-check form-check-inline">
-                {% if user.is_authenticated %}
-                    <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
-                    <input class="form-check-input ms-2 me-2" type="checkbox" id="id-save-info" name="save-info" checked>
-                {% else %}
-                    <label class="form-check-label" for="id-save-info">
-                        <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
-                        <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
-                    </label>
-                {% endif %}
-            </div>
-            <hr class="my-4">
-
+            
             <button id="submit-button" class="btn btn-success rounded-pill">
 							<span class="font-weight-bold">Update Profile</span>
 
