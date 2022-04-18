@@ -35,7 +35,15 @@ svg:hover {
     fill: #198754;
 }
 
+i:hover {
+    color: #198754;
+}
+
 .nav-link:hover {
+    color: #198754 !important;
+}
+
+li>a.dropdown-item:hover {
     color: #198754 !important;
 }
 
