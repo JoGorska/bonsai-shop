@@ -9,9 +9,13 @@
         <img src="{{ MEDIA_URL }}wide-pexels-quang-nguyen-vinh-2149105.jpg" alt="">
         <div class="container">
           <div class="carousel-caption text-start">
+              {% if subscribed %}
+              <p>I have subscribed</p>
+              {% endif %}
             <h1 class="my-heading-font">Sign up for our Newsletter</h1>
             <p>Learn more about Bonsai from our experts and find out our latest promotions</p>
-            <!-- modal trigger for sign up -->
+          
+            <!-- button modal trigger for sign up -->
             <p>
               <button type="button" 
               data-bs-target="#newsletter-modal" 
@@ -20,6 +24,7 @@
               Sign up today
               </button>
             </p>
+            
           </div>
         </div>
       </div>
@@ -68,23 +73,4 @@
     </button>
   </div>
 
-
-        <!-- modal for adding email to newsletter -->
-
-        <div class="modal" id="newsletter-modal" aria-labelledby="newsletter-modal-label" tabindex="-1">
-          <div class="modal-dialog">
-            <div class="modal-content bg-dark">
-              <div class="modal-header bg-secondary border-bottom border-success">
-                <h5 id="newsletter-modal-label" class="modal-title text-white">Confirm sign up for newsletter</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body bg-dark text-white border-top border-success">
-                <p>You can add your email address to our newsletter mailing list</p>
-              </div>
-              <div class="modal-footer border-top border-dark">
-                <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
-                <a href="" type="button" class="btn btn-success rounded-pill">Confirm</a>
-              </div>
-            </div>
-          </div>
-        </div>
+{% include 'includes/modal_subscribe_form.html' %}

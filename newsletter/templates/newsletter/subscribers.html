@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% if user.is_superuser %}
+<main class="mt-5 pt-5">
+  <div class="container">
+    <div class="accordion accordion-flush" id="list-of-subscribers">
+      {% for subscriber in subscriber_list %}
+      <div class="accordion-item">
+        <!-- accordeaon header -->
+        <h2 class="accordion-header" id="heading-{{ subscriber.id }}">
+          <button class="accordion-button collapsed border-bottom border-muted shadow-lg"
+                  type="button" data-bs-toggle="collapse" data-bs-target="#subscriber-id-{{ subscriber.id }}"
+                  aria-expanded="true" aria-controls="subscriber-id-{{ subscriber.id }}">
+            {{ subscriber.email }}
+          </button>
+        </h2>
+        <!-- accordeon body -->
+        <div id="subscriber-id-{{subscriber.id}}" class="accordion-collapse collapse" aria-labelledby="heading-{{subscriber.id}}" data-bs-parent="#list-of-subscribers">
+          <div class="accordion-body">
+            <div class="container">
+              <div class="row">
+                <!-- ??? body here - need to add the date when signed up, agreed for policy if is a user -->
+                {% if subscriber.subscribed %}
+                <p>Newsletter subscribed on {{ subscriber.created_on }}</p>
+
+                  {% if subscriber.accepted_privacy_policy %}
+                  <p>The Privacy Policy was accepted at the time of registration. </p>
+                  {% endif %}
+                
+                {% else %}
+                <p>This email is no longer subscribed to the newsletter</p>
+                {% endif %}
+                
+                {% if subscriber.registered_user.username %}
+                <p>This email has been added to newsletter subscription by {{ subscriber.registered_user.username }}</p>
+                {% endif %}
+              </div>
+              <!-- buttons at the end of the card -->
+              <div class="row mt-3">
+                <div class="col text-end">
+                  <a href=""
+                     class="btn btn-outline-warning btn-sm">Unsubscribe
+                  </a>
+                </div>
+                <div class="col text-start">
+                  <!-- Modal Trigger -->
+                  <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#id-modal-{{subscriber.id}}" type="button">Delete
+                  </button>
+                </div>
+              </div> <!--row with buttons ends here -->
+              <!-- Modal -->
+              <div class="modal fade" id="id-modal-{{subscriber.id}}" tabindex="-1" aria-labelledby="modal-label-{{subscriber.id}}" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modal-label-{{subscriber.id}}">Confirm Deleting the subscriber
+                      </h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <h4>Are you sure you want to delete subscriber {{ subscriber.email }}
+                      </h4>
+                      <p class="red-text">The user will not be notified
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancell
+                      </button>
+                      <a href="" class="btn btn-danger">
+                        Delete
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div> <!--end of Modal -->
+            </div>
+          </div> <!-- end of accordeon body -->
+        </div> 
+      </div>
+      {% empty %}
+      <h4>You have no subscribers
+      </h4>
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+</main>
+{% endif %}
+{% endblock %}
