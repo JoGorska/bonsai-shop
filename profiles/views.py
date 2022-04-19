@@ -18,6 +18,7 @@ def profile(request):
     Display the user's profile
     """
     current_user = request.user
+    print(f'co my tu mamy {current_user}')
     user_profile = get_object_or_404(UserProfile, user=current_user)
 
     if request.method == 'POST':
@@ -34,11 +35,14 @@ def profile(request):
     form = UserProfileForm(instance=user_profile)
     orders = user_profile.orders.all()
     # get the list of all subscribers filters if current user is on the list
-    subscribers = Subscriber.objects.filter(
-        registered_user=current_user).filter(subscribed=True)
-    subscribed_user = False
-    if subscribers.count() > 0:
+    current_subscriber = None
+    if Subscriber.objects.filter(
+            registered_user=current_user).filter(subscribed=True).exists():
         subscribed_user = True
+        current_subscriber = get_object_or_404(
+            Subscriber, registered_user=current_user)
+    else:
+        subscribed_user = False
 
     template = 'profiles/profile.html'
     context = {
@@ -46,6 +50,7 @@ def profile(request):
         'orders': orders,
         'user_profile': user_profile,
         'subscribed_user': subscribed_user,
+        'current_subscriber': current_subscriber,
     }
     return render(request, template, context)
 
