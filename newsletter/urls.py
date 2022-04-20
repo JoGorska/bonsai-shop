@@ -12,5 +12,6 @@ urlpatterns = [
     path('unsubscribe', views.unsubscribe, name='unsubscribe'),
     path('unsubscribe_registered_user', views.unsubscribe_registered_user,
          name='unsubscribe_registered_user'),
+    path('send_newsletter', views.send_newsletter, name='send_newsletter'),
 
 ]

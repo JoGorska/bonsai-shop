@@ -1,0 +1,11 @@
+Hello !
+
+
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you for your order!
+
+Sincerely,
+
+Three Oaks

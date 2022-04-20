@@ -7,6 +7,9 @@ from django.shortcuts import (
     render, redirect, reverse, get_object_or_404, HttpResponseRedirect)
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
 from django.contrib.auth.models import User
 from questions.models import Question
 from .models import Subscriber
@@ -181,3 +184,26 @@ def unsubscribe_registered_user(request):
 
         return HttpResponseRedirect('/')
 
+
+@login_required
+def send_newsletter(request):
+    """
+    view for authorised users to send newsletters
+    """
+    cust_email = "asiorek919@gmail.com"
+    faq_latest_question = Question.objects.filter(status=0).latest()
+
+    subject = render_to_string(
+            'newsletter/newsletter_emails/newsletter_email_subject.txt',
+            {'faq_latest_question': faq_latest_question})
+    body = render_to_string(
+        'newsletter/newsletter_emails/newsletter_email_body.txt',
+        {'faq_latest_question': faq_latest_question,
+            'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [cust_email]
+    )
