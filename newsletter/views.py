@@ -8,6 +8,7 @@ from django.shortcuts import (
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from questions.models import Question
 from .models import Subscriber
 
 
@@ -179,3 +180,4 @@ def unsubscribe_registered_user(request):
             return HttpResponseRedirect('/')
 
         return HttpResponseRedirect('/')
+
