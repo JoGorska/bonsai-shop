@@ -306,7 +306,10 @@ I might need to address this issue with media query. I might also leave it as it
 
 ### faq questions form
 
-can I prevent superuser from editing newsletter choice? Yes - by setting - if superuser - input type  = hidden
+can I prevent superuser from editing newsletter choice? Yes - by setting - if superuser - input type  = hidden, but the superuser can still go to admin panel and change this. It would have to be protected in the back end from saving by superuser.
+
+preventing normal user from editing draft status to published - currently it is input type hidden. It might be safer to add this in the back end. Before the form is validated.
+
 
 can I make it create subscriber
 
