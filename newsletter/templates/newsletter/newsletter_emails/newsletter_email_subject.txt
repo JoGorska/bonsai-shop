@@ -1,1 +1,1 @@
-Three Oaks Newsletter
+Latest bonsai advice from Three Oaks: {{ faq_latest_question.header }}

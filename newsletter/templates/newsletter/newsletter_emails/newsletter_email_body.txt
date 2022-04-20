@@ -1,6 +1,11 @@
 Hello !
 
+We have been recently asked a very interesting question.
+{{faq_latest_question.header}}
 
+
+This is our solution to that problem.
+{{faq_latest_question.answer}}
 
 If you have any questions, feel free to contact us at {{ contact_email }}.
 
