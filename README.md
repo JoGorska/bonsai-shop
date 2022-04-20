@@ -302,6 +302,20 @@ This only breaks in cards for the treees that area already in the trolley. The l
 I might need to address this issue with media query. I might also leave it as it is visibly different that the trees that are not in the bag yet and might look more inviting to click to go to the trolley and than to checkout. 
 
 
+### checkbox not in line with label for some screen widths
+
+### faq questions form
+
+can I prevent superuser from editing newsletter choice? Yes - by setting - if superuser - input type  = hidden
+
+can I make it create subscriber
+
+I need to check if user is subscribed.
+
+### caruselle
+- in faq it should only display add question
+- on home - it should vary the button if the user is subscribed
+
 ### FAQ Newsletter
 
 Shop owner has the ability to set Newsletter to sign me up for any of the users. This could be resolved by checking if the user is author both in the template as well as in the view, before saving the instance of the form. This way the whole form except of newsletter field could be saved. I would have to state explicitly which fields should be saved. 

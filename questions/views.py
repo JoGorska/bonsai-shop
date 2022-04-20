@@ -17,6 +17,7 @@ class QuestionsList(generic.ListView):
     """
     model = Question
     queryset = Question.objects.filter(status=1).order_by('-created_on')
+
     template_name = 'questions/questions.html'
     paginate_by = 3
 
