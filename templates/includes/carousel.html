@@ -9,9 +9,21 @@
         <img src="{{ MEDIA_URL }}wide-pexels-quang-nguyen-vinh-2149105.jpg" alt="">
         <div class="container">
           <div class="carousel-caption text-start">
-              {% if subscribed %}
-              <p>I have subscribed</p>
-              {% endif %}
+        {% if subscribed == True %}
+          <h1 class="my-heading-font">Thank you for subscribing to our Newsletter</h1>
+          <p>We will be sending you new educational advices on bonsai care once a week.
+            if you wish to unsubscribe, click the button below.
+          </p>
+
+          <!-- button modal trigger for sign up -->
+          <p>
+            <a href="{% url 'unsubscribe_registered_user'%}"
+ 
+            class="btn btn-lg btn-secondary rounded-pill">
+            Unsubscribe
+          </a>
+          </p>
+          {% else %}
             <h1 class="my-heading-font">Sign up for our Newsletter</h1>
             <p>Learn more about Bonsai from our experts and find out our latest promotions</p>
           
@@ -24,7 +36,8 @@
               Sign up today
               </button>
             </p>
-            
+          
+        {% endif %}
           </div>
         </div>
       </div>

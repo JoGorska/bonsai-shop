@@ -152,3 +152,30 @@ def unsubscribe(request):
             return HttpResponseRedirect(next_page)
 
         return HttpResponseRedirect(next_page)
+
+
+@login_required
+def unsubscribe_registered_user(request):
+    """
+    view for authorised users to unsubscribe with one click
+    """
+
+    user = request.user
+    if Subscriber.objects.filter(
+            registered_user=user).filter(subscribed=True).exists():
+        try:
+            current_subscriber = Subscriber.objects.get(registered_user=user)
+            current_subscriber.subscribed = False
+            current_subscriber.save(update_fields=['subscribed'])
+            messages.success(
+                request,
+                f'Successfully unsubscribed email {current_subscriber.email}\
+                    from our newsletter')
+
+        except Subscriber.DoesNotExist:
+            messages.error(
+                request,
+                f'The user {user} is not on our list of subscribers')
+            return HttpResponseRedirect('/')
+
+        return HttpResponseRedirect('/')
