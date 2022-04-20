@@ -8,14 +8,14 @@
     {{ form.detail | as_crispy_field }}
   </div>
 <!-- add if statement for superuser -->
-{% if user.is_superuser %}
+
   <div class="col-12">
     {{ form.answer | as_crispy_field }}
   </div>
   <div class="col-6">
     {{ form.status | as_crispy_field }}
   </div>
-{% endif %}
+
 
 {% if question %}
 <!-- this is to prevent superuser edit the newsletter status if he wasn't the author -->

@@ -29,9 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEVELOPMENT = os.environ.get('DEVELOPMENT', False)
 
-# DEBUG = DEVELOPMENT
-
-DEBUG = True
+DEBUG = DEVELOPMENT
 
 
 if DEVELOPMENT:

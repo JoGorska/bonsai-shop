@@ -269,7 +269,14 @@ Automated tests have not been created due to time constrains of the project.
 
 **Relese main fetures:**
 
-llll
+first set of 3rd party tests was performend by Daisy 
+questions were in a form of accordeon, which required to click into by the user. It does not seem much inviting. I decided to follow the styling from the home page and display the questions in an open format. 
+
+
+- styling issue with checkbox dropping down the line
+- different size of sorting tiles in trees
+- she didn't notice the option to add the questions that was set inside carouselle. I decided to render only one slide of the carouselle for the faq page so it becomes obvious to the user that they can read the questions or add the question themselves
+
 
 
 

@@ -55,8 +55,15 @@ def add_question(request):
                             Response will be published within 2 working days')
             return redirect(reverse('questions'))
         else:
+            form = QuestionForm()
             messages.error(request, 'Failed to add question.\
                                      Please ensure the form is valid')
+            template = 'questions/add_question.html'
+            context = {
+                'form': form,
+            }
+
+            return render(request, template, context)
     else:
         form = QuestionForm()
 
