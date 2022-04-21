@@ -7,6 +7,22 @@
       <p class="lead">{{ question.answer }}</p>
       {% endif %}
       <p><span class="text-muted"> {{ question.author }}</span></p>
+      <!-- buttons at the end of the card -->
+
+      {% if user.is_superuser %}
+      <div class="row mt-3">
+        <div class="col text-end">
+          <a href="{% url 'edit_question' question.id %}"
+            class="btn btn-outline-warning btn-sm">Edit
+          </a>
+        </div>
+        <div class="col text-start">
+          <!-- Modal Trigger -->
+          <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#id-modal-{{question.id}}" type="button">Delete
+          </button>
+        </div>
+      </div>
+
     </div>
     <div class="col-md-5">
       
@@ -23,21 +39,7 @@
       {% endif %}
     </div>
 </div>
-<!-- buttons at the end of the card -->
 
-{% if user.is_superuser %}
-<div class="row mt-3">
-  <div class="col text-end">
-    <a href="{% url 'edit_question' question.id %}"
-       class="btn btn-outline-warning btn-sm">Edit
-    </a>
-  </div>
-  <div class="col text-start">
-    <!-- Modal Trigger -->
-    <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#id-modal-{{question.id}}" type="button">Delete
-    </button>
-  </div>
-</div>
 
 
     <!-- Modal -->
