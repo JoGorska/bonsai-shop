@@ -333,7 +333,23 @@ Shop owner has the ability to set Newsletter to sign me up for any of the users.
 
 ## Bugs still there
 
-# sorting tiles uneven on tablets
+### handling unsubscribing
+
+I created 2 different views to handle unsubscribe, this should have been done in a simpler way. 
+
+Now I realised that I need to make another view for unsubscribing users, so user can unsubscribe with one click from the email. This should be a view not requiring a login, otherwise the proces of unsubscribing becomes a bit iritating. 
+
+Having that said, an url that would unsubscribe users, that wouldn't require sign up is open to attacks, as any person could start unsubscribing random users knowing url pattern. 
+
+Since some of the subscribers might not be actually registered users, it will need to be a view without logging in decorator.
+
+### Addressing email to the registered user
+
+Each subscriber is saved with registered_user column item saved as None or as username of the user if the user was logged in at the time of signing up. 
+
+It would be great to use this relational key and address each email individualy. 
+
+### sorting tiles uneven on tablets
 
 some diferences in height of sorting tiles in comparing to filtering tiles for medium screen witdh (tablets)
 

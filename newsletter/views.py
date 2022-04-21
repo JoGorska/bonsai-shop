@@ -4,7 +4,7 @@ views for newsletter
 # pylint: disable=no-member
 # pylint: disable=invalid-name
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.mail import BadHeaderError, send_mail
@@ -197,33 +197,38 @@ def unsubscribe_registered_user(request):
 @login_required
 def send_newsletter(request):
     """
-    view for authorised users to send newsletters
+    view for superuser to send newsletters
     """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only the store owners can do that.')
+        return redirect(reverse('questions'))
+
     faq_latest_question = Question.objects.filter(status=1).first()
-    subject = render_to_string(
-            'newsletter/newsletter_emails/newsletter_email_subject.txt',
-            {'faq_latest_question': faq_latest_question})
 
-    body = render_to_string(
-        'newsletter/newsletter_emails/newsletter_email_body.txt',
-        {'faq_latest_question': faq_latest_question,
-            'contact_email': settings.DEFAULT_FROM_EMAIL})
+    newsletter_subscribers = Subscriber.objects.filter(subscribed=True)
 
-    subscribers_emails = []
-    subscriber_objects = Subscriber.objects.filter(subscribed=True)
-    for subscriber in subscriber_objects:
-        subscribers_emails.append(subscriber.email)
+    for subscriber in newsletter_subscribers:
+        subject = render_to_string(
+                'newsletter/newsletter_emails/newsletter_email_subject.txt',
+                {'faq_latest_question': faq_latest_question,
+                 'subscriber': subscriber})
 
-    if subject and body and subscribers_emails:
-        try:
-            send_mail(
-                subject,
-                body,
-                settings.DEFAULT_FROM_EMAIL,
-                subscribers_emails
-            )
-        except BadHeaderError:
-            return HttpResponse('Invalid header found.')
-        return HttpResponseRedirect('/questions/')
-    else:
-        return HttpResponse('Make sure all fields are entered and valid.')
+        body = render_to_string(
+            'newsletter/newsletter_emails/newsletter_email_body.txt',
+            {'faq_latest_question': faq_latest_question,
+             'subscriber': subscriber,
+             'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+        if subject and body and subscriber.email:
+            try:
+                send_mail(
+                    subject,
+                    body,
+                    settings.DEFAULT_FROM_EMAIL,
+                    [subscriber.email]
+                )
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return HttpResponseRedirect('/questions/')
+        else:
+            return HttpResponse('Make sure all fields are entered and valid.')
