@@ -295,7 +295,7 @@ for loop in features to display tiles and build links dynamically
 
 ### Button In trolley on all trees view
 
-Unfortunately the content of the button In trolley and View breaks to two lines for devices above 800px and below 1000 px. 
+The content of the button In trolley and View breaks to two lines for devices above 800px and below 1000 px. 
 
 This only breaks in cards for the treees that area already in the trolley. The longer text "in trolley" is more descriptive that just the word Trolley or "in bag" as I use trolley in this application. 
 
@@ -306,10 +306,18 @@ I might need to address this issue with media query. I might also leave it as it
 
 ### faq questions form
 
-can I prevent superuser from editing newsletter choice? Yes - by setting - if superuser - input type  = hidden, but the superuser can still go to admin panel and change this. It would have to be protected in the back end from saving by superuser.
+can I prevent superuser from editing newsletter choice? Yes - by setting - if superuser - input type  = hidden, but the superuser can still go to admin panel and change this. I can also edit it in the dev tools - as input type hidden is visible there. 
+
+It would have to be protected in the back end from saving by superuser. There must be a way of setting different levels of access. It might be safer for the store owner not to be superuser will access to django admin panel, only to access 99% of crud functionality of all models - with this small exception. There is not enough time for me to explore this possiblity. 
 
 preventing normal user from editing draft status to published - currently it is input type hidden. It might be safer to add this in the back end. Before the form is validated.
 
+I've tested if I can edit published status from chrome dev tools. I logged in as a normal user and inspected the hidden input for status. I updated it to 1 (published) and it has submitted form and published the question. 
+
+The status input should not be displayed as input hidden, the same with user, as it can be very simply edited. This should be added to the form instance in the view before the form is validated. 
+
+
+### FAQ questions form creating Subscriber
 
 can I make it create subscriber
 
@@ -322,6 +330,21 @@ I need to check if user is subscribed.
 ### FAQ Newsletter
 
 Shop owner has the ability to set Newsletter to sign me up for any of the users. This could be resolved by checking if the user is author both in the template as well as in the view, before saving the instance of the form. This way the whole form except of newsletter field could be saved. I would have to state explicitly which fields should be saved. 
+
+## Bugs still there
+
+### FAQ form - normal user can change status to published
+
+
+### superuser can change newsletter status
+
+This poses a field for abuse, as superuser can easily add users to newsletter without their consent. 
+
+Superuser can change the newsletter status - both on Subscriber model and on Newsletter model. This can be done by accessing django admin model or editin the input type hidden in dev tools before the form submittion. 
+
+This can be resolved by setting different access level for store owner, instead of giving him superuser.  
+
+
 
 ## Deployment and making a clone
 
