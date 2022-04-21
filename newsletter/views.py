@@ -192,6 +192,31 @@ def unsubscribe_registered_user(request):
         return HttpResponseRedirect('/')
 
 
+def unsubscribe_from_email(request, subscriber_id):
+    """
+    view for emails to unsubscribe with one click
+    """
+
+    if Subscriber.objects.filter(
+            id=subscriber_id).filter(subscribed=True).exists():
+        try:
+            current_subscriber = Subscriber.objects.get(id=subscriber_id)
+            current_subscriber.subscribed = False
+            current_subscriber.save(update_fields=['subscribed'])
+            messages.success(
+                request,
+                f'Successfully unsubscribed email {current_subscriber.email}\
+                    from our newsletter')
+
+        except Subscriber.DoesNotExist:
+            messages.error(
+                request,
+                'We can not find you on the list of our subscribers')
+            return HttpResponseRedirect('/')
+
+        return HttpResponseRedirect('/')
+
+
 # email view based on django documentation found here:
 # https://docs.djangoproject.com/en/3.2/topics/email/#preventing-header-injection
 @login_required
