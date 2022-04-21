@@ -6,7 +6,13 @@
 {% block content %}
 
 <main class="">
+  {% if user.is_authenticated %}
+  <!-- authenticated users are getting static header inviting to ask questions -->
+  {% include 'questions/includes/carousel_faq.html' %}
+  {% else %}
+    <!-- unauthenticated user gets carousel -->
   {% include '../includes/carousel.html' %}
+  {% endif %}
   <div class="container marketing">
       <div class="accordion accordion-flush" id="list-of-questions">
         {% for question in question_list %}

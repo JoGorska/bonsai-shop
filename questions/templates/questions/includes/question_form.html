@@ -7,30 +7,28 @@
   <div class="col-12">
     {{ form.detail | as_crispy_field }}
   </div>
-<!-- add if statement for superuser -->
-{% if user.is_superuser %}
+<!-- superuser can add answer and change status -->
+{% if request.user.is_superuser %}
   <div class="col-12">
     {{ form.answer | as_crispy_field }}
   </div>
   <div class="col-6">
     {{ form.status | as_crispy_field }}
   </div>
-{% endif %}
 
-{% if question %}
-<!-- this is to prevent superuser edit the newsletter status if he wasn't the author -->
+    <!-- this is to make changing newsletter status a bit more difficult for the superuser -->
+    <input type="hidden" name="newsletter" value="{{ question.newsletter }}">
 
-    {% if question.author == user %}
-    <div class="col-6">
-      {{ form.newsletter | as_crispy_field }}
-    </div>
-    {% endif %}
 
 {% else %}
-    <div class="col-6">
-      {{ form.newsletter | as_crispy_field }}
-    </div>
+  <!-- regular user can not see the input for status, but can edit newsletter -->
+  <input type="hidden" name="status" value="0">
+  <div class="col-6">
+    {{ form.newsletter | as_crispy_field }}
+  </div>
 {% endif %}
+    <!-- hidden input for all users adding status Draft -->
+
   <!-- image -->
   <h4 class="mb-3 my-heading-font">Image Details
   </h4>

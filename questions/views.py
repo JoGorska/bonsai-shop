@@ -17,6 +17,7 @@ class QuestionsList(generic.ListView):
     """
     model = Question
     queryset = Question.objects.filter(status=1).order_by('-created_on')
+
     template_name = 'questions/questions.html'
     paginate_by = 3
 
@@ -55,8 +56,15 @@ def add_question(request):
                             Response will be published within 2 working days')
             return redirect(reverse('questions'))
         else:
+            form = QuestionForm()
             messages.error(request, 'Failed to add question.\
                                      Please ensure the form is valid')
+            template = 'questions/add_question.html'
+            context = {
+                'form': form,
+            }
+
+            return render(request, template, context)
     else:
         form = QuestionForm()
 

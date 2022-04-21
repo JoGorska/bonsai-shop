@@ -1,0 +1,40 @@
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-inner" >
+
+      <div class="carousel-item active">
+        <img src="{{ MEDIA_URL }}wide-pexels-tieu-bao-truong-8913408.jpg" alt="">
+        <div class="container">
+          
+          {% if user.is_superuser %}
+          <div class="carousel-caption text-end">
+            <h1 class="my-heading-font">FAQ Admin</h1>
+            <p>Once you answered latest question and set status to published you can send it in a form of newsletter. 
+            </p>
+            <p><a class="btn btn-lg btn-success rounded-pill" href="{% url 'send_newsletter' %}">Send Newsletter</a></p>
+          </div>
+          {% elif user.is_authenticated %}
+          <div class="carousel-caption text-end">
+            <h1 class="my-heading-font">Ask us Questions</h1>
+            <p>If you want to learn more about growing and maintaingin bonsai trees go to our 
+              <a class="text-decoration-none text-success fw-bold" href="{% url 'questions' %}">FAQ page </a>
+              or ask us question</p>
+            <p><a class="btn btn-lg btn-success rounded-pill" href="{% url 'add_question' %}">Ask Question</a></p>
+          </div>
+          {% else %}
+          <div class="carousel-caption text-end">
+            <h1 class="my-heading-font">Learn more about bonsai</h1>
+            <p>If you want to learn more about growing and maintaingin bonsai trees go to our 
+              <a class="text-decoration-none text-success fw-bold" href="{% url 'questions' %}">FAQ page </a>
+              or ask us question</p>
+            <p><a class="btn btn-lg btn-success rounded-pill" href="{% url 'questions' %}">FAQ</a></p>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+    <
+  </div>
+
+

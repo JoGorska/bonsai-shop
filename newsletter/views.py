@@ -3,11 +3,16 @@ views for newsletter
 """
 # pylint: disable=no-member
 # pylint: disable=invalid-name
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import (
     render, redirect, reverse, get_object_or_404, HttpResponseRedirect)
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.mail import BadHeaderError, send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
 from django.contrib.auth.models import User
+from questions.models import Question
 from .models import Subscriber
 
 
@@ -152,3 +157,67 @@ def unsubscribe(request):
             return HttpResponseRedirect(next_page)
 
         return HttpResponseRedirect(next_page)
+
+
+@login_required
+def unsubscribe_registered_user(request):
+    """
+    view for authorised users to unsubscribe with one click
+    """
+
+    user = request.user
+    if Subscriber.objects.filter(
+            registered_user=user).filter(subscribed=True).exists():
+        try:
+            current_subscriber = Subscriber.objects.get(registered_user=user)
+            current_subscriber.subscribed = False
+            current_subscriber.save(update_fields=['subscribed'])
+            messages.success(
+                request,
+                f'Successfully unsubscribed email {current_subscriber.email}\
+                    from our newsletter')
+
+        except Subscriber.DoesNotExist:
+            messages.error(
+                request,
+                f'The user {user} is not on our list of subscribers')
+            return HttpResponseRedirect('/')
+
+        return HttpResponseRedirect('/')
+
+
+# email view based on django documentation found here:
+# https://docs.djangoproject.com/en/3.2/topics/email/
+@login_required
+def send_newsletter(request):
+    """
+    view for authorised users to send newsletters
+    """
+    faq_latest_question = Question.objects.filter(status=1).first()
+    subject = render_to_string(
+            'newsletter/newsletter_emails/newsletter_email_subject.txt',
+            {'faq_latest_question': faq_latest_question})
+
+    body = render_to_string(
+        'newsletter/newsletter_emails/newsletter_email_body.txt',
+        {'faq_latest_question': faq_latest_question,
+            'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+    subscribers_emails = []
+    subscriber_objects = Subscriber.objects.filter(subscribed=True)
+    for subscriber in subscriber_objects:
+        subscribers_emails.append(subscriber.email)
+
+    if subject and body and subscribers_emails:
+        try:
+            send_mail(
+                subject,
+                body,
+                settings.DEFAULT_FROM_EMAIL,
+                subscribers_emails
+            )
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
+        return HttpResponseRedirect('/questions/')
+    else:
+        return HttpResponse('Make sure all fields are entered and valid.') 

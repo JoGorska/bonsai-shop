@@ -269,7 +269,14 @@ Automated tests have not been created due to time constrains of the project.
 
 **Relese main fetures:**
 
-llll
+first set of 3rd party tests was performend by Daisy 
+questions were in a form of accordeon, which required to click into by the user. It does not seem much inviting. I decided to follow the styling from the home page and display the questions in an open format. 
+
+
+- styling issue with checkbox dropping down the line
+- different size of sorting tiles in trees
+- she didn't notice the option to add the questions that was set inside carouselle. I decided to render only one slide of the carouselle for the faq page so it becomes obvious to the user that they can read the questions or add the question themselves
+
 
 
 
@@ -294,6 +301,23 @@ This only breaks in cards for the treees that area already in the trolley. The l
 
 I might need to address this issue with media query. I might also leave it as it is visibly different that the trees that are not in the bag yet and might look more inviting to click to go to the trolley and than to checkout. 
 
+
+### checkbox not in line with label for some screen widths
+
+### faq questions form
+
+can I prevent superuser from editing newsletter choice? Yes - by setting - if superuser - input type  = hidden, but the superuser can still go to admin panel and change this. It would have to be protected in the back end from saving by superuser.
+
+preventing normal user from editing draft status to published - currently it is input type hidden. It might be safer to add this in the back end. Before the form is validated.
+
+
+can I make it create subscriber
+
+I need to check if user is subscribed.
+
+### caruselle
+- in faq it should only display add question
+- on home - it should vary the button if the user is subscribed
 
 ### FAQ Newsletter
 
