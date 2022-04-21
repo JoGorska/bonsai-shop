@@ -4,8 +4,7 @@ views for newsletter
 # pylint: disable=no-member
 # pylint: disable=invalid-name
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import (
-    render, redirect, reverse, get_object_or_404, HttpResponseRedirect)
+from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.mail import BadHeaderError, send_mail
@@ -59,7 +58,7 @@ def add_subscriber(request):
                 request,
                 'Please mark the option that you accept Privacy Policy')
         return HttpResponseRedirect(next_page)
-    
+
     if Subscriber.objects.filter(email=email).filter(subscribed=True).exists():
         # email already in database and subscribed
         messages.error(
@@ -67,7 +66,8 @@ def add_subscriber(request):
                 f'The email {email} is already in our database')
         return HttpResponseRedirect(next_page)
 
-    elif Subscriber.objects.filter(email=email).filter(subscribed=False).exists():
+    elif Subscriber.objects.filter(
+                email=email).filter(subscribed=False).exists():
         # email already in database but not subscribed
         current_subscriber = get_object_or_404(Subscriber, email=email)
         current_subscriber.subscribed = True
@@ -83,9 +83,12 @@ def add_subscriber(request):
         user_id = request.POST.get("registered_user")
         registered_user = get_object_or_404(User, id=user_id)
 
-        if Subscriber.objects.filter(registered_user=registered_user).filter(subscribed=False).exists():
+        if Subscriber.objects.filter(
+                registered_user=registered_user).filter(
+                    subscribed=False).exists():
             # user is already in database but not subscribed
-            current_subscriber = get_object_or_404(Subscriber, registered_user=registered_user)
+            current_subscriber = get_object_or_404(
+                Subscriber, registered_user=registered_user)
             current_subscriber.subscribed = True
             current_subscriber.save(update_fields=['subscribed'])
             messages.success(
@@ -94,8 +97,11 @@ def add_subscriber(request):
                     to our newsletter')
             return HttpResponseRedirect(next_page)
 
-        elif Subscriber.objects.filter(registered_user=registered_user).filter(subscribed=True).exists():
-            current_subscriber = get_object_or_404(Subscriber, registered_user=registered_user)
+        elif Subscriber.objects.filter(
+                registered_user=registered_user).filter(
+                    subscribed=True).exists():
+            current_subscriber = get_object_or_404(
+                Subscriber, registered_user=registered_user)
             # user already in database and subscribed, but different email
             messages.error(
                 request,
@@ -187,7 +193,7 @@ def unsubscribe_registered_user(request):
 
 
 # email view based on django documentation found here:
-# https://docs.djangoproject.com/en/3.2/topics/email/
+# https://docs.djangoproject.com/en/3.2/topics/email/#preventing-header-injection
 @login_required
 def send_newsletter(request):
     """
@@ -220,4 +226,4 @@ def send_newsletter(request):
             return HttpResponse('Invalid header found.')
         return HttpResponseRedirect('/questions/')
     else:
-        return HttpResponse('Make sure all fields are entered and valid.') 
+        return HttpResponse('Make sure all fields are entered and valid.')

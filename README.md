@@ -333,6 +333,12 @@ Shop owner has the ability to set Newsletter to sign me up for any of the users.
 
 ## Bugs still there
 
+# sorting tiles uneven on tablets
+
+some diferences in height of sorting tiles in comparing to filtering tiles for medium screen witdh (tablets)
+
+also tiles on mobiles become different length if the tile description contains two words. 
+
 ### FAQ form - normal user can change status to published
 
 
