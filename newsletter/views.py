@@ -233,6 +233,7 @@ def send_newsletter(request):
     newsletter_subscribers = Subscriber.objects.filter(subscribed=True)
 
     for subscriber in newsletter_subscribers:
+        email = subscriber.email
         subject = render_to_string(
                 'newsletter/newsletter_emails/newsletter_email_subject.txt',
                 {'faq_latest_question': faq_latest_question,
@@ -244,16 +245,19 @@ def send_newsletter(request):
              'subscriber': subscriber,
              'contact_email': settings.DEFAULT_FROM_EMAIL})
 
-        if subject and body and subscriber.email:
+        if subject and body and email:
             try:
                 send_mail(
                     subject,
                     body,
                     settings.DEFAULT_FROM_EMAIL,
-                    [subscriber.email]
+                    [email],
                 )
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return HttpResponseRedirect('/questions/')
         else:
             return HttpResponse('Make sure all fields are entered and valid.')
+
+    messages.success(request,
+        f'Newsletter sent to {newsletter_subscribers.count()} subscribers')
+    return HttpResponseRedirect('/questions/')
