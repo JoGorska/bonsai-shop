@@ -15,16 +15,10 @@ This is our solution to that problem.
 
 If you have any questions, feel free to contact us at {{ contact_email }}.
 
-<a class="" href="{% url 'account_login' %}">
-<a class="" href="/trees/">
-{% url 'account_login' %}
-
-
-
 
 Sincerely,
 
 Three Oaks
 
 If you wish to unsubscribe from further communication please follow the link below
-https://three-oaks.herokuapp.com/trees/
+https://three-oaks.herokuapp.com/newsletter/unsubscribe/{{ subscriber.id }}/
