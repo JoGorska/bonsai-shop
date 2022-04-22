@@ -39,7 +39,6 @@ def add_subscriber(request):
     email_from_form = request.POST.get("email")
     email_to_lowercase = email_from_form.lower()
     email = email_to_lowercase.strip()
-    print(f'EMAIL SHOULD BE LOWER CASE WITH NO SPACE{email}')
 
     # validates if both options are checked
     if "subscribed" in request.POST:
@@ -90,7 +89,8 @@ def add_subscriber(request):
             current_subscriber = get_object_or_404(
                 Subscriber, registered_user=registered_user)
             current_subscriber.subscribed = True
-            current_subscriber.save(update_fields=['subscribed'])
+            current_subscriber.email = email
+            current_subscriber.save(update_fields=['subscribed', 'email'])
             messages.success(
                 request,
                 f'Successfully subscribed email {current_subscriber.email}\
