@@ -259,5 +259,6 @@ def send_newsletter(request):
             return HttpResponse('Make sure all fields are entered and valid.')
 
     messages.success(request,
-        f'Newsletter sent to {newsletter_subscribers.count()} subscribers')
+                     f'Newsletter sent to {newsletter_subscribers.count()}\
+                       subscribers')
     return HttpResponseRedirect('/questions/')
