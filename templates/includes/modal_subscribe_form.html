@@ -13,7 +13,12 @@
   
                   <div class="input-group mb-3 border-dark">
                     <span class="input-group-text bg-success border-dark text-white" id="email">@</span>
-                    <input type="email" class="form-control bg-secondary border-dark text-white" placeholder="email" aria-label="email" aria-describedby="email" name="email" required>
+                    <input type="email" class="form-control bg-secondary border-dark text-white"
+                    placeholder="email" aria-label="email" aria-describedby="email" name="email" required
+                    {% if user.is_authenticated %}
+                    value="{{ user.email }}"
+                    {% endif %}
+                    >
                   </div>
   
                   <div class="form-check ms-3">

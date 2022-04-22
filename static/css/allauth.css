@@ -9,7 +9,6 @@ form label:not([for='id_remember']) {
 /* ads marigin (bootstrap mt-4) to all input elements from allauth
 except of search-form input element in nav bar */
 
-form input:not(.search-form) {
+form input:not(.search-form, [type='checkbox']) {
     margin-top: 1.5rem; /* mt-4 */
 }
-

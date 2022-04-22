@@ -131,9 +131,17 @@ Further questionable might be that the superuser can edit the header and the det
 
 ### feature 1
 
+### Dashboard for superuser
+
+### search option in questions
+It would be a great help if the user has been welcomed with a search form on FAQ page. This would let user search the library of our questions to see if someone has asked about the issue he is having. 
+
+This would also limit repeating the same questions by other users. 
 
 
-d
+### switch button to switch between published and unpublished
+
+### questions displayed in the same style as on home page, not as folded accordeon.
 
 ### Edit tree feature
 The super user has an additional button showing up on a tree detail page to enale him to edit the dree. The user gets transfered to edit view and gets a pre filled form containing the current tree details. Both templates use the same form. The form is inserted as include into each template.
