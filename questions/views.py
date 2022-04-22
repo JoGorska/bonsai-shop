@@ -15,11 +15,11 @@ class QuestionsList(generic.ListView):
     """
     view to display all questions paginated
     """
+
     model = Question
     queryset = Question.objects.filter(status=1).order_by('-created_on')
-
     template_name = 'questions/questions.html'
-    paginate_by = 3
+    paginate_by = 10
 
 
 @login_required
@@ -51,7 +51,14 @@ def add_question(request):
         form = QuestionForm(request.POST, request.FILES)
 
         if form.is_valid():
-            form.save()
+
+            form.save(commit=False)
+            new_question = form.save()
+            # change status to draft to make sure that the form
+            # has not been tampered with before form submitted in front end
+            new_question.status = 0
+            new_question.save(update_fields=['status'])
+
             messages.success(request, 'Successfully added your question!\
                             Response will be published within 2 working days')
             return redirect(reverse('questions'))
