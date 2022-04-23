@@ -146,6 +146,12 @@ This would also limit repeating the same questions by other users.
 ### Edit tree feature
 The super user has an additional button showing up on a tree detail page to enale him to edit the dree. The user gets transfered to edit view and gets a pre filled form containing the current tree details. Both templates use the same form. The form is inserted as include into each template.
 
+### Newsletter
+Further developing the Subscriber model it needs adding a record who modified it last if it was registered user. This would allow to track if superuser hasn't changed subscribed status without prior authorisation from the Subscriber. 
+
+Also as it has been revealed in bug section the Subscriber model needs long Slug with about 16 random ascii characters to build urls with it. One url for unsubscribe needs to remain unsecured from the back end as I am allowing unregistered users to subscribe.
+
+The reason behind allowing this is some people are unlikely to register, but might be interested in the content of the page. This might entice them to register in the future. 
 
 ### Icons
 
@@ -253,7 +259,6 @@ Python3 -m flake8
 | App name  |  file name | result |
 | ------ | ------ |------ |
 | name-app|  urls.py |  [all ok](link.here.txt???) |
-
 | users |  admin.py |  [all ok](??) |
 | users |  forms.py |  [all ok](???) |
 | users |  models.py |  [all ok](???) |
@@ -351,6 +356,28 @@ Having that said, an url that would unsubscribe users, that wouldn't require sig
 
 Since some of the subscribers might not be actually registered users, it will need to be a view without logging in decorator.
 
+It would make malicious unsubscribe actions very difficult if URL was desingned with some complex slug. Each subscriber should have their slug with som random ascii characters. This way it would be highly unlikely that a third party could guess url for unsubscribing. 
+
+### Unsecure url for unsubscribing from newsletter
+
+One of the urls for unsubscribing from newsletter in newsletter app had to be left without being secured in the back end. This is because I allow to add email to Subscribers for visitors that are not registered users.
+
+I had to have a url for unsubscribing those un registered users. I add this url dynamically at the end of newsletter email adding un registered users a chance to unsubscribe if they choose to.
+
+I have realised that this url is far too simple. This allows malicious unsubscribing just by changing a number at the end of this url.
+
+The solution that would give a minimal security would be to add a Slug to Subscriber model that would be generated automaticaly for each subscriber. I would use similar random string generator as in the Tree model to generate random characters to add to slug. 
+```
+def random_string_generator(self, size=16, chars=string.ascii_lowercase + string.digits):
+        return "".join(random.choice(chars) for _ in range(size)) 
+```
+
+Slug would be automaticaly generated each time a new Subscrier is added. The URL for unsubscribing should be build with using slug, not subscriber ID. This would make unsecure url a bit harder to access. 
+
+Unfortunately I realised this unsecurity too late in the project and I didn't want to risk making big changes in models. Deleting this view and url because it is unsecure, would deprive unregistered users from ability to unsubscribe. 
+
+All these problems would not be the case if I have had limited the Subscribers to registered users only. The reason behind allowing this is some people are unlikely to register, but might be interested in the content of the page. This might entice them to register in the future. 
+
 ### Addressing email to the registered user
 
 Each subscriber is saved with registered_user column item saved as None or as username of the user if the user was logged in at the time of signing up. 
@@ -407,8 +434,7 @@ This can be resolved by setting different access level for store owner, instead 
 
     * Database URL will be added automaticaly
     * Secret_key - is the djnago secret key can be generated [here](https://miniwebtool.com/django-secret-key-generator/). 
-    * Cloudinary URL can be obtained from [cloudinary](https://cloudinary.com/) follow the steps on the website to register. 
-    * Google API key can be obtained [here](https://cloud.google.com/gcp?authuser=1) you will have to register with google and create new app to get the API key. Follow the instructions on the website.
+
 
 **Go back to your code**
 
