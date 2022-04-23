@@ -4,7 +4,12 @@
     <div class="container">
       {% if user.is_superuser %}
       <div class="carousel-caption text-end">
-        <h1 class="my-heading-font">FAQ Admin
+        <h1 class="my-heading-font">
+          {% if request.resolver_match.url_name == 'questions_manager' %} 
+          FAQ Unpublished
+          {% elif request.resolver_match.url_name == 'questions' %}
+          FAQ Published
+          {% endif %}
         </h1>
         <div class="col mb-3">
           <div class="row bg-secondary rounded-pill">

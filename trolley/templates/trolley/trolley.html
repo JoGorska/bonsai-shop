@@ -104,19 +104,23 @@
                       name="quantity" value="{{ item.quantity }}" min="1" max="99"
                       data-item_id="{{ item.item_id }}"
                       id="id_qty_{{ item.item_id }}">
-                      <button type="submit" class="shadow-lg btn btn-success rounded-pill">
+                      <button type="submit" class="shadow-lg btn btn-success rounded-pill"
+                      title="Update trolley to new quantity">
                         <svg class="bi mx-auto mb-1" width="18" height="18" fill="currentColor"><use xlink:href="#trolley"/></svg>
                     
-                        Update trolley</button>
+                        Update</button>
                         <a href="{% url 'remove_from_trolley' item.tree.id %}" class="shadow-lg btn btn-danger text-white rounded-pill">
                           <svg class="bi mx-auto mb-1" width="18" height="18" fill="currentColor"><use xlink:href="#bin"/></svg>
-                          <p class="d-inline small">Remove</p>
+                          <p class="d-inline small"
+                          title="Remove item from the trolley"
+                          >Remove</p>
                           </a>
                     </div>
                   </div>
                   <div class="col-12 d-md-none text-center mt-3">
                     <!-- Back to shop in a seperate column for mobile phones only -->
-                    <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
+                    <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill"
+                    aria-label="Go back to the shop page">
                       <svg class="bi mx-auto mb-1" width="18" height="18" fill="currentColor"><use xlink:href="#shop"/></svg>
                       <p class="d-inline small">
                       Back to shop
