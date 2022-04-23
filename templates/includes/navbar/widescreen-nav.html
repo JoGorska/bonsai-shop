@@ -11,19 +11,40 @@
 
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
-              <a href="{% url 'home' %}" class="nav-link text-white text-uppercase">
+              <a href="{% url 'home' %}" class="nav-link text-uppercase
+              {% if request.resolver_match.url_name == 'home' %}
+              text-success active {% else %} text-white {% endif %} 
+               ">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#home"/></svg>
                 Home
               </a>
             </li>
             <li>
-              <a href="{% url 'all_trees' %}" class="nav-link text-white text-uppercase">
+              <a href="{% url 'all_trees' %}" class="nav-link text-uppercase
+              {% if request.resolver_match.url_name == 'all_trees' %}
+              text-success active 
+              {% elif request.resolver_match.url_name == 'tree_detail' %}
+              text-success active 
+              {% elif request.resolver_match.url_name == 'add_tree' %}
+              text-success active 
+              {% elif request.resolver_match.url_name == 'edit_tree' %}
+              text-success active 
+              {% else %} text-white {% endif %}">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#shop"/></svg>
                 Shop
               </a>
             </li>
             <li>
-              <a href="{% url 'questions' %}" class="nav-link text-white text-uppercase">
+              <a href="{% url 'questions' %}" class="nav-link text-uppercase 
+              {% if request.resolver_match.url_name == 'questions' %}
+              text-success active 
+              {% elif request.resolver_match.url_name == 'questions_manager' %}
+              text-success active 
+              {% elif request.resolver_match.url_name == 'add_question' %}
+              text-success active 
+              {% elif request.resolver_match.url_name == 'edit_question' %}
+              text-success active 
+              {% else %} text-white {% endif %}">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#faq"/></svg>
                 FAQ
               </a>
@@ -45,7 +66,21 @@
             </li>
             <li>
               <!-- user-->
-              <a href="#" class="nav-link text-white text-uppercase dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+              <a href="#" class="nav-link text-uppercase dropdown-toggle
+              {% if request.resolver_match.url_name == 'profile' %}
+              text-success active 
+              {% elif request.resolver_match.url_name == 'account_login' %}
+              text-success active 
+              {% elif request.resolver_match.url_name == 'account_logout' %}
+              text-success active 
+              {% elif request.resolver_match.url_name == 'account_reset_password' %}
+              text-success active 
+              {% elif request.resolver_match.url_name == 'account_email' %}
+              text-success active 
+              {% else %} text-white {% endif %}
+              
+              "
+               id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor">
                   <use xlink:href="#people-circle"/>
                 </svg>
@@ -99,7 +134,14 @@
                 {% endif %}
                 <li>
                   <!-- trolley -->
-                  <a href="{% url 'view_trolley' %}" class="nav-link text-white">
+                  <a href="{% url 'view_trolley' %}" class="nav-link
+                  {% if request.resolver_match.url_name == 'trolley' %}
+                  text-success active 
+                  {% elif request.resolver_match.url_name == 'checkout' %}
+                  text-success active 
+                  {% elif request.resolver_match.url_name == 'checkout_success' %}
+                  text-success active 
+                  {% else %} text-white {% endif %}">
                     <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#trolley"/></svg>
                     {% if grand_total %}
                     £ {{ grand_total|floatformat:2 }}
