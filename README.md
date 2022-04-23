@@ -434,8 +434,7 @@ This can be resolved by setting different access level for store owner, instead 
 
     * Database URL will be added automaticaly
     * Secret_key - is the djnago secret key can be generated [here](https://miniwebtool.com/django-secret-key-generator/). 
-    * Cloudinary URL can be obtained from [cloudinary](https://cloudinary.com/) follow the steps on the website to register. 
-    * Google API key can be obtained [here](https://cloud.google.com/gcp?authuser=1) you will have to register with google and create new app to get the API key. Follow the instructions on the website.
+
 
 **Go back to your code**
 

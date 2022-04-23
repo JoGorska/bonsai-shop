@@ -16,16 +16,9 @@
     {{ form.status | as_crispy_field }}
   </div>
 
-    <!-- this is to make changing newsletter status a bit more difficult for the superuser -->
-    <input type="hidden" name="newsletter" value="{{ question.newsletter }}">
-
-
 {% else %}
-  <!-- regular user can not see the input for status, but can edit newsletter -->
+  <!-- regular user can not see the input for status -->
   <input type="hidden" name="status" value="0">
-  <div class="col-6">
-    {{ form.newsletter | as_crispy_field }}
-  </div>
 {% endif %}
     <!-- hidden input for all users adding status Draft -->
 

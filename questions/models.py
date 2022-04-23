@@ -27,7 +27,6 @@ class Question(models.Model):
     created_on = models.DateTimeField(auto_now=True, editable=False)
     updated_on = models.DateTimeField(auto_now=True, editable=False)
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)
-    newsletter = models.IntegerField(choices=NEWSLETTER_CHOICES, default=0)
 
     class Meta:
         """
