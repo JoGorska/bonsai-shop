@@ -346,6 +346,7 @@ Shop owner has the ability to set Newsletter to sign me up for any of the users.
 
 ## Bugs still there
 
+
 ### handling unsubscribing
 
 I created 2 different views to handle unsubscribe, this should have been done in a simpler way. 
@@ -400,6 +401,8 @@ This poses a field for abuse, as superuser can easily add users to newsletter wi
 Superuser can change the newsletter status - both on Subscriber model and on Newsletter model. This can be done by accessing django admin model or editin the input type hidden in dev tools before the form submittion. 
 
 This can be resolved by setting different access level for store owner, instead of giving him superuser.  
+
+### console logs error on first click on accordeon
 
 
 
