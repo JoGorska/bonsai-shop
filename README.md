@@ -402,8 +402,13 @@ Superuser can change the newsletter status - both on Subscriber model and on New
 
 This can be resolved by setting different access level for store owner, instead of giving him superuser.  
 
-### console logs error on first click on accordeon
+### Question seems to change author after editing
 
+The questions have been posted by regular users. It seems that after the super user has edited the question and added the answer, the author is updated to superuser. Need to change model. 
+  1. author - oryginal author of the question
+  2. editor - the user that has edited the question last. 
+
+As a temporary fix I changed the hidden input that was adding the author to the form to "question.author.id" so the item is being saved with the oryginal author in place"
 
 
 ## Deployment and making a clone

@@ -2,11 +2,17 @@
     <div class="col-md-7">
       <h2 class="featurette-heading my-heading-font">{{ question.header }} </h2>
       <p class="lead">{{ question.detail }}</p>
+      <div class="text-end">
+        <p><span class="text-muted"> {{ question.author }}</span></p>
+      </div>
       {% if question.answer %}
       <h3 class="my-heading-font">Answer:</h3>
       <p class="lead">{{ question.answer }}</p>
+      <div class="text-end">
+        <p><span class="text-muted"> Richard</span></p>
+      </div>
       {% endif %}
-      <p><span class="text-muted"> {{ question.author }}</span></p>
+
       <!-- buttons at the end of the card -->
 
       {% if user.is_superuser %}
@@ -55,7 +61,7 @@
           <div class="modal-body">
             <h4>Are you sure you want to delete question about {{ question.header }}
             </h4>
-            <p class="red-text">The user will not be notified
+            <p class="red-text">The author will not be notified
             </p>
           </div>
           <div class="modal-footer">

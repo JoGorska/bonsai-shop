@@ -207,14 +207,13 @@ def unsubscribe_from_email(request, subscriber_id):
                 request,
                 f'Successfully unsubscribed email {current_subscriber.email}\
                     from our newsletter')
+            return HttpResponseRedirect('/')
 
         except Subscriber.DoesNotExist:
             messages.error(
                 request,
                 'We can not find you on the list of our subscribers')
             return HttpResponseRedirect('/')
-
-        return HttpResponseRedirect('/')
 
 
 # email view based on django documentation found here:
