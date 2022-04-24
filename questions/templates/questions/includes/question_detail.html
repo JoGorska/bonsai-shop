@@ -1,78 +1,85 @@
 <div class="row featurette">
-    <div class="col-md-7">
-      <h2 class="featurette-heading my-heading-font">{{ question.header }} </h2>
-      <p class="lead">{{ question.detail }}</p>
-      <div class="text-end">
-        <p><span class="text-muted"> {{ question.author }}</span></p>
-      </div>
-      {% if question.answer %}
-      <h3 class="my-heading-font">Answer:</h3>
-      <p class="lead">{{ question.answer }}</p>
-      <div class="text-end">
-        <p><span class="text-muted"> Richard</span></p>
-      </div>
-      {% endif %}
-
-      <!-- buttons at the end of the card -->
-
-      {% if user.is_superuser %}
-      <div class="row mt-3">
-        <div class="col text-end">
-          <a href="{% url 'edit_question' question.id %}"
-            class="btn btn-outline-warning btn-sm">Edit
-          </a>
-        </div>
-        <div class="col text-start">
-          <!-- Modal Trigger -->
-          <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#id-modal-{{question.id}}" type="button">Delete
-          </button>
-        </div>
-      </div>
-      {% endif %}
+  <div class="col-md-7">
+    <h2 class="featurette-heading my-heading-font">{{ question.header }} 
+    </h2>
+    <p class="lead">{{ question.detail }}
+    </p>
+    <div class="text-end">
+      <p>
+        <span class="text-muted"> {{ question.author }}
+        </span>
+      </p>
     </div>
-    <div class="col-md-5">
-      
-      {% if question.image %}
-      <img src="{{ question.image.url }}" class="img-fluid" 
-      {% if question.image_alt %}
-      alt="{{ question.image_alt }}"
-      {% else %}
-      alt="{{ question.header }}"
-      {% endif %}>
-
-      {% else %}
-      <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      {% endif %}
+    {% if question.answer %}
+    <h3 class="my-heading-font">Answer:
+    </h3>
+    <p class="lead">{{ question.answer }}
+    </p>
+    <div class="text-end">
+      <p>
+        <span class="text-muted"> Richard
+        </span>
+      </p>
     </div>
+    {% endif %}
+    <!-- buttons at the end of the card -->
+    {% if user.is_superuser %}
+    <div class="row mt-3">
+      <div class="col text-end">
+        <a href="{% url 'edit_question' question.id %}"
+           class="btn btn-outline-warning btn-sm">Edit
+        </a>
+      </div>
+      <div class="col text-start">
+        <!-- Modal Trigger -->
+        <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#id-modal-{{question.id}}" type="button">Delete
+        </button>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  <div class="col-md-5">
+    {% if question.image %}
+    <img src="{{ question.image.url }}" class="img-fluid" 
+         {% if question.image_alt %}
+         alt="{{ question.image_alt }}"
+         {% else %}
+         alt="{{ question.header }}"
+         {% endif %}>
+    {% else %}
+    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+      <title>Placeholder
+      </title>
+      <rect width="100%" height="100%" fill="#eee"/>
+      <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500
+      </text>
+    </svg>
+    {% endif %}
+  </div>
 </div>
-
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="id-modal-{{question.id}}" tabindex="-1" aria-labelledby="modal-label-{{question.id}}" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modal-label-{{question.id}}">Confirm Deleting the question
-            </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            </button>
-          </div>
-          <div class="modal-body">
-            <h4>Are you sure you want to delete question about {{ question.header }}
-            </h4>
-            <p class="red-text">The author will not be notified
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancell
-            </button>
-            <a href="{% url 'delete_question' question.id %}" class="btn btn-danger">
-              Delete
-            </a>
-          </div>
-        </div>
+<!-- Modal -->
+<div class="modal fade" id="id-modal-{{question.id}}" tabindex="-1" aria-labelledby="modal-label-{{question.id}}" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-label-{{question.id}}">Confirm Deleting the question
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
       </div>
+      <div class="modal-body">
+        <h4>Are you sure you want to delete question about {{ question.header }}
+        </h4>
+        <p class="red-text">The author will not be notified
+        </p>
       </div>
-
-
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancell
+        </button>
+        <a href="{% url 'delete_question' question.id %}" class="btn btn-danger">
+          Delete
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

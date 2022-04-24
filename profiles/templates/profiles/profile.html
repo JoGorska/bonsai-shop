@@ -1,107 +1,88 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
-
 {% block content %}
-
 <div class="container">
-
-        <!-- header of the profile page -->
-      <div class="py-5 text-center">
-        <div class="text-dark mt-5 mb-3">
-          <img src="{{ MEDIA_URL }}trees-dark.svg" alt="">
-        </div>
-        <h2 class="my-heading-font">My profile</h2>
-        <p class="lead">Check and update your address information. Look back on your order history.</p>
-      </div>
-      <!-- order summary history   -->
-      <div class="row g-5">
-        <div class="col-md-5 col-lg-4 order-md-last">
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-success my-heading-font">Order history</span>
-            <span class="badge bg-success rounded-pill">{{ orders|length }}</span>
-          </h4>
-          <ul class="list-group mb-3 order-history">
-              {% for order in orders %}
-              <a class="text-decoration-none" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                
-                
-                <h6 class="my-0">{{ order.date }}</h6>
-                <small class="text-muted">Order Number: {{ order.order_number|truncatechars:6 }}</small>
-
-              </div>
-              <span class="text-muted">£ {{ order.grand_total }}</span>
-            </li>
-          </a>
-            {% endfor %}
-          </ul>
-
-        </div>
-
-
-
-
-        <div class="col-md-7 col-lg-8">
-
-          <!-- newsletter form -->
-
-        {% include 'profiles/includes/newsletter_form.html' %}
-        <hr class="my-4">
-            <!-- Address forms starts here -->
-          <h4 class="mb-3 my-heading-font">Default Address</h4>
-          <form action="{% url 'profile' %}" method="POST" id="payment-form">
-              {% csrf_token %}
-            <div class="row g-3">
-  
-              <div class="col-12">
-                {{ form.default_phone_number | as_crispy_field }}
-              </div>
-  
-              <div class="col-12">
-                {{ form.default_street_address1 | as_crispy_field }}
-              </div>
-  
-              <div class="col-12">
-                {{ form.default_street_address2 | as_crispy_field }}
-              </div>
-  
-              <div class="col-12">
-                {{ form.default_town_or_city | as_crispy_field }}
-              </div>
-  
-              <div class="col-md-5">
-                {{ form.default_country | as_crispy_field }}
-              </div>
-  
-              <div class="col-md-4">
-                {{ form.default_county | as_crispy_field }}
-              </div>
-  
-              <div class="col-md-3">
-                {{ form.default_postcode | as_crispy_field }}
-              </div>
-            </div>
-  
-            <hr class="my-4">
-  
-            
-            <button id="submit-button" class="btn btn-success rounded-pill">
-							<span class="font-weight-bold">Update Profile</span>
-
-								<i class="bi bi-person-plus-fill"></i>
-
-						</button>
-  
-          </form><!-- form ends here -->
-        </div>
-      </div>
-
+  <!-- header of the profile page -->
+  <div class="py-5 text-center">
+    <div class="text-dark mt-5 mb-3">
+      <img src="{{ MEDIA_URL }}trees-dark.svg" alt="">
+    </div>
+    <h2 class="my-heading-font">My profile
+    </h2>
+    <p class="lead">Check and update your address information. Look back on your order history.
+    </p>
   </div>
-
-  {% endblock %}
-
+  <!-- order summary history   -->
+  <div class="row g-5">
+    <div class="col-md-5 col-lg-4 order-md-last">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-success my-heading-font">Order history
+        </span>
+        <span class="badge bg-success rounded-pill">{{ orders|length }}
+        </span>
+      </h4>
+      <ul class="list-group mb-3 order-history">
+        {% for order in orders %}
+        <a class="text-decoration-none" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">{{ order.date }}
+              </h6>
+              <small class="text-muted">Order Number: {{ order.order_number|truncatechars:6 }}
+              </small>
+            </div>
+            <span class="text-muted">£ {{ order.grand_total }}
+            </span>
+          </li>
+        </a>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-7 col-lg-8">
+      <!-- newsletter form -->
+      {% include 'profiles/includes/newsletter_form.html' %}
+      <hr class="my-4">
+      <!-- Address forms starts here -->
+      <h4 class="mb-3 my-heading-font">Default Address
+      </h4>
+      <form action="{% url 'profile' %}" method="POST" id="payment-form">
+        {% csrf_token %}
+        <div class="row g-3">
+          <div class="col-12">
+            {{ form.default_phone_number | as_crispy_field }}
+          </div>
+          <div class="col-12">
+            {{ form.default_street_address1 | as_crispy_field }}
+          </div>
+          <div class="col-12">
+            {{ form.default_street_address2 | as_crispy_field }}
+          </div>
+          <div class="col-12">
+            {{ form.default_town_or_city | as_crispy_field }}
+          </div>
+          <div class="col-md-5">
+            {{ form.default_country | as_crispy_field }}
+          </div>
+          <div class="col-md-4">
+            {{ form.default_county | as_crispy_field }}
+          </div>
+          <div class="col-md-3">
+            {{ form.default_postcode | as_crispy_field }}
+          </div>
+        </div>
+        <hr class="my-4">
+        <button id="submit-button" class="btn btn-success rounded-pill">
+          <span class="font-weight-bold">Update Profile
+          </span>
+          <i class="bi bi-person-plus-fill">
+          </i>
+        </button>
+      </form>
+      <!-- form ends here -->
+    </div>
+  </div>
+</div>
+{% endblock %}

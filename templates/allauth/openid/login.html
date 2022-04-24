@@ -8,7 +8,6 @@
 
 <h1>{% trans 'OpenID Sign In' %}</h1>
 
-
 <form id="openid_login_form" class="openid_login" method="post" action="{% url 'openid_login' %}">
 {% csrf_token %}
 {{form.as_p}}

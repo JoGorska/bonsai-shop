@@ -8,14 +8,13 @@
   <!-- header of the question form page -->
   <div class="py-5 text-center">
     <div class="text-dark mt-5 mb-3">
-    <img src="{{ MEDIA_URL }}trees-dark.svg" alt="">
-  </div>
+      <img src="{{ MEDIA_URL }}trees-dark.svg" alt="">
+    </div>
     <h2 class="my-heading-font">Frequently Asked Questions
     </h2>
     <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.
     </p>
   </div>
-
   <div class="row ">
     <div class="col-md-2">
     </div>
@@ -24,7 +23,6 @@
       <h4 class="mb-3 my-heading-font">Your question
       </h4>
       <form action="{% url 'edit_question' question.id %}" enctype="multipart/form-data" method="POST" id="question-form">
-
         {% include 'questions/includes/question_form.html' %}
         <hr class="my-4">
         <div class="row gy-3">
@@ -54,12 +52,15 @@
   {% else %}
   <div class="py-5 text-center">
     <div class="text-dark mt-5 mb-3">
-    <img src="{{ MEDIA_URL }}trees-dark.svg" alt="">
-  </div>
+      <img src="{{ MEDIA_URL }}trees-dark.svg" alt="">
+    </div>
     <h2 class="my-heading-font">Ask your question here
     </h2>
     <p class="lead">Please 
-      <a href="{% url 'account_login' %}">log in</a> or <a href="{% url 'account_signup' %}"> register</a> to post your question to our gardeners.
+      <a href="{% url 'account_login' %}">log in
+      </a> or 
+      <a href="{% url 'account_signup' %}"> register
+      </a> to post your question to our gardeners.
     </p>
   </div>
   {% endif %}
@@ -67,7 +68,7 @@
 {% endblock %}
 {% block postload_js %}
     {{ block.super }}
-    <script type="text/javascript">
+    <script>
         $('#new-image').change(function() {
             var file = $('#new-image')[0].files[0];
             $('#filename').text(`New image: ${file.name}`);
