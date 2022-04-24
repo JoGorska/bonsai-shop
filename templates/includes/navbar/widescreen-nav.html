@@ -135,7 +135,7 @@
                 <li>
                   <!-- trolley -->
                   <a href="{% url 'view_trolley' %}" class="nav-link
-                  {% if request.resolver_match.url_name == 'trolley' %}
+                  {% if request.resolver_match.url_name == 'view_trolley' %}
                   text-success active 
                   {% elif request.resolver_match.url_name == 'checkout' %}
                   text-success active 
