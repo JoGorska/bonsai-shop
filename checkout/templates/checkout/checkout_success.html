@@ -1,171 +1,193 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
-
 <div class="container mt-5">
-    <div class="card p-4 mt-5 shadow-lg">
-    <h4 class="my-heading-font mt-3"><strong>Order confirmation</strong></h4>
-    <h6><strong>Order number: {{ order.order_number }} </strong></h6>
-    <h6>Order date: {{ order.date }} </h6>
-    <h6>Order details: </h6>
-
+  <div class="card p-4 mt-5 shadow-lg">
+    <h4 class="my-heading-font mt-3">
+      <strong>Order confirmation
+      </strong>
+    </h4>
+    <h6>
+      <strong>Order number: {{ order.order_number }} 
+      </strong>
+    </h6>
+    <h6>Order date: {{ order.date }} 
+    </h6>
+    <h6>Order details: 
+    </h6>
     {% for item in order.lineitems.all %}
     <div class="row">
-        
-        <div class="col-12 col-md-4">
-            <p class="small mb-0 fw-bold">
-                {{ item.tree.name }}
-            </p>
-        </div>
-        <div class="col-12 col-md-8">
-            <p class="small mb-0">{{ item.quantity }} x £{{ item.tree.price }} each</p>
-        </div>
+      <div class="col-12 col-md-4">
+        <p class="small mb-0 fw-bold">
+          {{ item.tree.name }}
+        </p>
+      </div>
+      <div class="col-12 col-md-8">
+        <p class="small mb-0">{{ item.quantity }} x £{{ item.tree.price }} each
+        </p>
+      </div>
     </div>
     {% endfor %}
-
     <div class="row">
-        <div class="col">
-            <small class="text-muted">Delivering To:</small>
-        </div>
+      <div class="col">
+        <small class="text-muted">Delivering To:
+        </small>
+      </div>
     </div>
-
     <div class="row">
-        <div class="col-12 col-md-4">
-            <p class="mb-0 fw-bold">Full Name</p>
-        </div>
-        <div class="col-12 col-md-8">
-            <p class="mb-0">{{ order.full_name }}</p>
-        </div>
+      <div class="col-12 col-md-4">
+        <p class="mb-0 fw-bold">Full Name
+        </p>
+      </div>
+      <div class="col-12 col-md-8">
+        <p class="mb-0">{{ order.full_name }}
+        </p>
+      </div>
     </div>
-
     <div class="row">
-        <div class="col-12 col-md-4">
-            <p class="mb-0 fw-bold">Address 1</p>
-        </div>
-        <div class="col-12 col-md-8">
-            <p class="mb-0">{{ order.street_address1 }}</p>
-        </div>
+      <div class="col-12 col-md-4">
+        <p class="mb-0 fw-bold">Address 1
+        </p>
+      </div>
+      <div class="col-12 col-md-8">
+        <p class="mb-0">{{ order.street_address1 }}
+        </p>
+      </div>
     </div>
-
     {% if order.street_address2 %}
     <div class="row">
-        <div class="col-12 col-md-4">
-            <p class="mb-0 fw-bold">Address 2</p>
-        </div>
-        <div class="col-12 col-md-8">
-            <p class="mb-0">{{ order.street_address1 }}</p>
-        </div>
+      <div class="col-12 col-md-4">
+        <p class="mb-0 fw-bold">Address 2
+        </p>
+      </div>
+      <div class="col-12 col-md-8">
+        <p class="mb-0">{{ order.street_address1 }}
+        </p>
+      </div>
     </div>
     {% endif %}
-
     {% if order.county %}
     <div class="row">
-        <div class="col-12 col-md-4">
-            <p class="mb-0 fw-bold">County</p>
-        </div>
-        <div class="col-12 col-md-8">
-            <p class="mb-0">{{ order.county }}</p>
-        </div>
+      <div class="col-12 col-md-4">
+        <p class="mb-0 fw-bold">County
+        </p>
+      </div>
+      <div class="col-12 col-md-8">
+        <p class="mb-0">{{ order.county }}
+        </p>
+      </div>
     </div>
     {% endif %}
-
     <div class="row">
-        <div class="col-12 col-md-4">
-            <p class="mb-0 fw-bold">Town or City</p>
-        </div>
-        <div class="col-12 col-md-8">
-            <p class="mb-0">{{ order.town_or_city }}</p>
-        </div>
+      <div class="col-12 col-md-4">
+        <p class="mb-0 fw-bold">Town or City
+        </p>
+      </div>
+      <div class="col-12 col-md-8">
+        <p class="mb-0">{{ order.town_or_city }}
+        </p>
+      </div>
     </div>
-
     {% if order.postcode %}
     <div class="row">
-        <div class="col-12 col-md-4">
-            <p class="mb-0 fw-bold">Postal Code</p>
-        </div>
-        <div class="col-12 col-md-8">
-            <p class="mb-0">{{ order.postcode }}</p>
-        </div>
+      <div class="col-12 col-md-4">
+        <p class="mb-0 fw-bold">Postal Code
+        </p>
+      </div>
+      <div class="col-12 col-md-8">
+        <p class="mb-0">{{ order.postcode }}
+        </p>
+      </div>
     </div>
     {% endif %}
-
     <div class="row">
-        <div class="col-12 col-md-4">
-            <p class="mb-0 fw-bold">Country</p>
-        </div>
-        <div class="col-12 col-md-8">
-            <p class="mb-0">{{ order.country }}</p>
-        </div>
+      <div class="col-12 col-md-4">
+        <p class="mb-0 fw-bold">Country
+        </p>
+      </div>
+      <div class="col-12 col-md-8">
+        <p class="mb-0">{{ order.country }}
+        </p>
+      </div>
     </div>
-
     <div class="row">
-        <div class="col-12 col-md-4">
-            <p class="mb-0 fw-bold">Phone Number</p>
-        </div>
-        <div class="col-12 col-md-8">
-            <p class="mb-0">{{ order.phone_number }}</p>
-        </div>
+      <div class="col-12 col-md-4">
+        <p class="mb-0 fw-bold">Phone Number
+        </p>
+      </div>
+      <div class="col-12 col-md-8">
+        <p class="mb-0">{{ order.phone_number }}
+        </p>
+      </div>
     </div>
-
     <div class="row">
-        <div class="col">
-            <small class="text-muted">Billing Info:</small>
-        </div>
+      <div class="col">
+        <small class="text-muted">Billing Info:
+        </small>
+      </div>
     </div>
-
     <div class="row">
-        <div class="col-12 col-md-4">
-            <p class="mb-0 fw-bold">Order Total</p>
-        </div>
-        <div class="col-12 col-md-8">
-            <p class="mb-0">£ {{ order.order_total }}</p>
-        </div>
+      <div class="col-12 col-md-4">
+        <p class="mb-0 fw-bold">Order Total
+        </p>
+      </div>
+      <div class="col-12 col-md-8">
+        <p class="mb-0">£ {{ order.order_total }}
+        </p>
+      </div>
     </div>
-
     <div class="row">
-        <div class="col-12 col-md-4">
-            <p class="mb-0 fw-bold">Delivery</p>
-        </div>
-        <div class="col-12 col-md-8">
-            <p class="mb-0">£ {{ order.delivery_cost }}</p>
-        </div>
+      <div class="col-12 col-md-4">
+        <p class="mb-0 fw-bold">Delivery
+        </p>
+      </div>
+      <div class="col-12 col-md-8">
+        <p class="mb-0">£ {{ order.delivery_cost }}
+        </p>
+      </div>
     </div>
-
     <div class="row">
-        <div class="col-12 col-md-4">
-            <p class="mb-0 fw-bold">Grand Total</p>
-        </div>
-        <div class="col-12 col-md-8">
-            <p class="mb-0"><strong>£ {{ order.grand_total }}</strong></p>
-        </div>
+      <div class="col-12 col-md-4">
+        <p class="mb-0 fw-bold">Grand Total
+        </p>
+      </div>
+      <div class="col-12 col-md-8">
+        <p class="mb-0">
+          <strong>£ {{ order.grand_total }}
+          </strong>
+        </p>
+      </div>
     </div>
-
     <!-- buttons at the end of the order confirmation -->
     <div class="row mt-3">
-        <div class="col-12 col-md-6 mb-2">
+      <div class="col-12 col-md-6 mb-2">
         <!-- if user comes from profile page he has a back to profile button -->
         {% if from_profile %}
         <a href="{% url 'profile' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
-            <i class="bi bi-person-plus-fill"></i>
-            Back to Profile</a>
-        </div>
+          <i class="bi bi-person-plus-fill">
+          </i>
+          Back to Profile
+        </a>
+      </div>
         {% else %}
         <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
-            <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#shop"/></svg>
-            Back to Shop</a>
-        </div>
-        {% endif %}
-        <!-- remove if faq app is not implemented ??? -->
-        <div class="col-12 col-md-6 mb-2">
-        <a href="{% url 'checkout' %}" class="shadow-lg btn btn-success text-white rounded-pill">
-            <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor"><use xlink:href="#faq"/></svg>
-            Learn more about Bonsai</a>
-        </div>
-    </div>
+          <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor">
+            <use xlink:href="#shop"/>
+          </svg>
+          Back to Shop
+        </a>
+      </div>
+      {% endif %}
 
+      <div class="col-12 col-md-6 mb-2">
+        <a href="{% url 'questions' %}" class="shadow-lg btn btn-success text-white rounded-pill">
+          <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor">
+            <use xlink:href="#faq"/>
+          </svg>
+          Learn more about Bonsai
+        </a>
+      </div>
     </div>
+  </div>
 </div>
-
-
 {% endblock %}

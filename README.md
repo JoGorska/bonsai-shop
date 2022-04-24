@@ -402,9 +402,31 @@ Superuser can change the newsletter status - both on Subscriber model and on New
 
 This can be resolved by setting different access level for store owner, instead of giving him superuser.  
 
-### console logs error on first click on accordeon
+### Question seems to change author after editing
+
+The questions have been posted by regular users. It seems that after the super user has edited the question and added the answer, the author is updated to superuser. Need to change model. 
+  1. author - oryginal author of the question
+  2. editor - the user that has edited the question last. 
+
+As a temporary fix I changed the hidden input that was adding the author to the form to "question.author.id" so the item is being saved with the oryginal author in place"
 
 
+### Bootstrap's toasts floating left outside the 320px wide screens
+
+I've noticed that all toast messages float left outside the 320px wide screens. I have tried a few different classes to move the toast in the view. Nothing seemed to work. I've gone back to bootstrap 5 toasts examples page and I triggered the example toast [here](https://getbootstrap.com/docs/5.0/components/toasts/#live) - the behaviour was identical. It floats left outside the screen. Since bootstrap makers have not fixed this issue I don't think I will manage this at this stage. 
+
+The solution might be styling width of toast only slightly smaller - which would make them fit inside the smallest mobiles. Another solution would me fix position a little different, although changing this property resulted in toast floating outside the screen the other side. I can't seem to get rid of the gap between the border of the toast and the edge of the screen.
+
+### ununified comments - end of container and others
+
+Some comments were inherited from bootstrap examples. For example the below code is from bootstrap carousele
+```
+    <!-- /END THE FEATURETTES -->
+  </div>
+  <!-- /.container -->
+```
+
+I used comments to end some container when container was very complex and had a few else / if statements inside it. I would be good to unify the styling of comments. 
 
 ## Deployment and making a clone
 

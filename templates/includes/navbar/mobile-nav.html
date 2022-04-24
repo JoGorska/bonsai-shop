@@ -1,190 +1,223 @@
-
 <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark d-md-none">
-    <div class="container-fluid">
-        <div class="d-flex container-fluid p-1">
-            <!-- nav brand logo and text -->
-            <div class="d-flex flex-row container-fluid p-1" href="{% url 'home' %}">
-                <div class="">
-                    <a class="text-decoration-none" href="{% url 'home' %}">
-                        <img src="{{ MEDIA_URL }}trees-sm.svg" alt="">
-                    </a>
-                </div>
-                <div class="mt-2 ps-2">
-                    <a class="text-white text-decoration-none" href="{% url 'home' %}">
-                        <p class="h5 my-heading-font">Three Oaks</p>
-                    </a>
-                </div>
-            </div>
-            <!-- hamburger buton -->
-            <div class="flex-shrink">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbarCollapse" aria-controls="mobileNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
+  <div class="container-fluid">
+    <div class="d-flex container-fluid p-1">
+      <!-- nav brand logo and text -->
+      <div class="d-flex flex-row container-fluid p-1">
+        <div class="">
+          <a class="text-decoration-none" href="{% url 'home' %}">
+            <img src="{{ MEDIA_URL }}trees-sm.svg" alt="">
+          </a>
         </div>
-        <div class="collapse navbar-collapse text-uppercase" id="mobileNavbarCollapse">
-            <!-- nav bar unordered list start -->
-            <ul class="navbar-nav me-auto">
-              <!-- home -->
-              <li class="nav-item">
-                <a href="{% url 'home' %}" 
-                   class="nav-link 
-                          {% if request.resolver_match.url_name == 'home' %}
-                          text-success {% else %} text-white {% endif %}">
-                  <div class="row">
-                    <div class="col-3">
-                    </div>
-                    <div class="col-3">
-                      <svg class="bi" width="24" height="24" fill="currentColor">
-                        <use xlink:href="#home"/>
-                      </svg>
-                    </div>
-                    <div class="col-6">
-                      <p class="pt-1">Home
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <!-- shop -->
-              <li class="nav-item">
-                <a href="{% url 'all_trees' %}"
-                   class="nav-link 
-                          text-white">
-                  <div class="row">
-                    <div class="col-3">
-                    </div>
-                    <div class="col-3">
-                      <svg class="bi" width="24" height="24" fill="currentColor">
-                        <use xlink:href="#shop"/>
-                      </svg>
-                    </div>
-                    <div class="col-6">
-                      <p class="pt-1">Shop
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <!-- faq -->
-              <li class="nav-item">
-                <a href="{% url 'questions' %}" 
-                   class="nav-link 
-                          text-white">
-                  <div class="row">
-                    <div class="col-3">
-                    </div>
-                    <div class="col-3">
-                      <svg class="bi" width="24" height="24" fill="currentColor">
-                        <use xlink:href="#faq"/>
-                      </svg>
-                    </div>
-                    <div class="col-6">
-                      <p class="pt-1">Faq
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              
-              <!-- user login -->
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link pb-1
-                                   text-white"
-                                   id="dropdownUser-mobile" data-bs-toggle="dropdown" aria-expanded="false">
-      
-                  <div class="row">
-                    <div class="col-3">
-                    </div>
-                    <div class="col-3">
-                      <svg class="bi" width="24" height="24" fill="currentColor">
-                        <use xlink:href="#people-circle"/>
-                      </svg>
-                    </div>
-                    {% if request.user.is_authenticated %}
-                    <div class="col-6">
-                      <p class="pt-1">{{ request.user.username }}
-                      </p>
-                    </div>
-                  </div>
-                </a>
-                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                  {% if request.user.is_superuser %}
-                  <li>
-                    <a class="dropdown-item" href="{% url 'add_tree' %}">Shop Management
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item text-white text-uppercase" href="{% url 'questions_manager' %}">FAQ Management
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item text-white text-uppercase" href="{% url 'subscribers' %}"> Newsletter Subscribers
-                    </a>
-                  </li>
-                  {% endif %}
-                  <li>
-                    <a class="dropdown-item" href="{% url 'profile' %}">User Profile
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="">Sign out
-                    </a>
-                  </li>
-                </ul>
-              </li>
+        <div class="mt-2 ps-2">
+          <a class="text-white text-decoration-none" href="{% url 'home' %}">
+            <p class="h5 my-heading-font">Three Oaks
+            </p>
+          </a>
+        </div>
+      </div>
+      <!-- hamburger buton -->
+      <div class="flex-shrink">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbarCollapse" aria-controls="mobileNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse text-uppercase" id="mobileNavbarCollapse">
+      <!-- nav bar unordered list start -->
+      <ul class="navbar-nav me-auto">
+        <!-- home -->
+        <li class="nav-item">
+          <a href="{% url 'home' %}" 
+             class="nav-link 
+                    {% if request.resolver_match.url_name == 'home' %}
+                    text-success {% else %} text-white {% endif %}">
+            <div class="row">
+              <div class="col-3">
+              </div>
+              <div class="col-3">
+                <svg class="bi" width="24" height="24" fill="currentColor">
+                  <use xlink:href="#home"/>
+                </svg>
+              </div>
+              <div class="col-6">
+                <p class="pt-1">Home
+                </p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!-- shop -->
+        <li class="nav-item">
+          <a href="{% url 'all_trees' %}"
+             class="nav-link 
+             {% if request.resolver_match.url_name == 'all_trees' %}
+             text-success active 
+             {% elif request.resolver_match.url_name == 'tree_detail' %}
+             text-success active 
+             {% elif request.resolver_match.url_name == 'add_tree' %}
+             text-success active 
+             {% elif request.resolver_match.url_name == 'edit_tree' %}
+             text-success active 
+             {% else %} text-white {% endif %}">
+            <div class="row">
+              <div class="col-3">
+              </div>
+              <div class="col-3">
+                <svg class="bi" width="24" height="24" fill="currentColor">
+                  <use xlink:href="#shop"/>
+                </svg>
+              </div>
+              <div class="col-6">
+                <p class="pt-1">Shop
+                </p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!-- faq -->
+        <li class="nav-item">
+          <a href="{% url 'questions' %}" 
+             class="nav-link 
+             {% if request.resolver_match.url_name == 'questions' %}
+             text-success active 
+             {% elif request.resolver_match.url_name == 'questions_manager' %}
+             text-success active 
+             {% elif request.resolver_match.url_name == 'add_question' %}
+             text-success active 
+             {% elif request.resolver_match.url_name == 'edit_question' %}
+             text-success active 
+             {% else %} text-white {% endif %}">
+            <div class="row">
+              <div class="col-3">
+              </div>
+              <div class="col-3">
+                <svg class="bi" width="24" height="24" fill="currentColor">
+                  <use xlink:href="#faq"/>
+                </svg>
+              </div>
+              <div class="col-6">
+                <p class="pt-1">Faq
+                </p>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!-- user login -->
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link pb-1
+          {% if request.resolver_match.url_name == 'profile' %}
+          text-success active 
+          {% elif request.resolver_match.url_name == 'account_login' %}
+          text-success active 
+          {% elif request.resolver_match.url_name == 'account_logout' %}
+          text-success active 
+          {% elif request.resolver_match.url_name == 'account_reset_password' %}
+          text-success active 
+          {% elif request.resolver_match.url_name == 'account_email' %}
+          text-success active 
+          {% else %} text-white {% endif %}"
+             id="dropdownUser-mobile" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="row">
+              <div class="col-3">
+              </div>
+              <div class="col-3">
+                <svg class="bi" width="24" height="24" fill="currentColor">
+                  <use xlink:href="#people-circle"/>
+                </svg>
+              </div>
+              {% if request.user.is_authenticated %}
+              <div class="col-6">
+                <p class="pt-1">{{ request.user.username }}
+                </p>
+              </div>
+            </div>
+          </a>
+          <ul class="dropdown-menu text-small bg-dark" aria-labelledby="dropdownUser-mobile">
+            {% if request.user.is_superuser %}
+            <li class="text-center">
+              <a class="dropdown-item" href="{% url 'add_tree' %}">Shop Management
+              </a>
+            </li>
+            <li class="text-center">
+              <a class="dropdown-item text-white text-uppercase" href="{% url 'questions_manager' %}">FAQ Management
+              </a>
+            </li>
+            <li class="text-center">
+              <a class="dropdown-item text-white text-uppercase" href="{% url 'subscribers' %}"> Newsletter Subscribers
+              </a>
+            </li>
+            {% endif %}
+            <li class=" text-center">
+              <a class="dropdown-item text-white text-uppercase" href="{% url 'profile' %}">User Profile
+              </a>
+            </li>
+            <li class="text-center">
+              <a class="dropdown-item text-white text-uppercase" href="{% url 'account_logout' %}">Sign out
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- closing tag for user login element of navbar -->
                 {% else %}
                 <!-- user that is NOT logged in -->
-                    <div class="col-4">
-                      <p class="pt-1">Log in
-                      </p>
-                    </div>
-                  </div>
-                </a>
-                <ul class="dropdown-menu text-small bg-dark text-white" aria-labelledby="dropdownUser1">
-                  <li>
-                    <a class="dropdown-item bg-dark text-white" href="{% url 'account_signup' %}">Register
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item bg-dark text-white" href="{% url 'account_login' %}">Log in
-                    </a>
-                  </li>
-                </ul>
-              </li>
-          {% endif %}
-                    <!-- trolley -->
-                    <li class="nav-item">
-                        <a href="{% url 'view_trolley' %}" 
-                           class="nav-link 
-                                  text-white">
-                          <div class="row">
-                            <div class="col-3">
-                            </div>
-                            <div class="col-3">
-                              <svg class="bi" width="24" height="24" fill="currentColor">
-                                <use xlink:href="#trolley"/>
-                              </svg>
-                            </div>
-                            <div class="col-6">
-                              <p class="pt-1">
-                                {% if grand_total %}
-                                £ {{ grand_total|floatformat:2 }}
-                                {% else %}
-                                £ 0.00
-                                {% endif %}
-                              </p>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-            </ul>
-            <form class="d-flex form" method="GET" action="{% url 'all_trees' %}">
-                <input class="search-form form-control me-2" type="text"  name="q" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary text-white" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-
+                <div class="col-4">
+                  <p class="pt-1">Log in
+                  </p>
+                </div>
+              </div>
+            </a>
+          <ul class="dropdown-menu text-small bg-dark" aria-labelledby="dropdownUser-mobile">
+            <li class="text-center">
+              <a class="dropdown-item bg-dark text-muted" href="{% url 'account_signup' %}">Register
+              </a>
+            </li>
+            <li class="text-center">
+              <a class="dropdown-item bg-dark text-muted" href="{% url 'account_login' %}">Log in
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- closing tag for user login element of navbar  -->
+                {% endif %}
+        <!-- trolley -->
+        <li class="nav-item">
+          <a href="{% url 'view_trolley' %}" 
+            class="nav-link 
+            {% if request.resolver_match.url_name == 'view_trolley' %}
+            text-success active 
+            {% elif request.resolver_match.url_name == 'checkout' %}
+            text-success active 
+            {% elif request.resolver_match.url_name == 'checkout_success' %}
+            text-success active 
+            {% else %} text-white {% endif %}">
+            <div class="row">
+              <div class="col-3">
+              </div>
+              <div class="col-3">
+                <svg class="bi" width="24" height="24" fill="currentColor">
+                  <use xlink:href="#trolley"/>
+                </svg>
+              </div>
+              <div class="col-6">
+                <p class="pt-1">
+                  {% if grand_total %}
+                  £ {{ grand_total|floatformat:2 }}
+                  {% else %}
+                  £ 0.00
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <form class="d-flex form" method="GET" action="{% url 'all_trees' %}">
+        <input class="search-form form-control me-2" type="text"  name="q" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-secondary text-white" type="submit">Search
+        </button>
+      </form>
     </div>
+  </div>
+  </div>
 </nav>

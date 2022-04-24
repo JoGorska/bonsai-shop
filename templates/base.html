@@ -1,6 +1,6 @@
 {% load static %}
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
   <head>
 
     {% block meta %}
@@ -51,7 +51,7 @@
     {% endblock %}
     <title>Three Oaks {% block extra_title %} {% endblock %}</title>
   </head>
-  <body>
+  <body class="d-flex flex-column h-100">
     <!-- svg icons from bootstrap -->
     {% include 'includes/svg.html' %}
 
@@ -62,7 +62,7 @@
     </header>
 
     {% if messages %}
-    <div class="message-container">
+    <div class="message-container text-center">
       {% for message in messages %}
       {% with message.level as level %}
         <!-- level (classifier) determines the type of the toast -->
@@ -95,9 +95,12 @@
     {% block content %}
     {% endblock %}
     <!-- FOOTER -->
-    <footer class="container">
-      <p class="float-end"><a href="#">Back to top</a></p>
-      <p>&copy; 2017-2021 Company, Inc. &middot; <a href="#header">Privacy</a> &middot; <a href="#">Terms</a></p>
+    <footer class="footer mt-auto">
+      <div class="container">
+        <p class="float-end"><a href="#">Back to top</a></p>
+        <p>&copy; 2017-2021 Company, Inc. &middot; <a href="#header">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </div>
+
     </footer>
     {% block postload_js %}
 

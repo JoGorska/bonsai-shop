@@ -1,187 +1,177 @@
 {% extends "base.html" %}
 {% load static %}
 {% load trolley_tools %}
-
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
-
 {% block content %}
-
 <div class="container">
-
-        <!-- header of the checkout page -->
-      <div class="py-5 text-center">
-        <div class="text-dark mt-5 mb-3">
-          <img src="{{ MEDIA_URL }}trees-dark.svg" alt="">
-        </div>
-        <h2 class="my-heading-font">Checkout</h2>
-        <p class="lead">We need your full address to be able to send you the purchased goods. Please add current telephone and email address so we can contact you easily.</p>
-      </div>
-      <!-- order summary   -->
-      <div class="row g-5">
-        <div class="col-md-5 col-lg-4 order-md-last">
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-success my-heading-font">Order Summary</span>
-            <span class="badge bg-success rounded-pill">{{ tree_count }}</span>
-          </h4>
-          <ul class="list-group mb-3">
-              {% for item in trolley_items %}
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">{{item.tree.name|truncatechars:15}} ({{ item.quantity }}) </h6>
-                <small class="text-muted">Trunk: {{ item.tree.trunk_circumference| floatformat:0 }} Height: {{item.tree.height_in | floatformat:0}}</small>
-              </div>
-              <span class="text-muted">£ {{ item.tree.price | calc_subtotal:item.quantity }}</span>
-            </li>
-            {% endfor %}
-            <li class="list-group-item d-flex justify-content-between bg-light">
-              <div class="text-success">
-                <h6 class="my-0">Delivery</h6>
-                <small>Free delivery above £50</small>
-              </div>
-              <span class="text-success">£ {{ delivery | floatformat:2 }} </span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total (GBP)</span>
-              <strong>£ {{ grand_total | floatformat:2 }}</strong>
-            </li>
-          </ul>
-
-        </div>
-
-          <!-- forms starts here -->
-        <div class="col-md-7 col-lg-8">
-          
-          <h4 class="mb-3 my-heading-font">Your Details</h4>
-          <form action="{% url 'checkout' %}" method="POST" id="payment-form">
-              {% csrf_token %}
-            <div class="row g-3">
-              <div class="col-sm-6">
-                {{ order_form.full_name | as_crispy_field }}
-
-              </div>
-  
-              <div class="col-sm-6">
-                {{ order_form.email | as_crispy_field }}
-              </div>
-  
-              <div class="col-12">
-                {{ order_form.phone_number | as_crispy_field }}
-              </div>
-
-              <h4 class="mb-3 my-heading-font">Delivery address</h4>
-  
-              <div class="col-12">
-                {{ order_form.street_address1 | as_crispy_field }}
-              </div>
-  
-              <div class="col-12">
-                {{ order_form.street_address2 | as_crispy_field }}
-              </div>
-  
-              <div class="col-12">
-                {{ order_form.town_or_city | as_crispy_field }}
-              </div>
-  
-              <div class="col-md-5">
-                {{ order_form.country | as_crispy_field }}
-              </div>
-  
-              <div class="col-md-4">
-                {{ order_form.county | as_crispy_field }}
-              </div>
-  
-              <div class="col-md-3">
-                {{ order_form.postcode | as_crispy_field }}
-              </div>
-            </div>
-  
-            <hr class="my-4">
-  
-            <div class="form-check">
-                {% if user.is_authenticated %}
-                    <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
-                    <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info" checked>
-                {% else %}
-                    <label class="form-check-label" for="id-save-info">
-                        <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
-                        <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
-                    </label>
-                {% endif %}
-            </div>
-  
-            <hr class="my-4">
-  
-            <h4 class="my-4 my-heading-font">Payment</h4>
-  
-
-                
-            <div class="row gy-3">
-                <div class="col-12">
-                  <!-- A Stripe card element will go here -->
-                  <div class="mb-3" id="card-element"></div>
-
-                  <!-- Used to display form errors -->
-                  <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                  <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                
-                </div>
-                <div class="col-md-6 text-center ">
-                   
-                  <a href="{% url 'view_trolley' %}" class="btn btn-secondary rounded-pill">
-                                  <svg class="bi" width="24" height="24" fill="currentColor">
-                                      <use xlink:href="#trolley"/>
-                                    </svg>
-                    <span class="font-weight-bold">Adjust Trolley</span>
-                  </a>
-                </div>
-                <div class="col-md-6 text-center ">
-						<button id="submit-button" class="btn btn-success rounded-pill">
-							<span class="font-weight-bold">Complete Order</span>
-							<span class="icon">
-								<i class="fas fa-lock"></i>
-							</span>
-						</button>
-
-                </div>
-                <div class="col-12">
-						<p class="small text-danger my-0">
-							<span class="icon">
-								<i class="bi bi-credit-card-2-back-fill"></i>
-							</span>
-							<span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
-						</p>
-
-                </div>
-
-            
-            </div>
-
-  
-            <hr class="my-4">
-
-          </form>
-        </div>
-      </div>
-
+  <!-- header of the checkout page -->
+  <div class="py-5 text-center">
+    <div class="text-dark mt-5 mb-3">
+      <img src="{{ MEDIA_URL }}trees-dark.svg" alt="">
+    </div>
+    <h2 class="my-heading-font">Checkout
+    </h2>
+    <p class="lead">We need your full address to be able to send you the purchased goods. Please add current telephone and email address so we can contact you easily.
+    </p>
   </div>
-
-      <!-- loading overlay for when the payment is being processed -->
-      <div id="loading-overlay">
-        <h1 class="text-light logo-font loading-spinner">
-            <span class="icon">
-
-                <i class="fas fa-credit-card fa-spin"></i>
-            </span>
-        </h1>
-      </div>
-  {% endblock %}
-
-  {% block postload_js %}
-  {{ block.super }}
-  {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-  {{ client_secret|json_script:"id_client_secret" }}
-  <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
-
-  {% endblock %}
+  <!-- order summary   -->
+  <div class="row g-5">
+    <div class="col-md-5 col-lg-4 order-md-last">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-success my-heading-font">Order Summary
+        </span>
+        <span class="badge bg-success rounded-pill">{{ tree_count }}
+        </span>
+      </h4>
+      <ul class="list-group mb-3">
+        {% for item in trolley_items %}
+        <li class="list-group-item d-flex justify-content-between lh-sm">
+          <div>
+            <h6 class="my-0">{{item.tree.name|truncatechars:15}} ({{ item.quantity }}) 
+            </h6>
+            <small class="text-muted">Trunk: {{ item.tree.trunk_circumference| floatformat:0 }} Height: {{item.tree.height_in | floatformat:0}}
+            </small>
+          </div>
+          <span class="text-muted">£ {{ item.tree.price | calc_subtotal:item.quantity }}
+          </span>
+        </li>
+        {% endfor %}
+        <li class="list-group-item d-flex justify-content-between bg-light">
+          <div class="text-success">
+            <h6 class="my-0">Delivery
+            </h6>
+            <small>Free delivery above £50
+            </small>
+          </div>
+          <span class="text-success">£ {{ delivery | floatformat:2 }} 
+          </span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Total (GBP)
+          </span>
+          <strong>£ {{ grand_total | floatformat:2 }}
+          </strong>
+        </li>
+      </ul>
+    </div>
+    <!-- forms starts here -->
+    <div class="col-md-7 col-lg-8">
+      <h4 class="mb-3 my-heading-font">Your Details
+      </h4>
+      <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+        {% csrf_token %}
+        <div class="row g-3">
+          <div class="col-sm-6">
+            {{ order_form.full_name | as_crispy_field }}
+          </div>
+          <div class="col-sm-6">
+            {{ order_form.email | as_crispy_field }}
+          </div>
+          <div class="col-12">
+            {{ order_form.phone_number | as_crispy_field }}
+          </div>
+          <h4 class="mb-3 my-heading-font">Delivery address
+          </h4>
+          <div class="col-12">
+            {{ order_form.street_address1 | as_crispy_field }}
+          </div>
+          <div class="col-12">
+            {{ order_form.street_address2 | as_crispy_field }}
+          </div>
+          <div class="col-12">
+            {{ order_form.town_or_city | as_crispy_field }}
+          </div>
+          <div class="col-md-5">
+            {{ order_form.country | as_crispy_field }}
+          </div>
+          <div class="col-md-4">
+            {{ order_form.county | as_crispy_field }}
+          </div>
+          <div class="col-md-3">
+            {{ order_form.postcode | as_crispy_field }}
+          </div>
+        </div>
+        <hr class="my-4">
+        <div class="form-check">
+          {% if user.is_authenticated %}
+          <label class="form-check-label" for="id-save-info">Save this delivery information to my profile
+          </label>
+          <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info" checked>
+          {% else %}
+          <label class="form-check-label" for="id-save-info">
+            <a class="text-info" href="{% url 'account_signup' %}">Create an account
+            </a> or 
+            <a class="text-info" href="{% url 'account_login' %}">login
+            </a> to save this information
+          </label>
+          {% endif %}
+        </div>
+        <hr class="my-4">
+        <h4 class="my-4 my-heading-font">Payment
+        </h4>
+        <div class="row gy-3">
+          <div class="col-12">
+            <!-- A Stripe card element will go here -->
+            <div class="mb-3" id="card-element">
+            </div>
+            <!-- Used to display form errors -->
+            <div class="mb-3 text-danger" id="card-errors" role="alert">
+            </div>
+            <input type="hidden" value="{{ client_secret }}" name="client_secret">
+          </div>
+          <div class="col-md-6 text-center ">
+            <a href="{% url 'view_trolley' %}" class="btn btn-secondary rounded-pill">
+              <svg class="bi" width="24" height="24" fill="currentColor">
+                <use xlink:href="#trolley"/>
+              </svg>
+              <span class="font-weight-bold">Adjust Trolley
+              </span>
+            </a>
+          </div>
+          <div class="col-md-6 text-center ">
+            <button id="submit-button" class="btn btn-success rounded-pill">
+              <span class="font-weight-bold">Complete Order
+              </span>
+              <span class="icon">
+                <i class="fas fa-lock">
+                </i>
+              </span>
+            </button>
+          </div>
+          <div class="col-12">
+            <p class="small text-danger my-0">
+              <span class="icon">
+                <i class="bi bi-credit-card-2-back-fill">
+                </i>
+              </span>
+              <span>Your card will be charged 
+                <strong>${{ grand_total|floatformat:2 }}
+                </strong>
+              </span>
+            </p>
+          </div>
+        </div>
+        <hr class="my-4">
+      </form>
+    </div>
+  </div>
+</div>
+<!-- loading overlay for when the payment is being processed -->
+<div id="loading-overlay">
+  <h1 class="text-light logo-font loading-spinner">
+    <span class="icon">
+      <i class="fas fa-credit-card fa-spin">
+      </i>
+    </span>
+  </h1>
+</div>
+{% endblock %}
+{% block postload_js %}
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}">
+</script>
+{% endblock %}

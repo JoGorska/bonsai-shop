@@ -35,7 +35,12 @@
     {{ form.image_alt | as_crispy_field }}
   </div>
   <div class="col-12">
+    {% if request.resolver_match.url_name == 'edit_question' %}
+    <!-- this is to stop question's author being changed to superuser -->
+    <input type="hidden" value="{{question.author.id}}" name="author">
+    {% else %}
     <input type="hidden" value="{{request.user.id}}" name="author">
+    {% endif %}
   </div>
 
 </div>
