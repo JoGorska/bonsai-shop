@@ -7,21 +7,19 @@
   <div class="col-12">
     {{ form.detail | as_crispy_field }}
   </div>
-<!-- superuser can add answer and change status -->
-{% if request.user.is_superuser %}
+  <!-- superuser can add answer and change status -->
+  {% if request.user.is_superuser %}
   <div class="col-12">
     {{ form.answer | as_crispy_field }}
   </div>
   <div class="col-6">
     {{ form.status | as_crispy_field }}
   </div>
-
-{% else %}
+  {% else %}
   <!-- regular user can not see the input for status -->
   <input type="hidden" name="status" value="0">
-{% endif %}
-    <!-- hidden input for all users adding status Draft -->
-
+  {% endif %}
+  <!-- hidden input for all users adding status Draft -->
   <!-- image -->
   <h4 class="mb-3 my-heading-font">Image Details
   </h4>
@@ -42,5 +40,4 @@
     <input type="hidden" value="{{request.user.id}}" name="author">
     {% endif %}
   </div>
-
 </div>

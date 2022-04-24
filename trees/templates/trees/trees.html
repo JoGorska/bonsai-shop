@@ -7,11 +7,11 @@
 
 {% block content %}
 
-<section class=" py-5 text-center flex-container bg-img-trees my-box-shadow-75">
+<div class=" py-5 text-center flex-container bg-img-trees my-box-shadow-75">
     <!-- tiles for sorting and filtering go here -->
     {% include 'trees/includes/sorting_tiles.html' %}
 
-</section>
+</div>
 
 
 <div class="album py-5 bg-light">
@@ -83,8 +83,8 @@
                         </p>
                     </a>
                     {% endif %}
-                    <p class="card-text">
-                        <div class="text-muted fw-bold">£ {{tree.price}}</div>
+                    <p class="card-text text-muted fw-bold">
+                        £ {{tree.price}}
                     </p>
                     <!-- checks if tree is already in the bag -->
 
@@ -137,8 +137,8 @@
 
                     </div>
                     <!-- hidden input for quantity = 1 and hidden input for redirect url -->
-                    <input  class="form-control" type="hidden"
-                            name="quantity" value="1" min="1" max="99"
+                    <input type="hidden"
+                            name="quantity" value="1"
                             data-item_id="{{ tree.id }}"
                             id="id_qty_{{ tree.id }}">
                     <input type="hidden" name="redirect_url" value="{{ request.path }}">

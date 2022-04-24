@@ -1,351 +1,317 @@
 <ul class="mx-2 mt-5 row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list justify-content-md-center">
-    <!-- all trees -->
-    <li class="col mb-4" >
-      <a class="d-block bg-dark rounded text-white text-decoration-none" 
-      href="{% url 'all_trees' %}"
-      aria-label="Show all trees">
-        <div class="display-5 p-3 py-4  bg-dark text-center rounded">
-          <svg class="bi" width="1em" height="1em" fill="currentColor">
-            <use xlink:href="#grid">
-            </use>
-          </svg>
-        </div>
-        <p class="small name text-white text-center pb-2">All Trees
-        </p>
-      </a>
-    </li>
-
-          <!-- filter -->
-    <li class="col mb-4" >
-        <a class="d-block bg-dark rounded text-white text-decoration-none" href="" aria-label="Show menu for filtering trees">
-          <div class="display-5 p-3 py-4  bg-dark text-center rounded">
-            <svg class="bi" width="1em" height="1em" fill="currentColor">
-              <use xlink:href="#filter">
-              </use>
-            </svg>
-          </div>
-          <div class="small name text-white text-center pb-2">Filter
-          </div>
-        </a>
-      </li>
-          <!-- sort -->
-    <li class="col mb-4" >
-        <a class="d-block bg-dark rounded text-white text-decoration-none" href="" aria-label="Show menu for sorting trees">
-          <div class="display-5 p-3 py-4  bg-dark text-center rounded">
-            <svg class="bi" width="1em" height="1em" fill="currentColor">
-              <use xlink:href="#sort">
-              </use>
-            </svg>
-          </div>
-          <div class="name text-white text-center pb-2">Sort
-          </div>
-        </a>
-      </li>
-
-{% if features %}
-
-{% for feature in features %}
-
-<!-- ??? make javascript to add and remove visibility for class feature-tile 
+  <!-- all trees -->
+  <li class="col mb-4" >
+    <a class="d-block bg-dark rounded text-white text-decoration-none" 
+       href="{% url 'all_trees' %}"
+       aria-label="Show all trees">
+      <div class="display-5 p-3 py-4  bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#grid">
+          </use>
+        </svg>
+      </div>
+      <p class="small name text-white text-center pb-2">All Trees
+      </p>
+    </a>
+  </li>
+  <!-- filter -->
+  <li class="col mb-4" >
+    <a class="d-block bg-dark rounded text-white text-decoration-none" href="" aria-label="Show menu for filtering trees">
+      <div class="display-5 p-3 py-4  bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#filter">
+          </use>
+        </svg>
+      </div>
+      <div class="small name text-white text-center pb-2">Filter
+      </div>
+    </a>
+  </li>
+  <!-- sort -->
+  <li class="col mb-4" >
+    <a class="d-block bg-dark rounded text-white text-decoration-none" href="" aria-label="Show menu for sorting trees">
+      <div class="display-5 p-3 py-4  bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#sort">
+          </use>
+        </svg>
+      </div>
+      <div class="name text-white text-center pb-2">Sort
+      </div>
+    </a>
+  </li>
+  {% if features %}
+  {% for feature in features %}
+  <!-- ??? make javascript to add and remove visibility for class feature-tile 
 add text-success class to filter -->
-
-    <!-- features tile -->
-    <li class="col mb-4 feature-tile" >
-        <a class="d-block bg-dark rounded text-white text-decoration-none" 
-        href="{% url 'all_trees' %}?feature={{feature.name}}"
-        aria-label="{{ feature.aria_for_anchor }}">
-          <div class="display-5 p-3 py-4  bg-dark text-center rounded">
-            <i class="{{ feature.icon_class}}"></i>
-          </div>
-          <div class="small name text-white text-center pb-2">{{ feature.friendly_name }}
-          </div>
-        </a>
-      </li>
-
-{% endfor %}
-
-{% endif %}
-
-{% if enviroments %}
-
-{% for enviroment in enviroments %}
-
-<!-- ??? make javascript to add and remove visibility for class feature-tile -->
-
-    <!-- enviroments tile -->
-    <li class="col mb-4 feature-tile" >
-        <a class=" d-block bg-dark rounded text-white text-decoration-none"
-         href="{% url 'all_trees' %}?enviroment={{ enviroment.name }}"
-         aria-label="{{ enviroment.aria_for_anchor }}">
-          <div class="display-5 p-3 py-4  bg-dark text-center rounded">
-            <i class="{{ enviroment.icon_class }}"></i>
-          </div>
-          <div class="small name text-white text-center pb-2">{{ enviroment.friendly_name }}
-          </div>
-        </a>
-      </li>
-
-{% endfor %}
-
-{% endif %}
-
-
-    <!-- leaves_or_needles - coniferous -->
-
-    <li class="col mb-4 feature-tile" >
-      <a class="d-block bg-dark rounded text-white text-decoration-none"
+  <!-- features tile -->
+  <li class="col mb-4 feature-tile" >
+    <a class="d-block bg-dark rounded text-white text-decoration-none" 
+       href="{% url 'all_trees' %}?feature={{feature.name}}"
+       aria-label="{{ feature.aria_for_anchor }}">
+      <div class="display-5 p-3 py-4  bg-dark text-center rounded">
+        <i class="{{ feature.icon_class}}">
+        </i>
+      </div>
+      <div class="small name text-white text-center pb-2">{{ feature.friendly_name }}
+      </div>
+    </a>
+  </li>
+  {% endfor %}
+  {% endif %}
+  {% if enviroments %}
+  {% for enviroment in enviroments %}
+  <!-- ??? make javascript to add and remove visibility for class feature-tile -->
+  <!-- enviroments tile -->
+  <li class="col mb-4 feature-tile" >
+    <a class=" d-block bg-dark rounded text-white text-decoration-none"
+       href="{% url 'all_trees' %}?enviroment={{ enviroment.name }}"
+       aria-label="{{ enviroment.aria_for_anchor }}">
+      <div class="display-5 p-3 py-4  bg-dark text-center rounded">
+        <i class="{{ enviroment.icon_class }}">
+        </i>
+      </div>
+      <div class="small name text-white text-center pb-2">{{ enviroment.friendly_name }}
+      </div>
+    </a>
+  </li>
+  {% endfor %}
+  {% endif %}
+  <!-- leaves_or_needles - coniferous -->
+  <li class="col mb-4 feature-tile" >
+    <a class="d-block bg-dark rounded text-white text-decoration-none"
        href="{% url 'all_trees' %}?type=coniferous"
        aria-label="Show ">
-        <div class="display-5 p-3 py-4  bg-dark text-center rounded">
-          <svg class="bi" width="1em" height="1em" fill="currentColor">
-            <use xlink:href="#pine">
-            </use>
-          </svg>
-        </div>
-        <div class="small name text-white text-center pb-2">Coniferous
-        </div>
-      </a>
-    </li>
-
-    <!-- leaves_or_needles - deciduous -->
-    <li class="col mb-4 feature-tile" >
-      <a class="d-block bg-dark rounded text-white text-decoration-none"
+      <div class="display-5 p-3 py-4  bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#pine">
+          </use>
+        </svg>
+      </div>
+      <div class="small name text-white text-center pb-2">Coniferous
+      </div>
+    </a>
+  </li>
+  <!-- leaves_or_needles - deciduous -->
+  <li class="col mb-4 feature-tile" >
+    <a class="d-block bg-dark rounded text-white text-decoration-none"
        href="{% url 'all_trees' %}?type=deciduous"
        aria-label="Show ">
-        <div class="display-5 p-3 py-4  bg-dark text-center rounded">
-          <svg class="bi" width="1em" height="1em" fill="currentColor">
-            <use xlink:href="#leaf">
-            </use>
-          </svg>
-        </div>
-        <div class="small name text-white text-center pb-2">Deciduous
-        </div>
-      </a>
-    </li>
-
-
-<!-- 
+      <div class="display-5 p-3 py-4  bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#leaf">
+          </use>
+        </svg>
+      </div>
+      <div class="small name text-white text-center pb-2">Deciduous
+      </div>
+    </a>
+  </li>
+  <!-- 
 sorting starts here 
 sorting alphabedicaly by name
 -->
-
-
-    <!-- tile - double tile one on top for small phones  -->
-    <li class="col mb-4 d-none-above-xxs">
-        <a class="h4 d-block text-white text-decoration-none" 
+  <!-- tile - double tile one on top for small phones  -->
+  <li class="col mb-4 d-none-above-xxs">
+    <a class="h4 d-block text-white text-decoration-none" 
+       href="{% url 'all_trees' %}?sort=name&direction=asc"
+       aria-label="Sort trees by name alphabetically a to z. Opens in the same window">
+      <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#sortAZ">
+          </use>
+        </svg>
+      </div>
+    </a>
+    <a class="h4 d-block text-white text-decoration-none" 
+       href="{% url 'all_trees' %}?sort=name&direction=desc"
+       aria-label="Sort trees by name alphabetically z to a. Opens in the same window">
+      <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#sortZA">
+          </use>
+        </svg>
+      </div>
+    </a>
+    <div class="small name text-white bg-dark rounded text-center pt-1 pb-1">Name
+    </div>
+  </li>
+  <!-- tile - double side by side for all devices except small phones -->
+  <li class="col mb-4 d-none-xxs">
+    <div class="d-block bg-dark rounded" >
+      <div class="p-3 py-4 pt-5 mb-0 text-center ">
+        <a class="h4 text-white bg-dark text-decoration-none pe-2"
            href="{% url 'all_trees' %}?sort=name&direction=asc"
-           aria-label="Sort trees by name alphabetically a to z. Opens in the same window">
-          <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
-            <svg class="bi" width="1em" height="1em" fill="currentColor">
-              <use xlink:href="#sortAZ">
-              </use>
-            </svg>
-          </div>
-          </a>
-          <a class="h4 d-block text-white text-decoration-none" 
-          href="{% url 'all_trees' %}?sort=name&direction=desc"
-          aria-label="Sort trees by name alphabetically z to a. Opens in the same window">
-          <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
-            <svg class="bi" width="1em" height="1em" fill="currentColor">
-              <use xlink:href="#sortZA">
-              </use>
-            </svg>
-          </div>
-          </a>
-          <div class="small name text-white bg-dark rounded text-center pt-1 pb-1">Name
-          </div>
-
-      </li>
-
-      <!-- tile - double side by side for all devices except small phones -->
-      <li class="col mb-4 d-none-xxs">
-        <div class="d-block bg-dark rounded" >
-          <div class="p-3 py-4 pt-5 mb-0 text-center ">
-            <a class="h4 text-white bg-dark text-decoration-none pe-2"
-               href="{% url 'all_trees' %}?sort=name&direction=asc"
-               aria-label="Sort trees by name alphabetically z to a. Opens in the same window">
-              <svg class="bi" width="1em" height="1em" fill="currentColor">
-                <use xlink:href="#sortAZ">
-                </use>
-              </svg>
-            </a>
-            <a class="h4 text-white bg-dark text-decoration-none ps-2" 
-               href="{% url 'all_trees' %}?sort=name&direction=desc"
-               aria-label="Sort trees by name alphabetically z to a. Opens in the same window">
-              <svg class="bi" width="1em" height="1em" fill="currentColor">
-                <use xlink:href="#sortZA">
-                </use>
-              </svg>
-            </a>
-          </div>
-          <div class="small name text-white text-center pb-2">Name
-          </div>
-        </div>
-      </li>
-
-<!-- sorting by price -->
-
-          <!-- tile - double tile one on top for small phones  -->
-    <li class="col mb-4 d-none-above-xxs">
-      <a class="h4 d-block text-white text-decoration-none" 
-         href="{% url 'all_trees' %}?sort=price&direction=asc"
-         aria-label="Sort trees by price from lowest to highest. Opens in the same window">
-        <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+           aria-label="Sort trees by name alphabetically z to a. Opens in the same window">
+          <svg class="bi" width="1em" height="1em" fill="currentColor">
+            <use xlink:href="#sortAZ">
+            </use>
+          </svg>
+        </a>
+        <a class="h4 text-white bg-dark text-decoration-none ps-2" 
+           href="{% url 'all_trees' %}?sort=name&direction=desc"
+           aria-label="Sort trees by name alphabetically z to a. Opens in the same window">
+          <svg class="bi" width="1em" height="1em" fill="currentColor">
+            <use xlink:href="#sortZA">
+            </use>
+          </svg>
+        </a>
+      </div>
+      <div class="small name text-white text-center pb-2">Name
+      </div>
+    </div>
+  </li>
+  <!-- sorting by price -->
+  <!-- tile - double tile one on top for small phones  -->
+  <li class="col mb-4 d-none-above-xxs">
+    <a class="h4 d-block text-white text-decoration-none" 
+       href="{% url 'all_trees' %}?sort=price&direction=asc"
+       aria-label="Sort trees by price from lowest to highest. Opens in the same window">
+      <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#sort19">
+          </use>
+        </svg>
+      </div>
+    </a>
+    <a class="h4 d-block text-white text-decoration-none" 
+       href="{% url 'all_trees' %}?sort=price&direction=desc"
+       aria-label="Sort trees by price from highest to lowest. Opens in the same window">
+      <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#sort91">
+          </use>
+        </svg>
+      </div>
+    </a>
+    <div class="small name text-white bg-dark rounded text-center pt-1 pb-1">Price
+    </div>
+  </li>
+  <!-- tile - double side by side for all devices except small phones -->
+  <li class="col mb-4 d-none-xxs">
+    <div class="d-block bg-dark rounded" >
+      <div class="p-3 py-4 pt-5 mb-0 text-center ">
+        <a class="h4 text-white bg-dark text-decoration-none pe-2"
+           href="{% url 'all_trees' %}?sort=price&direction=asc"
+           aria-label="Sort trees by price from lowest to highest. Opens in the same window" >
           <svg class="bi" width="1em" height="1em" fill="currentColor">
             <use xlink:href="#sort19">
             </use>
           </svg>
-        </div>
         </a>
-        <a class="h4 d-block text-white text-decoration-none" 
-        href="{% url 'all_trees' %}?sort=price&direction=desc"
-        aria-label="Sort trees by price from highest to lowest. Opens in the same window">
-        <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+        <a class="h4 text-white bg-dark text-decoration-none ps-2" 
+           href="{% url 'all_trees' %}?sort=price&direction=desc"
+           aria-label="Sort trees by price from highest to lowest. Opens in the same window">
           <svg class="bi" width="1em" height="1em" fill="currentColor">
             <use xlink:href="#sort91">
             </use>
           </svg>
-        </div>
         </a>
-        <div class="small name text-white bg-dark rounded text-center pt-1 pb-1">Price
-        </div>
-
-    </li>
-    <!-- tile - double side by side for all devices except small phones -->
-    <li class="col mb-4 d-none-xxs">
-      <div class="d-block bg-dark rounded" >
-        <div class="p-3 py-4 pt-5 mb-0 text-center ">
-          <a class="h4 text-white bg-dark text-decoration-none pe-2"
-             href="{% url 'all_trees' %}?sort=price&direction=asc"
-             aria-label="Sort trees by price from lowest to highest. Opens in the same window" >
-            <svg class="bi" width="1em" height="1em" fill="currentColor">
-              <use xlink:href="#sort19">
-              </use>
-            </svg>
-          </a>
-          <a class="h4 text-white bg-dark text-decoration-none ps-2" 
-             href="{% url 'all_trees' %}?sort=price&direction=desc"
-             aria-label="Sort trees by price from highest to lowest. Opens in the same window">
-            <svg class="bi" width="1em" height="1em" fill="currentColor">
-              <use xlink:href="#sort91">
-              </use>
-            </svg>
-          </a>
-        </div>
-        <div class="small name text-white text-center pb-2">Price
-        </div>
       </div>
-    </li>
-
-
-    <!-- sorting by height -->
-
-          <!-- tile - double tile one on top for small phones  -->
-          <li class="col mb-4 d-none-above-xxs">
-            <a class="h4 d-block text-white text-decoration-none" 
-               href="{% url 'all_trees' %}?sort=height_in&direction=asc"
-               aria-label="Sort trees by hight from smallest to largest. Opens in same window">
-              <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
-                <svg class="bi" width="1em" height="1em" fill="currentColor">
-                  <use xlink:href="#sortSL">
-                  </use>
-                </svg>
-              </div>
-              </a>
-              <a class="h4 d-block text-white text-decoration-none" 
-              href="{% url 'all_trees' %}?sort=height_in&direction=desc"
-              aria-label="Sort trees by hight from largest to smallest. Opens in same window">
-              <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
-                <svg class="bi" width="1em" height="1em" fill="currentColor">
-                  <use xlink:href="#sortLS">
-                  </use>
-                </svg>
-              </div>
-              </a>
-              <div class="small name text-white bg-dark rounded text-center pt-1 pb-1">Height
-              </div>
-      
-          </li>
-          <!-- tile - double side by side for all devices except small phones -->
-          <li class="col mb-4 d-none-xxs">
-            <div class="d-block bg-dark rounded" >
-              <div class="p-3 py-4 pt-5 mb-0 text-center ">
-                <a class="h4 text-white bg-dark text-decoration-none pe-2"
-                   href="{% url 'all_trees' %}?sort=height_in&direction=asc"
-                   aria-label="Sort trees by hight from smallest to largest. Opens in same window">
-                  <svg class="bi" width="1em" height="1em" fill="currentColor">
-                    <use xlink:href="#sortLS">
-                    </use>
-                  </svg>
-                </a>
-                <a class="h4 text-white bg-dark text-decoration-none ps-2" 
-                   href="{% url 'all_trees' %}?sort=height_in&direction=desc"
-                   aria-label="Sort trees by hight from largest to smallest. Opens in same window">
-                  <svg class="bi" width="1em" height="1em" fill="currentColor">
-                    <use xlink:href="#sortSL">
-                    </use>
-                  </svg>
-                </a>
-              </div>
-              <div class="small name text-white text-center pb-2">Height
-              </div>
-            </div>
-          </li>
-
-
-              <!-- sorting by trunk -->
-
-          <!-- tile - double tile one on top for small phones  -->
-          <li class="col mb-4 d-none-above-xxs">
-            <a class="h4 d-block text-white text-decoration-none" 
-               href="{% url 'all_trees' %}?sort=trunk_circumference&direction=asc"
-               aria-label="Sort trees by trunk from smallest to thickest. Opens in same window">
-              <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
-                <svg class="bi" width="1em" height="1em" fill="currentColor">
-                  <use xlink:href="#sortSL">
-                  </use>
-                </svg>
-              </div>
-              </a>
-              <a class="h4 d-block text-white text-decoration-none" 
-              href="{% url 'all_trees' %}?sort=trunk_circumference&direction=desc"
-              aria-label="Sort trees by trunk from thickest to smallest. Opens in same window">
-              <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
-                <svg class="bi" width="1em" height="1em" fill="currentColor">
-                  <use xlink:href="#sortLS">
-                  </use>
-                </svg>
-              </div>
-              </a>
-              <div class="small name text-white bg-dark rounded text-center pt-1 pb-1">Trunk
-              </div>
-      
-          </li>
-          <!-- tile - double side by side for all devices except small phones -->
-          <li class="col mb-4 d-none-xxs">
-            <div class="d-block bg-dark rounded" >
-              <div class="p-3 py-4 pt-5 mb-0 text-center ">
-                <a class="h4 text-white bg-dark text-decoration-none pe-2"
-                   href="{% url 'all_trees' %}?sort=trunk_circumference&direction=asc"
-                   aria-label="Sort trees by trunk from smallest to thickest. Opens in same window">
-                  <svg class="bi" width="1em" height="1em" fill="currentColor">
-                    <use xlink:href="#sortSL">
-                    </use>
-                  </svg>
-                </a>
-                <a class="h4 text-white bg-dark text-decoration-none ps-2" 
-                   href="{% url 'all_trees' %}?sort=trunk_circumference&direction=desc"
-                   aria-label="Sort trees by trunk from thickest to smallest. Opens in same window">
-                  <svg class="bi" width="1em" height="1em" fill="currentColor">
-                    <use xlink:href="#sortLS">
-                    </use>
-                  </svg>
-                </a>
-              </div>
-              <div class="small name text-white text-center pb-2">Trunk
-              </div>
-            </div>
-          </li>
-
-  </ul>
-  
+      <div class="small name text-white text-center pb-2">Price
+      </div>
+    </div>
+  </li>
+  <!-- sorting by height -->
+  <!-- tile - double tile one on top for small phones  -->
+  <li class="col mb-4 d-none-above-xxs">
+    <a class="h4 d-block text-white text-decoration-none" 
+       href="{% url 'all_trees' %}?sort=height_in&direction=asc"
+       aria-label="Sort trees by hight from smallest to largest. Opens in same window">
+      <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#sortSL">
+          </use>
+        </svg>
+      </div>
+    </a>
+    <a class="h4 d-block text-white text-decoration-none" 
+       href="{% url 'all_trees' %}?sort=height_in&direction=desc"
+       aria-label="Sort trees by hight from largest to smallest. Opens in same window">
+      <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#sortLS">
+          </use>
+        </svg>
+      </div>
+    </a>
+    <div class="small name text-white bg-dark rounded text-center pt-1 pb-1">Height
+    </div>
+  </li>
+  <!-- tile - double side by side for all devices except small phones -->
+  <li class="col mb-4 d-none-xxs">
+    <div class="d-block bg-dark rounded" >
+      <div class="p-3 py-4 pt-5 mb-0 text-center ">
+        <a class="h4 text-white bg-dark text-decoration-none pe-2"
+           href="{% url 'all_trees' %}?sort=height_in&direction=asc"
+           aria-label="Sort trees by hight from smallest to largest. Opens in same window">
+          <svg class="bi" width="1em" height="1em" fill="currentColor">
+            <use xlink:href="#sortLS">
+            </use>
+          </svg>
+        </a>
+        <a class="h4 text-white bg-dark text-decoration-none ps-2" 
+           href="{% url 'all_trees' %}?sort=height_in&direction=desc"
+           aria-label="Sort trees by hight from largest to smallest. Opens in same window">
+          <svg class="bi" width="1em" height="1em" fill="currentColor">
+            <use xlink:href="#sortSL">
+            </use>
+          </svg>
+        </a>
+      </div>
+      <div class="small name text-white text-center pb-2">Height
+      </div>
+    </div>
+  </li>
+  <!-- sorting by trunk -->
+  <!-- tile - double tile one on top for small phones  -->
+  <li class="col mb-4 d-none-above-xxs">
+    <a class="h4 d-block text-white text-decoration-none" 
+       href="{% url 'all_trees' %}?sort=trunk_circumference&direction=asc"
+       aria-label="Sort trees by trunk from smallest to thickest. Opens in same window">
+      <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#sortSL">
+          </use>
+        </svg>
+      </div>
+    </a>
+    <a class="h4 d-block text-white text-decoration-none" 
+       href="{% url 'all_trees' %}?sort=trunk_circumference&direction=desc"
+       aria-label="Sort trees by trunk from thickest to smallest. Opens in same window">
+      <div class="p-3 py-4 mb-2 bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#sortLS">
+          </use>
+        </svg>
+      </div>
+    </a>
+    <div class="small name text-white bg-dark rounded text-center pt-1 pb-1">Trunk
+    </div>
+  </li>
+  <!-- tile - double side by side for all devices except small phones -->
+  <li class="col mb-4 d-none-xxs">
+    <div class="d-block bg-dark rounded" >
+      <div class="p-3 py-4 pt-5 mb-0 text-center ">
+        <a class="h4 text-white bg-dark text-decoration-none pe-2"
+           href="{% url 'all_trees' %}?sort=trunk_circumference&direction=asc"
+           aria-label="Sort trees by trunk from smallest to thickest. Opens in same window">
+          <svg class="bi" width="1em" height="1em" fill="currentColor">
+            <use xlink:href="#sortSL">
+            </use>
+          </svg>
+        </a>
+        <a class="h4 text-white bg-dark text-decoration-none ps-2" 
+           href="{% url 'all_trees' %}?sort=trunk_circumference&direction=desc"
+           aria-label="Sort trees by trunk from thickest to smallest. Opens in same window">
+          <svg class="bi" width="1em" height="1em" fill="currentColor">
+            <use xlink:href="#sortLS">
+            </use>
+          </svg>
+        </a>
+      </div>
+      <div class="small name text-white text-center pb-2">Trunk
+      </div>
+    </div>
+  </li>
+</ul>

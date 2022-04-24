@@ -2,117 +2,108 @@
 <!doctype html>
 <html lang="en" class="h-100">
   <head>
-
     {% block meta %}
     <!-- Required meta tags -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% endblock %}
-
     {% block extra_meta %}
     {% endblock %}
-
     {% block core_css %}
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
     <!--google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baumans&family=Kodchasan:wght@200&display=swap" rel="stylesheet">
     <!-- my css for base template -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    
     {% endblock %}
-
     {% block extra_css %}
     {% endblock %}
-
     {% block core_js %}
     <!-- fontawsome v5 -->
-    <script src="https://kit.fontawesome.com/ec7ce2da63.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ec7ce2da63.js" crossorigin="anonymous">
+    </script>
     <!-- bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
     <!-- Bootstrap JavaScript Separate Popper and Bootstrap JS -->
     <!-- check if needs to go to head??? as per walkthrough??? -->
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <link rel="icon" href="{{ MEDIA_URL }}trees-green.svg" sizes="any">
     <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://js.stripe.com/v3/">
+    </script>
     {% endblock %}
-
     {% block extra_js %}
     {% endblock %}
-    <title>Three Oaks {% block extra_title %} {% endblock %}</title>
+
+    <title>Three Oaks {% block extra_title %} {% endblock %}
+    </title>
   </head>
   <body class="d-flex flex-column h-100">
     <!-- svg icons from bootstrap -->
     {% include 'includes/svg.html' %}
-
     <!-- Optional JavaScript; choose one of the two! -->
     <header id="header">
       {% include 'includes/navbar/widescreen-nav.html' %}
       {% include 'includes/navbar/mobile-nav.html' %}
     </header>
-
     {% if messages %}
     <div class="message-container text-center">
       {% for message in messages %}
       {% with message.level as level %}
-        <!-- level (classifier) determines the type of the toast -->
-
-        {% if level == 40 %}
-          <!-- level 40 is an error -->
-          {% include 'includes/toasts/toast_error.html' %}
-
-        {% elif level == 30 %}
-          <!-- level 30 is a warning -->
-          {% include 'includes/toasts/toast_warning.html' %}
-        {% elif level == 25 %}
-          <!-- level 25 is success -->
-          {% include 'includes/toasts/toast_success.html' %}
-        {% else %}
-        <!-- info toast for everything else -->
-          {% include 'includes/toasts/toast_info.html' %}
-        {% endif %}
-        
+      <!-- level (classifier) determines the type of the toast -->
+      {% if level == 40 %}
+      <!-- level 40 is an error -->
+      {% include 'includes/toasts/toast_error.html' %}
+      {% elif level == 30 %}
+      <!-- level 30 is a warning -->
+      {% include 'includes/toasts/toast_warning.html' %}
+      {% elif level == 25 %}
+      <!-- level 25 is success -->
+      {% include 'includes/toasts/toast_success.html' %}
+      {% else %}
+      <!-- info toast for everything else -->
+      {% include 'includes/toasts/toast_info.html' %}
+      {% endif %}
       {% endwith %}
-
-    {% endfor %}
+      {% endfor %}
     </div>
     {% endif %}
-
     {% block page_header %}
     {% endblock %}
-
     <!-- content goes here -->
     {% block content %}
     {% endblock %}
     <!-- FOOTER -->
     <footer class="footer mt-auto">
       <div class="container">
-        <p class="float-end"><a href="#">Back to top</a></p>
-        <p>&copy; 2017-2021 Company, Inc. &middot; <a href="#header">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p class="float-end">
+          <a href="#">Back to top
+          </a>
+        </p>
+        <p>&copy; 2017-2021 Company, Inc. &middot; 
+          <a href="#header">Privacy
+          </a> &middot; 
+          <a href="#">Terms
+          </a>
+        </p>
       </div>
-
     </footer>
     {% block postload_js %}
-
-    <script type="text/javascript">
+    <script>
     $(document).ready(function(){
       $('.toast').toast('show');
     });
     </script>
-
-
     {% endblock %}
-
-
 </body>
 </html>

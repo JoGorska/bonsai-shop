@@ -1,7 +1,7 @@
-<!-- form for newsletter if the user is not subscribed -->
-<!-- need to check if the user is subscribed ??? -->
 {% if subscribed_user %}
-<h4 class="mb-3 my-heading-font">You have subscribed to our Newsletter</h4>
+<!-- for users that have already subscribed to newsletter -->
+<h4 class="mb-3 my-heading-font">You have subscribed to our Newsletter
+</h4>
 <form action="{% url 'unsubscribe' %}" method="POST">
   {% csrf_token %}
   <div class="">
@@ -9,8 +9,8 @@
       <span class="input-group-text" id="email">@
       </span>
       <input readonly type="email" class="form-control"
-      placeholder="email" aria-label="email" aria-describedby="email" name="email" required
-      value="{{ current_subscriber.email }}">
+             placeholder="email" aria-label="email" aria-describedby="email" name="email" required
+             value="{{ current_subscriber.email }}">
     </div>
     <div class="form-check ms-3">
       <input checked disabled class="form-check-input" type="checkbox" value="" id="accepted_privacy_policy" name="accepted_privacy_policy">
@@ -26,53 +26,44 @@
         I wish to receive the newsletter.
       </label>
     </div>
-
     <input type="hidden" name="registered_user" value="{{ user.id }}">
     <input type="hidden" name="next" value="{{ request.get_full_path }}"/>
   </div>
-
-    <button type="submit" class="btn btn-secondary rounded-pill mt-3">Unsubscribe
-    </button>
-
+  <button type="submit" class="btn btn-secondary rounded-pill mt-3">Unsubscribe
+  </button>
 </form>
-
-
 {% else %}
-<h4 class="mb-3 my-heading-font">Newsletter Subscribtion</h4>
+<!-- for users that have not subscribed yet -->
+<h4 class="mb-3 my-heading-font">Newsletter Subscribtion
+</h4>
 <form action="{% url 'add_subscriber' %}" method="POST">
-    {% csrf_token %}
-    <div class="">
-      <div class="input-group mb-3 border-dark">
-        <span class="input-group-text" id="email">@
-        </span>
-        <input type="email" class="form-control"
-        placeholder="email" aria-label="email" aria-describedby="email" name="email" required
-        value="{{ user.email }}">
-      </div>
-      <div class="form-check ms-3">
-        <input class="form-check-input" type="checkbox" value="" id="accepted_privacy_policy" name="accepted_privacy_policy">
-        <label class="form-check-label" for="accepted_privacy_policy">
-          I accept 
-          <a class="text-success" href="">Privacy Policy
-          </a>
-        </label>
-      </div>
-      <div class="form-check ms-3">
-        <input class="form-check-input" type="checkbox" value="" id="subscribed" name="subscribed">
-        <label class="form-check-label" for="subscribed">
-          I wish to receive the newsletter.
-        </label>
-      </div>
-
-      <input type="hidden" name="registered_user" value="{{ user.id }}">
-
-      <input type="hidden" name="next" value="{{ request.get_full_path }}"/>
+  {% csrf_token %}
+  <div class="">
+    <div class="input-group mb-3 border-dark">
+      <span class="input-group-text" id="email">@
+      </span>
+      <input type="email" class="form-control"
+             placeholder="email" aria-label="email" aria-describedby="email" name="email" required
+             value="{{ user.email }}">
     </div>
-
-      <button type="submit" class="btn btn-success rounded-pill mt-3">Confirm
-      </button>
-
-  </form>
-  <!-- add subscriber form ends here -->
-  {% endif %}
-  
+    <div class="form-check ms-3">
+      <input class="form-check-input" type="checkbox" value="" id="accepted_privacy_policy" name="accepted_privacy_policy">
+      <label class="form-check-label" for="accepted_privacy_policy">
+        I accept 
+        <a class="text-success" href="">Privacy Policy
+        </a>
+      </label>
+    </div>
+    <div class="form-check ms-3">
+      <input class="form-check-input" type="checkbox" value="" id="subscribed" name="subscribed">
+      <label class="form-check-label" for="subscribed">
+        I wish to receive the newsletter.
+      </label>
+    </div>
+    <input type="hidden" name="registered_user" value="{{ user.id }}">
+    <input type="hidden" name="next" value="{{ request.get_full_path }}"/>
+  </div>
+  <button type="submit" class="btn btn-success rounded-pill mt-3">Confirm
+  </button>
+</form>
+{% endif %}

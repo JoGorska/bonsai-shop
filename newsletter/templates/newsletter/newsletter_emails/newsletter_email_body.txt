@@ -3,22 +3,13 @@ Hello {{ subscriber.registered_user }}!
 {% else %}
 Hello!
 {% endif %}
-
 We have been recently asked a very interesting question.
 {{faq_latest_question.header}}
-
 {{ faq_latest_question.detail }}
-
-
 This is our solution to that problem.
 {{faq_latest_question.answer}}
-
 If you have any questions, feel free to contact us at {{ contact_email }}.
-
-
 Sincerely,
-
 Three Oaks
-
 If you wish to unsubscribe from further communication please follow the link below
 https://three-oaks.herokuapp.com/newsletter/unsubscribe/{{ subscriber.id }}/

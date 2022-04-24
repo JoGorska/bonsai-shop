@@ -4,67 +4,61 @@
 <link rel="stylesheet" href="{% static 'questions/css/bootstrap-carusel.css' %}">
 {% endblock %}
 {% block content %}
-
 <main class="">
   {% if user.is_authenticated %}
   <!-- authenticated users are getting static header inviting to ask questions -->
   {% include 'questions/includes/carousel_faq.html' %}
   {% else %}
-    <!-- unauthenticated user gets carousel -->
+  <!-- unauthenticated user gets carousel -->
   {% include '../includes/carousel.html' %}
   {% endif %}
   <div class="container marketing">
-      <div class="accordion accordion-flush" id="list-of-questions">
-        {% for question in question_list %}
-        <div class="accordion-item">
-          <!-- accordeaon header -->
-          <h2 class="accordion-header" id="heading-{{ question.id }}">
-            <button class="accordion-button collapsed border-bottom border-muted shadow-lg"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#question-id-{{ question.id }}"
-                    aria-expanded="true" aria-controls="question-id-{{ question.id }}">
-              {{ question.header }}
-            </button>
-          </h2>
-          <!-- accordeon body -->
-          <div id="question-id-{{question.id}}" class="accordion-collapse collapse" aria-labelledby="heading-{{question.id}}" data-bs-parent="#list-of-questions">
-            <div class="accordion-body">
-              <div class="container">
-                <div class="row">
-                    {% include 'questions/includes/question_detail.html' %}
-                </div>
+    <div class="accordion accordion-flush" id="list-of-questions">
+      {% for question in question_list %}
+      <div class="accordion-item">
+        <!-- accordeaon header -->
+        <h2 class="accordion-header" id="heading-{{ question.id }}">
+          <button class="accordion-button collapsed border-bottom border-muted shadow-lg"
+                  type="button" data-bs-toggle="collapse" data-bs-target="#question-id-{{ question.id }}"
+                  aria-expanded="true" aria-controls="question-id-{{ question.id }}">
+            {{ question.header }}
+          </button>
+        </h2>
+        <!-- accordeon body -->
+        <div id="question-id-{{question.id}}" class="accordion-collapse collapse" aria-labelledby="heading-{{question.id}}" data-bs-parent="#list-of-questions">
+          <div class="accordion-body">
+            <div class="container">
+              <div class="row">
+                {% include 'questions/includes/question_detail.html' %}
               </div>
             </div>
           </div>
         </div>
-        {% empty %}
-        <h4>We currenlty have no questions. Please feel welcome to ask us about bonsai.</h4>
-        {% endfor %}
       </div>
+      {% empty %}
+      <h4>We currenlty have no questions. Please feel welcome to ask us about bonsai.
+      </h4>
+      {% endfor %}
     </div>
-    
-    </div>
-
-     <!-- pagination from django-->
-  {% if is_paginated %}
-  <nav class="" aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-      {% if page_obj.has_previous %}
-      <li>
-        <a class="btn btn-success rounded-pill mt-3 fw-bold" href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV 
-        </a>
-      </li>
-      {% endif %}
-      {% if page_obj.has_next %}
-      <li>
-        <a class="btn btn-success rounded-pill mt-3 fw-bold" href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;
-        </a>
-      </li>
-      {% endif %}
-    </ul>
-  </nav>
-  {% endif %}
-
+  </div>
+<!-- pagination from django-->
+{% if is_paginated %}
+<nav class="" aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <li>
+      <a class="page-link btn btn-success rounded-pill mt-3 fw-bold" href="?page={{ page_obj.previous_page_number }}">&laquo; PREV 
+      </a>
+    </li>
+    {% endif %}
+    {% if page_obj.has_next %}
+    <li>
+      <a class="page-link btn btn-success rounded-pill mt-3 fw-bold" href="?page={{ page_obj.next_page_number }}"> NEXT &raquo;
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
 </main>
-
-
-  {% endblock %}
+{% endblock %}

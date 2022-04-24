@@ -1,89 +1,109 @@
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner" >
-      <div class="carousel-item active">
-        <img src="{{ MEDIA_URL }}wide-pexels-quang-nguyen-vinh-2149105.jpg" alt="">
-        <div class="container">
-          <div class="carousel-caption text-start">
-        {% if subscribed == True %}
-          <h1 class="my-heading-font">Thank you for subscribing to our Newsletter</h1>
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
+    </button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2">
+    </button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3">
+    </button>
+  </div>
+  <div class="carousel-inner" >
+    <div class="carousel-item active">
+      <img src="{{ MEDIA_URL }}wide-pexels-quang-nguyen-vinh-2149105.jpg" alt="">
+      <div class="container">
+        <div class="carousel-caption text-start">
+          {% if subscribed == True %}
+          <h1 class="my-heading-font">Thank you for subscribing to our Newsletter
+          </h1>
           <p>We will be sending you new educational advices on bonsai care once a week.
             if you wish to unsubscribe, click the button below.
           </p>
-
           <!-- button modal trigger for sign up -->
           <p>
             <a href="{% url 'unsubscribe_registered_user'%}"
- 
-            class="btn btn-lg btn-secondary rounded-pill">
-            Unsubscribe
-          </a>
+               class="btn btn-lg btn-secondary rounded-pill">
+              Unsubscribe
+            </a>
           </p>
           {% else %}
-            <h1 class="my-heading-font">Sign up for our Newsletter</h1>
-            <p>Learn more about Bonsai from our experts and find out our latest promotions</p>
-          
-            <!-- button modal trigger for sign up -->
-            <p>
-              <button type="button" 
-              data-bs-target="#newsletter-modal" 
-              data-bs-toggle="modal" 
-              class="btn btn-lg btn-success rounded-pill">
+          <h1 class="my-heading-font">Sign up for our Newsletter
+          </h1>
+          <p>Learn more about Bonsai from our experts and find out our latest promotions
+          </p>
+          <!-- button modal trigger for sign up -->
+          <p>
+            <button type="button" 
+                    data-bs-target="#newsletter-modal" 
+                    data-bs-toggle="modal" 
+                    class="btn btn-lg btn-success rounded-pill">
               Sign up today
-              </button>
-            </p>
-          
-        {% endif %}
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{{ MEDIA_URL }}wide-pexels-quang-nguyen-vinh-8280940.jpg" alt="">
-        <div class="container">
-          <div class="carousel-caption">
-            <h1 class="my-heading-font">Search for your perfect bonsai</h1>
-            <p>We added new criteria to search for your favourite bonsai. We offer free delivery for purchases over £50.</p>
-            <p><a class="btn btn-lg btn-success rounded-pill" href="{% url 'all_trees' %}">Shop Now</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{{ MEDIA_URL }}wide-pexels-tieu-bao-truong-8913408.jpg" alt="">
-        <div class="container">
-
-          {% if user.is_authenticated %}
-          <div class="carousel-caption text-end">
-            <h1 class="my-heading-font">Ask us Questions</h1>
-            <p>If you want to learn more about growing and maintaingin bonsai trees go to our 
-              <a class="text-decoration-none text-success fw-bold" href="{% url 'questions' %}">FAQ page </a>
-              or ask us question</p>
-            <p><a class="btn btn-lg btn-success rounded-pill" href="{% url 'add_question' %}">Ask Question</a></p>
-          </div>
-          {% else %}
-          <div class="carousel-caption text-end">
-            <h1 class="my-heading-font">Learn more about bonsai</h1>
-            <p>If you want to learn more about growing and maintaingin bonsai trees go to our 
-              <a class="text-decoration-none text-success fw-bold" href="{% url 'questions' %}">FAQ page </a>
-              or ask us question</p>
-            <p><a class="btn btn-lg btn-success rounded-pill" href="{% url 'questions' %}">FAQ</a></p>
-          </div>
+            </button>
+          </p>
           {% endif %}
-
         </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    <div class="carousel-item">
+      <img src="{{ MEDIA_URL }}wide-pexels-quang-nguyen-vinh-8280940.jpg" alt="">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1 class="my-heading-font">Search for your perfect bonsai
+          </h1>
+          <p>We added new criteria to search for your favourite bonsai. We offer free delivery for purchases over £50.
+          </p>
+          <p>
+            <a class="btn btn-lg btn-success rounded-pill" href="{% url 'all_trees' %}">Shop Now
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{{ MEDIA_URL }}wide-pexels-tieu-bao-truong-8913408.jpg" alt="">
+      <div class="container">
+        {% if user.is_authenticated %}
+        <div class="carousel-caption text-end">
+          <h1 class="my-heading-font">Ask us Questions
+          </h1>
+          <p>If you want to learn more about growing and maintaingin bonsai trees go to our 
+            <a class="text-decoration-none text-success fw-bold" href="{% url 'questions' %}">FAQ page 
+            </a>
+            or ask us question
+          </p>
+          <p>
+            <a class="btn btn-lg btn-success rounded-pill" href="{% url 'add_question' %}">Ask Question
+            </a>
+          </p>
+        </div>
+        {% else %}
+        <div class="carousel-caption text-end">
+          <h1 class="my-heading-font">Learn more about bonsai
+          </h1>
+          <p>If you want to learn more about growing and maintaingin bonsai trees go to our 
+            <a class="text-decoration-none text-success fw-bold" href="{% url 'questions' %}">FAQ page 
+            </a>
+            or ask us question
+          </p>
+          <p>
+            <a class="btn btn-lg btn-success rounded-pill" href="{% url 'questions' %}">FAQ
+            </a>
+          </p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
   </div>
-
-  {% include 'includes/modal_subscribe_form.html' %}
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true">
+    </span>
+    <span class="visually-hidden">Previous
+    </span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true">
+    </span>
+    <span class="visually-hidden">Next
+    </span>
+  </button>
+</div>
+{% include 'includes/modal_subscribe_form.html' %}
