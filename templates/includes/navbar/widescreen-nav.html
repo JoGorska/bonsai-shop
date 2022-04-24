@@ -75,6 +75,8 @@
           text-success active 
           {% elif request.resolver_match.url_name == 'account_email' %}
           text-success active 
+          {% elif request.resolver_match.url_name == 'subscribers' %}
+          text-success active 
           {% else %} text-white {% endif %}
           
           "

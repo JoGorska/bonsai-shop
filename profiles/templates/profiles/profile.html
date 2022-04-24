@@ -26,8 +26,8 @@
       </h4>
       <ul class="list-group mb-3 order-history">
         {% for order in orders %}
-        <a class="text-decoration-none" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
           <li class="list-group-item d-flex justify-content-between lh-sm">
+            <a class="text-decoration-none text-dark" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
             <div>
               <h6 class="my-0">{{ order.date }}
               </h6>
@@ -36,8 +36,8 @@
             </div>
             <span class="text-muted">£ {{ order.grand_total }}
             </span>
-          </li>
-        </a>
+          </a>
+        </li>
         {% endfor %}
       </ul>
     </div>
