@@ -1,166 +1,194 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'home/css/bootstrap-carusel.css' %}">
 {% endblock %}
-
 {% block content %}
-
-
-  
-  <main>
-  
-    {% include '../includes/carousel.html' %}
-
-  
-  
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-  
-    <div class="container marketing">
-
-      <!-- Three heads with text -->
-      <div class="row">
-        <div class="col-lg-4">
-          <img src="{{ MEDIA_URL }}pexels-andrea-piacquadio-3831569.jpg" class="rounded-circle" width="140" height="140"  alt="Elterly man in red tie, smiling">
-  
-          <h2 class="my-heading-font">Richard Head Gardner</h2>
-          <p>My favourite trees are mapels. I love them any time of the year. They can be tricky to work with sometimes.</p>
-          <p><a class="btn btn-secondary rounded-pill" href="{% url 'all_trees' %}?q=acer">See my favorite &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-
-          <img src="{{ MEDIA_URL }}pexels-andrea-piacquadio-3959954.jpg" class="rounded-circle" width="140" height="140"  alt="black woman in yellow t-shirt smiling">
-           
-          <h2 class="my-heading-font"> Diana Designer</h2>
-          <p>My favorite bonsai are the fruiting ones. They give such an effect in spring and than throught the year when the fruts grow.</p>
-          <p><a class="btn btn-secondary rounded-pill" href="{% url 'all_trees' %}?feature=fruiting">See my favorite &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img src="{{ MEDIA_URL }}irene-strong-TMt3JGoVlng-unsplash.jpg" class="rounded-circle" width="140" height="140"  alt="Elterly man in red tie, smiling">
-           
-          <h2 class="my-heading-font">Mark Apprentice</h2>
-          <p>Since I started working for Three Oaks I was learning more and more about creating landscapes. They are like minature worlds.</p>
-          <p><a class="btn btn-secondary rounded-pill" href="{% url 'all_trees' %}?feature=landscape">See my favorite &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
-  
-
-      <!-- START THE FEATURETTES -->
-  
-      <hr class="featurette-divider">
-
-
-  
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading my-heading-font">{{ questions.0.header }} </h2>
-          <p class="lead">{{ questions.0.detail }}</p>
-          <div class="text-end">
-            <p><span class="text-muted"> {{ questions.0.author }}</span></p>
-          </div>
-          {% if questions.0.answer %}
-          <h3 class="my-heading-font">Answer:</h3>
-          <p class="lead">{{ questions.0.answer }}</p>
-          <div class="text-end">
-            <p><span class="text-muted">Richard</span></p>
-          </div>
-          {% endif %}
-
-        </div>
-        <div class="col-md-5">
-          
-          {% if questions.0.image %}
-          <img src="{{ questions.0.image.url }}" class="img-fluid" 
-          {% if questions.0.image_alt %}
-          alt="{{ questions.0.image_alt }}"
-          {% else %}
-          alt="{{ questions.0.header }}"
-          {% endif %}>
-    
-          {% else %}
-          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-          {% endif %}
-        </div>
+<main>
+  {% include '../includes/carousel.html' %}
+  <!-- Marketing messaging and featurettes
+================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+  <div class="container marketing">
+    <!-- Three heads with text -->
+    <div class="row">
+      <div class="col-lg-4">
+        <img src="{{ MEDIA_URL }}pexels-andrea-piacquadio-3831569.jpg" class="rounded-circle" width="140" height="140"  alt="Elterly man in red tie, smiling">
+        <h2 class="my-heading-font">Richard Head Gardner
+        </h2>
+        <p>My favourite trees are mapels. I love them any time of the year. They can be tricky to work with sometimes.
+        </p>
+        <p>
+          <a class="btn btn-secondary rounded-pill" href="{% url 'all_trees' %}?q=acer">See my favorite &raquo;
+          </a>
+        </p>
+      </div>
+      <!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="{{ MEDIA_URL }}pexels-andrea-piacquadio-3959954.jpg" class="rounded-circle" width="140" height="140"  alt="black woman in yellow t-shirt smiling">
+        <h2 class="my-heading-font"> Diana Designer
+        </h2>
+        <p>My favorite bonsai are the fruiting ones. They give such an effect in spring and than throught the year when the fruts grow.
+        </p>
+        <p>
+          <a class="btn btn-secondary rounded-pill" href="{% url 'all_trees' %}?feature=fruiting">See my favorite &raquo;
+          </a>
+        </p>
+      </div>
+      <!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="{{ MEDIA_URL }}irene-strong-TMt3JGoVlng-unsplash.jpg" class="rounded-circle" width="140" height="140"  alt="Elterly man in red tie, smiling">
+        <h2 class="my-heading-font">Mark Apprentice
+        </h2>
+        <p>Since I started working for Three Oaks I was learning more and more about creating landscapes. They are like minature worlds.
+        </p>
+        <p>
+          <a class="btn btn-secondary rounded-pill" href="{% url 'all_trees' %}?feature=landscape">See my favorite &raquo;
+          </a>
+        </p>
+      </div>
+      <!-- /.col-lg-4 -->
     </div>
-  
-      <hr class="featurette-divider">
-  
-      <div class="row featurette">
-        <div class="col-md-7 order-md-2">
-          <h2 class="featurette-heading my-heading-font">{{ questions.1.header }} </h2>
-          <p class="lead">{{ questions.1.detail }}</p>
-          <div class="text-end">
-            <p><span class="text-muted"> {{ questions.1.author }}</span></p>
-          </div>
-          {% if questions.1.answer %}
-          <h3 class="my-heading-font">Answer:</h3>
-          <p class="lead">{{ questions.1.answer }}</p>
-          <div class="text-end">
-            <p><span class="text-muted"> Richard</span></p>
-          </div>
-          {% endif %}
+    <!-- /.row -->
+    <!-- START THE FEATURETTES -->
+    <hr class="featurette-divider">
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading my-heading-font">{{ questions.0.header }} 
+        </h2>
+        <p class="lead">{{ questions.0.detail }}
+        </p>
+        <div class="text-end">
+          <p>
+            <span class="text-muted"> {{ questions.0.author }}
+            </span>
+          </p>
         </div>
-        <div class="col-md-5 order-md-1">
-          
-          {% if questions.1.image %}
-          <img src="{{ questions.1.image.url }}" class="img-fluid" 
-          {% if questions.1.image_alt %}
-          alt="{{ questions.1.image_alt }}"
-          {% else %}
-          alt="{{ questions.1.header }}"
-          {% endif %}>
-    
-          {% else %}
-          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-          {% endif %}
+        {% if questions.0.answer %}
+        <h3 class="my-heading-font">Answer:
+        </h3>
+        <p class="lead">{{ questions.0.answer }}
+        </p>
+        <div class="text-end">
+          <p>
+            <span class="text-muted">Richard
+            </span>
+          </p>
         </div>
+        {% endif %}
+      </div>
+      <div class="col-md-5">
+        {% if questions.0.image %}
+        <img src="{{ questions.0.image.url }}" class="img-fluid" 
+             {% if questions.0.image_alt %}
+             alt="{{ questions.0.image_alt }}"
+             {% else %}
+             alt="{{ questions.0.header }}"
+             {% endif %}>
+        {% else %}
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder
+          </title>
+          <rect width="100%" height="100%" fill="#eee"/>
+          <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500
+          </text>
+        </svg>
+        {% endif %}
+      </div>
     </div>
-  
-      <hr class="featurette-divider">
-  
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading my-heading-font">{{ questions.2.header }} </h2>
-          <p class="lead">{{ questions.2.detail }}</p>
-          <div class="text-end">
-            <p><span class="text-muted"> {{ questions.0.author }}</span></p>
-          </div>
-          {% if questions.2.answer %}
-          <h3 class="my-heading-font">Answer:</h3>
-          <p class="lead">{{ questions.2.answer }}</p>
-          <div class="text-end">
-            <p><span class="text-muted"> Richard</span></p>
-          </div>
-          {% endif %}
-
+    <hr class="featurette-divider">
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading my-heading-font">{{ questions.1.header }} 
+        </h2>
+        <p class="lead">{{ questions.1.detail }}
+        </p>
+        <div class="text-end">
+          <p>
+            <span class="text-muted"> {{ questions.1.author }}
+            </span>
+          </p>
         </div>
-        <div class="col-md-5">
-          
-          {% if questions.2.image %}
-          <img src="{{ questions.2.image.url }}" class="img-fluid" 
-          {% if questions.2.image_alt %}
-          alt="{{ questions.2.image_alt }}"
-          {% else %}
-          alt="{{ questions.2.header }}"
-          {% endif %}>
-    
-          {% else %}
-          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-          {% endif %}
+        {% if questions.1.answer %}
+        <h3 class="my-heading-font">Answer:
+        </h3>
+        <p class="lead">{{ questions.1.answer }}
+        </p>
+        <div class="text-end">
+          <p>
+            <span class="text-muted"> Richard
+            </span>
+          </p>
         </div>
+        {% endif %}
+      </div>
+      <div class="col-md-5 order-md-1">
+        {% if questions.1.image %}
+        <img src="{{ questions.1.image.url }}" class="img-fluid" 
+             {% if questions.1.image_alt %}
+             alt="{{ questions.1.image_alt }}"
+             {% else %}
+             alt="{{ questions.1.header }}"
+             {% endif %}>
+        {% else %}
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder
+          </title>
+          <rect width="100%" height="100%" fill="#eee"/>
+          <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500
+          </text>
+        </svg>
+        {% endif %}
+      </div>
     </div>
-  
-      <hr class="featurette-divider">
-  
-      <!-- /END THE FEATURETTES -->
-  
-    </div><!-- /.container -->
-  
-  
-
-  </main>
-
+    <hr class="featurette-divider">
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading my-heading-font">{{ questions.2.header }} 
+        </h2>
+        <p class="lead">{{ questions.2.detail }}
+        </p>
+        <div class="text-end">
+          <p>
+            <span class="text-muted"> {{ questions.0.author }}
+            </span>
+          </p>
+        </div>
+        {% if questions.2.answer %}
+        <h3 class="my-heading-font">Answer:
+        </h3>
+        <p class="lead">{{ questions.2.answer }}
+        </p>
+        <div class="text-end">
+          <p>
+            <span class="text-muted"> Richard
+            </span>
+          </p>
+        </div>
+        {% endif %}
+      </div>
+      <div class="col-md-5">
+        {% if questions.2.image %}
+        <img src="{{ questions.2.image.url }}" class="img-fluid" 
+             {% if questions.2.image_alt %}
+             alt="{{ questions.2.image_alt }}"
+             {% else %}
+             alt="{{ questions.2.header }}"
+             {% endif %}>
+        {% else %}
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder
+          </title>
+          <rect width="100%" height="100%" fill="#eee"/>
+          <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500
+          </text>
+        </svg>
+        {% endif %}
+      </div>
+    </div>
+    <hr class="featurette-divider">
+    <!-- /END THE FEATURETTES -->
+  </div>
+  <!-- /.container -->
+</main>
 {% endblock %}

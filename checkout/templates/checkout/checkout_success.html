@@ -169,25 +169,25 @@
           Back to Profile
         </a>
       </div>
-      {% else %}
-      <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
-        <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor">
-          <use xlink:href="#shop"/>
-        </svg>
-        Back to Shop
-      </a>
-    </div>
-    {% endif %}
+        {% else %}
+        <a href="{% url 'all_trees' %}" class="shadow-lg btn btn-secondary text-white rounded-pill">
+          <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor">
+            <use xlink:href="#shop"/>
+          </svg>
+          Back to Shop
+        </a>
+      </div>
+      {% endif %}
 
-    <div class="col-12 col-md-6 mb-2">
-      <a href="{% url 'questions' %}" class="shadow-lg btn btn-success text-white rounded-pill">
-        <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor">
-          <use xlink:href="#faq"/>
-        </svg>
-        Learn more about Bonsai
-      </a>
+      <div class="col-12 col-md-6 mb-2">
+        <a href="{% url 'questions' %}" class="shadow-lg btn btn-success text-white rounded-pill">
+          <svg class="bi mx-auto mb-1" width="24" height="24" fill="currentColor">
+            <use xlink:href="#faq"/>
+          </svg>
+          Learn more about Bonsai
+        </a>
+      </div>
     </div>
   </div>
-</div>
 </div>
 {% endblock %}

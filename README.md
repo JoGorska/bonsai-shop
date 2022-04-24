@@ -417,6 +417,16 @@ I've noticed that all toast messages float left outside the 320px wide screens. 
 
 The solution might be styling width of toast only slightly smaller - which would make them fit inside the smallest mobiles. Another solution would me fix position a little different, although changing this property resulted in toast floating outside the screen the other side. I can't seem to get rid of the gap between the border of the toast and the edge of the screen.
 
+### ununified comments - end of container and others
+
+Some comments were inherited from bootstrap examples. For example the below code is from bootstrap carousele
+```
+    <!-- /END THE FEATURETTES -->
+  </div>
+  <!-- /.container -->
+```
+
+I used comments to end some container when container was very complex and had a few else / if statements inside it. I would be good to unify the styling of comments. 
 
 ## Deployment and making a clone
 

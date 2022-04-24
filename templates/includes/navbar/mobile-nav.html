@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="d-flex container-fluid p-1">
       <!-- nav brand logo and text -->
-      <div class="d-flex flex-row container-fluid p-1" href="{% url 'home' %}">
+      <div class="d-flex flex-row container-fluid p-1">
         <div class="">
           <a class="text-decoration-none" href="{% url 'home' %}">
             <img src="{{ MEDIA_URL }}trees-sm.svg" alt="">
@@ -133,7 +133,7 @@
               </div>
             </div>
           </a>
-          <ul class="dropdown-menu text-small bg-dark" aria-labelledby="dropdownUser1">
+          <ul class="dropdown-menu text-small bg-dark" aria-labelledby="dropdownUser-mobile">
             {% if request.user.is_superuser %}
             <li class="text-center">
               <a class="dropdown-item" href="{% url 'add_tree' %}">Shop Management
@@ -167,7 +167,7 @@
                 </div>
               </div>
             </a>
-          <ul class="dropdown-menu text-small bg-dark" aria-labelledby="dropdownUser1">
+          <ul class="dropdown-menu text-small bg-dark" aria-labelledby="dropdownUser-mobile">
             <li class="text-center">
               <a class="dropdown-item bg-dark text-muted" href="{% url 'account_signup' %}">Register
               </a>
