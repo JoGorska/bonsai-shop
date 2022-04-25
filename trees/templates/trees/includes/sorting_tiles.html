@@ -1,6 +1,6 @@
-<ul class="mx-2 mt-5 row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list justify-content-md-center">
+<ul id="sorting-tiles-container" class="mx-2 mt-5 row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list justify-content-md-center">
   <!-- all trees -->
-  <li class="col mb-4" >
+  <li id="all-trees" class="col mb-4" >
     <a class="d-block bg-dark rounded text-white text-decoration-none" 
        href="{% url 'all_trees' %}"
        aria-label="Show all trees">
@@ -16,8 +16,8 @@
   </li>
   <!-- filter -->
   <li class="col mb-4" >
-    <a class="d-block bg-dark rounded text-white text-decoration-none" href="" aria-label="Show menu for filtering trees">
-      <div class="display-5 p-3 py-4  bg-dark text-center rounded">
+    <div id="filter-tile" class="d-block bg-dark rounded text-white text-decoration-none" href="" aria-label="Show menu for filtering trees">
+      <div  class="display-5 p-3 py-4  bg-dark text-center rounded">
         <svg class="bi" width="1em" height="1em" fill="currentColor">
           <use xlink:href="#filter">
           </use>
@@ -25,10 +25,10 @@
       </div>
       <div class="small name text-white text-center pb-2">Filter
       </div>
-    </a>
+    </div>
   </li>
   <!-- sort -->
-  <li class="col mb-4" >
+  <li id="sort-tile" class="col mb-4" >
     <a class="d-block bg-dark rounded text-white text-decoration-none" href="" aria-label="Show menu for sorting trees">
       <div class="display-5 p-3 py-4  bg-dark text-center rounded">
         <svg class="bi" width="1em" height="1em" fill="currentColor">
@@ -42,10 +42,8 @@
   </li>
   {% if features %}
   {% for feature in features %}
-  <!-- ??? make javascript to add and remove visibility for class feature-tile 
-add text-success class to filter -->
   <!-- features tile -->
-  <li class="col mb-4 feature-tile" >
+  <li class="col mb-4 feature-tile">
     <a class="d-block bg-dark rounded text-white text-decoration-none" 
        href="{% url 'all_trees' %}?feature={{feature.name}}"
        aria-label="{{ feature.aria_for_anchor }}">
@@ -61,9 +59,7 @@ add text-success class to filter -->
   {% endif %}
   {% if enviroments %}
   {% for enviroment in enviroments %}
-  <!-- ??? make javascript to add and remove visibility for class feature-tile -->
-  <!-- enviroments tile -->
-  <li class="col mb-4 feature-tile" >
+  <li class="col mb-4 feature-tile">
     <a class=" d-block bg-dark rounded text-white text-decoration-none"
        href="{% url 'all_trees' %}?enviroment={{ enviroment.name }}"
        aria-label="{{ enviroment.aria_for_anchor }}">
@@ -78,7 +74,7 @@ add text-success class to filter -->
   {% endfor %}
   {% endif %}
   <!-- leaves_or_needles - coniferous -->
-  <li class="col mb-4 feature-tile" >
+  <li class="col mb-4 feature-tile">
     <a class="d-block bg-dark rounded text-white text-decoration-none"
        href="{% url 'all_trees' %}?type=coniferous"
        aria-label="Show ">

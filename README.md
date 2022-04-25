@@ -168,6 +168,10 @@ Buttons are usually equipped with an icon corresponding to the context.
 
 Links are often styled as a button to allow a nice flow of the page. 
 
+## Search Engine Optimalization
+
+keywords: bonsai, plants, bonsai trees, trees, bonsai advice, bonsai questions, bonsai ilnesses, bonsaid care, bonsai prices, 
+
 
 
 ## Technologies Used
