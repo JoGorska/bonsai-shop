@@ -1,4 +1,4 @@
-<ul id="sorting-tiles-container" class="mx-2 mt-5 row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list justify-content-md-center">
+<ul id="sorting-tiles-container" class="mx-2 mt-5 row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list justify-content-center">
   <!-- all trees -->
   <li id="all-trees" class="col mb-4" >
     <a class="d-block bg-dark rounded text-white text-decoration-none" 
@@ -16,7 +16,7 @@
   </li>
   <!-- filter -->
   <li class="col mb-4" >
-    <div id="filter-tile" class="d-block bg-dark rounded text-white text-decoration-none" href="" aria-label="Show menu for filtering trees">
+    <div id="filter-tile" class="d-block bg-dark rounded text-white" aria-label="Show menu for filtering trees">
       <div  class="display-5 p-3 py-4  bg-dark text-center rounded">
         <svg class="bi" width="1em" height="1em" fill="currentColor">
           <use xlink:href="#filter">
@@ -27,9 +27,9 @@
       </div>
     </div>
   </li>
-  <!-- sort -->
-  <li id="sort-tile" class="col mb-4" >
-    <a class="d-block bg-dark rounded text-white text-decoration-none" href="" aria-label="Show menu for sorting trees">
+  <!-- sort for wide screen -->
+  <li class="col mb-4 d-none-xxs" >
+    <div id="sorting-tile-wide" class="d-block bg-dark rounded text-white" aria-label="Show menu for sorting trees">
       <div class="display-5 p-3 py-4  bg-dark text-center rounded">
         <svg class="bi" width="1em" height="1em" fill="currentColor">
           <use xlink:href="#sort">
@@ -38,8 +38,24 @@
       </div>
       <div class="name text-white text-center pb-2">Sort
       </div>
-    </a>
+    </div>
   </li>
+
+  <!-- sort for mobile -->
+  <li class="col mb-4 d-none-above-xxs" >
+    <div id="sorting-tile-mobile" class="d-block bg-dark rounded text-white" aria-label="Show menu for sorting trees">
+      <div class="display-5 p-3 py-4  bg-dark text-center rounded">
+        <svg class="bi" width="1em" height="1em" fill="currentColor">
+          <use xlink:href="#sort">
+          </use>
+        </svg>
+      </div>
+      <div class="name text-white text-center pb-2">Sort
+      </div>
+    </div>
+  </li>
+
+
   {% if features %}
   {% for feature in features %}
   <!-- features tile -->
@@ -108,7 +124,7 @@ sorting starts here
 sorting alphabedicaly by name
 -->
   <!-- tile - double tile one on top for small phones  -->
-  <li class="col mb-4 d-none-above-xxs">
+  <li class="col mb-4 d-none-above-xxs sorting-tile-mobile">
     <a class="h4 d-block text-white text-decoration-none" 
        href="{% url 'all_trees' %}?sort=name&direction=asc"
        aria-label="Sort trees by name alphabetically a to z. Opens in the same window">
@@ -133,7 +149,7 @@ sorting alphabedicaly by name
     </div>
   </li>
   <!-- tile - double side by side for all devices except small phones -->
-  <li class="col mb-4 d-none-xxs">
+  <li class="col mb-4 d-none-xxs sorting-tile-wide">
     <div class="d-block bg-dark rounded" >
       <div class="p-3 py-4 pt-5 mb-0 text-center ">
         <a class="h4 text-white bg-dark text-decoration-none pe-2"
@@ -159,7 +175,7 @@ sorting alphabedicaly by name
   </li>
   <!-- sorting by price -->
   <!-- tile - double tile one on top for small phones  -->
-  <li class="col mb-4 d-none-above-xxs">
+  <li class="col mb-4 d-none-above-xxs sorting-tile-mobile">
     <a class="h4 d-block text-white text-decoration-none" 
        href="{% url 'all_trees' %}?sort=price&direction=asc"
        aria-label="Sort trees by price from lowest to highest. Opens in the same window">
@@ -184,7 +200,7 @@ sorting alphabedicaly by name
     </div>
   </li>
   <!-- tile - double side by side for all devices except small phones -->
-  <li class="col mb-4 d-none-xxs">
+  <li class="col mb-4 d-none-xxs sorting-tile-wide">
     <div class="d-block bg-dark rounded" >
       <div class="p-3 py-4 pt-5 mb-0 text-center ">
         <a class="h4 text-white bg-dark text-decoration-none pe-2"
@@ -210,7 +226,7 @@ sorting alphabedicaly by name
   </li>
   <!-- sorting by height -->
   <!-- tile - double tile one on top for small phones  -->
-  <li class="col mb-4 d-none-above-xxs">
+  <li class="col mb-4 d-none-above-xxs sorting-tile-mobile">
     <a class="h4 d-block text-white text-decoration-none" 
        href="{% url 'all_trees' %}?sort=height_in&direction=asc"
        aria-label="Sort trees by hight from smallest to largest. Opens in same window">
@@ -235,7 +251,7 @@ sorting alphabedicaly by name
     </div>
   </li>
   <!-- tile - double side by side for all devices except small phones -->
-  <li class="col mb-4 d-none-xxs">
+  <li class="col mb-4 d-none-xxs sorting-tile-wide">
     <div class="d-block bg-dark rounded" >
       <div class="p-3 py-4 pt-5 mb-0 text-center ">
         <a class="h4 text-white bg-dark text-decoration-none pe-2"
@@ -261,7 +277,7 @@ sorting alphabedicaly by name
   </li>
   <!-- sorting by trunk -->
   <!-- tile - double tile one on top for small phones  -->
-  <li class="col mb-4 d-none-above-xxs">
+  <li class="col mb-4 d-none-above-xxs sorting-tile-mobile">
     <a class="h4 d-block text-white text-decoration-none" 
        href="{% url 'all_trees' %}?sort=trunk_circumference&direction=asc"
        aria-label="Sort trees by trunk from smallest to thickest. Opens in same window">
@@ -286,7 +302,7 @@ sorting alphabedicaly by name
     </div>
   </li>
   <!-- tile - double side by side for all devices except small phones -->
-  <li class="col mb-4 d-none-xxs">
+  <li class="col mb-4 d-none-xxs sorting-tile-wide">
     <div class="d-block bg-dark rounded" >
       <div class="p-3 py-4 pt-5 mb-0 text-center ">
         <a class="h4 text-white bg-dark text-decoration-none pe-2"
