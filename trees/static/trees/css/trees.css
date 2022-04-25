@@ -1,3 +1,7 @@
 .featurette-divider {
     margin: 5rem 0; /* Space out the Bootstrap <hr> more */
   }
+
+#filter-tile, #sorting-tile-wide, #sorting-tile-mobile {
+  cursor: pointer;
+}

@@ -3,8 +3,8 @@ views for home app
 """
 # pylint: disable=no-member
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.views import generic, View
-from django.views.generic.edit import CreateView
+from django.views import generic, View # noqa # pylint: disable=unused-import
+from django.views.generic.edit import CreateView # noqa # pylint: disable=unused-import
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Question
@@ -98,7 +98,8 @@ def edit_question(request, question_id):
             messages.success(request, 'Successfully saved the question!')
             return redirect(reverse('questions_manager'))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update product.\
+                Please ensure the form is valid.')
     else:
         form = QuestionForm(instance=question)
         messages.info(request, f'You are editing {question.header}')
