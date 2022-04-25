@@ -1,4 +1,7 @@
 """webhooks for stripe"""
+# disabling pylint error that var name doesn't conform
+# with snake_case naming convention
+# pylint: disable=C0103
 import stripe
 from django.conf import settings
 from django.http import HttpResponse
@@ -25,10 +28,10 @@ def webhook(request):
         event = stripe.Webhook.construct_event(
                 payload, sig_header, wh_secret
                 )
-    except ValueError as e:
+    except ValueError:
         # Invalid payload
         return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError as e:
+    except stripe.error.SignatureVerificationError:
         # Invalid signature
         return HttpResponse(status=400)
     except Exception as e:

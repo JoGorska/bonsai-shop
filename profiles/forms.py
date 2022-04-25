@@ -1,3 +1,4 @@
+'''forms for profiles app'''
 from django import forms
 from .models import UserProfile
 

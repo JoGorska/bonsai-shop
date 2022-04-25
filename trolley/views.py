@@ -1,6 +1,7 @@
 """
 views for trolley app
 """
+# pylint: disable=C0103
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from trees.models import Tree
