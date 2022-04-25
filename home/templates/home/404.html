@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="carousel-inner mb-3" >
+    <div class="carousel-item active">
+      <img src="{{ MEDIA_URL }}wide-pexels-tieu-bao-truong-8913408.jpg" alt="">
+      <div class="container">
+        <div class="carousel-caption text-end">
+          <h1 class="my-heading-font">Error: Page 404
+          </h1>
+          <p>We are sorry you are lost, come back to safety 
+          </p>
+          <p>
+            <a class="btn btn-lg btn-success rounded-pill" href="{% url 'home' %}">Ask Question
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
