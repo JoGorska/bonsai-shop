@@ -117,8 +117,8 @@ class StripeWHHandler:
             # calls the private method created above
             self._send_confirmation_email(order)
             return HttpResponse(
-                    content=f'Webhook received: {event["type"]} |'
-                            ' SUCCESS: verified order already in database',
+                    content=f'Webhook received: {event["type"]} |\
+                              SUCCESS: verified order already in database',
                     status=200)
 
         else:
