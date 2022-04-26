@@ -24,3 +24,6 @@ def index_view(request):
         'subscribed': subscribed,
     }
     return render(request, 'home/index.html', context)
+
+def render_404(request):
+    return render(request, 'home/404.html')
