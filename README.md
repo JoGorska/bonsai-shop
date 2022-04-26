@@ -139,6 +139,7 @@ It would be a great help if the user has been welcomed with a search form on FAQ
 This would also limit repeating the same questions by other users. 
 
 
+
 ### switch button to switch between published and unpublished
 
 ### questions displayed in the same style as on home page, not as folded accordeon.
@@ -170,7 +171,11 @@ Links are often styled as a button to allow a nice flow of the page.
 
 ## Search Engine Optimalization
 
+Title, description, keyworkds
+
 keywords: bonsai, plants, bonsai trees, trees, bonsai advice, bonsai questions, bonsai ilnesses, bonsaid care, bonsai prices, 
+
+Image alternative text is descriptive. Precaution measures are in place in case if shop owner doesn't add alt text, the template will get alt text from the tree name.
 
 
 
