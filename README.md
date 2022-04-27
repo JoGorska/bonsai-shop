@@ -42,11 +42,11 @@
     + [People](#people)
 
 
-# NameUnspecified
+# Three Oaks
 
-[![showpiece home page](link/to/img)](link/to/life/page/)
+[![showpiece home page](RADME_docs/showpieces/01-home.PNG)](https://three-oaks.herokuapp.com/)
 
-Click [here](link/to/live/site) to live site.  
+Click [here](https://three-oaks.herokuapp.com/) to live site.  
 
 ## UX
 ------
@@ -74,23 +74,30 @@ Wireframes created with [Balsamiq](https://balsamiq.com/wireframes/?gclid=Cj0KCQ
 
 ![Screenshot of the canban board](im/here)(link-to/canba)
 
-Github issues were used to create the User stories and group them according to MoSCoW prioritization technique. Link to the project with live issues can be found [here](https://github.com/JoGorska/mileage-tracker/projects/1). The issues are currently in two categories - done or for the next relese. 
+Github issues were used to create the User stories and group them according to MoSCoW prioritization technique. Link to the project with live issues can be found [here](https://github.com/JoGorska/bonsai-shop/projects/1). The issues are currently in two categories - done or for the next relese. 
 
 The issues were than closed automaticaly when the pull request was linked to the issue. 
 
 ## Existing Features
-------
+---
 
 
 ### Navbar and Footer
 
-xx
+---
+### Footer
 
+---
 ### Home page 
 
-dd
 
+![showpiece home page](RADME_docs/showpieces/01-home.PNG)
+
+---
 ### Shop
+
+
+![showpiece home page](RADME_docs/showpieces/02-shop.PNG)
 
 Currently shop features only trees. Future development might see adding bonsai tools added. Shop owner might also consider adding soil and fertilisers for bonsai trees. Next step might be to connect the fertilisers and soil with corresponding tree species to offer user all products he needs for his tree.
 
