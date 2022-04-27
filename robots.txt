@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /trolley/
+Disallow: /newsletter/
+Sitemap: https://three-oaks.herokuapp.com/stiemap.xml

@@ -92,18 +92,19 @@
     <footer class="footer mt-auto">
       <div class="container">
         <p class="float-end">
-          <a href="#">Back to top
+          <a href="#header">Back to top
           </a>
         </p>
-        <p>&copy; 2017-2021 Company, Inc. &middot; 
-          <a href="#header">Privacy
+        <p>&copy; 2022 Three Oaks &middot; 
+          <a href="{% url 'privacy' %}">Privacy
           </a> &middot; 
-          <a href="#">Terms
+          <a href="{% url 'terms' %}">Terms
           </a>
         </p>
       </div>
     </footer>
     {% block postload_js %}
+    <!-- initializes toasts from bootstrap -->
     <script>
     $(document).ready(function(){
       $('.toast').toast('show');
