@@ -24,3 +24,17 @@ def index_view(request):
         'subscribed': subscribed,
     }
     return render(request, 'home/index.html', context)
+
+
+def terms(request):
+    """
+    view to display Terms and Conditions
+    """
+    return render(request, 'home/terms.html')
+
+
+def privacy(request):
+    """
+    view to display Privacy Policy
+    """
+    return render(request, 'home/privacy.html')
