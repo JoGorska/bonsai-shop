@@ -41,15 +41,16 @@
     + [Tutorials and inspiration](#tutorials-and-inspiration)
     + [People](#people)
 
+------
 
 # Three Oaks
 
 [![showpiece home page](RADME_docs/showpieces/01-home.PNG)](https://three-oaks.herokuapp.com/)
 
 Click [here](https://three-oaks.herokuapp.com/) to live site.  
+------
 
 ## UX
-------
 
 ### Purpose
 
@@ -178,11 +179,21 @@ Links are often styled as a button to allow a nice flow of the page.
 
 ## Search Engine Optimalization
 
-Title, description, keyworkds
-
-keywords: bonsai, plants, bonsai trees, trees, bonsai advice, bonsai questions, bonsai ilnesses, bonsaid care, bonsai prices, 
+SEO techniques were implemented to the best of my ability. I used keywords: bonsai, plants, bonsai trees, trees, bonsai advice, bonsai questions, bonsai ilnesses, bonsaid care, bonsai prices, 
 
 Image alternative text is descriptive. Precaution measures are in place in case if shop owner doesn't add alt text, the template will get alt text from the tree name.
+
+The site has been equipped with sitemap generated [here](https://www.xml-sitemaps.com/) and robots.txt. 
+
+The site also has privacy policy and terms of service - both documents generated [here](https://policymaker.io/)
+
+## Web Marketing
+
+### Newsletter
+I've opted for creating a custom Newsletter model and not to use Mailchimp. The Page owner can send regular interesting content containing advice on bonsai to the subscribers. 
+
+
+### Facebook
 
 
 
