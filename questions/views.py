@@ -3,8 +3,8 @@ views for home app
 """
 # pylint: disable=no-member
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.views import generic, View # noqa # pylint: disable=unused-import
-from django.views.generic.edit import CreateView # noqa # pylint: disable=unused-import
+from django.views import generic, View  # noqa # pylint: disable=unused-import
+from django.views.generic.edit import CreateView  # noqa # pylint: disable=unused-import
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Question
