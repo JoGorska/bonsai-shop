@@ -130,40 +130,39 @@ body {
     /* padding-top: 3rem; */
     padding-bottom: 3rem;
     color: #5a5a5a;
-  }
+}
   
   
-  /* CUSTOMIZE THE CAROUSEL
-  -------------------------------------------------- */
-  
-  /* Carousel base class */
-  .carousel {
-    margin-bottom: 4rem;
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
 
-  }
-  /* Since positioning the image, we need to help out the caption */
-  .carousel-caption {
-    bottom: 3rem;
-    z-index: 10;
-    box-shadow: inset 30rem 30rem 30rem rgb(0 0 0 / 75%);
-    padding: 1rem;
-    border-radius: 30px;
-  }
-  
-  /* Declare heights because of positioning of img element */
-  .carousel-item {
-    height: 32rem;
+/* Carousel base class */
+.carousel {
+margin-bottom: 4rem;
+
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+bottom: 3rem;
+z-index: 10;
+box-shadow: inset 30rem 30rem 30rem rgb(0 0 0 / 75%);
+padding: 1rem;
+border-radius: 30px;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+height: 32rem;
 
 
-  }
+}
 
-  .carousel-item > img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
+.carousel-item > img {
+position: absolute;
+top: 0;
+left: 0;
+min-width: 100%;
 
-    height: 32rem;
+height: 32rem;
 
-  }
-  
+}
