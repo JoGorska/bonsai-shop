@@ -1,0 +1,84 @@
+Check results
+=============
+
+
+
+Code
+=============
+"""
+views for trolley app
+"""
+# pylint: disable=C0103
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
+from trees.models import Tree
+
+
+def view_trolley(request):
+    """
+    view to return trolley content page
+    """
+    return render(request, 'trolley/trolley.html')
+
+
+def add_to_trolley(request, tree_id):
+    """
+    Add a specified quantity of the tree to the trolley
+    """
+    tree = get_object_or_404(Tree, pk=tree_id)
+    quantity = int(request.POST.get('quantity'))
+    # this variable redirect_url is to redirect the user back to the same page
+    # after the product is added to trolley
+    redirect_url = request.POST.get('redirect_url')
+    # checks if trolley already exists in session
+    # if it doesn't it creates one
+    trolley = request.session.get('trolley', {})
+    trolley[tree_id] = quantity
+    messages.success(request, f'Added {tree.name} to your trolley')
+
+    request.session['trolley'] = trolley
+
+    return redirect(redirect_url)
+
+
+def update_trolley(request, tree_id):
+    """
+    Update quantity of items in the trolley
+    """
+    tree = get_object_or_404(Tree, pk=tree_id)
+    quantity = int(request.POST.get('quantity'))
+    # checks if trolley already exists in session
+    # if it doesn't it creates one
+    # sets the quantity to the new value
+    trolley = request.session.get('trolley', {})
+    # html validation should prevent submitting form below 1, this is
+    # just in case if form is submitted programatically
+    if quantity > 0:
+        trolley[tree_id] = quantity
+        messages.success(
+            request, f'Updated quantity of {tree.name} to {quantity}')
+    else:
+        trolley.pop(str(tree_id))
+        messages.success(
+            request, f'Removed {tree.name} from your trolley')
+
+    request.session['trolley'] = trolley
+
+    return redirect(reverse('view_trolley'))
+
+
+def remove_from_trolley(request, tree_id):
+    """
+    Removes item from trolley
+    """
+    try:
+        tree = get_object_or_404(Tree, pk=tree_id)
+        trolley = request.session.get('trolley', {})
+        trolley.pop(str(tree_id))
+        messages.success(
+                request, f'Removed {tree.name} from your trolley')
+        request.session['trolley'] = trolley
+        return redirect(reverse('view_trolley'))
+    except Exception as e:
+        messages.error(request, f'Error removing item: {e}')
+        return redirect(reverse('view_trolley'))
