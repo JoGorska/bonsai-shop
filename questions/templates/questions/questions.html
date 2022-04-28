@@ -47,13 +47,13 @@
   <ul class="pagination justify-content-center">
     {% if page_obj.has_previous %}
     <li>
-      <a class="page-link btn btn-success rounded-pill mt-3 fw-bold" href="?page={{ page_obj.previous_page_number }}">&laquo; PREV 
+      <a class="btn btn-success rounded-pill mt-3 fw-bold" href="?page={{ page_obj.previous_page_number }}">&laquo; PREV 
       </a>
     </li>
     {% endif %}
     {% if page_obj.has_next %}
     <li>
-      <a class="page-link btn btn-success rounded-pill mt-3 fw-bold" href="?page={{ page_obj.next_page_number }}"> NEXT &raquo;
+      <a class="btn btn-success rounded-pill mt-3 fw-bold" href="?page={{ page_obj.next_page_number }}"> NEXT &raquo;
       </a>
     </li>
     {% endif %}

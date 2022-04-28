@@ -121,9 +121,6 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 
-# this needs to be changed once real emails are being sent!!! ???
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'

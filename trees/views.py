@@ -30,7 +30,6 @@ def all_trees(request):
 
     if request.GET:
         # filters results by given feature
-        # add error handling if feature not found???
 
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
