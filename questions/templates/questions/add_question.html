@@ -12,7 +12,16 @@
     </div>
     <h2 class="my-heading-font">Frequently Asked Questions
     </h2>
-    <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.
+    <p class="lead">Once you submit your question our Head Gardner Richard will respond to it
+      within a few days. You can check for updates on our 
+      <a class="text-success" href="{% url 'questions' %}">FAQ website</a> or 
+      
+       {% if user.is_authenticated%}
+       <a class="text-success" href="{% url 'profile' %}">sign up</a>
+       {% else %}
+       sign up
+       {% endif %}
+        to the newsletter.
     </p>
   </div>
   <!-- questions summary-->
