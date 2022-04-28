@@ -266,6 +266,11 @@ Initialy it was returning errors in relation of ES6 syntax, which was resolved b
 /*jshint esversion: 6*/
 ```
 
+Second issue with jshint was that it wasn't recognizing syntax of JQuery. This was resolved by adding the below code:
+```
+/*globals $:false */
+```
+
 | Page  |  result
 | ------ | ------ |
 |  [script](link to result here /???) |  no errors |
