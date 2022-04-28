@@ -57,8 +57,138 @@ Click [here](https://three-oaks.herokuapp.com/) to live site.
 ff
 
 ### User Stories
+| id  |  content | 
+| ------ | ------ |
+|  [#1](https://github.com/JoGorska/bonsai-shop/issues/1) | As a Shopper I can register as a user and have ability to login so that my personal data is saved for future shopping |
+|  [#2](https://github.com/JoGorska/bonsai-shop/issues/2) | As a shopper I can see a list of products so that so I can view what shop can offer |
+|  [#3](https://github.com/JoGorska/bonsai-shop/issues/3) | As a shopper I can sort the procucts by various categories so that I can find what I am looking for |
+|  [#4](https://github.com/JoGorska/bonsai-shop/issues/4) | As a shopper I can add and remove items from my shopping trolley so that I can see how much I will spend |
+|  [#5](https://github.com/JoGorska/bonsai-shop/issues/5) | As a shopper I can have a plus button so that increase number of products in the trolley |
+|  [#6](https://github.com/JoGorska/bonsai-shop/issues/6) | As a shopper I can have a search form so that find the product by name or description |
+|  [#7](https://github.com/JoGorska/bonsai-shop/issues/7) | As a shopper I can remove items from shopping trolley so that I don't buy what I don't want |
+|  [#8](https://github.com/JoGorska/bonsai-shop/issues/8) | As a shopper I can increase quantity of products in my shopping trolley so that I can buy more products of the same kind |
+|  [#9](https://github.com/JoGorska/bonsai-shop/issues/9) | As a shopper I can put in my card details so that I can pay for my goods |
+|  [#10](https://github.com/JoGorska/bonsai-shop/issues/10) | As a shopper I can have the payment processed so that pay for products |
+|  [#11](https://github.com/JoGorska/bonsai-shop/issues/11) | As a shopper I can see order confirmation after checkout so that see what I bought |
+|  [#12](https://github.com/JoGorska/bonsai-shop/issues/12) | As a shopper I can have my order processed correctly even if my internet breaks down mid transaction |
+|  [#13](https://github.com/JoGorska/bonsai-shop/issues/13) | As a shopper I can receive an email confirmation of my purchase so that I have proof of purchase |
+|  [#14](https://github.com/JoGorska/bonsai-shop/issues/14) | As a shopper I can access the website in a publicly accessible domain so that view the website |
+|  [#15](https://github.com/JoGorska/bonsai-shop/issues/15) | As a shop owner I can add products to the shop so that the shop can have more variety available |
+|  [#16](https://github.com/JoGorska/bonsai-shop/issues/16) | As a shop owner I can edit / update product so that the description and price is up to date |
+|  [#17](https://github.com/JoGorska/bonsai-shop/issues/17) |  |
+|  [#18](https://github.com/JoGorska/bonsai-shop/issues/18) |  |
+|  [#19](https://github.com/JoGorska/bonsai-shop/issues/19) |  |
+|  [#20](https://github.com/JoGorska/bonsai-shop/issues/20) |  |
+|  [#21](https://github.com/JoGorska/bonsai-shop/issues/21) |  |
+|  [#22](https://github.com/JoGorska/bonsai-shop/issues/22) |  |
+|  [#23](https://github.com/JoGorska/bonsai-shop/issues/23) |  |
+|  [#24](https://github.com/JoGorska/bonsai-shop/issues/24) |  |
+|  [#25](https://github.com/JoGorska/bonsai-shop/issues/25) |  |
+|  [#26](https://github.com/JoGorska/bonsai-shop/issues/26) |  |
+|  [#27](https://github.com/JoGorska/bonsai-shop/issues/27) |  |
+|  [#28](https://github.com/JoGorska/bonsai-shop/issues/28) |  |
+|  [#29](https://github.com/JoGorska/bonsai-shop/issues/29) |  |
+|  [#30](https://github.com/JoGorska/bonsai-shop/issues/30) |  |
+|  [#31](https://github.com/JoGorska/bonsai-shop/issues/31) |  |
+|  [#32](https://github.com/JoGorska/bonsai-shop/issues/32) |  |
+|  [#33](https://github.com/JoGorska/bonsai-shop/issues/33) |  |
+|  [#34](https://github.com/JoGorska/bonsai-shop/issues/34) |  |
+|  [#35](https://github.com/JoGorska/bonsai-shop/issues/35) |  |
+|  [#36](https://github.com/JoGorska/bonsai-shop/issues/36) |  |
+|  [#37](https://github.com/JoGorska/bonsai-shop/issues/37) |  |
+|  [#38](https://github.com/JoGorska/bonsai-shop/issues/38) |  |
+|  [#39](https://github.com/JoGorska/bonsai-shop/issues/39) |  |
+|  [#40](https://github.com/JoGorska/bonsai-shop/issues/40) |  |
+|  [#41](https://github.com/JoGorska/bonsai-shop/issues/41) |  |
+|  [#42](https://github.com/JoGorska/bonsai-shop/issues/42) |  |
+|  [#43](https://github.com/JoGorska/bonsai-shop/issues/43) |  |
+|  [#44](https://github.com/JoGorska/bonsai-shop/issues/44) |  |
+|  [#45](https://github.com/JoGorska/bonsai-shop/issues/45) |  |
+|  [#46](https://github.com/JoGorska/bonsai-shop/issues/46) |  |
+|  [#47](https://github.com/JoGorska/bonsai-shop/issues/47) |  |
+|  [#48](https://github.com/JoGorska/bonsai-shop/issues/48) |  |
+|  [#49](https://github.com/JoGorska/bonsai-shop/issues/49) |  |
+|  [#50](https://github.com/JoGorska/bonsai-shop/issues/50) |  |
+|  [#51](https://github.com/JoGorska/bonsai-shop/issues/51) |  |
+|  [#52](https://github.com/JoGorska/bonsai-shop/issues/52) |  |
+|  [#53](https://github.com/JoGorska/bonsai-shop/issues/53) |  |
+|  [#54](https://github.com/JoGorska/bonsai-shop/issues/54) |  |
+|  [#55](https://github.com/JoGorska/bonsai-shop/issues/55) |  |
+|  [#56](https://github.com/JoGorska/bonsai-shop/issues/56) |  |
+|  [#57](https://github.com/JoGorska/bonsai-shop/issues/57) |  |
+|  [#58](https://github.com/JoGorska/bonsai-shop/issues/58) |  |
+|  [#59](https://github.com/JoGorska/bonsai-shop/issues/59) |  |
+|  [#60](https://github.com/JoGorska/bonsai-shop/issues/60) |  |
+|  [#61](https://github.com/JoGorska/bonsai-shop/issues/61) |  |
+|  [#62](https://github.com/JoGorska/bonsai-shop/issues/62) |  |
+|  [#63](https://github.com/JoGorska/bonsai-shop/issues/63) |  |
+|  [#64](https://github.com/JoGorska/bonsai-shop/issues/64) |  |
+|  [#65](https://github.com/JoGorska/bonsai-shop/issues/65) |  |
+|  [#66](https://github.com/JoGorska/bonsai-shop/issues/66) |  |
+|  [#67](https://github.com/JoGorska/bonsai-shop/issues/67) |  |
+|  [#68](https://github.com/JoGorska/bonsai-shop/issues/68) |  |
+|  [#69](https://github.com/JoGorska/bonsai-shop/issues/69) |  |
+|  [#70](https://github.com/JoGorska/bonsai-shop/issues/70) |  |
+|  [#71](https://github.com/JoGorska/bonsai-shop/issues/71) |  |
+|  [#72](https://github.com/JoGorska/bonsai-shop/issues/72) |  |
+|  [#73](https://github.com/JoGorska/bonsai-shop/issues/73) |  |
+|  [#74](https://github.com/JoGorska/bonsai-shop/issues/74) |  |
+|  [#75](https://github.com/JoGorska/bonsai-shop/issues/75) |  |
+|  [#76](https://github.com/JoGorska/bonsai-shop/issues/76) |  |
+|  [#77](https://github.com/JoGorska/bonsai-shop/issues/77) |  |
+|  [#78](https://github.com/JoGorska/bonsai-shop/issues/78) |  |
+|  [#79](https://github.com/JoGorska/bonsai-shop/issues/79) |  |
+|  [#80](https://github.com/JoGorska/bonsai-shop/issues/80) |  |
+|  [#81](https://github.com/JoGorska/bonsai-shop/issues/81) |  |
+|  [#82](https://github.com/JoGorska/bonsai-shop/issues/82) |  |
+|  [#83](https://github.com/JoGorska/bonsai-shop/issues/83) |  |
+|  [#84](https://github.com/JoGorska/bonsai-shop/issues/84) |  |
+|  [#85](https://github.com/JoGorska/bonsai-shop/issues/85) |  |
+|  [#86](https://github.com/JoGorska/bonsai-shop/issues/86) |  |
+|  [#87](https://github.com/JoGorska/bonsai-shop/issues/87) |  |
+|  [#88](https://github.com/JoGorska/bonsai-shop/issues/88) |  |
+|  [#89](https://github.com/JoGorska/bonsai-shop/issues/89) |  |
+|  [#90](https://github.com/JoGorska/bonsai-shop/issues/90) |  |
+|  [#91](https://github.com/JoGorska/bonsai-shop/issues/91) |  |
+|  [#92](https://github.com/JoGorska/bonsai-shop/issues/92) |  |
+|  [#93](https://github.com/JoGorska/bonsai-shop/issues/93) |  |
+|  [#94](https://github.com/JoGorska/bonsai-shop/issues/94) |  |
+|  [#95](https://github.com/JoGorska/bonsai-shop/issues/95) |  |
+|  [#96](https://github.com/JoGorska/bonsai-shop/issues/96) |  |
+|  [#97](https://github.com/JoGorska/bonsai-shop/issues/97) |  |
+|  [#98](https://github.com/JoGorska/bonsai-shop/issues/98) |  |
+|  [#99](https://github.com/JoGorska/bonsai-shop/issues/99) |  |
+|  [#110](https://github.com/JoGorska/bonsai-shop/issues/110) |  |
+|  [#111](https://github.com/JoGorska/bonsai-shop/issues/111) |  |
+|  [#112](https://github.com/JoGorska/bonsai-shop/issues/112) |  |
+|  [#113](https://github.com/JoGorska/bonsai-shop/issues/113) |  |
+|  [#114](https://github.com/JoGorska/bonsai-shop/issues/114) |  |
+|  [#115](https://github.com/JoGorska/bonsai-shop/issues/115) |  |
+|  [#116](https://github.com/JoGorska/bonsai-shop/issues/116) |  |
+|  [#117](https://github.com/JoGorska/bonsai-shop/issues/117) |  |
+|  [#118](https://github.com/JoGorska/bonsai-shop/issues/118) |  |
+|  [#119](https://github.com/JoGorska/bonsai-shop/issues/119) |  |
+|  [#120](https://github.com/JoGorska/bonsai-shop/issues/120) |  |
+|  [#121](https://github.com/JoGorska/bonsai-shop/issues/121) |  |
+|  [#122](https://github.com/JoGorska/bonsai-shop/issues/122) |  |
+|  [#123](https://github.com/JoGorska/bonsai-shop/issues/123) |  |
+|  [#124](https://github.com/JoGorska/bonsai-shop/issues/124) |  |
+|  [#125](https://github.com/JoGorska/bonsai-shop/issues/125) |  |
+|  [#126](https://github.com/JoGorska/bonsai-shop/issues/126) |  |
+|  [#127](https://github.com/JoGorska/bonsai-shop/issues/127) |  |
+|  [#128](https://github.com/JoGorska/bonsai-shop/issues/128) |  |
+|  [#129](https://github.com/JoGorska/bonsai-shop/issues/129) |  |
+|  [#130](https://github.com/JoGorska/bonsai-shop/issues/130) |  |
+|  [#131](https://github.com/JoGorska/bonsai-shop/issues/131) |  |
+|  [#132](https://github.com/JoGorska/bonsai-shop/issues/132) |  |
+|  [#133](https://github.com/JoGorska/bonsai-shop/issues/133) |  |
+|  [#134](https://github.com/JoGorska/bonsai-shop/issues/134) |  |
+|  [#135](https://github.com/JoGorska/bonsai-shop/issues/135) |  |
+|  [#136](https://github.com/JoGorska/bonsai-shop/issues/136) |  |
+|  [#137](https://github.com/JoGorska/bonsai-shop/issues/137) |  |
+|  [#138](https://github.com/JoGorska/bonsai-shop/issues/138) |  |
+|  [#139](https://github.com/JoGorska/bonsai-shop/issues/139) |  |
 
-d
 
 
 
