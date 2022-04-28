@@ -189,6 +189,8 @@ The site also has privacy policy and terms of service - both documents generated
 
 ## Web Marketing
 
+[facebook](https://www.facebook.com/Three-Oaks-Bonsai-Shop-104778752226022/)
+
 ### Newsletter
 I've opted for creating a custom Newsletter model and not to use Mailchimp. The Page owner can send regular interesting content containing advice on bonsai to the subscribers. 
 
