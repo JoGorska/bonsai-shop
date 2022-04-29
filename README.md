@@ -321,8 +321,6 @@ It would be a great help if the user has been welcomed with a search form on FAQ
 
 This would also limit repeating the same questions by other users. 
 
-
-
 ## Search Engine Optimalization
 
 SEO techniques were implemented to the best of my ability. I used keywords: bonsai, plants, bonsai trees, trees, bonsai advice, bonsai questions, bonsai ilnesses, bonsaid care, bonsai prices, 
@@ -335,18 +333,21 @@ The site also has privacy policy and terms of service - both documents generated
 
 ## Web Marketing
 
-[facebook](https://www.facebook.com/Three-Oaks-Bonsai-Shop-104778752226022/)
-
 ### Newsletter
+
 I've opted for creating a custom Newsletter model and not to use Mailchimp. The Page owner can send regular interesting content containing advice on bonsai to the subscribers. 
+
+I wanted to give the visitor a freedom to sign up to the newsletter without commiting to sign up to the page. This was not a good decision as it left this app vunruble with open unsecured urls.
 
 
 ### Facebook
 
+Three oaks utilises [facebook](https://www.facebook.com/Three-Oaks-Bonsai-Shop-104778752226022/) for marketing purposes to post adverts, interesting content and get users engaged. 
 
+![facebook main banner](README_docs/facebook/01-facebook.PNG)
+![facebook example post](README_docs/facebook/02-facebook.PNG)
 
 ## Technologies Used
-------
 
 ### Languages Used
 
@@ -368,10 +369,10 @@ I've opted for creating a custom Newsletter model and not to use Mailchimp. The 
     PostgreSQL was used as database for this project
 + VSCode
     VSCode was used on the days when GitPod was down
-+ Google Cloud
-    to get api key
-+ cloudinary storage
-    for storing static files
++ Stripe
+    to do payments
++ AWS S3 bucket sstorage
+    for storing static files and media files
 
  ### Frameworks Libraries and Programs Used
 
@@ -379,13 +380,10 @@ I've opted for creating a custom Newsletter model and not to use Mailchimp. The 
     Balsamiq was used to create the wireframes during the design process.
 + Bootstrap 5:
     Bootstrap was used to add style to the website.
-+ Bootswach:
-    Bootswatch wass added to change the standard styling and color pallette provided by bootstrap
 + Bootstrap icons
 + Django
 
 ## Code Validation
-------
 
 ### HTML beautify
 
