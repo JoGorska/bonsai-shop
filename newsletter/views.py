@@ -28,6 +28,7 @@ def subscribers(request):
     return render(request, 'newsletter/subscribers.html', context)
 
 
+@login_required
 def add_subscriber(request):
     """
     view to post the subscriber form to add the email to database
@@ -140,6 +141,7 @@ def add_subscriber(request):
         return HttpResponseRedirect(next_page)
 
 
+@login_required
 def unsubscribe(request):
     """
     view to change status of the email to unsubscribed
