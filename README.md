@@ -180,32 +180,50 @@ The allauth templates have been styled by bootstrap classes to match the general
 The profile app has been designed by using the same template as checkout app. The profile form is on the left and previous orders list is on the right.
 
 
-### Agile Methodology
+## Agile Methodology
 
-![Screenshot of the canban board](im/here)(link-to/canba)
+### Canban board and issues
+
+![Screenshot of the canban board](README_docs/canban-board/kanban-initial.PNG)
+
 
 Github issues were used to create the User stories and group them according to MoSCoW prioritization technique. Link to the project with live issues can be found [here](https://github.com/JoGorska/bonsai-shop/projects/1). The issues are currently in two categories - done or for the next relese. 
 
 The issues were than closed automaticaly when the pull request was linked to the issue. 
 
-## Existing Features
----
 
+### Sprints - milestones
+
+![Screenshot of the milestonse ](README_docs/canban-board/milestones-initial.PNG)
+
+The issues have been divided into sprints. Further sprints have been created later in the project. 
+
+
+## Existing Features
 
 ### Navbar and Footer
 
----
-### Footer
-
----
-### Home page 
-
-
 ![showpiece home page](RADME_docs/showpieces/01-home.PNG)
 
----
-### Shop
+A wide navbar with large icons has been designed for desktop users and narrow simple navbar for mobile phone users. Each navbar appears and disapears according to bootstrap classes. 
 
+The current link has a class active added and the color of the icon and text changes to green. 
+
+### Footer
+Footer is kept very simple as set of links and a little text. It allows user to navigate back to the top of the page, 
+
+
+### The caourusel
+
+This feature is used on home page and on FAQ. This scrolls three different photos with different captions. One is encouraging to sign up to newsletter, the other one to go to shop and the third one to ask question. For better visibility each caption has been given strong dark background.
+
+### The people section of home page
+
+![showpiece home page people](README_docs/showpieces/01-home-people.PNG)
+
+The people section gives a human feal and real connection to real people for the visitor. Each person has been equpped with a short description of what kind of bonsai they like and a button - call for action - directs user to that particuar category of bonsai.
+
+### Shop
 
 ![showpiece home page](RADME_docs/showpieces/02-shop.PNG)
 
@@ -215,12 +233,13 @@ Shop features a hero image on the top overlayed with box shadow. This is so page
 
 The set of tiles has been added on top of the hero image. The tiles act as a sorting and filtering menu. The grid has been taken from the [bootstrap icons page](https://icons.getbootstrap.com/). The tiles are purposed to resamble a dashboard that is so popular on mobile phones.
 
-if javascript is written ???
 The user has option to display only the tiles - buttons that are responsible for filtering or only the ones that sort products by given feature. This is to reduce the amount of icons displayed at the time. This can be overwelming especially for mobile phone users. 
 
-All trees view
-Cards shape, size and responsivness from bootstrap
-each card is given two buttons buy and view. The buy button adds one item to the trolley. If item is alread in the trolley the button is changed to In trolley with checked symbol. This feature is to allow quick buying process. This enables user to buy an item without going inside to view the details of the tree. Unfortunately the content of the button In trolley breaks to two lines for devices above 800px and below 1000 px. 
+![showpiece shop page](README_docs/showpieces/02-shop-trees.PNG)
+
+The trees that are in stock are set on a card each. Cars are organized in grid utilizing bootstrap classes. The mobile phone user will see one card in a row, the desktop computer screen will have 3 cards in a row
+
+Each card is given two buttons buy and view. The buy button adds one item to the trolley. If item is alread in the trolley the button is changed to In trolley with checked symbol. This feature is to allow quick buying process. This enables user to buy an item without going inside to view the details of the tree. Unfortunately the content of the button In trolley breaks to two lines for devices above 800px and below 1000 px. 
 
 ### Shoping trolley
 
@@ -236,12 +255,20 @@ I have decided to set the free delivery theshold at 50 just to use it as encoura
 
 ### FAQ
 
+![showpiece FAQ page](README_docs/showpieces/03-faq.PNG)
+
 Shop owner can edit the question and set status to published so the question is displayed for the public includng the answer.
 
-Unfortunately at this stage the superuser is able to edit Newsletter choice, which should not be the case. 
+![showpiece FAQ page, question detail](README_docs/showpieces/03-question-detail.PNG)
 
-Further questionable might be that the superuser can edit the header and the details of the question but this is understandable as the shop owner might rewrite the question to get rid of any spelling errors or to make the question more clear to the reader. 
+The superuser can edit the header and the details of the question. This can be in discretion as shop owner might rewrite the question to get rid of any spelling errors or to make the question more clear to the reader. 
 
+
+### User authentication
+
+![showpiece login page](README_docs/showpieces/04-login.PNG)
+
+All allauth templates were styled to match the colours and feel of the page. 
 
 ## Future Features 
 ------
