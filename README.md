@@ -522,58 +522,64 @@ Automated tests have not been created due to time constrains of the project.
 - once one of the users has submitted a question - I've noticed that this users's signature showed on the first and the third question on the home page. There was a wrong indice refferenced on the third question's author.
 
 ## Project Bugs and Solutions:
-------
+
 ### Grid with filtering and sorting icons
 - allow user to choose filter or sort - this makes the smaller amount of icons displayed at once
 - the grid breaks in a bit uncontrolled way, but it allows displaying the filters in a dynamic way.
 - user can add more features to database with svg icon
 
-filter - for li with class filters - display
-
-sort - for li with class sort - display
-
-for loop in features to display tiles and build links dynamically
+- Added JQuery script to show and hide appropriate sets of tiles
 
 ### Button In trolley on all trees view
 
-The content of the button In trolley and View breaks to two lines for devices above 800px and below 1000 px. 
-
-This only breaks in cards for the treees that area already in the trolley. The longer text "in trolley" is more descriptive that just the word Trolley or "in bag" as I use trolley in this application. 
-
-I might need to address this issue with media query. I might also leave it as it is visibly different that the trees that are not in the bag yet and might look more inviting to click to go to the trolley and than to checkout. 
+The content of the button In trolley View breaks to two lines for devices above 800px and below 1000 px. This was resolved by adding bootstrap grid to manage where the buttons are on the card.
 
 
-### checkbox not in line with label for some screen widths
+### Checkbox not in line with label for some screen widths
 
-### faq questions form
+Found additional marigin added to all input elements by a stylesheet. Modified this which has resolved the issue.
 
-can I prevent superuser from editing newsletter choice? Yes - by setting - if superuser - input type  = hidden, but the superuser can still go to admin panel and change this. I can also edit it in the dev tools - as input type hidden is visible there. 
+### caruselle
+- in faq it should only display add question
+- on home - it should vary the button if the user is subscribed
+- added if statements to display diferent carousele on FAQ for signed in users and for not authorised ones. The signed in user gets a static banner encouraging to ask the question.
 
-It would have to be protected in the back end from saving by superuser. There must be a way of setting different levels of access. It might be safer for the store owner not to be superuser will access to django admin panel, only to access 99% of crud functionality of all models - with this small exception. There is not enough time for me to explore this possiblity. 
+### FAQ status published
 
 preventing normal user from editing draft status to published - currently it is input type hidden. It might be safer to add this in the back end. Before the form is validated.
 
 I've tested if I can edit published status from chrome dev tools. I logged in as a normal user and inspected the hidden input for status. I updated it to 1 (published) and it has submitted form and published the question. 
 
-The status input should not be displayed as input hidden, the same with user, as it can be very simply edited. This should be added to the form instance in the view before the form is validated. 
+The status input should not be displayed as input hidden, the same with user, as it can be very simply edited. This should be added to the form instance in the view before the form is validated. I've changed it that the add question view always posts status draft, regardles what comes from the form in the POST.
 
+### Addressing email to the registered user
+
+Each subscriber is saved with registered_user column item saved as None or as username of the user if the user was logged in at the time of signing up. 
+
+It would be great to use this relational key and address each email individualy.
+
+```
+Hello {[name]}!
+```
+I have resolved this by adding if statement. If the Subscriber is registered user than I address email by the username Otherwise subscriber just gets 'Hello'
+
+## Bugs left in the project
 
 ### FAQ questions form creating Subscriber
 
-can I make it create subscriber
+I initially added Newsletter column to Question model. This was intending to create Subscriber after the question has been submitted. 
 
-I need to check if user is subscribed.
-
-### caruselle
-- in faq it should only display add question
-- on home - it should vary the button if the user is subscribed
+I have run out of time to make it work. I have removed this column from the model. I have also re considered this idea and I think that better solution would be to add a Question success page with a Subscriber form. This would say - thank you for asking the question, you can now subscribe to the newsletter and you will get the answer in the mail once it is ready.
 
 ### FAQ Newsletter
 
 Shop owner has the ability to set Newsletter to sign me up for any of the users. This could be resolved by checking if the user is author both in the template as well as in the view, before saving the instance of the form. This way the whole form except of newsletter field could be saved. I would have to state explicitly which fields should be saved. 
 
-## Bugs still there
+Can I prevent superuser from editing newsletter choice? Yes - by setting - if superuser - input type  = hidden, but the superuser can still go to admin panel and change this. I can also edit it in the dev tools - as input type hidden is visible there. 
 
+It would have to be protected in the back end from saving by superuser. There must be a way of setting different levels of access. It might be safer for the store owner not to be superuser will access to django admin panel, only to access 99% of crud functionality of all models - with this small exception. There is not enough time for me to explore this possiblity. 
+
+Another way would be to have additional field - edited by - and view should check if the person that edits is the Subscriber and reject changes attempted by other users as well as record attempts.
 
 ### handling unsubscribing
 
@@ -611,29 +617,6 @@ Also as it has been revealed in bug section the Subscriber model needs long Slug
 
 The reason behind allowing this is some people are unlikely to register, but might be interested in the content of the page. This might entice them to register in the future. 
 
-### Addressing email to the registered user
-
-Each subscriber is saved with registered_user column item saved as None or as username of the user if the user was logged in at the time of signing up. 
-
-It would be great to use this relational key and address each email individualy. 
-
-### sorting tiles uneven on tablets
-
-some diferences in height of sorting tiles in comparing to filtering tiles for medium screen witdh (tablets)
-
-also tiles on mobiles become different length if the tile description contains two words. 
-
-### FAQ form - normal user can change status to published
-
-
-### superuser can change newsletter status
-
-This poses a field for abuse, as superuser can easily add users to newsletter without their consent. 
-
-Superuser can change the newsletter status - both on Subscriber model and on Newsletter model. This can be done by accessing django admin model or editin the input type hidden in dev tools before the form submittion. 
-
-This can be resolved by setting different access level for store owner, instead of giving him superuser.  
-
 ### Question seems to change author after editing
 
 The questions have been posted by regular users. It seems that after the super user has edited the question and added the answer, the author is updated to superuser. Need to change model. 
@@ -659,6 +642,12 @@ Some comments were inherited from bootstrap examples. For example the below code
 ```
 
 I used comments to end some container when container was very complex and had a few else / if statements inside it. I would be good to unify the styling of comments. 
+
+### Button In trolley on all trees view
+
+In trees view button breaks in cards for the treees that area already in the trolley. The longer text "in trolley" is more descriptive that just the word Trolley or "in bag" as I use trolley in this application. 
+
+I decided to leave it as it is visibly different that the trees that are not in the bag yet and might look more inviting to click to go to the trolley and than to checkout. 
 
 ## Deployment and making a clone
 
