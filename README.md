@@ -492,8 +492,6 @@ Python3 -m flake8
 | trolley |  custom-storage.py |  [all ok](README_docs/PEP8-validator/07-custom-storage.txt) |
 
 
-
-
 ## Tests
 ------
 
@@ -506,27 +504,22 @@ Automated tests have not been created due to time constrains of the project.
 
 ### Manual tests
 
-confirmation email wasn't sending
-faq newsletter wasn't sending
-question card in home too big marigin top
-footer - link to the top doesn't work
-sortng and filtering tiles took over too much of the screen for mobiles
-wrong signature on the third question on the home page - The author was from the first question, wrong indice on the third question's author.
-
 #### First release
 
-**Relese main fetures:**
-
-first set of 3rd party tests was performend by Daisy 
-questions were in a form of accordeon, which required to click into by the user. It does not seem much inviting. I decided to follow the styling from the home page and display the questions in an open format. 
-
-
-- styling issue with checkbox dropping down the line
-- different size of sorting tiles in trees
-- she didn't notice the option to add the questions that was set inside carouselle. I decided to render only one slide of the carouselle for the faq page so it becomes obvious to the user that they can read the questions or add the question themselves
+- styling issue with checkbox dropping down the line. I found that all input elements were given large marigin from the stylesheet.
+- different size of sorting tiles in trees. This was resolved by inspecting in dev tools which element shoud have the class bg-dark
+- tester didn't notice the option to add the questions that was set inside carouselle on the FAQ page. I decided to render only one slide of the carouselle for the faq page so it becomes obvious to the user that they can read the questions or add the question themselves
+- questions are listed in a form of accordeon, which required to click into by the user. It does not seem much inviting. It might be good to consider changing to display each question in open format as it is on the home page. 
 
 
+#### Second release
 
+- users were complaining that confirmation email weren't being sent. I have left development variable in heroku which was causing this issue. Issue was resolved after the variable was removed.
+- faq newsletter wasn't sending - I have noticed that I had EMAIL_BACKEND variable in three places. The first one was only printing the emails to terminal, the two other ones were binded in if statement - depending if Development variable is true. I removed the first variable and this has resolved the issue.
+- on the home page the question card had too big marigin top. The text was mis alligned with the image.
+- footer - link to the top didn't work. The issue was that I added the appropriate href to the wrong element in the footer. 
+- in trees on the shop page - sortng and filtering tiles took over too much of the screen for mobiles. This was resolved by adding JQuery to hide and show groups of tiles
+- once one of the users has submitted a question - I've noticed that this users's signature showed on the first and the third question on the home page. There was a wrong indice refferenced on the third question's author.
 
 ## Project Bugs and Solutions:
 ------
