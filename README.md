@@ -250,7 +250,7 @@ The issues have been divided into sprints. Further sprints have been created lat
 
 ### Navbar and Footer
 
-![showpiece home page](RADME_docs/showpieces/01-home.PNG)
+![showpiece home page](README_docs/showpieces/01-home.PNG)
 
 A wide navbar with large icons has been designed for desktop users and narrow simple navbar for mobile phone users. Each navbar appears and disapears according to bootstrap classes. 
 
@@ -272,7 +272,7 @@ The people section gives a human feal and real connection to real people for the
 
 ### Shop
 
-![showpiece home page](RADME_docs/showpieces/02-shop.PNG)
+![showpiece home page](README_docs/showpieces/02-shop.PNG)
 
 Currently shop features only trees. Future development might see adding bonsai tools added. Shop owner might also consider adding soil and fertilisers for bonsai trees. Next step might be to connect the fertilisers and soil with corresponding tree species to offer user all products he needs for his tree.
 
