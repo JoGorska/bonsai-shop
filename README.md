@@ -270,34 +270,6 @@ The superuser can edit the header and the details of the question. This can be i
 
 All allauth templates were styled to match the colours and feel of the page. 
 
-## Future Features 
-------
-
-### feature 1
-
-### Dashboard for superuser
-
-### search option in questions
-It would be a great help if the user has been welcomed with a search form on FAQ page. This would let user search the library of our questions to see if someone has asked about the issue he is having. 
-
-This would also limit repeating the same questions by other users. 
-
-
-
-### switch button to switch between published and unpublished
-
-### questions displayed in the same style as on home page, not as folded accordeon.
-
-### Edit tree feature
-The super user has an additional button showing up on a tree detail page to enale him to edit the dree. The user gets transfered to edit view and gets a pre filled form containing the current tree details. Both templates use the same form. The form is inserted as include into each template.
-
-### Newsletter
-Further developing the Subscriber model it needs adding a record who modified it last if it was registered user. This would allow to track if superuser hasn't changed subscribed status without prior authorisation from the Subscriber. 
-
-Also as it has been revealed in bug section the Subscriber model needs long Slug with about 16 random ascii characters to build urls with it. One url for unsubscribe needs to remain unsecured from the back end as I am allowing unregistered users to subscribe.
-
-The reason behind allowing this is some people are unlikely to register, but might be interested in the content of the page. This might entice them to register in the future. 
-
 ### Icons
 
 The page uses icons intensively to make the content more intuitive. The icons have been sourced from Bootstrap icons and Fontawsome. In most cases icons have been used in svg format. All icon's paths have been copied into one file and than refferenced by id. On some occasions i element has been used to insert the icon. 
@@ -312,6 +284,44 @@ To have unique styling of the page, the rounded-pill class is applied to all but
 Buttons are usually equipped with an icon corresponding to the context. 
 
 Links are often styled as a button to allow a nice flow of the page. 
+
+## Future Features 
+
+### Google places API to fetch address data
+
+Autofill the address fields in profile form and in checkout by using google places API. This would speed up the checkout process.
+
+### Current stock
+
+Stock numbers - the future development needs to be focused on adding a some kind of stock app. The views and webhook handlers might need updating to reflect the impact of the completed purchase on the trees in stock. Currently tree model has quantity column that is not being utilised. 
+
+Further step would be to enable superuser to add new stock to increase quantity of each trees. 
+
+### Javascript validation on input
+
+Another important feature that had to be dropped due to short deadline is javascript validation on input. User currently is notified by django messages in the form of toasts that something went wrong with the form. Idealy we should have javascript preventing submittion and checking if the form is correct on user input. This would give user instant feedback and chance to correct the form. 
+
+### Success page after question is submitted
+
+It would be a good idea to add a success page after the question is submitted. This page could contain the Subscriber form to encourage user to subscribe
+
+### Secured view to unsubscribe
+
+The most urgent feature that wasn't implemented is changing the Subscriber - to that it can be only a registered user. This way all the views can be secured with the decorator and malicious crawling urls wouldn't remove any subscriptions. 
+
+Ideally the Subscriber model should have additional columns recording who edited the subscriber and when.
+
+### Dashboard for superuser
+
+Currently all special pages dedicated for superuser are located in navbar under a user icon. This is higly impractical and should be changed. The superuser should have a admin panel. This would feature all links that require special permittions.
+
+### search option in questions
+
+It would be a great help if the user has been welcomed with a search form on FAQ page. This would let user search the library of our questions to see if someone has asked about the issue he is having. 
+
+This would also limit repeating the same questions by other users. 
+
+
 
 ## Search Engine Optimalization
 
@@ -548,6 +558,10 @@ Slug would be automaticaly generated each time a new Subscrier is added. The URL
 Unfortunately I realised this unsecurity too late in the project and I didn't want to risk making big changes in models. Deleting this view and url because it is unsecure, would deprive unregistered users from ability to unsubscribe. 
 
 All these problems would not be the case if I have had limited the Subscribers to registered users only. The reason behind allowing this is some people are unlikely to register, but might be interested in the content of the page. This might entice them to register in the future. 
+
+Also as it has been revealed in bug section the Subscriber model needs long Slug with about 16 random ascii characters to build urls with it. One url for unsubscribe needs to remain unsecured from the back end as I am allowing unregistered users to subscribe.
+
+The reason behind allowing this is some people are unlikely to register, but might be interested in the content of the page. This might entice them to register in the future. 
 
 ### Addressing email to the registered user
 
