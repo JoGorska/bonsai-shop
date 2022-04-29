@@ -1,18 +1,43 @@
-# Contents
 - [Contents](#contents)
-- [NameUnspecified](#nameunspecified)
+- [Three Oaks](#three-oaks)
   * [UX](#ux)
-    + [Purpose](#purpose)
-    + [User Stories](#user-stories)
-    + [Wireframes](#wireframes)
-    + [Agile Methodology](#agile-methodology)
+  * [Purpose](#purpose)
+  * [User Stories](#user-stories)
+    + [User Stories that have been satisfied by creation of particular apps in ths project:](#user-stories-that-have-been-satisfied-by-creation-of-particular-apps-in-ths-project-)
+    + [User stories that are planned for next sprint](#user-stories-that-are-planned-for-next-sprint)
+  * [Wireframes](#wireframes)
+    + [Home page](#home-page)
+    + [Shop - trees app](#shop---trees-app)
+    + [FAQ - questions app](#faq---questions-app)
+    + [Trolley app](#trolley-app)
+    + [User app - allauth](#user-app---allauth)
+    + [Profile app](#profile-app)
+  * [Agile Methodology](#agile-methodology)
+    + [Canban board and issues](#canban-board-and-issues)
+    + [Sprints - milestones](#sprints---milestones)
   * [Existing Features](#existing-features)
     + [Navbar and Footer](#navbar-and-footer)
-    + [Home page](#home-page)
-    + [Feature ddd](#feature-ddd)
+    + [Footer](#footer)
+    + [The caourusel](#the-caourusel)
+    + [The people section of home page](#the-people-section-of-home-page)
+    + [Shop](#shop)
+    + [Shoping trolley](#shoping-trolley)
+    + [FAQ](#faq)
+    + [User authentication](#user-authentication)
+    + [Icons](#icons)
+    + [Buttons](#buttons)
   * [Future Features](#future-features)
-    + [feature 1](#feature-1)
-    + [Feature 2](#feature-2)
+    + [Google places API to fetch address data](#google-places-api-to-fetch-address-data)
+    + [Current stock](#current-stock)
+    + [Javascript validation on input](#javascript-validation-on-input)
+    + [Success page after question is submitted](#success-page-after-question-is-submitted)
+    + [Secured view to unsubscribe](#secured-view-to-unsubscribe)
+    + [Dashboard for superuser](#dashboard-for-superuser)
+    + [search option in questions](#search-option-in-questions)
+  * [Search Engine Optimalization](#search-engine-optimalization)
+  * [Web Marketing](#web-marketing)
+    + [Newsletter](#newsletter)
+    + [Facebook](#facebook)
   * [Technologies Used](#technologies-used)
     + [Languages Used](#languages-used)
     + [Technologies and Programs Used:](#technologies-and-programs-used-)
@@ -23,23 +48,45 @@
     + [CSS validation](#css-validation)
     + [JavaScript validation](#javascript-validation)
     + [Python beautify](#python-beautify)
+    + [Pep 8](#pep-8)
     + [Python validator](#python-validator)
   * [Tests](#tests)
     + [Automated tests](#automated-tests)
     + [Lighthouse](#lighthouse)
     + [Manual tests](#manual-tests)
       - [First release](#first-release)
+      - [Second release](#second-release)
   * [Project Bugs and Solutions:](#project-bugs-and-solutions-)
-    + [bug...](#bug)
+    + [Grid with filtering and sorting icons](#grid-with-filtering-and-sorting-icons)
+    + [Button In trolley on all trees view](#button-in-trolley-on-all-trees-view)
+    + [Checkbox not in line with label for some screen widths](#checkbox-not-in-line-with-label-for-some-screen-widths)
+    + [caruselle](#caruselle)
+    + [FAQ status published](#faq-status-published)
+    + [Addressing email to the registered user](#addressing-email-to-the-registered-user)
+  * [Bugs left in the project](#bugs-left-in-the-project)
+    + [FAQ questions form creating Subscriber](#faq-questions-form-creating-subscriber)
+    + [FAQ Newsletter](#faq-newsletter)
+    + [handling unsubscribing](#handling-unsubscribing)
+    + [Unsecure url for unsubscribing from newsletter](#unsecure-url-for-unsubscribing-from-newsletter)
+    + [Question seems to change author after editing](#question-seems-to-change-author-after-editing)
+    + [Bootstrap's toasts floating left outside the 320px wide screens](#bootstrap-s-toasts-floating-left-outside-the-320px-wide-screens)
+    + [ununified comments - end of container and others](#ununified-comments---end-of-container-and-others)
+    + [Button In trolley on all trees view](#button-in-trolley-on-all-trees-view-1)
   * [Deployment and making a clone](#deployment-and-making-a-clone)
     + [Deployment to heroku](#deployment-to-heroku)
     + [Forking the GitHub Repository](#forking-the-github-repository)
     + [Making a Local Clone](#making-a-local-clone)
     + [Setting up your local enviroment](#setting-up-your-local-enviroment)
+    + [Getting Stripe keys](#getting-stripe-keys)
+    + [Getting email variables from gmail](#getting-email-variables-from-gmail)
+    + [Setting AWS bucket](#setting-aws-bucket)
   * [Credits](#credits)
     + [Online resources](#online-resources)
     + [Tutorials and inspiration](#tutorials-and-inspiration)
     + [People](#people)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 
 
@@ -501,6 +548,10 @@ Automated tests have not been created due to time constrains of the project.
 
 ### Lighthouse
 
+- Initial report showed only 90% on accesibility, which has been imporoved by adding missing aria-labels. 
+- Performance could be further improved by analysing the file types of images. Also the heroku app starts really slowly as I have free subscription.
+
+![lighthouse report](README_docs/lighthouse.PNG)
 
 ### Manual tests
 
@@ -963,18 +1014,21 @@ class MediaStorage(S3Boto3Storage):
 * [Markdown best practices](https://www.markdownguide.org/basic-syntax/)
 * [Markdown Table of content generator](http://ecotrust-canada.github.io/markdown-toc/)
 
-* [icon](<a href="https://www.flaticon.com/free-icons/trees" title="trees icons">Trees icons created by Freepik - Flaticon</a>)
+* [icon](https://www.flaticon.com/free-icons/trees)
 * png to svg [converter](https://convertio.co/download/d39aa7f30e79f4379b9bce697c5afe384b5853/)
 * resizing photos by [photoresizer](https://www.photoresizer.com/)
 
 ### Tutorials and inspiration
 
-* The project walkthrough 
+* The project walkthrough Butique Ado from Code Institute [oryginal repo](https://github.com/Code-Institute-Solutions/boutique_ado_v1/tree/f5880efee43b3b9ea1276a09ca972f4588001c59), deployed [here](https://ado-clothes-shop.herokuapp.com/). 
 
-* [Herons Bonsai](https://www.herons.co.uk/)
+* My favourite Bonsai shop as inspiration [Herons Bonsai](https://www.herons.co.uk/)
 * [starter template](https://getbootstrap.com/docs/5.0/getting-started/introduction/) from bootstrap 5
 * base template from [bootstrap examples](https://getbootstrap.com/docs/5.0/examples/carousel/)
 
-* 
-
 ### People
+
+- Daisy Mc Girr - my mentor from Code Institute
+- Julia Konn - for testing the app extensively
+- Rachel Rock - for testing the app extensively
+- Kamil Kwiatkowski - for testing the app extensively
