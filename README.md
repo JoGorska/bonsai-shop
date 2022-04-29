@@ -115,8 +115,69 @@ The general structure of the page was based on 1/3 proportions in many of it's f
 
 The whole of design has been saved in this [pdf file](README_docs/wireframes/wireframes.pdf). 
 
-![wireframes of home page](README_docs/wireframes/01-home.PNG)
+### Home page
 
+![wireframes of home page](README_docs/wireframes/01-home.PNG)
+The desing of this page is heavily inspired by bootstrap examples found [here](https://getbootstrap.com/docs/4.0/examples/carousel/). This design was than further individualised to match the overal style of the page.
+
+Home page is divided into three main sections: carousele, staff images and FAQ questions. This aims to give the user a feeling of dealing with real people and entice them to interesting content.
+
+### Shop - trees app
+
+![wireframes of trees page](README_docs/wireframes/01-trees.PNG)
+
+The trees app is divided into two main sections: the sorting/fitering tiles and the list of trees. 
+
+Bootstrap grid was used for both of those features to make sure that all of the cards sets are responsive. 
+
+Jquery script allows the user to choose the option to filter or sort the trees. On click of appropriate tiles, more tiles apear. 
+
+Each card with the tree has been equipped with two buttons buy now and details.
+
+![wireframes of trees details page](README_docs/wireframes/02-trees-detail.PNG)
+
+The trees detail cards were designed so the photo of the tree is nicely featured, but not overwelming. The features of the trees are extra visible thanks to icon and a badge effect arround each of them. The card is equipped with a buttons allowing user to purchase the tree.
+
+### FAQ - questions app
+
+![wireframes of questions page](README_docs/wireframes/03-questions.PNG)
+
+This page has been designed as a simple list view. Carousele features top part of the page and below it the user will find the list of published questions in the form of accordeon.
+
+Once the accordeon is opened, the user can see the image and text refering to this question. 
+
+![wireframes of questions form](README_docs/wireframes/03-questions-form.PNG)
+
+The form has been designed with minimal involvement in mind. It allows user just submit a few fields. They can choose to add image. Once the question is submitted it has to wait for superuser to add answer and change the status to published.
+
+The same template is used to display the unpublished questions for the superuser to edit. Superuser is given the same form with some additional fields revieled like answer and status.
+
+### Trolley app
+
+![wireframes of trolley page](README_docs/wireframes/04-trolley.PNG)
+
+The trolley page has been designed similarly to amazon shopping bag. The summary of the order is right at the top of the page, whle the products are listed below inside a card with little image of each product. 
+
+For mobile phone the image of the tree goes very small, but this is again in keeping with amazon styling - as it seems it is more user intuitive to have image and information side by side.
+
+![wireframes of trolley checkout page](README_docs/wireframes/04-trolley-checkout.PNG)
+
+Checkout page has been inspired by bootstrap examples found [here](https://getbootstrap.com/docs/4.0/examples/checkout/) This gives the user a form on the left hand side and a very short summary of purchased items on the right hand side. 
+
+![wireframes of trolley order confirmation page](README_docs/wireframes/04-trolley-order-conf.PNG)
+
+The order confirmation is a big card containing all relevant information about the purchase that has just been completed. The user is also notified by email that the purchase has been completed as well as by toast notification in the page.
+
+### User app - allauth
+
+![wireframes of logging in page](README_docs/wireframes/05-login.PNG)
+
+The allauth templates have been styled by bootstrap classes to match the general feel and design of the page. 
+
+### Profile app
+![wireframes of profile page](README_docs/wireframes/05-profile.PNG)
+
+The profile app has been designed by using the same template as checkout app. The profile form is on the left and previous orders list is on the right.
 
 
 ### Agile Methodology
