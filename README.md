@@ -394,18 +394,36 @@ Three oaks utilises [facebook](https://www.facebook.com/Three-Oaks-Bonsai-Shop-1
 [HTML validator](https://validator.w3.org/nu/#textarea)
 
 
-| Page  |  result
-| ------ | ------ |
-|  [Home](link/to/report |  No errors |
-|  [another page](link/to/file.pdf)|No errors|
-
+| App  |  page | result |
+| ------ | ------ | ------ |
+|  Home | Home | [No errors](README_docs/HTML-validator/01-home.pdf) |
+|  Trees | Add tree form| [No errors](README_docs/HTML-validator/02-shop-add-tree-form.pdf) |
+|  Trees | Shop | [No errors](README_docs/HTML-validator/02-shop.pdf) |
+|  Trees | Tree detail | [No errors](README_docs/HTML-validator/02-tree-detail.pdf) |
+|  Questions | FAQ | [No errors](README_docs/HTML-validator/03-faq.pdf) |
+|  Questions | FAQ form | [No errors](README_docs/HTML-validator/03-question-form.pdf) |
+|  Newsletter | Subscribers Manager| [No errors](README_docs/HTML-validator/04-Admin-subscribers.pdf) |
+|  Profiles | User Profile | [No errors](README_docs/HTML-validator/04-user-profile.pdf) |
+|  Accounts | User login | [No errors](README_docs/HTML-validator/04-users-login.pdf) |
+|  Accounts | Register User | [No errors](README_docs/HTML-validator/04-users-register.pdf) |
+|  Accounts | User sign out | [No errors](README_docs/HTML-validator/04-users-signout.pdf) |
 
 
 ### CSS validation
 
-[W3C validator](https://jigsaw.w3.org/css-validator/). The copy of the CSS report can be found [here](.....)
+Due to extensive user of Bottstrap classes, only minimial styling was applied. Most of the css code comes from bootstrap's carousele template with some modifications. The CSS code was validated with [Jigsaw Validator](https://jigsaw.w3.org/css-validator/) 
+
+| App  |  file | result |
+| ------ | ------ | ------ |
+|  Checkout | checkout.css | [No errors](README_docs/HTML-validator/01-home.pdf) |
+|  Home | home.css | [No errors](README_docs/jigsaw-validator/02-home.pdf) |
+|  Profiles | profiles.css | [No errors](README_docs/jigsaw-validator/03-profiles.pdf) |
+|  Questions | questions.css | [No errors](README_docs/jigsaw-validator/04-questions.pdf) |
+|  Base | base.css | [No errors](README_docs/jigsaw-validator/05-base.pdf) |
+
 
 ### JavaScript validation
+
 Javascript code validation was complited on [jshint](https://jshint.com/)
 Initialy it was returning errors in relation of ES6 syntax, which was resolved by adding this line to the beggining of the file
 ```
@@ -416,11 +434,12 @@ Second issue with jshint was that it wasn't recognizing syntax of JQuery. This w
 ```
 /*globals $:false */
 ```
+Most of the results came with no errors except of stripe_element.js It has returned that Stripe is undefined. This is due to core functionality reffering to Stripe. Copy of the code was taken from older version Stripe pages that were referenced in Butique Ado.
 
-| Page  |  result
-| ------ | ------ |
-|  [script](link to result here /???) |  no errors |
-
+| App  |  file | result |
+| ------ | ------ | ------ |
+|  Checkout| stripe_element.js| [undefined variable Stripe](README_docs/jshint-validator/01-checkout.pdf) |
+|  Trees | trees.js| [no errors](README_docs/jshint-validator/02-trees.pdf) |
 
 
 ### Python beautify
@@ -436,12 +455,32 @@ Python3 -m flake8
 
 | App name  |  file name | result |
 | ------ | ------ |------ |
+| name-app|  urls.py |  [all ok](README_docs/PEP8-validator/00-bonsai_shop-urls.txt) |
+| users |  admin.py |  [all ok](README_docs/PEP8-validator/01-checkout-admin.txt) |
+| users |  forms.py |  [all ok](README_docs/PEP8-validator/01-checkout-forms.txt) |
+| users |  models.py |  [all ok](README_docs/PEP8-validator/01-checkout-models.txt) |
+| users |  urls.py |  [all ok](README_docs/PEP8-validator/01-checkout-signals.txt) |
+| users |  views.py |  [all ok](README_docs/PEP8-validator/01-checkout-urls.txt) |
+| name-app|  urls.py |  [all ok](README_docs/PEP8-validator/01-checkout-views.txt) |
+| users |  admin.py |  [all ok](README_docs/PEP8-validator/03-newsletter-admin.txt) |
+| users |  forms.py |  [all ok](README_docs/PEP8-validator/03-newsletter-models.txt) |
+| users |  models.py |  [all ok](README_docs/PEP8-validator/03-newsletter-urls.txt) |
+| users |  urls.py |  [all ok](README_docs/PEP8-validator/03-profiles-forms.txt) |
+| users |  views.py |  [all ok](README_docs/PEP8-validator/03-profiles-models.txt) |
+| name-app|  urls.py |  [all ok](link.here.txt???) |
+| users |  admin.py |  [all ok](README_docs/PEP8-validator/03-profiles-urls.txt) |
+| users |  forms.py |  [all ok](???) |
+| users |  models.py |  [all ok](???) |
+| users |  urls.py |  [all ok](??) |
+| users |  views.py |  [all ok](???) |
 | name-app|  urls.py |  [all ok](link.here.txt???) |
 | users |  admin.py |  [all ok](??) |
 | users |  forms.py |  [all ok](???) |
 | users |  models.py |  [all ok](???) |
 | users |  urls.py |  [all ok](??) |
 | users |  views.py |  [all ok](???) |
+
+
 
 
 ## Tests
@@ -455,6 +494,13 @@ Automated tests have not been created due to time constrains of the project.
 
 
 ### Manual tests
+
+confirmation email wasn't sending
+faq newsletter wasn't sending
+question card in home too big marigin top
+footer - link to the top doesn't work
+sortng and filtering tiles took over too much of the screen for mobiles
+wrong signature on the third question on the home page - The author was from the first question, wrong indice on the third question's author.
 
 #### First release
 
