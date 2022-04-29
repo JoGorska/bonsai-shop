@@ -668,6 +668,12 @@ Also as it has been revealed in bug section the Subscriber model needs long Slug
 
 The reason behind allowing this is some people are unlikely to register, but might be interested in the content of the page. This might entice them to register in the future. 
 
+As a quick fix I decided to change the email and require that user unsubscribes in profile form. I have removed unsecure url for unsubscribing from email. I have added login required decorator to all views in subscribers. I have also updated templates to stop user accessing subscribers urls without being authenticated.
+
+This is only a quick fix, and would require further work on unpicking if else statemnets in register subscriber view. Currently view allows to ad both regitered and unregistered user. Models would have to be updated to reflect that registered user is required now.
+
+I have checked database and none of the current subscribers have registered user none so all of them will be able to unsubscribe using user profile. 
+
 ### Question seems to change author after editing
 
 The questions have been posted by regular users. It seems that after the super user has edited the question and added the answer, the author is updated to superuser. Need to change model. 

@@ -28,6 +28,7 @@ def subscribers(request):
     return render(request, 'newsletter/subscribers.html', context)
 
 
+@login_required
 def add_subscriber(request):
     """
     view to post the subscriber form to add the email to database
@@ -140,6 +141,7 @@ def add_subscriber(request):
         return HttpResponseRedirect(next_page)
 
 
+@login_required
 def unsubscribe(request):
     """
     view to change status of the email to unsubscribed
@@ -190,30 +192,6 @@ def unsubscribe_registered_user(request):
             return HttpResponseRedirect('/')
 
         return HttpResponseRedirect('/')
-
-
-def unsubscribe_from_email(request, subscriber_id):
-    """
-    view for emails to unsubscribe with one click
-    """
-
-    if Subscriber.objects.filter(
-            id=subscriber_id).filter(subscribed=True).exists():
-        try:
-            current_subscriber = Subscriber.objects.get(id=subscriber_id)
-            current_subscriber.subscribed = False
-            current_subscriber.save(update_fields=['subscribed'])
-            messages.success(
-                request,
-                f'Successfully unsubscribed email {current_subscriber.email}\
-                    from our newsletter')
-            return HttpResponseRedirect('/')
-
-        except Subscriber.DoesNotExist:
-            messages.error(
-                request,
-                'We can not find you on the list of our subscribers')
-            return HttpResponseRedirect('/')
 
 
 # email view based on django documentation found here:

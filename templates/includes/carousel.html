@@ -12,6 +12,7 @@
       <img src="{{ MEDIA_URL }}wide-pexels-quang-nguyen-vinh-2149105.jpg" alt="">
       <div class="container">
         <div class="carousel-caption text-start">
+          {% if user.is_authenticated %}
           {% if subscribed == True %}
           <h1 class="my-heading-font">Thank you for subscribing to our Newsletter
           </h1>
@@ -38,6 +39,20 @@
                     class="btn btn-lg btn-success rounded-pill">
               Sign up today
             </button>
+          </p>
+          {% endif %}
+          {% else %}
+          <!-- for users that are not authenticated -->
+          <h1 class="my-heading-font">Register
+          </h1>
+          <p>Register for our page to have access to your profile details and can subscribe to newsletter.
+          </p>
+          <!-- button modal trigger for sign up -->
+          <p>
+            <a href="{% url 'account_signup' %}"
+                    class="btn btn-lg btn-success rounded-pill">
+              Register today
+          </a>
           </p>
           {% endif %}
         </div>
@@ -106,4 +121,6 @@
     </span>
   </button>
 </div>
+{% if user.is_authenticated %}
 {% include 'includes/modal_subscribe_form.html' %}
+{% endif %}
