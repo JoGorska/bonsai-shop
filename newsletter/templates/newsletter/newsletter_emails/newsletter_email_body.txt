@@ -11,5 +11,5 @@ This is our solution to that problem.
 If you have any questions, feel free to contact us at {{ contact_email }}.
 Sincerely,
 Three Oaks
-If you wish to unsubscribe from further communication please follow the link below to your profile and click Unsubscribe
+If you wish to unsubscribe from further communication please follow the link below to your profile and click Unsubscribe. You need to log in to access profile.
 https://three-oaks.herokuapp.com/newsletter/profile
