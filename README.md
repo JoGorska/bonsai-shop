@@ -41,11 +41,11 @@
     + [Tutorials and inspiration](#tutorials-and-inspiration)
     + [People](#people)
 
-------
+
 
 # Three Oaks
 
-[![showpiece home page](RADME_docs/showpieces/01-home.PNG)](https://three-oaks.herokuapp.com/)
+[![showpiece home page](README_docs/showpieces/01-home.PNG)](https://three-oaks.herokuapp.com/)
 
 Click [here](https://three-oaks.herokuapp.com/) to live site.  
 ------
@@ -58,11 +58,15 @@ To make a purchase user can pay with a credit card as checkout page features str
 
 The user can also get involved in asking questions about bonsai and sign up to the newsletter. 
 
-### Purpose
+## Purpose
 
 The app is designed as a e-commerce application that encourages the users to make a purchase
 
-### User Stories
+
+## User Stories
+
+### User Stories that have been satisfied by creation of particular apps in ths project:
+
 | id  |  content | how was it satisfied
 | ------ | ------ | ------ |
 |  [#1](https://github.com/JoGorska/bonsai-shop/issues/1) | As a Shopper I can register as a user and have ability to login so that my personal data is saved for future shopping | profile |
@@ -70,48 +74,48 @@ The app is designed as a e-commerce application that encourages the users to mak
 |  [#3](https://github.com/JoGorska/bonsai-shop/issues/3) | As a shopper I can sort the procucts by various categories so that I can find what I am looking for | trees app |
 |  [#4](https://github.com/JoGorska/bonsai-shop/issues/4) | As a shopper I can add and remove items from my shopping trolley so that I can see how much I will spend | trolley app |
 |  [#6](https://github.com/JoGorska/bonsai-shop/issues/6) | As a shopper I can have a search form so that find the product by name or description |trees app |
-|  [#7](https://github.com/JoGorska/bonsai-shop/issues/7) | As a shopper I can remove items from shopping trolley so that I don't buy what I don't want |
-|  [#8](https://github.com/JoGorska/bonsai-shop/issues/8) | As a shopper I can increase quantity of products in my shopping trolley so that I can buy more products of the same kind |
-|  [#9](https://github.com/JoGorska/bonsai-shop/issues/9) | As a shopper I can put in my card details so that I can pay for my goods |
-|  [#10](https://github.com/JoGorska/bonsai-shop/issues/10) | As a shopper I can have the payment processed so that pay for products |
-|  [#11](https://github.com/JoGorska/bonsai-shop/issues/11) | As a shopper I can see order confirmation after checkout so that see what I bought |
-|  [#12](https://github.com/JoGorska/bonsai-shop/issues/12) | As a shopper I can have my order processed correctly even if my internet breaks down mid transaction |
-|  [#13](https://github.com/JoGorska/bonsai-shop/issues/13) | As a shopper I can receive an email confirmation of my purchase so that I have proof of purchase |
-|  [#14](https://github.com/JoGorska/bonsai-shop/issues/14) | As a shopper I can access the website in a publicly accessible domain so that view the website |
-|  [#15](https://github.com/JoGorska/bonsai-shop/issues/15) | As a shop owner I can add products to the shop so that the shop can have more variety available |
-|  [#16](https://github.com/JoGorska/bonsai-shop/issues/16) | As a shop owner I can edit / update product so that the description and price is up to date |
-|  [#17](https://github.com/JoGorska/bonsai-shop/issues/17) | As a shop owner I can delete product so that I remove products no longer available |
-|  [#20](https://github.com/JoGorska/bonsai-shop/issues/20) | As a shopper I can read advice on trees so that learn something more |
-|  [#21](https://github.com/JoGorska/bonsai-shop/issues/21) | As a shopper I can ask questions so that I learn more about product |
-|  [#22](https://github.com/JoGorska/bonsai-shop/issues/22) | As a shop owner I can respond to questions send to FAQ so that I share knowledge with shoppers |
-|  [#23](https://github.com/JoGorska/bonsai-shop/issues/23) | As a shopper I can sign up for newsletter so that receive regular updates about new products and advice on bonsai sign up from carusele generating modal tick box and sign up when buying on checkout t... |
-|  [#24](https://github.com/JoGorska/bonsai-shop/issues/24) | As a shop owner I can send out newsletter via email so that I keep shoppers updated with new products and give them advice on bonsai |
-|  [#33](https://github.com/JoGorska/bonsai-shop/issues/33) | As a shopper I can shop for wires and scissors so that buy accessories for my bonsai |
+|  [#7](https://github.com/JoGorska/bonsai-shop/issues/7) | As a shopper I can remove items from shopping trolley so that I don't buy what I don't want | trolley app |
+|  [#8](https://github.com/JoGorska/bonsai-shop/issues/8) | As a shopper I can increase quantity of products in my shopping trolley so that I can buy more products of the same kind |  trolley app |
+|  [#9](https://github.com/JoGorska/bonsai-shop/issues/9) | As a shopper I can put in my card details so that I can pay for my goods | checkout app |
+|  [#10](https://github.com/JoGorska/bonsai-shop/issues/10) | As a shopper I can have the payment processed so that pay for products |  checkout app |
+|  [#11](https://github.com/JoGorska/bonsai-shop/issues/11) | As a shopper I can see order confirmation after checkout so that see what I bought |  checkout app |
+|  [#12](https://github.com/JoGorska/bonsai-shop/issues/12) | As a shopper I can have my order processed correctly even if my internet breaks down mid transaction |  checkout app |
+|  [#13](https://github.com/JoGorska/bonsai-shop/issues/13) | As a shopper I can receive an email confirmation of my purchase so that I have proof of purchase |  checkout app |
+|  [#14](https://github.com/JoGorska/bonsai-shop/issues/14) | As a shopper I can access the website in a publicly accessible domain so that view the website | deployed to heroku |
+|  [#15](https://github.com/JoGorska/bonsai-shop/issues/15) | As a shop owner I can add products to the shop so that the shop can have more variety available | trees app |
+|  [#16](https://github.com/JoGorska/bonsai-shop/issues/16) | As a shop owner I can edit / update product so that the description and price is up to date | trees app |
+|  [#17](https://github.com/JoGorska/bonsai-shop/issues/17) | As a shop owner I can delete product so that I remove products no longer available | trees app |
+|  [#20](https://github.com/JoGorska/bonsai-shop/issues/20) | As a shopper I can read advice on trees so that learn something more | questions app |
+|  [#21](https://github.com/JoGorska/bonsai-shop/issues/21) | As a shopper I can ask questions so that I learn more about product |  questions app |
+|  [#22](https://github.com/JoGorska/bonsai-shop/issues/22) | As a shop owner I can respond to questions send to FAQ so that I share knowledge with shoppers | questions app |
+|  [#23](https://github.com/JoGorska/bonsai-shop/issues/23) | As a shopper I can sign up for newsletter so that receive regular updates about new products and advice on bonsai sign up from carusele generating modal tick box and sign up when buying on checkout t... | newsletter app |
+|  [#24](https://github.com/JoGorska/bonsai-shop/issues/24) | As a shop owner I can send out newsletter via email so that I keep shoppers updated with new products and give them advice on bonsai | newsletter app |
+|  [#36](https://github.com/JoGorska/bonsai-shop/issues/36) | As a first time visitor I can see an interesting home page so that I can understand what shop sells and to be encouraged to make a purchase | home app |
+|  [#42](https://github.com/JoGorska/bonsai-shop/issues/42) | As a mobile phone user I can see only the tiles that I want to use to filter trees so that my phone's screen isn't so full of icons write js to show and hide the filtering tiles and the sorti... | trees app |
+|  [#48](https://github.com/JoGorska/bonsai-shop/issues/48) | As a user I can see messages from the shop so that I know if my item was added to bag or removed | trolley app |
+|  [#49](https://github.com/JoGorska/bonsai-shop/issues/49) | As a shopper I can have a dedicated checkout app so that I can fill in my details to complete the purchase and see the summary of my trolley | checkout app |
+|  [#52](https://github.com/JoGorska/bonsai-shop/issues/52) | As a returning customer I can have my details saved so that I don't have to re type my address every time | profile app |
+|  [#110](https://github.com/JoGorska/bonsai-shop/issues/110) | As a newsletter subscriber I can have a link for unsubscribing so that unsubscribe from newsletter | newsletter app |
+|  [#118](https://github.com/JoGorska/bonsai-shop/issues/118) | As a store owner I can switch quickly between published and unpublished questions so that I know what has been written on the same subject before | questions app
+
+### User stories that are planned for next sprint
+
+| id  |  content | 
+| ------ | ------ |
 |  [#34](https://github.com/JoGorska/bonsai-shop/issues/34) | As a shopper I can have my address auto filled after I typed my postcode so that I don't have to type all address manually |
-|  [#36](https://github.com/JoGorska/bonsai-shop/issues/36) | As a first time visitor I can see an interesting home page so that I can understand what shop sells and to be encouraged to make a purchase |
-|  [#42](https://github.com/JoGorska/bonsai-shop/issues/42) | As a mobile phone user I can see only the tiles that I want to use to filter trees so that my phone's screen isn't so full of icons write js to show and hide the filtering tiles and the sorti... |
-|  [#48](https://github.com/JoGorska/bonsai-shop/issues/48) | As a user I can see messages from the shop so that I know if my item was added to bag or removed |
-|  [#49](https://github.com/JoGorska/bonsai-shop/issues/49) | As a shopper I can have a dedicated checkout app so that I can fill in my details to complete the purchase and see the summary of my trolley |
-|  [#52](https://github.com/JoGorska/bonsai-shop/issues/52) | As a returning customer I can have my details saved so that I don't have to re type my address every time |
-|  [#65](https://github.com/JoGorska/bonsai-shop/issues/65) | As a shop owner I can add more features so that that I could apply to my trees This would require: set up a add feature form + edit + delete add view / url for the features add links to show the supe... |
-|  [#85](https://github.com/JoGorska/bonsai-shop/issues/85) | As a user registered for newsletter I can **be aware that I am registered, be informed by the carousel banner ** so that **I can unsubscribe if I wish so ** |
-|  [#110](https://github.com/JoGorska/bonsai-shop/issues/110) | As a newsletter subscriber I can have a link for unsubscribing so that unsubscribe from newsletter |
-|  [#118](https://github.com/JoGorska/bonsai-shop/issues/118) | As a store ownery I can switch quickly between published and unpublished questions so that I know what has been written on the same subject before |
-
-
-
 |  [#18](https://github.com/JoGorska/bonsai-shop/issues/18) | As a store owner I can update the stock numbers so that the shoppers know if the product is available |
 |  [#19](https://github.com/JoGorska/bonsai-shop/issues/19) | As a shop owner I can see who is interested in the product that have run out of stock so that I can order more products of this type |
 |  [#32](https://github.com/JoGorska/bonsai-shop/issues/32) | As a user I can have interactive validation on input so that I can see if what I am writing is correct before submitting the form |
 |  [#84](https://github.com/JoGorska/bonsai-shop/issues/84) | As a user I can see that I forgot to check subscription or privacy policy checkbox so that I can correct my mistake before the page is reloaded |
 |  [#116](https://github.com/JoGorska/bonsai-shop/issues/116) | As a user that asked question in FAQ I can subscribe to newsletter after I asked the question so that receive answer in my email |
 
-### Wireframes 
+## Wireframes 
 
+The general structure of the page was based on 1/3 proportions in many of it's features. Wireframes were created with [Balsamiq](https://balsamiq.com/wireframes/?gclid=Cj0KCQiAubmPBhCyARIsAJWNpiMYzrk_0rLzl3vgYKRLXwnX7rpqyQiUFdyt3xHGpRiHlZlozwO_pvcaAvUFEALw_wcB).
 
-Wireframes created with [Balsamiq](https://balsamiq.com/wireframes/?gclid=Cj0KCQiAubmPBhCyARIsAJWNpiMYzrk_0rLzl3vgYKRLXwnX7rpqyQiUFdyt3xHGpRiHlZlozwO_pvcaAvUFEALw_wcB).
+The whole of design has been saved in this [pdf file](README_docs/wireframes/wireframes.pdf). 
 
-[Wireframes](link/here)
+![wireframes of home page](README_docs/wireframes/01-home.PNG)
 
 
 
