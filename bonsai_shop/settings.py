@@ -10,12 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-from pathlib import Path
+import environ
 import dj_database_url
-if os.path.isfile("env.py"):
-    import env  # noqa # pylint: disable=unused-import
+
+from pathlib import Path
 
 
+
+env = environ.Env()
+environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,10 +27,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEVELOPMENT = os.environ.get('DEVELOPMENT', False)
+DEVELOPMENT = env('DEVELOPMENT', False)
 
 DEBUG = DEVELOPMENT
 
@@ -138,7 +141,7 @@ WSGI_APPLICATION = 'bonsai_shop.wsgi.application'
 if 'DATABASE_URL' in os.environ:
 
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+        'default': dj_database_url.parse(env("DATABASE_URL"))
     }
 
 else:
@@ -247,6 +250,6 @@ else:
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
     EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
-    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER')

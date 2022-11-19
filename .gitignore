@@ -2,6 +2,8 @@ core.Microsoft*
 core.mongo*
 core.python*
 env.py
+env_copy.py
+.env
 __pycache__/
 *.py[cod]
 node_modules/
