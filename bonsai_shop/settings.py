@@ -28,7 +28,7 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEVELOPMENT = env('DEVELOPMENT') if env('DEVELOPMENT') else False
+DEVELOPMENT = env('DEVELOPMENT') if 'DEVELOPMENT' in os.environ else False
 
 DEBUG = DEVELOPMENT
 
