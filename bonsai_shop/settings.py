@@ -34,7 +34,7 @@ DEBUG = DEVELOPMENT
 
 if DEVELOPMENT:
     ALLOWED_HOSTS = [
-        'localhost', '127.0.0.1', '127.0.0.1:8000', "three-oaks.herokuapp.com"]
+        'localhost', '127.0.0.1', '127.0.0.1:8000', "three-oaks.herokuapp.com", 'bonsai-shop.up.railway.app']
 else:
     ALLOWED_HOSTS = ["three-oaks.herokuapp.com"]
 
