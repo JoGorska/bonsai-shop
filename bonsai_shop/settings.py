@@ -10,33 +10,34 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-from pathlib import Path
 import dj_database_url
-if os.path.isfile("env.py"):
-    import env  # noqa # pylint: disable=unused-import
-
+from pathlib import Path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env()
+environ.Env.read_env()
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEVELOPMENT = os.environ.get('DEVELOPMENT', False)
+DEVELOPMENT = env('DEVELOPMENT') if 'DEVELOPMENT' in os.environ else False
 
 DEBUG = DEVELOPMENT
 
 
 if DEVELOPMENT:
     ALLOWED_HOSTS = [
-        'localhost', '127.0.0.1', '127.0.0.1:8000', "three-oaks.herokuapp.com"]
+        'localhost', '127.0.0.1', '127.0.0.1:8000', 'bonsai-shop.up.railway.app']
 else:
-    ALLOWED_HOSTS = ["three-oaks.herokuapp.com"]
+    ALLOWED_HOSTS = ["three-oaks.herokuapp.com", 'bonsai-shop.up.railway.app']
 
 
 # Application definition
@@ -138,7 +139,7 @@ WSGI_APPLICATION = 'bonsai_shop.wsgi.application'
 if 'DATABASE_URL' in os.environ:
 
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+        'default': dj_database_url.parse(env("DATABASE_URL"))
     }
 
 else:
@@ -210,10 +211,10 @@ if 'USE_AWS' in os.environ:
     }
 
     # Bucket Config
-    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_REGION_NAME = 'eu-west-2'
-    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
     # Static and media files
@@ -233,9 +234,9 @@ FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 
 STRIPE_CURRENCY = 'gbp'
-STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
-STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
+STRIPE_WH_SECRET = env('STRIPE_WH_SECRET')
 
 # sends email to console in development, otherwises sends real emails to users
 
@@ -247,6 +248,6 @@ else:
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
     EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
-    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER')
