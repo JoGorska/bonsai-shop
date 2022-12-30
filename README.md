@@ -92,9 +92,9 @@
 
 # Three Oaks
 
-[![showpiece home page](README_docs/showpieces/01-home.PNG)](https://three-oaks.herokuapp.com/)
+[![showpiece home page](README_docs/showpieces/01-home.PNG)](https://bonsai-shop.up.railway.app/)
 
-Click [here](https://three-oaks.herokuapp.com/) to live site.  
+Click [here](https://bonsai-shop.up.railway.app/) to live site.  
 ------
 
 ## UX
@@ -773,7 +773,10 @@ you should see the message "the app was sussesfully deployed"
 
 23. Click the button "View"
 
-The live link can be found [here](live/page/here/???).
+The live link can be found [here](https://bonsai-shop.up.railway.app/).
+
+### Deployment moved to railway app
+Subsequently to Heroku removing free tiers the app was moved to Railway app and deployed there successfully. Products data was migrated to new database.
 
 ### Forking the GitHub Repository
 
